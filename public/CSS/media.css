@@ -1,0 +1,52 @@
+@media (min-width: 1366px) and (max-width: 1599px) {
+    
+    /* HOME */
+    .home h1{
+        font-size: 70px;
+    }
+    .home h2{
+        font-size: 18px;
+    }
+    .home h3{
+        font-size: 16px;
+    }
+
+    /* SERVICE */
+    .service h1{
+        font-size: 54px;
+    }
+
+    /* ABOUT */
+    .about h1{
+        font-size: 54px;
+    }
+}
+
+ 
+@media (min-width: 1024px) and (max-width: 1365px) {
+    /* HOME */
+    .home h1{
+        font-size: 50px;
+    }
+    .home h2{
+        font-size: 18px;
+    }
+    .home h3{
+        font-size: 16px;
+    }
+
+    /* SERVICE */
+    .service h1{
+        font-size: 54px;
+    }
+
+    /* ABOUT */
+    .about h1{
+        font-size: 54px;
+    }
+  }
+  
+  
+@media (max-width: 1023px) {
+/* Styles for extra small screens */
+}

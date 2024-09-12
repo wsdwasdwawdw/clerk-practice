@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard</title>
+    <!-- <link rel="stylesheet" href="/public/CSS/style.css"> -->
+    <script src="../JS/signOut.js" type="module"></script>
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/media.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
+    
+    
+</head>
+<body>
+    <div id="loading">Loading...</div>
+    
+    <header>
+        <h1 class="logo">SiteHustle</h1>
+        <div class="user">
+            <img class="profile"/>
+            <img src="IMG/Expand Arrow down.png" class="dropDown"/>
+        </div>
+        
+        <div class="shitsPa tago">
+            <div class="picAndName">
+                <img class="profile"/>
+                <p class="email"></p>
+            </div>
+            <hr>
+            <div class="settingAndLogout">
+                <div id="setting">
+                    <span class="settingIcon"></span>
+                    <p>User Setings</p>
+                </div>
+                <div id="logOut">
+                    <p>Log Out</p>
+                    <span class="logoutIcon"></span>
+                </div>
+            </div>
+            
+        </div>
+            
+    </header>
+    <img src="../includes/IMG/dashboard blue glow 1.png" class="blue1 bg">
+    <img src="../includes/IMG/dashboard blue glow 2.png" class="blue2 bg">
+    <img src="../includes/IMG/dashboard blue glow 3.png" class="blue3 bg">
+    <img src="../includes/IMG/dashboard blue glow 4.png" class="blue4 bg">
+    <img src="../includes/IMG/dashboard yellow glow 1.png" class="yellow1 bg">
+    <img src="../includes/IMG/dashboard yellow glow 2.png" class="yellow2 bg">
+    
+    <section class="templates">
+        <h1>Want to explore our templates?</h1>
+        <p>Choose a Template!</p>
+        <div class="container">
+            <a href="grapes.html" target="_blank" class="blank">
+                <img src="IMG/blank Canvas.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>BLANK</p>
+                </div>
+            </a>
+            <a href="newsletter.html" target="_blank" class="newsletter">
+                <img src="IMG/newsletter.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>NEWSLETTER</p>
+                </div>
+            </a>
+            <a href="website.html" target="_blank" class="website">
+                <img src="IMG/website.PNG" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>WEBSITE</p>
+                </div>
+            </a>
+            <a href="blog.html" target="_blank" class="blog">
+                <img src="IMG/blog.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>BLOG</p>
+                </div>
+            </a>
+            <a href="portfolio.html" target="_blank" class="portfolio">
+                <img src="IMG/portfolio.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>PORTFOLIO</p>
+                </div>
+            </a>
+            <a href="business.html" target="_blank" class="business">
+                <img src="IMG/business.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>BUSINESS</p>
+                </div>
+            </a>
+            <a href="ecommerce.html" target="_blank" class="ecommerce">
+                <img src="IMG/ecommerce.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>E-COMMERCE</p>
+                </div>
+            </a>
+            <a href="restaurant.html" target="_blank" class="restaurant">
+                <img src="IMG/restaurant.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>RESTAURANT</p>
+                </div>
+            </a>
+            <a href="agency.html" target="_blank" class="agency">
+                <img src="IMG/agency.png" alt="">
+                <div class="curtain">
+                    <img src="../includes/IMG/External Link.png">
+                    <p>AGENCY</p>
+                </div>
+            </a>
+        </div>
+        <div class="viewMore">
+            <p class="last">See More</p> 
+            <img src="../includes/IMG/Expand Arrow down.png" class="lastlast"/>
+        </div>
+    </section>
+    
+    <section class="projects">
+        <h1>Your recent projects</h1>
+        <input type="search" placeholder="Search project">
+        <hr>
+        <div class="shits">
+            <div class="view">
+                <p>grid</p>
+                <p>list</p>
+            </div>
+            <div class="sort">
+                <p>Newest</p>
+                <p>A-Z</p>
+                <p>Z-A</p>
+                <p>Oldest</p>
+            </div>
+            <div class="filter">
+                <p>Blank</p>
+                <p>Newsletter</p>
+                <p>Website</p>
+                <p>Blog</p>
+                <p>Portfolio</p>
+                <p>Business</p>
+                <p>E-Commerce</p>
+                <p>Restaurant</p>
+                <p>Agency</p>
+            </div>
+            
+        </div>
+        <div id="fileList"></div>
+    </section>
+
+    
+    
+    <div class="delete tago">
+        <div class="confirmation">
+            <img src="IMG/alert delete.png">
+            <p class="project-name"></p>
+            <div class="confirm-cancel">
+                <button class="cancel-delete">Cancel</button>
+                <button class="confirm-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="rename tago">
+        <div class="confirmation">
+            <img src="IMG/alert delete.png">
+            <input type="text" class="newName">
+            <div class="confirm-cancel">
+                <button class="cancel-rename">Cancel</button>
+                <button class="confirm-rename">Rename</button>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../JS/dashboard.js"defer></script>
+</body>
+</html>

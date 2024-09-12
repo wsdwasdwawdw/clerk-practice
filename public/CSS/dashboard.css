@@ -1,0 +1,391 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", "san serif";
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    overflow-x: hidden;
+}
+button:hover, .login:hover{
+    cursor: pointer;
+    border: 2px black solid;
+    color: black;
+}
+
+
+section{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    gap: 20px;
+    flex-wrap: nowrap;
+    padding: 0 5%;
+    position: relative;
+}
+.bg{
+    pointer-events: none;
+}
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #222222;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 1000;
+    opacity: 1; /* Start fully visible */
+    transition: opacity 2s ease-in-out; /* Smooth transition for opacity */
+}
+
+/* HEADER */
+header{
+    background-color: #222222;
+    height: 70px;
+    box-shadow: 0px 0px 5px 1px #EEB832;
+    align-content: center;
+    text-align: center;
+    color: #F1E7CF;
+    font-weight: 500;
+}
+
+header img{
+    pointer-events: none;
+}
+header .logo{
+    font-size: 40px;
+}
+
+header .user{
+    position: absolute;
+    right: 40px;
+    top: 0;
+    cursor: pointer;
+    width: 100px;
+    height: inherit;
+    border: solid yellow 1px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+header .user .profile{
+    height: 50px;
+    border-radius: 50px;
+}
+
+header .shitsPa{
+    background-color: #222222;
+    position: absolute;
+    right: 55px;
+    top: 80px;
+    width: 350px;
+    height: fit-content;
+    border: yellow solid 1px;
+    border-radius: 10px;
+    z-index: 1;
+    user-select: none;
+}
+header .shitsPa .picAndName{
+    margin: 0 0 10px 0;
+}
+header .shitsPa .picAndName .profile{
+    margin: 20px 0 10px 0;
+    height: 50px;
+    border-radius: 50px;
+    border: solid yellow 1px;
+}
+
+header .shitsPa .settingAndLogout {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 15px;
+}
+header .shitsPa .settingAndLogout #setting,header .shitsPa .settingAndLogout #logOut{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+header .shitsPa .settingAndLogout #logOut{
+    border: #EEB832 solid 1px;
+    padding: 10px 20px;
+    color: #EEB832;
+    border-radius: 20px;
+}
+
+header .settingIcon{
+    background-image: url('../includes/IMG/Settings.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+
+header .logoutIcon{
+    background-image: url('../includes/IMG/logout.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+
+.blue1{
+    position: absolute;
+    left: 0;
+}
+.blue2{
+    position: absolute;
+}
+.blue3{
+    position: absolute;
+    right: 0;
+}
+.blue4{
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
+.yellow1{
+    position: absolute;
+}
+.yellow2{
+    position: absolute;
+    right: 0;
+    top: 120%;
+}
+
+/* TEMPLATES */
+.templates .container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    height: 300px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.templates h1{
+    font-size: 80px;
+    align-self: center;
+    color: #fff;
+    font-weight: 300;
+    margin: 0 0 5% 0;
+}
+.templates p{
+    color: #fff;
+    font-size: 20px;
+}
+
+.templates .container img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.templates .container a {
+    position: relative;
+    text-align: center;
+    color: black; 
+    cursor: pointer;
+    height: 300px;
+    width: 550px;
+}
+
+.templates .viewMore{
+    display: flex;
+    cursor: pointer;
+    align-self: flex-end;
+    gap: 10px;
+}
+.templates .viewMore img{
+    margin: 0 0 0 2px;
+}
+.templates .container .curtain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    color: #fff;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 24px;
+    opacity: 0;
+    border-radius: 10px;
+    transition: all .5s ease;
+}
+.templates .container .curtain img{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: block;
+    width: auto;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.templates .container a:hover .curtain{
+    opacity: 1;
+}
+
+/* YOUR PROJECTS */
+
+.projects h1{
+    font-size: 80px;
+    align-self: center;
+    color: #fff;
+    font-weight: 300;
+    margin: 10% 0 0 0;
+}
+.projects input{
+    align-self: center;
+    width: 25%;
+    background-color: transparent;
+    border: #EEB832 1px solid;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 50px;
+    margin: 0 0 5% 0;
+    font-size: 20px;
+}
+.projects hr{
+    height: 1px;
+    background-color: #969393;
+    border: none;
+
+}
+.projects #fileList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: auto;
+    user-select: none;
+}
+
+.tago{
+    visibility: collapse;
+}
+
+/* DELETE */
+.delete{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+.delete .confirmation{
+    background-color: #EBADA7;
+    position: relative;
+    width: 25%;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 5px;
+}
+.delete .confirmation button{
+    padding: 7px 15px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 400;
+}
+.delete .confirmation .confirm-cancel {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.delete .confirmation .confirm-cancel .confirm-delete{
+    color: #ffffff;
+    background-color: #AC2423;
+}
+.delete .confirmation img{
+    width: 15%;
+}
+
+/* RENAME */
+.rename{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+.rename .confirmation{
+    background-color: yellowgreen;
+    position: relative;
+    width: 25%;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rename .confirmation img{
+    width: 15%;
+}
+.rename .confirmation button{
+    padding: 7px 15px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 400;
+}
+.rename .confirmation input{
+    padding: 2px 15px;
+}
+.rename .confirmation .confirm-cancel {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+@media screen and (max-width: 1800px){
+    .projects #fileList, .templates .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 1189px){
+    .projects #fileList, .templates .container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

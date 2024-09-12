@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="title">Document</title>
+
+  <link href="../CSS/grapick.min.css" rel="stylesheet">
+  <link href="../CSS/grapes.min.css" rel="stylesheet" >
+
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
+  <!-- Link to your external JavaScript file -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+  <script src="../JS/basic-blocks.js"></script> <!-- important -->
+  <script src="../JS/forms.js"></script> <!-- important -->
+  <script src="../JS/countdown.js"></script> <!-- important -->
+  <script src="../JS/tabs.js"></script> <!-- important --> 
+  <script src="../JS/custom-code.js"></script> <!-- important -->
+  <script src="../JS/touch.js"></script> <!-- important -->
+  <script src="../JS/parser.js"></script> <!-- important -->
+  <script src="../JS/image-editor.js"></script> <!-- important -->
+  <script src="../JS/Typed.js"></script> <!-- important -->
+  <script src="../JS/tooltip.js"></script>
+  <script src="../JS/style-bg.js"></script> <!-- important -->
+
+  
+  
+  <script src="../JS/grapes.min.js"></script>
+  <link rel="stylesheet" href="../CSS/grapes.css">
+  
+  <!-- <script src="../JS/retrieve.js" type="module"></script> -->
+</head>
+<body>
+  
+  <div id="main" class="main">
+    <div class="panel__top">
+      <div class="panel__basic-actions"></div>
+      <div class="panel__devices"></div>
+      <div class="panel__switcher"></div>
+    </div>
+    <div class="editor-row">
+      <div class="editor-canvas">
+
+        
+        <div id="gjs">
+          
+        </div>
+      </div>
+      <div class="panel__right">
+        <div class="layers-container"></div>
+        <div class="styles-container"></div>
+        <div class="traits-container"></div>
+        <div class="blocks-container"></div>
+        <div class="saveShit">
+          <p class="project"></p>
+          <button id="save" onclick="saveToFirebase()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../JS/Saved.grapes.js"></script>
+  <!-- <script src="../JS/Saved.grapes.min.js"></script>  -->
+  <script src="../JS/static.js"></script>
+  
+  <div class="error">Please only open on desktop</div>
+</body>
+</html>

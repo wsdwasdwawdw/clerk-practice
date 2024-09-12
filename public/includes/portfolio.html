@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link href="../CSS/grapick.min.css" rel="stylesheet">
+    <link href="../CSS/grapes.min.css" rel="stylesheet" >
+
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
+    <!-- Link to your external JavaScript file -->
+    <!-- <script src="../JS/save.js" defer></script> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script src="../JS/basic-blocks.js"></script>   <!-- important -->
+    <script src="../JS/forms.js"></script>          <!-- important -->
+    <script src="../JS/countdown.js"></script>      <!-- important -->
+    <script src="../JS/tabs.js"></script>           <!-- important --> 
+    <script src="../JS/custom-code.js"></script>    <!-- important -->
+    <script src="../JS/touch.js"></script>          <!-- important -->
+    <script src="../JS/parser.js"></script>         <!-- important -->
+    <script src="../JS/image-editor.js"></script>   <!-- important -->
+    <script src="../JS/Typed.js"></script>          <!-- important -->
+    <script src="../JS/tooltip.js"></script>        <!-- important -->
+    <script src="../JS/style-bg.js"></script>       <!-- important -->
+
+    
+    <script src="../JS/grapes.min.js"></script>
+    <link rel="stylesheet" href="../CSS/grapes.css">
+    
+    
+</head>
+<body>
+    <div class="main">
+      <div class="panel__top">
+        <div class="panel__basic-actions"></div>
+        <div class="panel__devices"></div>
+        <div class="panel__switcher"></div>
+      </div>
+      <div class="editor-row">
+        <div class="editor-canvas">
+          <div id="gjs">
+            <header>
+              <h1>Your Name</h1>
+              <nav>
+                  <ul>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#projects">Projects</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                  </ul>
+              </nav>
+            </header>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Brief introduction and background.</p>
+            </section>
+            <section id="projects">
+                <h2>My Projects</h2>
+                <div class="project">
+                    <h3>Project Title</h3>
+                    <p>Description of the project.</p>
+                </div>
+                <!-- Repeat project divs as necessary -->
+            </section>
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <form action="#">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+            <footer>
+                <p>&copy; 2024 Your Name. All rights reserved.</p>
+            </footer>
+            
+            <style>
+              body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f4f4f4;
+                    color: #333;
+                }
+
+                header {
+                    background-color: #007bff;
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                nav ul {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                nav ul li {
+                    display: inline;
+                    margin: 0 15px;
+                }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                section {
+                    padding: 40px 20px;
+                    text-align: center;
+                }
+
+                #about {
+                    background-color: #fff;
+                }
+
+                #projects {
+                    background-color: #e9ecef;
+                }
+
+                #contact {
+                    background-color: #fff;
+                }
+
+                .project {
+                    margin: 20px auto;
+                    max-width: 600px;
+                    text-align: left;
+                }
+
+                footer {
+                    background-color: #007bff;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                }
+
+                form {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    text-align: left;
+                }
+
+                input, textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                button {
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+          </div>
+          
+        </div>
+        <div class="panel__right">
+          <div class="layers-container"></div>
+          <div class="styles-container"></div>
+          <div class="traits-container"></div>
+          <div class="blocks-container"></div>
+          <div class="saveShit">
+          <input type="text" name="" id="name" placeholder="Name...">
+          <button id="save" onclick="saveToFirebase()">Save</button>
+        </div>
+        </div>
+
+        
+      </div>
+      <!-- <button id="save" class="save">Save</button> -->
+    </div>
+    <div id="screenshotResult"></div>
+    
+    
+    <script src="../JS/grapes.js"></script>
+    <!-- <script src="../JS/save.js"></script> -->
+    <script src="../JS/static.js"></script>
+    
+    <div class="error">Please only open on desktop</div>
+</body>
+</html>

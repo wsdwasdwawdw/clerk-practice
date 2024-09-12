@@ -1,0 +1,179 @@
+
+html,body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.main{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+/* Let's highlight canvas boundaries */
+#gjs {
+  border: 3px solid #444;
+}
+
+/* Reset some default styling */
+.gjs-cv-canvas {
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* remove css block to make default(grid) */
+/* .gjs-block {
+  width: auto;
+  height: auto;
+  min-height: auto;
+} */
+
+.panel__top {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  position: initial;
+  justify-content: center;
+  justify-content: space-between;
+}
+.panel__basic-actions {
+  position: initial;
+}
+
+.editor-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  /* adjust to 920px para mag full screen */
+  height: 95.8%; 
+}
+
+.editor-canvas {
+  flex-grow: 1;
+}
+
+.panel__right {
+  flex-basis: 230px;
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.panel__switcher {
+  position: initial;
+}
+
+.panel__devices {
+  position: initial;
+}
+
+#gjs {
+  border: none;
+}
+
+
+
+.icons-flex {
+  background-size: 70% 65% !important;
+  height: 15px;
+  opacity: 0.9;
+}
+.icon-dir-row {
+  background: url("../includes/IMG/dir-row.png") no-repeat center; 
+}
+.icon-dir-row-rev {
+  background: url("../includes/IMG/dir-row-reverse.png") no-repeat center;
+}
+.icon-dir-col {
+  background: url("../includes/IMG/dir-column.png") no-repeat center;
+}
+.icon-dir-col-rev {
+  background: url("../includes/IMG/dir-column-reverse.png") no-repeat center;
+}
+.icon-just-start{
+ background: url("../includes/IMG/justify-flex-start.png") no-repeat center;
+}
+.icon-just-end{
+ background: url("../includes/IMG/justify-flex-end.png") no-repeat center;
+}
+.icon-just-sp-bet{
+ background: url("../includes/IMG/justify-space-between.png") no-repeat center;
+}
+.icon-just-sp-ar{
+ background: url("../includes/IMG/justify-space-around.png") no-repeat center;
+}
+.icon-just-sp-cent{
+ background: url("../includes/IMG/justify-center.png") no-repeat center;
+}
+.icon-al-start{
+ background: url("../includes/IMG/align-flex-start.png") no-repeat center;
+}
+.icon-al-end{
+ background: url("../includes/IMG/align-flex-end.png") no-repeat center;
+}
+.icon-al-str{
+ background: url("../includes/IMG/align-stretch.png") no-repeat center;
+}
+.icon-al-center{
+ background: url("../includes/IMG/align-center.png") no-repeat center;
+}
+
+[data-tooltip]::after {
+  background: rgba(51, 51, 51, 0.9);
+}
+
+
+#screenshotResult{
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.saveShit{
+  width: auto;
+  position: sticky;
+  bottom: 0;
+  background-color: #444;
+  border: black solid 1px;
+  display: flex;
+  flex-direction: column  ;
+  justify-content: center;
+  align-items: center;
+  padding: 59.5px 30px;
+  gap: 20px;
+  z-index: 1000;
+}
+.saveShit button{
+  padding: 5px 10px;
+  background-color: rgb(119, 114, 114);
+  opacity: 1;
+  cursor: pointer;
+}
+.saveShit button:hover{
+  opacity: .8;
+}
+
+.error{
+  display: none;
+}
+
+@media screen  and (max-width: 768px){
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main{
+    display: none;
+  }
+  
+  .error{
+    display: inline;
+  }
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
