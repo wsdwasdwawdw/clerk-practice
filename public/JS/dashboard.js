@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 project.textContent = fileData.project;
                 project.style.fontSize = "32px";
                 project.style.color = "#ffffff";
-                project.style.margin = "0 0 0 10%";
+                project.style.margin = "0 0 0 30px";
                 project.style.fontWeight = "500";
                 info.appendChild(project);
 
@@ -142,7 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     projectName.textContent = `Are you sure you want to delete the project: ${fileData.project}?`;
                     alert.classList.remove("tago");
 
-                    document.querySelector(".confirm-delete").addEventListener("click", ()=>{
+                    // Remove any previous event listener for confirm-delete
+                    const confirmDeleteButton = document.querySelector(".confirm-delete");
+                    const newConfirmDeleteButton = confirmDeleteButton.cloneNode(true);
+                    confirmDeleteButton.parentNode.replaceChild(newConfirmDeleteButton, confirmDeleteButton);
+
+                    // Add event listener for confirm-delete
+                    newConfirmDeleteButton.addEventListener("click", () => {
                         // Delete the document from Firestore
                         firestore.collection('htmlFiles').doc(doc.id).delete()
                         .then(() => {
@@ -153,11 +159,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         }).catch(error => {
                             console.error("Error removing document: ", error);
                         });
-                    })
+                    });
 
-                    document.querySelector(".cancel-delete").addEventListener("click", ()=>{
+                    // Add event listener for cancel-delete
+                    document.querySelector(".cancel-delete").addEventListener("click", () => {
                         alert.classList.add("tago");
-                    })
+                    });
                 });
 
                 //listItem.appendChild(deleteButton);
@@ -186,16 +193,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 renameButton.addEventListener('click', function(event) {
                     event.stopPropagation();
-                    const newName = document.querySelector(".newName");
+                    const newNameInput = document.querySelector(".newName");
                     const alert = document.querySelector(".rename");
-                    const projectName = document.querySelector(".project-name");
-
-                    projectName.textContent = `Are you sure you want to delete the project: ${fileData.project}?`;
                     alert.classList.remove("tago");
 
-                    // When "confirm-rename" is clicked
-                    document.querySelector(".confirm-rename").addEventListener("click", () => {
-                         const newShit = newName.value;
+                    // Remove any previous event listener for confirm-rename
+                    const confirmRenameButton = document.querySelector(".confirm-rename");
+                    const newConfirmRenameButton = confirmRenameButton.cloneNode(true);
+                    confirmRenameButton.parentNode.replaceChild(newConfirmRenameButton, confirmRenameButton);
+
+                    // Add event listener for confirm-rename
+                    newConfirmRenameButton.addEventListener("click", () => {
+                        const newShit = newNameInput.value;
 
                         if (newShit) {
                             // Update the document in Firestore with the new project name
@@ -207,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 project.textContent = newShit;
                                 // Hide the alert dialog
                                 alert.classList.add("tago");
+                                document.querySelector(".newName").value = "";
                             })
                             .catch(error => {
                                 console.error("Error renaming document: ", error);
@@ -216,9 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     });
 
-                    document.querySelector(".cancel-rename").addEventListener("click", ()=>{
+                    document.querySelector(".cancel-rename").addEventListener("click", () => {
                         alert.classList.add("tago");
-                    })
+                        document.querySelector(".newName").value = "";
+                    });
 
                 });
                 

@@ -72,7 +72,6 @@ header .user{
     cursor: pointer;
     width: 100px;
     height: inherit;
-    border: solid yellow 1px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -350,39 +349,69 @@ header .logoutIcon{
     background-color: transparent;
     backdrop-filter: blur(10px);
 }
+.rename img{
+    position: absolute;
+    display: block;
+    z-index: -1;
+}
+.rename .blue{
+    bottom: 0;
+    left: 0;
+}
+.rename .yellow{
+    bottom: 0;
+    left: 0;
+}
 .rename .confirmation{
-    background-color: yellowgreen;
+    background-color: #222222;
     position: relative;
-    width: 25%;
-    height: 150px;
+    width: 30%;
+    height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 10px 0 0 0;
+    padding: 30px;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    color: #ffffff;
+    overflow: hidden;
 }
-.rename .confirmation img{
-    width: 15%;
+.rename .confirmation p{
+    margin: 30px 0 10px 0;
+}
+.rename .confirmation h1{
+    font-weight: 500;
 }
 .rename .confirmation button{
-    padding: 7px 15px;
+    padding: 7px 50px;
     border: none;
+    font-size: 20px;
     border-radius: 3px;
     font-weight: 400;
 }
-.rename .confirmation input{
-    padding: 2px 15px;
+.rename .confirmation .cancel-rename{
+    background-color: transparent;
+    border: #ffffff solid 1px;
+    color: #ffffff;
 }
+.rename .confirmation input{
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 200;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border: solid #ffffff 1px;
+    border-radius: 5px;
+    color: #ffffff;
+    max-width: 100%;
+}
+
 .rename .confirmation .confirm-cancel {
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    margin: 20px 0 0 0;
     gap: 20px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
