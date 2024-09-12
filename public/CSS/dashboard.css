@@ -245,7 +245,9 @@ header .logoutIcon{
 }
 
 /* YOUR PROJECTS */
-
+.projects{
+    position: relative;
+}
 .projects h1{
     font-size: 80px;
     align-self: center;
@@ -271,7 +273,15 @@ header .logoutIcon{
     border: none;
 
 }
-.projects #fileList{
+
+.projects .shits{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+.grid{
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
@@ -279,8 +289,12 @@ header .logoutIcon{
     user-select: none;
 }
 
-.tago{
-    visibility: collapse;
+.list{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    user-select: none;
 }
 
 /* DELETE */
@@ -373,7 +387,9 @@ header .logoutIcon{
     width: 100%;
 }
 
-
+.tago{
+    visibility: collapse;
+}
 ::-webkit-scrollbar{
     display: none;
 }

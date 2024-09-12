@@ -9,18 +9,27 @@ const firebaseConfig = {
   measurementId: "G-NN9YWS88J5"
 };
 firebase.initializeApp(firebaseConfig);
-
-const taong = localStorage.getItem("pangSave");
-
-const named = sessionStorage.getItem("name");
-const laman = sessionStorage.getItem("laman");
-const muka = sessionStorage.getItem("css");
-console.log(taong);
-
 const db = firebase.firestore();
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 const storage = firebase.storage();
+
+const taong = localStorage.getItem("pangSave");
+const named = sessionStorage.getItem("name");
+//const laman = sessionStorage.getItem("laman");
+//const muka = sessionStorage.getItem("css");
+console.log(taong);
+/* const styleElement = document.createElement("style");
+styleElement.textContent = muka;
+document.head.appendChild(styleElement); */
+
+document.getElementById('title').innerText = named;
+
+console.log(named);
+
+
+const pD = JSON.parse(sessionStorage.getItem("projectData"));
+
 
 const editor = grapesjs.init({
   // Indicate where to init the editor. You can also pass an HTMLElement
@@ -553,27 +562,19 @@ editor.Commands.add('set-device-desktop', {
 editor.Commands.add('set-device-mobile', {
   run: editor => editor.setDevice('Mobile')
 });
-
+editor.loadProjectData(pD);
 
 document.querySelector(".project").innerHTML = "Project name: " + named;
 
 
-const styleElement = document.createElement("style");
-styleElement.textContent = muka;
-document.head.appendChild(styleElement);
 
-document.getElementById('title').innerText = named;
-
-console.log(named);
-console.log(laman);
-console.log(muka);
+//console.log(laman);
+//console.log(muka);
  
 /* const lamanLaman = `<style>${muka}</style>`;
 
 editor.addComponents(laman);
 editor.addComponents(lamanLaman); */
-const pD = JSON.parse(sessionStorage.getItem("projectData"));
-editor.loadProjectData(pD);
 
 // Check if both user and project name exist
 /* if (taong && named) {

@@ -672,6 +672,7 @@ header div ul a:hover::after{
 
 .hide{
     display: none;
+    background-color: #e92929;
 }
 
 
@@ -679,3 +680,4 @@ header div ul a:hover::after{
 ::-webkit-scrollbar{
     display: none;
 }
+

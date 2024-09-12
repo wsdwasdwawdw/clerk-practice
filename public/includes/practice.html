@@ -19,15 +19,26 @@
         body{
             overflow-x: hidden;
         }
-        
+        .main{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+        }
     </style>
     <body>
-        <img src="../includes/IMG/blank photo.png" alt="" >
-        <input type="file" id="imageInput">
-        <button onclick="uploadImage()">Upload Image</button>
-        <img id="imageDisplay" alt="Selected Image">
+        <div class="main">
+            <button onclick="but()">Hello</button>
+        </div>
 
+        <script>
+            document.querySelector(".main").addEventListener("click", ()=>{
+                console.log("Hello");
+            })
 
-        <script  src="../JS/script.js"></script>  
+            function but(){
+                console.log("button");
+            }
+        </script>
     </body>
 </html>

@@ -59,12 +59,14 @@ user.addEventListener("click", function(){
     }
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const fileList = document.getElementById('fileList');
     const targetuser = tao;
-
     
 
+    const view = document.querySelector(".view");
+    
     firestore.collection('htmlFiles').orderBy('createdAt', 'asc').get()
     .then(querySnapshot => {
         querySnapshot.forEach(doc => {
@@ -78,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 listItem.style.width = "550px";
                 listItem.style.borderRadius = "10px";
                 listItem.style.overflow = "hidden";
+                listItem.style.zIndex = "0";
+                listItem.style.cursor = 'pointer';
 
                 const img = document.createElement('img');
                 img.style.display = "block";
@@ -118,8 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 deleteButton.style.border = "none";
                 info.appendChild(deleteButton);
 
-                
-                
+                fileList.appendChild(listItem);
 
                 // Hover effect to change background color to red
                 deleteButton.addEventListener('mouseover', function() {
@@ -131,20 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     deleteButton.style.opacity = "1";
                 });
 
-                deleteButton.addEventListener('click', function() {
-                // Confirm before deleting
-                    /* if (confirm(`Are you sure you want to delete the project: ${fileData.project}?`)) {
-                        // Delete the document from Firestore
-                        firestore.collection('htmlFiles').doc(doc.id).delete()
-                        .then(() => {
-                            console.log("Document successfully deleted!");
-                            // Remove the item from the UI
-                            fileList.removeChild(listItem);
-                        }).catch(error => {
-                            console.error("Error removing document: ", error);
-                        });
-                    } */
-
+                deleteButton.addEventListener('click', function(event) {
+                    event.stopPropagation();
                     const alert = document.querySelector(".delete");
                     const projectName = document.querySelector(".project-name");
 
@@ -171,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 //listItem.appendChild(deleteButton);
 
-                // Create a delete button
+                // Create a rename button
                 const renameButton = document.createElement('img');
                 renameButton.src = './IMG/rename.png';
                 renameButton.style.position = "absolute";
@@ -193,7 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     renameButton.style.opacity = "1";
                 });
 
-                renameButton.addEventListener('click', function() {
+                renameButton.addEventListener('click', function(event) {
+                    event.stopPropagation();
                     const newName = document.querySelector(".newName");
                     const alert = document.querySelector(".rename");
                     const projectName = document.querySelector(".project-name");
@@ -229,14 +221,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
 
                 });
-
-
-                //listItem.textContent = fileData.name;
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', function() {
+                
+                listItem.addEventListener('click', function() {
                     // Log the content associated with the clicked name
                     console.log(fileData.name);
-                    console.log('Content:', fileData.content);
+                    //console.log('Content:', fileData.content);
                     contents = fileData.content;
                     const pD = fileData.projectData;
                     console.log(pD);
@@ -245,19 +234,41 @@ document.addEventListener('DOMContentLoaded', function() {
                     sessionStorage.setItem("css", fileData.css);
                     sessionStorage.setItem("projectData", JSON.stringify(pD));
                     console.log(sessionStorage.getItem("name"));
-                    console.log(sessionStorage.getItem("laman"));
-                    console.log(sessionStorage.getItem("css"));
+                    //console.log(sessionStorage.getItem("laman"));
+                    //console.log(sessionStorage.getItem("css"));
                     //sessionStorage.setItem('content', fileData.content);
                     window.open("../includes/savedEdits.html", "_blank");
                 });
-                fileList.appendChild(listItem);
+                //fileList.appendChild(listItem);
+
+                view.addEventListener("change", ()=>{
+                    console.log(listItem);
+                    if(view.value === "grid"){
+                        fileList.classList.add("grid");
+                        fileList.classList.remove("list");
+
+                        listItem.style.height = "300px";
+                        listItem.style.width = "550px";
+                        
+                    }
+                    else{
+                        fileList.classList.add("list");
+                        fileList.classList.remove("grid");
+                        console.log("is list");
+
+                        listItem.style.height = "70px";
+                        listItem.style.width = "100%";
+
+                    }
+                })
+
             }
-             
         });
     }).catch(error => {
         console.error('Error fetching file metadata:', error);
     });
 
+    
 });
 
 
