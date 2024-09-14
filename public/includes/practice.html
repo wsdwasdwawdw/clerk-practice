@@ -20,25 +20,65 @@
             overflow-x: hidden;
         }
         .main{
-            width: 100px;
-            height: 100px;
+            width: auto;
+            height: auto;
             background-color: pink;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            justify-content: space-evenly;
+            transition: 5s ease;
+            cursor: pointer;
+        }
 
+        .main svg{
+            margin: 5px 20px;
+            transition: .5s ease;
+        }
+        .main .bg{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            left: 0;
+            background-color: aqua;
+            transition: .5s ease;
         }
     </style>
     <body>
-        <div class="main">
-            <button onclick="but()">Hello</button>
+        <div class="main grid">
+            <div class="bg"></div>
+            <svg  class="grid" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: yellow;transform: rotate(90deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);">
+                <path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z"></path>
+            </svg>
+            <svg class="list" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);">
+                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+            </svg>
         </div>
 
         <script>
             document.querySelector(".main").addEventListener("click", ()=>{
-                console.log("Hello");
+                console.log("start");
+                const main = document.querySelector(".main");
+                const bg = main.querySelector(".bg");
+                const grid = main.querySelector(".grid");
+                const list = main.querySelector(".list");
+
+                if (main.classList.contains("grid")) {
+                    bg.style.left = "50%"; // Move to the right
+                    grid.style.fill = "black";  // Change grid icon fill to black
+                    list.style.fill = "yellow"; // Change list icon fill to yellow
+                    main.classList.remove("grid");
+                } else {
+                    bg.style.left = "0";     // Move to the left
+                    grid.style.fill = "yellow"; // Change grid icon fill to yellow
+                    list.style.fill = "black";  // Change list icon fill to black
+                    main.classList.add("grid");
+                }
+
+                console.log("end");
             })
 
-            function but(){
-                console.log("button");
-            }
         </script>
     </body>
 </html>

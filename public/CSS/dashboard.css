@@ -276,9 +276,35 @@ header .logoutIcon{
 .projects .shits{
     position: relative;
     display: flex;
-    justify-content: flex-end;
     gap: 30px;
 }
+.projects .main{
+    width: 6%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    cursor: pointer;
+    border: solid #D9D9D9 1px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.projects .main svg{
+    margin: 5px 0;
+    transition: .5s ease;
+}
+.projects .main .bg{
+    position: absolute;
+    width: 3%;
+    height: 95%;
+    left: 1px;
+    background-color: #222222;
+    transition: .5s ease;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+}
+
 .grid{
     position: relative;
     display: grid;

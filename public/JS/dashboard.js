@@ -1,5 +1,4 @@
 
-
 setTimeout(function() {
     var loadingScreen = document.getElementById('loading');
     loadingScreen.style.opacity = '0';
@@ -75,15 +74,18 @@ document.addEventListener('DOMContentLoaded', function() {
             if(fileData.email === targetuser){
 
                 const listItem = document.createElement('div');
+                listItem.className = "listItem";
                 listItem.style.position = "relative";
-                listItem.style.height = "300px";
+                listItem.style.height = "340px";
                 listItem.style.width = "550px";
                 listItem.style.borderRadius = "10px";
                 listItem.style.overflow = "hidden";
                 listItem.style.zIndex = "0";
                 listItem.style.cursor = 'pointer';
+                listItem.style.border = "grey 2px solid";
 
                 const img = document.createElement('img');
+                img.className = "img";
                 img.style.display = "block";
                 img.style.height = "auto";
                 img.style.width = "100%";
@@ -94,33 +96,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 const info = document.createElement("div");
                 info.style.width = "100%";
                 info.style.height = "70px";
-                info.style.position = "absolute";
                 info.style.display = "flex";
                 info.style.alignItems = "center";
                 info.style.bottom = "0";
-                info.style.background = "#37383E";
+                info.style.background = "#000000";
+                info.style.opacity = "0.3";
                 listItem.appendChild(info);
 
                 const project = document.createElement("p");
+                project.className = "project";
                 project.textContent = fileData.project;
+                project.style.position = "absolute"
                 project.style.fontSize = "32px";
                 project.style.color = "#ffffff";
-                project.style.margin = "0 0 0 30px";
+                project.style.bottom = "15px";
+                project.style.left = "15px";
                 project.style.fontWeight = "500";
-                info.appendChild(project);
-
+                project.style.opacity = "1";
+                listItem.appendChild(project);
 
                 // Create a delete button
                 const deleteButton = document.createElement('img');
                 deleteButton.src = './IMG/trash.png';
                 deleteButton.style.position = "absolute";
-                deleteButton.style.bottom = "18px";
+                deleteButton.style.bottom = "15px";
                 deleteButton.style.right = "30px";
-                deleteButton.style.borderRadius = "50px";
                 deleteButton.style.padding = "5px";
-                deleteButton.style.backgroundColor = "#e92929";
-                deleteButton.style.border = "none";
-                info.appendChild(deleteButton);
+                listItem.appendChild(deleteButton);
+
+                const icon = document.createElement("img");
+                icon.className = "icon";
+                icon.src = "./IMG/s.png";
+                icon.style.position = "absolute";
+                icon.style.left = "30px";
+                icon.style.bottom = "15px";
+                icon.style.display = "block";
 
                 fileList.appendChild(listItem);
 
@@ -129,11 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     deleteButton.style.cursor = "pointer";
                     deleteButton.style.opacity = ".5";
                 });
-
                 deleteButton.addEventListener('mouseout', function() {
                     deleteButton.style.opacity = "1";
                 });
-
                 deleteButton.addEventListener('click', function(event) {
                     event.stopPropagation();
                     const alert = document.querySelector(".delete");
@@ -173,24 +181,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const renameButton = document.createElement('img');
                 renameButton.src = './IMG/rename.png';
                 renameButton.style.position = "absolute";
-                renameButton.style.bottom = "18px";
+                renameButton.style.bottom = "15px";
                 renameButton.style.right = "90px";
-                renameButton.style.borderRadius = "50px";
                 renameButton.style.padding = "5px";
-                renameButton.style.backgroundColor = "#ffffff";
-                renameButton.style.border = "none";
-                info.appendChild(renameButton);
+                listItem.appendChild(renameButton);
 
                 // Hover effect to change background color to red
                 renameButton.addEventListener('mouseover', function() {
                     renameButton.style.cursor = "pointer";
                     renameButton.style.opacity = ".5";
                 });
-
                 renameButton.addEventListener('mouseout', function() {
                     renameButton.style.opacity = "1";
                 });
-
                 renameButton.addEventListener('click', function(event) {
                     event.stopPropagation();
                     const newNameInput = document.querySelector(".newName");
@@ -233,6 +236,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 });
                 
+
+                listItem.addEventListener("mouseover", ()=>{
+                    listItem.style.border = "green solid 2px";
+                })
+                listItem.addEventListener("mouseout", ()=>{
+                    listItem.style.border = "grey solid 2px";
+                })
                 listItem.addEventListener('click', function() {
                     // Log the content associated with the clicked name
                     console.log(fileData.name);
@@ -252,15 +262,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 //fileList.appendChild(listItem);
 
-                view.addEventListener("change", ()=>{
+                /* view.addEventListener("change", ()=>{
                     console.log(listItem);
                     if(view.value === "grid"){
                         fileList.classList.add("grid");
                         fileList.classList.remove("list");
 
-                        listItem.style.height = "300px";
+                        listItem.style.height = "340px";
                         listItem.style.width = "550px";
                         
+                        img.style.visibility = "visible";
+
+                        project.style.left = "15px";
+
+                        listItem.removeChild(icon);
                     }
                     else{
                         fileList.classList.add("list");
@@ -270,16 +285,88 @@ document.addEventListener('DOMContentLoaded', function() {
                         listItem.style.height = "70px";
                         listItem.style.width = "100%";
 
-                    }
-                })
+                        img.style.visibility = "hidden";
 
+                        project.style.left = "100px";
+
+                        
+                        listItem.appendChild(icon);
+                    }
+                }) */
+
+                
             }
         });
     }).catch(error => {
         console.error('Error fetching file metadata:', error);
     });
 
-    
+    document.querySelector(".main").addEventListener("click", ()=>{
+        const main = document.querySelector(".main");
+        const bg = main.querySelector(".bg");
+        const grid = main.querySelector(".grids");
+        const list = main.querySelector(".lists");
+
+        const listItem = fileList.querySelectorAll(".listItem");
+        const img = fileList.querySelectorAll(".img");
+        const project = fileList.querySelectorAll('.project');
+        const icon = fileList.querySelectorAll(".icon");
+
+        if (main.classList.contains("grids")) {
+            bg.style.left = "3%"; // Move to the right
+            bg.style.borderRadius = "0 5px 5px 0";
+            grid.style.fill = "black";  // Change grid icon fill to black
+            list.style.fill = "white"; // Change list icon fill to yellow
+            main.classList.remove("grids");
+
+            fileList.classList.add("list");
+            fileList.classList.remove("grid");
+            console.log("is list");
+
+            
+            listItem.forEach(item => {
+                item.style.height = "70px";
+                item.style.width = "100%";
+            })
+            
+            img.forEach(item => {
+                item.style.visibility = "hidden";
+            })
+
+            project.forEach(item => {
+                item.style.left = "100px";
+            })
+
+            //listItem.appendChild(icon);
+        } 
+        else {
+            bg.style.left = "1px";     // Move to the left
+            bg.style.borderRadius = "5px 0 0 5px";
+            grid.style.fill = "white"; // Change grid icon fill to yellow
+            list.style.fill = "black";  // Change list icon fill to black
+            main.classList.add("grids");
+
+            fileList.classList.add("grid");
+            fileList.classList.remove("list");
+            console.log("is grid");
+
+            listItem.forEach(item => {
+                item.style.height = "340px";
+                item.style.width = "550px";
+            })
+            
+            img.forEach(item => {
+                item.style.visibility = "visible";
+            })
+
+            project.forEach(item => {
+                item.style.left = "15px";
+            })
+
+            //listItem.removeChild(icon);
+        }
+        console.log(listItem);
+    })
 });
 
 
