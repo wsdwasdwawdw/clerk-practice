@@ -30,7 +30,6 @@ console.log(named);
 
 const pD = JSON.parse(sessionStorage.getItem("projectData"));
 
-
 const editor = grapesjs.init({
   // Indicate where to init the editor. You can also pass an HTMLElement
   container: '#gjs',
@@ -439,6 +438,7 @@ const editor = grapesjs.init({
     },
   },
 });
+editor.loadProjectData(pD);
 
 editor.I18n.addMessages({
   en: {
@@ -562,7 +562,8 @@ editor.Commands.add('set-device-desktop', {
 editor.Commands.add('set-device-mobile', {
   run: editor => editor.setDevice('Mobile')
 });
-editor.loadProjectData(pD);
+
+
 
 document.querySelector(".project").innerHTML = "Project name: " + named;
 
@@ -716,8 +717,8 @@ function saveToFirebase() {
         } else {
             // If document does not exist, create a new one
             db.collection("htmlFiles").add({
-                content: htmlContent,
-                css: cssContent,
+                //content: htmlContent,
+                //css: cssContent,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 project: projectName,
                 user: taong,
