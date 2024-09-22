@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Dashboard</title>
-    <!-- <link rel="stylesheet" href="/public/CSS/style.css"> -->
     <script src="../JS/signOut.js" type="module"></script>
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -19,12 +18,11 @@
 </head>
 <body>
     <!-- <div id="loading">Loading...</div> -->
-    
+
     <header>
         <h1 class="logo">SiteHustle</h1>
         <div class="user">
             <img class="profile"/>
-            <img src="IMG/Expand Arrow down.png" class="dropDown"/>
         </div>
         
         <div class="shitsPa tago">
@@ -47,12 +45,14 @@
         </div>
             
     </header>
+    
     <img src="../includes/IMG/dashboard blue glow 1.png" class="blue1 bg">
     <img src="../includes/IMG/dashboard blue glow 2.png" class="blue2 bg">
     <img src="../includes/IMG/dashboard blue glow 3.png" class="blue3 bg">
     <img src="../includes/IMG/dashboard blue glow 4.png" class="blue4 bg">
     <img src="../includes/IMG/dashboard yellow glow 1.png" class="yellow1 bg">
     <img src="../includes/IMG/dashboard yellow glow 2.png" class="yellow2 bg">
+    <img src="../includes/IMG/dashboard Line 1.png" class="line1 bg">
     
     <section class="templates">
         <h1>Want to explore our templates?</h1>
@@ -130,7 +130,7 @@
     
     <section class="projects">
         <h1>Your recent projects</h1>
-        <input type="search" placeholder="Search project">
+        <!-- <input type="search" placeholder="Search project"> -->
         <hr>
         <div class="shits">
 
@@ -145,16 +145,16 @@
                 
             </div>
             
-            <div class="sort-div">
-                <p>Sort by:</p>
-                <select class="sort">
-                    <option value="A-Z">A-Z</option>
-                    <option value="Z-A">Z-A</option>
-                    <option value="Newest">Newest</option>
-                    <option value="Oldest" selected>Oldest</option>
-                </select>
+            <div class="dropDown">
+                <p class="sort">Sort by: <span class="chosen">Oldest</span></p>
+                <img class="down" src="IMG/Expand Arrow down.png" />
+                <div class="options ">
+                    <p>A-Z</p>
+                    <p>Z-A</p>
+                    <p>Newest</p>
+                    <p>Oldest</p>
+                </div>
             </div>
-            
             
         </div>  
         <hr>        
@@ -167,7 +167,9 @@
     
     <div class="delete tago">
         <div class="confirmation">
-            <img src="IMG/alert delete.png">
+            <img src="IMG/alert delete.png" class="alert">
+            <img src="IMG/blue glow delete.png" class="blue">
+            <img src="IMG/yellow glow delete.png" class="yellow">
             <p class="project-name"></p>
             <div class="confirm-cancel">
                 <button class="cancel-delete">Cancel</button>
@@ -177,7 +179,6 @@
     </div>
     
     <div class="rename tago">
-        
         <div class="confirmation">
             <img src="IMG/blue glow rename.png" alt="" class="blue">
             <img src="IMG/yellow glow rename.png" alt="" class="yellow">

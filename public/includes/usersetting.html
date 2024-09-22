@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Setting</title>
+    <link rel="stylesheet" href="../CSS/usersetting.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">SiteHustle</h1>
+    </header>
+
+    <h2>Account Settings</h2>
+    <p>View and change your account password and profile</p>
+    <hr>
+
+    <h3>Account Info</h3>
+    <p class="displayUser">Signed in as <span class="email"></span></p>
+    
+
+    <div class="editProfilePicture">
+        <img src="" alt="" class="profile"/>
+        <input type="file" id="newProfile" />    
+        <label for="newProfile" class="newProfile">Change Photo</label>
+    </div>
+
+    <div class="newProfileDisplay tago">
+        <div class="inner">
+            <img src="" alt="" id="chosenPic"/>
+            <div>
+                <label for="newProfile">Change</label>
+                <label id="saveBtn">Save</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/usersetting.js" type="module"></script>
+</body>
+</html>

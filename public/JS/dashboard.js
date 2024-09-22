@@ -1,4 +1,5 @@
 
+
 setTimeout(function() {
     var loadingScreen = document.getElementById('loading');
     loadingScreen.style.opacity = '0';
@@ -18,13 +19,38 @@ const firebaseConfig = {
     messagingSenderId: "193487820156",
     appId: "1:193487820156:web:707358816c42fb25d4c0f9",
     measurementId: "G-NN9YWS88J5"
-  };
+};
 
-
+let current;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // User is signed in.
+        console.log("User is signed in:", user);
+        // You can use user.email, user.uid, etc. Example
+        current = user.email;
+        photo = user.photoURL === null ? "./IMG/blank photo.png" : user.photoURL;
+        console.log(current);
+        console.log(photo);
+
+
+        const PP = document.querySelectorAll(".profile");
+        PP.forEach(profile => {
+            profile.src = photo;
+        });
+        
+    } else {
+        // No user is signed in.
+        console.log("No user signed in.");
+        window.location.href = "../index.html"; // Redirect to login if not signed in
+    }
+});
 
 const firestore = firebase.firestore();
+const userNow = firebase.auth().currentUser;
+console.log(userNow);
+
 let contents;
 let tracker = "grid";
 
@@ -35,20 +61,10 @@ console.log(tao);
 localStorage.setItem("pangSave", tao);
 //console.log(sessionStorage.getItem("pangSave"))
 
-if(picture === 'null'){
-    picture = "./IMG/blank photo.png";
-}
-
-const user = document.querySelector(".user");
-const arrow = document.querySelector(".dropDown");
-const PP = document.querySelectorAll(".profile");
-
-PP.forEach(profile => {
-    profile.src = picture;
-});
-
 
 const shitsPa = document.querySelector(".shitsPa");
+const arrow = document.querySelector(".dropDown");
+const user = document.querySelector(".user");
 user.addEventListener("click", function(){
     if(!shitsPa.classList.contains("tago")){
         shitsPa.classList.add("tago");
@@ -59,50 +75,46 @@ user.addEventListener("click", function(){
     }
 });
 
+const userSetting = document.getElementById("setting");
+userSetting.addEventListener("click", ()=>{
+    window.location.href = "../includes/usersetting.html";
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     const ProjectsElement = document.querySelector(".projects");
     const fileList = ProjectsElement.querySelector('#fileList');
-    const sort = ProjectsElement.querySelector(".sort");
+    const chosen = ProjectsElement.querySelector(".chosen");
     const targetuser = tao;
     let first = "createdAt", second = "asc";
 
+    Sorting();
     
-    
-    sort.addEventListener("change", ()=>{
-        
-        if(sort.value === "A-Z"){
+    // Listen for the custom 'customChange' event
+    chosen.addEventListener("customChange", () => {
+        if (chosen.textContent === "A-Z") {
             console.log("Alphabetical");
             first = "project";
             second = "asc";
-            loadProjects(ProjectsElement, fileList, targetuser, first, second);
-        }
-        else if(sort.value === "Z-A"){
+        } else if (chosen.textContent === "Z-A") {
             console.log("Reverse Alphabetical");
             first = "project";
             second = "desc";
-            loadProjects(ProjectsElement, fileList, targetuser, first, second);
-            
-        }
-        else if(sort.value === "Newest"){
+        } else if (chosen.textContent === "Newest") {
             console.log("Newest");
             first = "createdAt";
             second = "desc";
-            loadProjects(ProjectsElement, fileList, targetuser, first, second);
-            
-        }
-        else {
+        } else {
             console.log("Oldest");
             first = "createdAt";
             second = "asc";
-            loadProjects(ProjectsElement, fileList, targetuser, first, second);
-            
         }
-
         
-    })
-    
-    sort.dispatchEvent(new Event('change'));
+        // Call your function with the updated sort options
+        loadProjects(ProjectsElement, fileList, targetuser, first, second);
+    });
+
+    // Optionally, dispatch the customChange event initially
+    chosen.dispatchEvent(new Event('customChange'));
 
     GridList();
 });
@@ -394,12 +406,12 @@ function RenameButton(listItem, project, fileList, fileData, doc){
 }
 
 function ListItem(listItem, fileData){
-    listItem.addEventListener("mouseover", ()=>{
+    /* listItem.addEventListener("mouseover", ()=>{
         listItem.style.border = "green solid 2px";
     })
     listItem.addEventListener("mouseout", ()=>{
         listItem.style.border = "grey solid 2px";
-    })
+    }) */
     listItem.addEventListener('click', function() {
         // Log the content associated with the clicked name
         console.log(fileData.name);
@@ -419,3 +431,42 @@ function ListItem(listItem, fileData){
     });
 }
 
+function Sorting(){
+    const projects = document.querySelector(".projects");
+    const dropDown = projects.querySelector(".dropDown");
+    const chosen = dropDown.querySelector(".chosen");
+    const options = dropDown.querySelector(".options");
+    const img = dropDown.querySelector("img");
+    const choices = options.querySelectorAll("p");
+
+    chosen.addEventListener("click", ()=>{
+        options.classList.toggle("visible");
+
+        if(img.classList.contains("down")){
+            img.src = "../includes/IMG/Expand Arrow up.png";
+        }
+        else
+            img.src = "../includes/IMG/Expand Arrow down.png";
+
+        
+        img.classList.toggle("down");   
+    });
+
+    choices.forEach(item =>{
+        item.addEventListener("click", ()=>{
+            chosen.textContent = item.textContent;
+            options.classList.remove("visible");
+
+            if(img.classList.contains("down")){
+                img.src = "../includes/IMG/Expand Arrow up.png";
+                img
+            }
+            else
+                img.src = "../includes/IMG/Expand Arrow down.png";
+
+            img.classList.toggle("down");
+            // Dispatch a custom 'customChange' event after changing the text
+            chosen.dispatchEvent(new Event('customChange'));
+        })
+    });
+}

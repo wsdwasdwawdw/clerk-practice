@@ -1,29 +1,5 @@
-@media (min-width: 1366px) and (max-width: 1599px) {
-    
-    /* HOME */
-    .home h1{
-        font-size: 70px;
-    }
-    .home h2{
-        font-size: 18px;
-    }
-    .home h3{
-        font-size: 16px;
-    }
 
-    /* SERVICE */
-    .service h1{
-        font-size: 54px;
-    }
-
-    /* ABOUT */
-    .about h1{
-        font-size: 54px;
-    }
-}
-
- 
-@media (min-width: 1024px) and (max-width: 1365px) {
+@media (max-width: 1024px){
     /* HOME */
     .home h1{
         font-size: 50px;
@@ -37,16 +13,117 @@
 
     /* SERVICE */
     .service h1{
-        font-size: 54px;
+        font-size: 50px;
     }
-
+    .service h2{
+        font-size: 15px;
+    }
+    .service p{
+        font-size: 10px;
+    }
+    .service .line{
+        display: none;
+    }
     /* ABOUT */
     .about h1{
-        font-size: 54px;
+        font-size: 50px;
     }
   }
   
-  
-@media (max-width: 1023px) {
-/* Styles for extra small screens */
+@media (max-width: 768px) {
+    /* HOME */
+    .home h1{
+        font-size: 40px;
+    }
+    .home h2{
+        font-size: 18px;
+        width: auto;
+        margin: 0 75px;
+    }
+    .home h3{
+        font-size: 16px;
+    }
+
+    /* SERVICE */
+    .service h1{
+        font-size: 40px;
+    }
+
+    .service h2{
+        font-size: 12px;
+    }
+    .service p{
+        font-size: 8px;
+    }
+    .service .container .features .content div img{
+        position: relative;
+        height: 15px;
+        width: 15px;
+        align-self: center;
+    }
+
+    /* FAQ */
+    .FAQs h1{
+        font-size: 40px;
+    }
+    .FAQs .container .title h4{
+        font-size: 16px;
+    }
+    .FAQs .container p, .FAQs .container a{
+        font-size: 10;
+    }
+
+    /* ABOUT US */
+    .about h1{
+        font-size: 40px;
+    }
+    .about img{
+        height: 150px;
+
+    }
+}
+
+
+@media (max-width: 425px) {
+    
+    header div{
+        display: none;
+    }
+
+    /* HOME */
+    .home{
+        height: 65%;
+    }
+    .home h1{
+        font-size: 36px;
+        margin: 0 20px;
+    }
+    .home h2{
+        width: auto;
+        margin: 0 20px;
+        height: auto;
+    }
+    .home h3{
+        width: auto;
+        margin: 0 20px;
+
+    }
+    .home button{
+        margin: 0 20px;
+    }
+
+    /* SERVICE */
+    .service h1{
+        font-size: 36px;
+    }
+    .service .container .features .pic{
+        display: none;
+    }
+    .service .container .features .content{
+        position: relative;
+        width: 100%;
+        margin: 10px 20px;
+    }
+
+    
 }

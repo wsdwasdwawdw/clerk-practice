@@ -4,81 +4,41 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Practice</title>
-
-        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
-    
+        <!-- <link rel="stylesheet" href="../CSS/main.css"> -->
      </head>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        body{
-            overflow-x: hidden;
-        }
-        .main{
-            width: auto;
-            height: auto;
-            background-color: pink;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            justify-content: space-evenly;
-            transition: 5s ease;
-            cursor: pointer;
-        }
 
-        .main svg{
-            margin: 5px 20px;
-            transition: .5s ease;
-        }
-        .main .bg{
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            left: 0;
-            background-color: aqua;
-            transition: .5s ease;
-        }
-    </style>
     <body>
-        <div class="main grid">
-            <div class="bg"></div>
-            <svg  class="grid" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: yellow;transform: rotate(90deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);">
-                <path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z"></path>
-            </svg>
-            <svg class="list" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);">
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
-            </svg>
-        </div>
+        <header>
+            <img src="includes/IMG/yung logo sa taas.png" alt="LOGO">
+            <div>
+                <ul>
+                    <a href="#home">Home</a>
+                    <a href="#service">Service</a>
+                    <a href="#about">About Us</a>
+                    <button href="" class="login">Log In</button>
+                </ul>
+            </div>
+        </header>
 
-        <script>
-            document.querySelector(".main").addEventListener("click", ()=>{
-                console.log("start");
-                const main = document.querySelector(".main");
-                const bg = main.querySelector(".bg");
-                const grid = main.querySelector(".grid");
-                const list = main.querySelector(".list");
+        <section class="home" id="home">
+            <img src="includes/IMG/CODE 1.png" class="code1">
+            <img src="includes/IMG/blue glow 2.png" class="code1Glow">
+            <img src="includes/IMG/CODE 2.png" class="code2">
+            <img src="includes/IMG/blue glow 1.png" class="code2Glow">
+            <img src="includes/IMG/CODE 3.png" class="code3">
+            <img src="includes/IMG/blue glow 3.png" class="code3Glow">
+            <img src="includes/IMG/Line 1.png" class="line">
+    
+            <h1>From Drag to Code</h1>
+            <h2>Where developers find the perfect balance between visual design and code control. 
+                Our platform offers a user-friendly drag-and-drop editor with full code visibility, 
+                empowering front-end developers to unleash their creativity while maintaining transparency.</h2>
+            <h3>Join us in revolutionizing web design tools for a more efficient and collaborative development process.</h3>
+            <button onclick="Login()">Click to Register</button>
+        </section>
 
-                if (main.classList.contains("grid")) {
-                    bg.style.left = "50%"; // Move to the right
-                    grid.style.fill = "black";  // Change grid icon fill to black
-                    list.style.fill = "yellow"; // Change list icon fill to yellow
-                    main.classList.remove("grid");
-                } else {
-                    bg.style.left = "0";     // Move to the left
-                    grid.style.fill = "yellow"; // Change grid icon fill to yellow
-                    list.style.fill = "black";  // Change list icon fill to black
-                    main.classList.add("grid");
-                }
-
-                console.log("end");
-            })
-
+        <script type="module">
+             
         </script>
     </body>
 </html>
