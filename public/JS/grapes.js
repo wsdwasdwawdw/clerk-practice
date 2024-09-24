@@ -583,12 +583,13 @@ function saveToFirebase() {
 
   
   db.collection("htmlFiles").add({
-      content: htmlContent,
-      css: cssContent,       // Save content
+      /* content: htmlContent,
+      css: cssContent,  */      // Save content
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       project: Name,
       email: taong,
-      projectData: projectData
+      projectData: projectData,
+      isTrashed: false
   })
   .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);

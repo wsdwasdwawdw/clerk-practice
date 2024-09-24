@@ -13,21 +13,59 @@
         <h1 class="logo">SiteHustle</h1>
     </header>
 
-    <h2>Account Settings</h2>
-    <p>View and change your account password and profile</p>
-    <hr>
-
-    <h3>Account Info</h3>
-    <p class="displayUser">Signed in as <span class="email"></span></p>
     
 
-    <div class="editProfilePicture">
-        <img src="" alt="" class="profile"/>
-        <input type="file" id="newProfile" />    
-        <label for="newProfile" class="newProfile">Change Photo</label>
-    </div>
+    <div class="main">
+        <div class="side">
+            <button class="profile selected">Profile</button>
+            <button class="trashbin ">Trash Bin</button>
+            <button class="deleteaccount ">Delete Account</button>
+        </div>
+        <div class="content">
+            
+            <section id="profile" class="">
+                <h2>Account Settings</h2>
+                <h4>View and change your account password and profile</h4>
+                <hr>
 
+                
+                <h3>Account Info</h3>
+                <p class="displayUser">Signed in as <span class="email"></span></p>
+                
+
+                <div class="editProfilePicture">
+                    <img src="" alt="" class="profile"/>
+                    <input type="file" id="newProfile" />    
+                    <label for="newProfile" class="newProfile">Change Photo</label>
+                </div>
+            
+                
+            </section>
+
+            <section id="trashbin" class="">
+                <h2>Trash Bin</h2>
+                <h4>View and manage your recently deleted projects, with the option to restore or permanently remove them</h4>
+                <hr>
+
+                <div id="filelist">
+
+                </div>
+            </section>
+
+            <section id="deleteaccount" class="">
+                <h2>Delete Account</h2>
+                <h4>Permanently delete your account and all associated data from SiteHustle</h4>
+                <hr>
+
+                <button>Delete Account</button>
+            </section>
+            
+        </div>
+    </div>
+    
+    
     <div class="newProfileDisplay tago">
+        <p>CLICK ANYWHERE OUTSIDE THE BOX TO EXIT</p>
         <div class="inner">
             <img src="" alt="" id="chosenPic"/>
             <div>
@@ -36,6 +74,35 @@
             </div>
         </div>
     </div>
+
+    <div class="delete tago">
+        <div class="confirmation">
+            <img src="IMG/blue glow delete.png" class="blue">
+            <img src="IMG/yellow glow delete.png" class="yellow">
+            <h1>Delete Forever?</h1>
+            <p class="project-name"></p>
+            <div class="confirm-cancel">
+                <button class="cancel-delete">Cancel</button>
+                <button class="confirm-delete">Delete Forever</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="restore tago">
+        <div class="confirmation">
+            <img src="IMG/blue glow rename.png" alt="" class="blue">
+            <img src="IMG/yellow glow rename.png" alt="" class="yellow">
+            <h1>Restore Project?</h1>
+            <p class="project-name"></p>
+            <div class="confirm-cancel">
+                <button class="cancel-restore">Cancel</button>
+                <button class="confirm-restore">Restore</button>
+            </div>
+        </div>
+        
+    </div>
+
+    
 
     <script src="../JS/usersetting.js" type="module"></script>
 </body>

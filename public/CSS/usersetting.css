@@ -3,10 +3,10 @@
     margin: 0;
     font-family: "Inter", "san serif";
 }
-html{
+body, html{
+    width: 100%;
+    height: 100%;
     scroll-behavior: smooth;
-}
-body{
     margin: 0;
     padding: 0;
     background-color: #222222;
@@ -26,51 +26,106 @@ header{
 
 header .logo{
     font-size: 40px;
+    cursor: pointer;
 }
-p{
+
+
+
+
+
+
+/* MAIN */
+.main{
+    display: flex;
+}
+
+/* SIDE */
+.main .side{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 220px 20px;
+}
+.main .side button{
+    text-align: left;
+    padding: 5px 20px;
+    font-size: 20px;
+    background-color: transparent;
+    border: transparent solid 1px;
     color: #ffffff;
-    margin: 0 0 0 200px;
+    border-radius: 10px;
+    cursor: pointer;
 }
-h2{
+.main .side button:hover{
+    border: #DB9D47 solid 1px;
+}
+.main .side .selected{
+    border: #DB9D47 solid 1px;
+}
+
+
+/* CONTENT */
+.main .content{
+    position: relative;
+    width: 100%;
+}
+.main .content h4{
+    color: #ffffff;
+    margin: 0 0 0 0;
+    font-weight: 300;
+}
+.main .content h2{
     color: #ffffff;
     font-size: 64px;
     font-weight: 300;
-    margin: 100px 0 0 200px;
+    margin: 100px 0 10px 0;
 }
-h3{
+.main .content h3{
     font-size: 36px;
-    margin: 0 0 20px 200px;
+    margin: 0 0 20px 0;
     font-weight: 400;
     color: #ffffff;
 }
-hr{
+.main .content hr{
+    margin: 50px 0 50px 0;
     width: auto;
-    margin: 20px 100px 30px 100px;
     opacity: .3;
     background-color: pink;
 }
-
-
-.displayUser{
-    font-weight: 100;
+.main .content section{
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
-.email{
+/* PROFILE SECTION*/
+.main .content #profile{
+    height: 100%;
+    width: 100%;
+    visibility: visible;
+    position: absolute;
+}
+.main .content #profile .displayUser{
+    font-weight: 100;
+    color: #ffffff;
+}
+
+.main .content #profile .email{
+    color: #ffffff;
     font-weight: 500;
 }
 
 /* EDIT PROFILE PICTURE */
 .editProfilePicture{
-    border: solid pink 1px;
     position: absolute;
-    top: 35%;
-    right: 100px;
+    top: 300px;
+    right: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
     gap: 20px;
+    z-index: 1;
 }
 
 .editProfilePicture img{
@@ -84,7 +139,6 @@ hr{
     border: solid #EEB832 1px;
     border-radius: 20px;
     cursor: pointer;
-    transition: .5s ease;
 }
 .editProfilePicture .newProfile:hover{
     border: #ffffff solid 1px;
@@ -101,15 +155,25 @@ hr{
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(5px);
+    z-index: 1;
+}
+.newProfileDisplay p{
+    position: absolute;
+    top: 100px;
+    color: #ffffff;
+    font-size: 30px;
 }
 .newProfileDisplay .inner{
     border: yellow solid 1px;
+    background-color: #0D1117;
+    position: relative;
     width: auto;
     height: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    z-index: 1;
 }
 .newProfileDisplay .inner img{
     width: 200px;
@@ -132,10 +196,280 @@ hr{
     border: #ffffff solid 1px;
     color: #ffffff;
 }
+
+/* TRASH BIN */
+.main .content #trashbin{
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+    position: absolute;
+}
+.main .content #trashbin #filelist .date{
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: 100;
+    opacity: 1;
+    margin: 0 0 10px 0;
+}
+.main .content #trashbin #filelist .listItem{
+    position: relative;
+    height: 340px;
+    width: 550px;
+    border-Radius: 10px;
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    z-Index: 0;
+    cursor: pointer;
+    border: grey 2px solid;
+}
+
+.main .content #trashbin #filelist .listItem:hover{
+    border: yellow solid 2px;
+}
+.main .content #trashbin #filelist .listItem .img{
+    display: block;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+.main .content #trashbin #filelist .listItem .info{
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    display: flex;  
+    align-items: center;
+    bottom: 0;
+    background-color: #000000;
+
+}
+
+.main .content #trashbin #filelist .listItem .project{
+    position: absolute;
+    font-size: 32px;
+    color: #ffffff;
+    top: 0;
+    left: 10px;
+    font-weight: 200;
+    opacity: 1;
+}
+.main .content #trashbin #filelist .listItem .date{
+    position: absolute;
+    font-size: 16px;
+    color: #ffffff;
+    bottom: 0;
+    left: 10px;
+    font-weight: 200;
+    opacity: 1;
+}
+.main .content #trashbin #filelist .listItem .icon{
+    cursor: pointer;
+    opacity: 1;
+}
+.main .content #trashbin #filelist .listItem .icon:hover{
+    opacity: .5;
+}
+/* DELETE */
+.delete{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+.delete .confirmation{
+    background-color: #0D1117;
+    position: relative;
+    width: 50%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.delete .confirmation h1{
+    color: #ffffff;
+    margin: 0 0 50px 0;
+}
+.delete .confirmation .project-name{
+    z-index: 2;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0 0 50px 0;
+}
+.delete .confirmation button{
+    padding: 7px 50px;
+    border: none;
+    font-size: 20px;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+    opacity: 1;
+}
+.delete .confirmation button:hover{
+    opacity: .5;
+}
+.delete .confirmation .confirm-cancel {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 20px;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+.delete .confirmation .confirm-cancel .confirm-delete{
+    color: #ffffff;
+    background-color: #B1061D;
+}
+.delete .confirmation .alert{
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 15%;
+}
+
+.delete .confirmation img{
+    position: absolute;
+    height: auto;
+    z-index: 1;
+}
+.delete .confirmation .blue{
+    bottom: 0;
+    left: 0;
+}
+.delete .confirmation .yellow{
+    bottom: 0;
+    right: 0;
+}
+
+/* RENAME */
+.restore{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+.restore img{
+    position: absolute;
+    display: block;
+    z-index: -1;
+}
+.restore .blue{
+    bottom: 0;
+    left: 0;
+}
+.restore .yellow{
+    bottom: 0;
+    left: 0;
+}
+.restore .confirmation{
+    background-color: #0D1117;
+    position: relative;
+    width: 30%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 5px;
+    color: #ffffff;
+    overflow: hidden;
+}
+.restore .confirmation p{
+    margin: 30px 0 10px 0;
+}
+.restore .confirmation h1{
+    font-weight: 500;
+}
+.restore .confirmation button{
+    padding: 7px 50px;
+    border: none;
+    font-size: 20px;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.restore .confirmation button:hover{
+    opacity: .5;
+}
+.restore .confirmation .cancel-restore{
+    background-color: transparent;
+    border: #ffffff solid 1px;
+    color: #ffffff;
+}
+.restore .confirmation input{
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 200;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border: solid #ffffff 1px;
+    border-radius: 5px;
+    color: #ffffff;
+    max-width: 100%;
+}
+
+.restore .confirmation .confirm-cancel {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+    gap: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* DELETE ACCOUNT */
+.main .content #deleteaccount{
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+    position: absolute;
+}
+.main .content #deleteaccount button{
+    background-color: #B1061D;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
 .tago{
     display: none;
 }
 
 #newProfile{
     display: none;
+}
+
+@media screen and (max-width: 768px){
+
+    .main{
+        flex-direction: column;
+    }
+
+    .main .side{
+        margin: 50px 0 0 0;
+        padding: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main section{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
 }

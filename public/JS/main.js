@@ -113,6 +113,7 @@ divs.forEach((div, index) => {
     let rotation = 0;
 
     div.addEventListener('click', () => {
+        
         allP.forEach(p =>{
             p.style.display = "none";
         });

@@ -284,6 +284,7 @@ header .logoutIcon{
     gap: 10px;
     cursor: pointer;
     border: solid #D9D9D9 1px;
+    position: relative;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -478,7 +479,7 @@ header .logoutIcon{
     font-size: 24px;
 }
 .delete .confirmation button{
-    padding: 7px 50px;
+    padding: 7px 20px;
     border: none;
     font-size: 20px;
     border-radius: 3px;
@@ -622,4 +623,13 @@ header .logoutIcon{
     .projects #fileList, .templates .container{
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .rename .confirmation{
+        width: 50%;
+    }
+
+    .delete .confirmation{
+        width: 50%;
+    }
 }
+

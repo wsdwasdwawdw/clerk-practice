@@ -46,7 +46,6 @@ firebase.auth().onAuthStateChanged((user) => {
         window.location.href = "../index.html"; // Redirect to login if not signed in
     }
 });
-
 const firestore = firebase.firestore();
 const userNow = firebase.auth().currentUser;
 console.log(userNow);
@@ -131,7 +130,7 @@ function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
                 const fileData = doc.data();
 
                 // Check if the document's email matches the target user
-                if (fileData.email === targetuser) {
+                if (fileData.email === targetuser && fileData.isTrashed === false) {
 
                     // Create new list item element
                     const listItem = document.createElement('div');
@@ -159,7 +158,7 @@ function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
                     fileList.appendChild(listItem);
 
                     // Add delete and rename functionality
-                    DeleteButton(listItem, fileList, fileData, doc);
+                    RemoveButton(listItem, fileList, fileData, doc);
                     RenameButton(listItem, project, fileList, fileData, doc);
 
                     // Attach list item-specific functionality
@@ -292,25 +291,26 @@ function GridList(){
     });
 }
 
-function DeleteButton(listItem, fileList, fileData, doc){
+function RemoveButton(listItem, fileList, fileData, doc){
      // Create a delete button
-     const deleteButton = document.createElement('img');
-     deleteButton.src = './IMG/trash.png';
-     deleteButton.style.position = "absolute";
-     deleteButton.style.bottom = "15px";
-     deleteButton.style.right = "30px";
-     deleteButton.style.padding = "5px";
-     listItem.appendChild(deleteButton);
+     const removeButton = document.createElement('img');
+     removeButton.src = './IMG/trash.png';
+     removeButton.title = "Remove Project"
+     removeButton.style.position = "absolute";
+     removeButton.style.bottom = "15px";
+     removeButton.style.right = "30px";
+     removeButton.style.padding = "5px";
+     listItem.appendChild(removeButton);
 
     // Hover effect to change background color to red
-    deleteButton.addEventListener('mouseover', function() {
-        deleteButton.style.cursor = "pointer";
-        deleteButton.style.opacity = ".5";
+    removeButton.addEventListener('mouseover', function() {
+        removeButton.style.cursor = "pointer";
+        removeButton.style.opacity = ".5";
     });
-    deleteButton.addEventListener('mouseout', function() {
-        deleteButton.style.opacity = "1";
+    removeButton.addEventListener('mouseout', function() {
+        removeButton.style.opacity = "1";
     });
-    deleteButton.addEventListener('click', function(event) {
+    removeButton.addEventListener('click', function(event) {
         event.stopPropagation();
         const alert = document.querySelector(".delete");
         const projectName = document.querySelector(".project-name");
@@ -326,7 +326,7 @@ function DeleteButton(listItem, fileList, fileData, doc){
         // Add event listener for confirm-delete
         newConfirmDeleteButton.addEventListener("click", () => {
             // Delete the document from Firestore
-            firestore.collection('htmlFiles').doc(doc.id).delete()
+            /* firestore.collection('htmlFiles').doc(doc.id).delete()
             .then(() => {
                 console.log("Document successfully deleted!");
                 // Remove the item from the UI
@@ -334,9 +334,29 @@ function DeleteButton(listItem, fileList, fileData, doc){
                 alert.classList.add("tago");
             }).catch(error => {
                 console.error("Error removing document: ", error);
-            });
-        });
+            }); */
 
+            
+            // Update the document in Firestore with the new project name
+            firestore.collection('htmlFiles').doc(doc.id).update({
+                isTrashed: true, // Assuming 'project' is the field holding the project name
+                removedAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                console.log("Document successfully moved to trash!");
+                fileList.removeChild(listItem);
+                alert.classList.add("tago");
+                /* project.textContent = newShit;
+                // Hide the alert dialog
+                alert.classList.add("tago");
+                document.querySelector(".newName").value = ""; */
+            })
+            .catch(error => {
+                console.error("Error renaming document: ", error);
+            });
+            
+        });
+        
         // Add event listener for cancel-delete
         document.querySelector(".cancel-delete").addEventListener("click", () => {
             alert.classList.add("tago");
@@ -348,6 +368,7 @@ function RenameButton(listItem, project, fileList, fileData, doc){
     // Create a rename button
     const renameButton = document.createElement('img');
     renameButton.src = './IMG/rename.png';
+    renameButton.title = "Rename Project";
     renameButton.style.position = "absolute";
     renameButton.style.bottom = "15px";
     renameButton.style.right = "90px";
