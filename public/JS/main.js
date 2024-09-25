@@ -145,7 +145,7 @@ regpassword.addEventListener("input", ()=>{
 
     const laman = regpassword.value;
     const hasCapitalLetter = /[A-Z]/;
-    const hasNumber = /[0-9]/;
+    const hasNumber = /[0-8]/;
     const regex = /[!@#$%^&*(),.?":{}|<>]/;
     
     if (laman === "") {
