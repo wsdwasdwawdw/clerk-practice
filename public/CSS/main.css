@@ -3,11 +3,9 @@
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
-html{
+body, html{
     scroll-behavior: smooth;
-}
-body{
-    background-color: #222222;
+    background-color: #0D1117;
     width: 100%;
     overflow-x: hidden;
 }
@@ -98,14 +96,15 @@ header div ul a:hover::after{
 
 /* HOME */
 .home {
+    position: relative;
     margin: 80px 0 0 0;
     padding: 5% 0 0 0;
-    height: 90vh;
+    height: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 50px;
     color: white;
-    width: 100%;
 }
 .home h1{
     font-size: 96px;
@@ -113,26 +112,26 @@ header div ul a:hover::after{
     background-clip: text;
     color: transparent;
     margin: 0 0 0 10%;
-    z-index: 900;
+    z-index: 1;
 }
 .home h2{
     font-size: 24px;
     font-weight: 200;
     width: 52%;
     margin: 0 0 0 10%;
-    z-index: 900;
+    z-index: 1;
 }
 .home h3{
     font-size: 20px;
     font-weight: 200;
     margin: 0 0 0 10%;
-    z-index: 900;
+    z-index: 1;
 }
 
 .home button{
-    width: 13%;
+    width: 200px;
     margin: 0 0 0 10%;
-    z-index: 800;
+    z-index: 1;
     color: #000000;
     padding: 10px 0;
     background-color: #EEB832;
@@ -150,45 +149,51 @@ header div ul a:hover::after{
 .home img{
     position: absolute;
     opacity: 1;
-    z-index: 200;
+    z-index: 0;
 }
+
 .home .code1{
-    height: 50%;
-    right: 120px;
-    top: 320px;
+    height: 60%;
+    left: 1000px;
+    top: 250px;
+    z-index: 1;
     transform: perspective(1000px) rotateY(-25deg) rotateX(1deg);
 }
+
 .home .code1Glow{
     right: 0;
     top: 0;
-    z-index: 100;
+    z-index: 0;
 }
 
 .home .code2{
     height: 40%;
-    right: 43%;
+    left: 500px;
     top: 60%;
+    z-index: 1;
     transform: perspective(1000px) rotateY(-25deg) rotateX(-15deg);
 }
 .home .code2Glow{
     left: 10%;
     top: 0;
-    z-index: 100;
+    z-index: 0;
 }
 .home .code3{
     height: 30%;
-    left: 3%;
+    left: 50px;
     top: 80%;
+    z-index: 1;
     transform: perspective(1000px) rotateY(10deg) rotateX(-20deg) rotate(-10deg);
 }
 .home .code3Glow{
     left: 0;
     top: 0;
-    z-index: 100;
+    z-index: 0;
 }
 .home .line{
-    bottom: -350px;
-    z-index: 100;
+    top: 100%;
+    z-index: 0;
+    width: 100%;
 }
 
 /* SERVICES */
@@ -203,12 +208,13 @@ header div ul a:hover::after{
 
 .service img{
     position: absolute;
+    z-index: 0;
 }
 .service .line{
     position: absolute;
-    top: 2.7%;
-    right: 25%;
-    width: 32%;
+    top: 50px;
+    left: 40%;
+    width: auto;
 }
 .service .yellow1{
     left: 0;
@@ -227,7 +233,8 @@ header div ul a:hover::after{
 }
 .service .line2{
     left: 0;
-    bottom: -30%;
+    top: 20%;
+    width: 100%;
 }
 
 .service h1{
@@ -238,9 +245,45 @@ header div ul a:hover::after{
 
 .service .container {
     margin: 8% 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.service .container .features{
+    position: relative;
+    height: auto;
+    background-color: #0D1117;
+    border: #F1E7CF solid 1px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5%;
+    z-index: 1;
+}
+.service .container .features .pic{
+    position: relative;
+    height: auto;
+    width: 60%;
+    box-sizing: border-box;
+    margin: auto;
+}
+.service .container .features .content{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 20px;
+}
+.service .container .features .content div{
+    display: flex;
+    gap: 10px;
+}
+.service .container .features .content div img{
+    position: relative;
 }
 
-.service .container .features{
+/* .service .container .features{
     position: relative;
     width: 100%;
     height: auto;
@@ -285,13 +328,10 @@ header div ul a:hover::after{
 }
 .service .container .features .fourth{
     margin: 2% 0 7% 5%;
-}
+} */
 
 /* FIRST COLUMN */
-.service .container .features img{
-    /* top: 10%;
-    right: 50px;
-    width: 60%; */
+/* .service .container .features img{
     top: 0;
     bottom: 0;
     right: -35%;
@@ -306,85 +346,38 @@ header div ul a:hover::after{
 }
 .service .container .features .pangatlo{
     width: 45%;
-}
+} */
 
 
-.service .container .one-one{
-    right: 45%;
-    top: 160px;
-    width: 21%;
-}
-.service .container .one-two{
-    right: 35%;
-    top: 30px;
-    width: 21%;
-}
-.service .container .one-three{
-    right: 22%;
-    top: 70px;
-    width: 21%;
-}
-.service .container .one-four{
-    right: 5%;
-    top: 30px;
-    width: 21%;
-}
 
-/* SECOND COLUMN */
-.service .container .two-one{
-    top: 10%;
-    right: 15%;
-    width: 45%;
-}
-.service .container .two-two{
-    top: 30%;
-    right: 10%;
-    width: 12%;
-}
-
-/* THIRD COLUMN */
-.service .container .three-one{
-    right: 15%;
-    top: 10%;
-    width: 41%;
-}
-.service .container .three-two{
-    right: 12%;
-    top: 15%;
-    width: 41%;
-}
-.service .container .three-three{
-    right: 9%;
-    top: 20%;
-    width: 41%;
-}
 
 /* FAQS */
 .FAQs{
     height: auto;
     color: #ffffff;
     padding: 0 10%;
-    margin: 0 0 5% 0;
+    margin: 5% 0 10% 0;
     position: relative;
 }
 .FAQs .img{
     position: absolute;
-    z-index: -1;
+    z-index: 0;
 }
 .FAQs .yellow1{
     left: 0;
+    bottom: -50%;
 }
 .FAQs .blue1{
     left: 0;
-    top: 100px;
+    bottom: -50%;
 }
 .FAQs .yellow2{
     right: 0;
-    top: 600px;
+    bottom: 0;
 }
 .FAQs .blue2{
     right: 0;
-    top: 800px;
+    bottom: 0;
 }
 
 .FAQs h1{
@@ -392,23 +385,33 @@ header div ul a:hover::after{
     font-weight: 300;
     margin: 0 0 2% 0;
 }
-
+.FAQs .all{
+    border: solid #F1E7CF 1px;
+}
 .FAQs .container{
-    border: #8C8C8C solid 1px;
-    padding: 2%;
-    height: 25px;
-    overflow: hidden;
+    height: fit-content;
     cursor: pointer;
-    background-color: #222222;
+    padding: 20px;
+    background-color: #0D1117;
     transition: 1s ease;
     position: relative;
-    margin: auto;
+}
+.FAQs .container .Tutorial{
+    color: rgb(129, 221, 221);
+    text-decoration: underline;
+}
+.FAQs .container p{
+    display: none;
+    width: auto;
+    margin: 10px 0 0 0;
 }
 .FAQs .container .title {
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     border: none;
-    margin: 0 0 2% 0;
     pointer-events: none;
 }
 .FAQs .container .title img{
@@ -433,7 +436,7 @@ header div ul a:hover::after{
 
 .FAQs div img{
     width: 26px;
-    z-index: 1;
+    z-index: 0;
     transition: .5s ease;
 }
 
@@ -459,14 +462,14 @@ header div ul a:hover::after{
 }
 .about .kame div{
     background-color: #1C161A;
-    padding: 3%;
+    padding: 2%;
     border-radius: 100%;
 }
 
 
 /* LOGIN AND REGISTRATION FORM */
 .login-reg{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
@@ -476,6 +479,17 @@ header div ul a:hover::after{
     align-items: center;
     color: white;
     z-index: 1000;
+}
+.login-reg .container{
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+    background-color: #0D1117;
+    border-radius: 30px;
+    padding: 70px 70px 50px 70px;
+    gap: 10px;
+    border: #EEB832 solid 1px;
+    overflow: hidden;
 }
 .login-reg button{
     cursor: pointer;
@@ -550,17 +564,7 @@ header div ul a:hover::after{
     right: 5px;
     cursor: pointer;
 }
-.login-reg .container{
-    height: fit-content;
-    width: fit-content;
-    position: relative;
-    background-color: #222222;
-    border-radius: 30px;
-    padding: 70px 70px 50px 70px;
-    gap: 10px;
-    border: #EEB832 solid 1px;
-    overflow: hidden;
-}
+
 
 .login-reg .container .likod{
     position: absolute;
@@ -596,6 +600,7 @@ header div ul a:hover::after{
     width: 70px;
 }
 .login-reg button{
+    position: relative;
     width: 100%;
     padding: 10px 0;
     background-color: #EEB832;
@@ -681,7 +686,6 @@ header div ul a:hover::after{
 
 .hide{
     display: none;
-    background-color: #e92929;
 }
 
 
@@ -690,3 +694,8 @@ header div ul a:hover::after{
     display: none;
 }
 
+.practice{
+    width: auto;
+    height: 100%;
+    border: pink solid 1px;
+}

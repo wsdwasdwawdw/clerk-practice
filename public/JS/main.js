@@ -74,6 +74,7 @@ sara.addEventListener("click", ()=>{
     login_reg.classList.add("hide");
 });
 
+const lakas = document.querySelector(".lakas");
 span.forEach(function(element) {
     element.addEventListener('click', function() {
         if(regform.classList.contains("reg-form-hide")){
@@ -82,6 +83,7 @@ span.forEach(function(element) {
             input.forEach(input => {
                 input.value = '';
             });
+            lakas.textContent = ""
         }
         else if(logform.classList.contains("login-form-hide")){
             regform.classList.add("reg-form-hide");
@@ -89,6 +91,7 @@ span.forEach(function(element) {
             input.forEach(input => {
                 input.value = '';
             });
+            lakas.textContent = "";
         }
     });
 });
@@ -99,33 +102,44 @@ span.forEach(function(element) {
 const faqs = document.querySelector('.FAQs');
 
 // Select all div elements that are direct children of the section
-const divs = faqs.querySelectorAll('div');
-
+const divs = faqs.querySelectorAll('.container');
+const allP = faqs.querySelectorAll("p");
 
 // Add an event listener to each div
 divs.forEach((div, index) => {
     div.title = "Click to Expand";
+    const p = div.querySelector("p");
     const cross = div.querySelector("img");
     let rotation = 0;
+
     div.addEventListener('click', () => {
+        
+        allP.forEach(p =>{
+            p.style.display = "none";
+        });
 
-
-        if (div.style.height === "auto") {
-            div.style.height = "25px";
+        if (p.style.display === 'block') {
+            p.style.display = "none";
             div.title = "Click to Expand";
+            
         } else {
-            div.style.height = "auto";
+            p.style.display = "block";
             div.title = "Click to Close"
+            
         }
-
         rotation += 135;
 
         cross.style.transform = `rotate(${rotation}deg)`;
     });
 });
+const tutorial = faqs.querySelector(".Tutorial");
+tutorial.addEventListener("click", (event)=>{
+    event.stopPropagation();
+    window.open("https://drive.google.com/file/d/1zKl_7WFkXRUqz1VBAXKPMM67Ao6Qpg51/view");
+})
 
 
-const lakas = document.querySelector(".lakas");
+
 regconfirmpassword.style.pointerEvents = "none";
 regpassword.addEventListener("input", ()=>{
 
@@ -167,3 +181,4 @@ regpassword.addEventListener("input", ()=>{
     }
 
 })
+
