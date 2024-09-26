@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+    <link rel="icon" href="includes/IMG/logooo-01.png">
     <link rel="stylesheet" href="CSS/main.css">
     <link rel="stylesheet" href="CSS/media.css">
     <!-- <link rel="stylesheet" href="/CSS/style.css"> -->
@@ -13,7 +14,7 @@
 <body>
     <header>
         <img src="includes/IMG/yung logo sa taas.png" alt="LOGO">
-        <div>
+        <div class="nav">
             <ul>
                 <a href="#home">Home</a>
                 <a href="#service">Service</a>
@@ -21,8 +22,19 @@
                 <button href="" class="login">Log In</button>
             </ul>
         </div>
+        <img src="./includes/IMG/burger.png" alt="" class="burger">
+        
     </header>
-    
+    <div class="burgerMenu">
+        <img src="includes/IMG/close.png" class="burgerClose">
+        <ul>
+            <a href="#home">Home</a>
+            <a href="#service">Service</a>
+            <a href="#about">About Us</a>
+            <button href="" class="login">Log In</button>
+        </ul>
+    </div>
+
     <section class="home" id="home">
         <img src="includes/IMG/CODE 1.png" class="code1">
         <img src="includes/IMG/blue glow 2.png" class="code1Glow">
@@ -37,7 +49,7 @@
             Our platform offers a user-friendly drag-and-drop editor with full code visibility, 
             empowering front-end developers to unleash their creativity while maintaining transparency.</h2>
         <h3>Join us in revolutionizing web design tools for a more efficient and collaborative development process.</h3>
-        <button onclick="Login()">Click to Register</button>
+        <button class="glow-on-hover" onclick="Register()">Click to Register</button>
     </section>
 
     <section class="service" id="service">
@@ -237,23 +249,53 @@
     <section class="about" id="about">
         <h1>About Us</h1>
         <div class="kame">
-            <div>
+            <div class="yuna">
                 <img src="includes/IMG/yuna.png" alt="sya" title="Yuna">
             </div>
-            <div>
+            <div class="abby">
                 <img src="includes/IMG/abby.png" alt="sya ren" title="Abby">
             </div>
-            <div>
+            <div class="jason">
                 <img src="includes/IMG/ako.png" alt="ako" title="Jason">
             </div>
-            <div>
+            <div class="joshua">
                 <img src="includes/IMG/pavia.png" alt="si ano" title="Joshua">
             </div>
         </div>
         
+        <div class="moreAboutUs">
+            <div class="texts">
+                <h2>Nice to meet you!</h2>
+
+                <p>We’re a group of four creatives who came together with
+                    a shared vision: to make website design faster and easier
+                    for front-end developers. We built SiteHustle to simplify
+                    the process, knowing how time-consuming it can be to
+                    balance design with coding challenges.</p>
+
+                <p>Our platform is designed to help developers streamline the
+                    process, allowing you to focus on your designs while saving
+                    valuable time. With SiteHustle, you can bring your ideas to
+                    life without getting bogged down by the technical details.</p>
+            </div>
+            <img src="includes/IMG/about us tools.png">
+        </div>
     </section>
 
+    <footer>
+        <hr>
+        <div class="main">
+            <p>Copyright @2024 | SiteHustle | All Rights Reserved.</p>
 
+            <h1>SiteHustle</h1>
+
+            <div class="inner">
+                <a href="#home">Home</a>
+                <a href="#service">Service</a>
+                <a href="#about">About Us</a>
+            </div>
+        </div>
+    </footer>
 
 
 
@@ -275,7 +317,7 @@
             </div>
 
             <!-- LOGIN FORM -->
-            <div action="" class="login-form">
+            <div class="login-form">
                 <div>
                     <label for="email">Email:</label>
                     <input type="email" id="log-email" name="email" placeholder="@gmail.com" required>
@@ -287,11 +329,7 @@
                     <img src="includes/IMG/show.png" alt="" class="hide">
                 </div>
                 <div>
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember me</label>
-                </div>
-                <div>
-                    <button onclick="pasok()">Login</button>
+                    <button id="login" onclick="pasok()">Login</button>
                 </div>
                 <p>Don't have an account yet?<span class="logreg">Register</span></p>
             </div>
@@ -310,7 +348,7 @@
                     <img src="includes/IMG/hide.png" class="reg-showhidepassword">
                 </div>
                 <div class="password-box">
-                    <label>Confirm Password:</label>
+                    <label>Confirm Password: <i class="wehhhhh"></i></label>
                     <input type="password" id="reg-confirmpassword" required>
                     <img src="includes/IMG/hide.png" class="reg-showhideconfirmpassword">
                 </div>

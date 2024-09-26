@@ -28,9 +28,34 @@
     .about h1{
         font-size: 50px;
     }
+    .about .kame div img{
+        width: 60%;
+    }
+    .about .moreAboutUs .texts h2{
+        font-size: 26px;
+    }
+    .about .moreAboutUs .texts p{
+        font-size: 12px;
+    }
   }
   
 @media (max-width: 768px) {
+
+    /* HEADER */
+    header .nav{
+        display: none;
+    }
+    header .burger{
+        display: block;
+        height: 40px;
+        z-index: 10;
+        pointer-events: all;
+    }
+    header .burger:hover{
+        opacity: .5;
+        cursor: pointer;
+    }
+
     /* HOME */
     .home h1{
         font-size: 40px;
@@ -38,7 +63,6 @@
     .home h2{
         font-size: 18px;
         width: auto;
-        margin: 0 75px;
     }
     .home h3{
         font-size: 16px;
@@ -80,6 +104,18 @@
     .about img{
         height: 150px;
 
+    }
+    footer{
+        padding: 0 50px;
+    }   
+    footer p{
+        font-size: 12px;
+    }   
+    footer h1{
+        font-size: 16px;
+    }   
+    footer div a{
+        font-size: 12px;
     }
 }
 

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
-import { getAuth , signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getAuth , signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
 
@@ -71,7 +71,6 @@ Guest.addEventListener("click", ()=>{
 /* REGISTRATION SHITS */
 window.register = async function() {
 
-  
   const email = document.getElementById('reg-email').value;
   const password = document.getElementById('reg-password').value;
   const confirmPassword = document.getElementById('reg-confirmpassword').value;
@@ -81,30 +80,29 @@ window.register = async function() {
       return;
   }
 
-
-  try {// Ensure this path is correct relative to your HTML file
-
+  try {
     // Create user with email and password
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // Update the user profile with the default profile picture
-    
+    // Send email verification
+    await sendEmailVerification(user);
 
     // Save additional user data in Firestore
     await setDoc(doc(db, "users", user.uid), {
         email: email,
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
+        emailVerified: false  // Track if email is verified
     });
 
-      RegistrationAlert();
-      
-      console.log(user.photoURL);
-      
-      document.getElementById('reg-email').value = "";
-      document.getElementById('reg-password').value = "";
-      document.getElementById('reg-confirmpassword').value = "";
-      document.querySelector(".lakas").textContent = "";
+    alert("Registration successful! Please check your email to verify your account.");
+    
+    // Clear input fields
+    document.getElementById('reg-email').value = "";
+    document.getElementById('reg-password').value = "";
+    document.getElementById('reg-confirmpassword').value = "";
+    document.querySelector(".lakas").textContent = "";
+    document.querySelector(".wehhhhh").textContent = "";
 
   } catch (error) {
       console.error("Error during registration:", error);
