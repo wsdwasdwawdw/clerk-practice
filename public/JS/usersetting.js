@@ -180,11 +180,6 @@ function loadProjects(ProjectsElement, fileList, targetuser) {
                 listItem.appendChild(date); */
                 console.log(fileData.createdAt);
 
-                const icon = document.createElement("img");
-                icon.className = "icon";
-                icon.src = "./IMG/s.png";
-                listItem.appendChild(icon);
-
                 fileList.appendChild(listItem);
 
                 // Add delete and rename functionality
@@ -393,33 +388,33 @@ function lipatlipat(){
         })
     })
 }
+deleteAccount();
+function deleteAccount(){
+    const deleteBtn = document.querySelector(".deleteBtn");
+    const deleteAccountPopUp = document.querySelector(".deleteaccount-popup");
+    const b1 = deleteAccountPopUp.querySelector(".b-1");
+    const b2 = deleteAccountPopUp.querySelector(".b-2");
 
-function renderInfo(){
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in.
-            console.log("User is signed in:", user);
-            const Profile = document.getElementById("profile");
-            const email = Profile.querySelector(".email");
-            const img = Profile.querySelector(".profile");
-            
-            email.textContent = user.email;
-            const source = user.photoURL === null ? "./IMG/blank photo.png" :user.photoURL;
-    
-            img.src = source;
-    
-            const main = document.querySelector(".main");
-            const content = main.querySelector(".content");
-            const trashBin = content.querySelector("#trashbin");
-            const fileList = trashBin.querySelector("#filelist");
-            const targetuser = user.email;
-        
-            loadProjects(trashBin, fileList, targetuser);
-            
-        } else {
-            // No user is signed in.
-            console.log("No user signed in.");
-            window.location.href = "../index.html"; // Redirect to login if not signed in
+    deleteBtn.addEventListener("click", ()=>{
+        deleteAccountPopUp.classList.remove("tago");
+    });
+
+    b1.addEventListener("click", ()=>{
+        deleteAccountPopUp.classList.add("tago");
+    });
+
+    deleteAccountPopUp.addEventListener("input", ()=>{
+        const i = deleteAccountPopUp.querySelector(".i");
+        const c1 = deleteAccountPopUp.querySelector(".c-1");
+        const c2 = deleteAccountPopUp.querySelector(".c-2");
+
+        if(i.value === "DELETE" && c1.checked && c2.checked){
+            b2.style.opacity = "1";
+            b2.style.pointerEvents = "";
+        }
+        else{
+            b2.style.opacity = ".5";
+            b2.style.pointerEvents = "none";
         }
     });
 }

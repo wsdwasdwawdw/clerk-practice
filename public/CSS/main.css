@@ -251,7 +251,7 @@ header .burger{
     border: white solid 2px;
     cursor: pointer;
     position: relative;
-    z-index: 0;
+    z-index: 1;
     border-radius: 10px;
 }
 
@@ -389,70 +389,6 @@ header .burger{
     position: relative;
 }
 
-/* .service .container .features{
-    position: relative;
-    width: 100%;
-    height: auto;
-    border: #222222 1px solid;
-    border-radius: 10px;
-    background-color: #222222;
-    margin: 0 0 5% 0;
-    border: yellow solid 1px;
-}
-.service .container .features h2{
-    position: absolute;
-    margin: 2% 0 0 5%;
-    font-size: 30px;
-    font-weight: 600;
-    z-index: 900;
-}
-.service .container .features div{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    text-align: start;
-    width: 30%;
-    z-index: 900;
-}
-.service .container .features div img{
-    position: relative;
-    width: 10%;
-}
-.service .container .features div p{
-    font-size: 15px;
-    z-index: 900;
-}
-
-.service .container .features .first{
-    margin: 7% 0 0 5%;
-}
-.service .container .features .second{
-    margin: 2% 0 0 5%;
-}
-.service .container .features .third{
-    margin: 2% 0 0 5%;
-}
-.service .container .features .fourth{
-    margin: 2% 0 7% 5%;
-} */
-
-/* FIRST COLUMN */
-/* .service .container .features img{
-    top: 0;
-    bottom: 0;
-    right: -35%;
-    left: 0;
-    margin: auto;
-}
-.service .container .features .una{
-    width: 60%;
-}
-.service .container .features .pangalawa{
-    width: 45%;
-}
-.service .container .features .pangatlo{
-    width: 45%;
-} */
 
 
 
@@ -619,6 +555,7 @@ header .burger{
 footer{
     padding: 0 100px;
     position: relative;
+    border: transparent solid 1px;
 }
 footer hr{
     box-sizing: border-box;
@@ -643,6 +580,17 @@ footer .main .inner a{
     cursor: pointer;
 }
 
+footer img{
+    position: absolute;
+}
+footer .yellowLowest{
+    left: 0;
+    bottom: 0;
+}
+footer .blueLowest{
+    left: 0;
+    bottom: 0;
+}
 
 /* LOGIN AND REGISTRATION FORM */
 .login-reg{

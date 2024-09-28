@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Setting</title>
     <link rel="stylesheet" href="../CSS/usersetting.css">
+    <link rel="icon" href="includes/IMG/logooo-01.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -57,13 +58,42 @@
                 <h4>Permanently delete your account and all associated data from SiteHustle</h4>
                 <hr>
 
-                <button>Delete Account</button>
+                <button class="deleteBtn">Delete Account</button>
             </section>
             
         </div>
     </div>
     
-    
+    <div class="deleteaccount-popup tago">
+        <div class="content">
+
+            <h1>Delete Account</h1>
+
+            <hr>
+
+            <p>You are about to permanently delete your SiteHustle account.  Once deleted,all your data, designs, and projects connected to this account will be permanently erased. You will not be able to retrieve this information in the future.</p>
+
+            <h2>Please type <span>DELETE</span> in the box below to continue.</h2>
+
+            <input type="text" class="i" />
+
+            <div class="c">
+                <input type="checkbox" class="c-1"/>
+                <span>I understand that deleting my account will remove all my data permanently.</span>
+            </div>
+            <div class="c">
+                <input type="checkbox" class="c-2"/>
+                <span>Yes, please delete my account.</span>
+            </div>
+
+            <div class="b">
+                <button class="b-1">Cancel</button>
+                <button class="b-2">Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="newProfileDisplay tago">
         <p>CLICK ANYWHERE OUTSIDE THE BOX TO EXIT</p>
         <div class="inner">
@@ -74,6 +104,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="delete tago">
         <div class="confirmation">
