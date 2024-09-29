@@ -26,6 +26,7 @@ let logreg = true;
 login.forEach(login =>{
     login.addEventListener("click", ()=>{
         login_reg.classList.remove("hide");
+
     });
 })
 
@@ -86,9 +87,7 @@ regshowhideconfirmpassword.addEventListener("click", ()=>{
     }
 });
 
-sara.addEventListener("click", ()=>{
-    login_reg.classList.add("hide");
-});
+
 
 const lakas = document.querySelector(".lakas");
 const wehhhhh = document.querySelector(".wehhhhh");
@@ -115,31 +114,6 @@ span.forEach(function(element) {
     });
 });
 
-/* const rememberUser = document.getElementById("remember");
-rememberUser.value = "off";
-rememberUser.addEventListener("click", ()=>{
-    if(rememberUser.value === "on"){
-        
-        const user ={
-            username: logemail,
-            password: logpassword
-        }
-        localStorage.setItem("remember", user);
-        localStorage.setItem("toggled", "on")
-        rememberUser.value = "off";
-        console.log(rememberUser.value);
-    }
-    else{
-        const user ={
-            username: "",
-            password: ''
-        }
-        localStorage.setItem("remember", user);
-        rememberUser.value = "on"
-        console.log(rememberUser.value);
-    }
-});
- */
 
 const faqs = document.querySelector('.FAQs');
 
@@ -189,7 +163,7 @@ tutorial.addEventListener("click", (event)=>{
 
 
 regconfirmpassword.style.pointerEvents = "none";
-regpassword.addEventListener("input", ()=>{
+regform.addEventListener("input", ()=>{
 
     const laman = regpassword.value;
     const hasCapitalLetter = /[A-Z]/;
@@ -211,15 +185,8 @@ regpassword.addEventListener("input", ()=>{
         lakas.textContent = "STRONG";
         regconfirmpassword.style.pointerEvents = "";
 
-    }/* else if (laman.length >= 8 && (hasCapitalLetter.test(laman) || hasNumber.test(laman))) {
-        lakas.style.color = "yellow";
-        lakas.textContent = "STRONG";
-        regconfirmpassword.style.pointerEvents = "";
-    } else if (laman.length >= 8) {
-        lakas.style.color = "orange";
-        lakas.textContent = "NORMAL";
-        regconfirmpassword.style.pointerEvents = "";
-    }  */else {
+    }
+    else {
         lakas.style.color = "red";
         lakas.textContent = "WEAK";
         regconfirmpassword.style.pointerEvents = "none";
@@ -271,4 +238,16 @@ logpassword.addEventListener("input",  ()=>{
         loginBtn.style.pointerEvents = "all";
         loginBtn.style.opacity = "1";
     }
+});
+
+sara.addEventListener("click", ()=>{
+    const inputs = login_reg.querySelectorAll("input");
+    inputs.forEach(input =>{
+        input.value = "";
+    });
+
+    lakas.textContent = "";
+    wehhhhh.textContent = "";
+
+    login_reg.classList.add("hide");
 });

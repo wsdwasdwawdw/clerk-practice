@@ -569,50 +569,17 @@ document.querySelector(".project").innerHTML = "Project name: " + named;
 
 
 
-//console.log(laman);
-//console.log(muka);
- 
-/* const lamanLaman = `<style>${muka}</style>`;
-
-editor.addComponents(laman);
-editor.addComponents(lamanLaman); */
-
-// Check if both user and project name exist
-/* if (taong && named) {
-  // Query Firestore for the document where user and project match
-  db.collection("htmlFiles")
-    .where("user", "==", taong)
-    .where("project", "==", named)
-    .get()
-    .then((querySnapshot) => {
-      // Check if a document is found
-      if (!querySnapshot.empty) {
-        querySnapshot.forEach((doc) => {
-          // Log the projectData field from the document
-          console.log("Project Data:", doc.data().projectData);
-          editor.loadProjectData(doc.data().projectData);
-        });
-      } else {
-        console.log("No matching documents found for this user and project.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error retrieving document: ", error);
-    });
-} else {
-  console.log("User or project name is missing.");
-} */
 
 function saveToFirebase() {
     // Get the project name from the input field
     const projectName = named;
     const pD = editor.getProjectData();
-
+    const user = firebase.auth().currentUser;
     // Ensure the project name is not empty
-    if (!projectName) {
+    /* if (!projectName) {
         alert("Please enter a project name.");
         return;
-    }
+    } */
 
     // Get the HTML and CSS from the editor
     const htmlContent = editor.getHtml();
@@ -634,128 +601,135 @@ function saveToFirebase() {
     // Append the temp container to the body
     document.body.appendChild(tempContainer);
 
-    // Find the document based on the project name
-    db.collection("htmlFiles").where("project", "==", projectName).get()
-    .then((querySnapshot) => {
-        if (!querySnapshot.empty) {
-            // If document exists, update it
-            querySnapshot.forEach((doc) => {
-                db.collection("htmlFiles").doc(doc.id).update({
-                    content: htmlContent,
-                    css: cssContent,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                })
-                .then(() => {
-                    console.log("Document successfully updated!");
-                    const katawan = document.body;
-
-                    const alerta = document.createElement("div");
-                    alerta.style.width = "500px";
-                    alerta.style.height = "100px";
-                    alerta.style.backgroundColor = "#9ECE89";
-                    alerta.style.position = "absolute";
-                    alerta.style.top = "50%";
-                    alerta.style.left = "50%";
-                    alerta.style.transform = "translate(-50%, -50%)";
-                    alerta.style.zIndex = "2147483647";
-                    alerta.style.opacity = "0";
-                    alerta.style.transition = " opacity .5s ease";
-                    alerta.style.textAlign = "center";
-                    alerta.style.borderRadius = "10px";
-                    katawan.appendChild(alerta);
-              
-                    const check = document.createElement("img");
-                    check.src = "IMG/alert check.png";
-                    check.style.width = "15%";
-                    check.style.position = "absolute";
-                    check.style.left = "10px";
-                    check.style.top = "10px";
-                    check.style.zIndex = "2147483647";
-                    alerta.appendChild(check)
-              
-                    const message = document.createElement("p");
-                    message.textContent = "Project Successfully Saved!";
-                    message.style.color = "#2E6A17";
-                    message.style.zIndex = "2147483647";
-                    message.style.margin = "6.5% 0 0 10%";
-                    message.style.fontSize = "28px";
-                    alerta.appendChild(message);
-              
-                    requestAnimationFrame(() => {
-                      alerta.style.opacity = "1";
-                    });
-              
-                    setTimeout(() => {
-                      alerta.style.opacity = "0"; 
+    if(user){
+      db.collection("users").doc(user.uid).collection("Projects").where("project", "==", projectName).get()
+      .then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+              // If document exists, update it
+              querySnapshot.forEach((doc) => {
+                  db.collection("users").doc(user.uid).collection("Projects").doc(doc.id).update({
+                      //content: htmlContent,
+                      //css: cssContent,
+                      projectData: pD,
+                      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                  })
+                  .then(() => {
+                      console.log("Document successfully updated!");
+                      const katawan = document.body;
+  
+                      const alerta = document.createElement("div");
+                      alerta.style.width = "500px";
+                      alerta.style.height = "100px";
+                      alerta.style.backgroundColor = "#9ECE89";
+                      alerta.style.position = "absolute";
+                      alerta.style.top = "50%";
+                      alerta.style.left = "50%";
+                      alerta.style.transform = "translate(-50%, -50%)";
+                      alerta.style.zIndex = "2147483647";
+                      alerta.style.opacity = "0";
+                      alerta.style.transition = " opacity .5s ease";
+                      alerta.style.textAlign = "center";
+                      alerta.style.borderRadius = "10px";
+                      katawan.appendChild(alerta);
+                
+                      const check = document.createElement("img");
+                      check.src = "IMG/alert check.png";
+                      check.style.width = "15%";
+                      check.style.position = "absolute";
+                      check.style.left = "10px";
+                      check.style.top = "10px";
+                      check.style.zIndex = "2147483647";
+                      alerta.appendChild(check)
+                
+                      const message = document.createElement("p");
+                      message.textContent = "Project Successfully Saved!";
+                      message.style.color = "#2E6A17";
+                      message.style.zIndex = "2147483647";
+                      message.style.margin = "6.5% 0 0 10%";
+                      message.style.fontSize = "28px";
+                      alerta.appendChild(message);
+                
+                      requestAnimationFrame(() => {
+                        alerta.style.opacity = "1";
+                      });
+                
                       setTimeout(() => {
-                          katawan.removeChild(alerta); 
-                      }, 2000); 
-                    }, 2000);
+                        alerta.style.opacity = "0"; 
+                        setTimeout(() => {
+                            katawan.removeChild(alerta); 
+                        }, 2000); 
+                      }, 2000);
+  
+                      // Use html2canvas to capture the temp container
+                      html2canvas(tempContainer).then(function(canvas) {
+                          // Convert the canvas to a data URL (base64 encoded image)
+                          const screenshotDataUrl = canvas.toDataURL();
+  
+                          // Save the screenshot in Firestore along with the document
+                          db.collection("users").doc(user.uid).collection("Projects").doc(doc.id).update({
+                              screenshot: screenshotDataUrl
+                          }).then(() => {
+                              console.log("Screenshot added to Firestore");
+                          }).catch((error) => {
+                              console.error("Error adding screenshot: ", error);
+                          });
+  
+                          // Clean up by removing the temporary container
+                          document.body.removeChild(tempContainer);
+                      });
+                  })
+                  .catch((error) => {
+                      console.error("Error updating document: ", error);
+                  });
+              });
+          } else {
+              // If document does not exist, create a new one
+              db.collection("users").doc(user.uid).collection("Projects").add({
+                  //content: htmlContent,
+                  //css: cssContent,
+                  createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                  project: projectName,
+                  user: taong,
+                  projectData: pD
+              })
+              .then((docRef) => {
+                  console.log("Document written with ID: ", docRef.id);
+  
+                  // Use html2canvas to capture the temp container
+                  html2canvas(tempContainer).then(function(canvas) {
+                      // Convert the canvas to a data URL (base64 encoded image)
+                      const screenshotDataUrl = canvas.toDataURL();
+  
+                      // Save the screenshot in Firebase Firestore along with the document
+                      db.collection("users").doc(user.uid).collection("Projects").doc(docRef.id).update({
+                          screenshot: screenshotDataUrl
+                      }).then(() => {
+                          console.log("Screenshot added to Firestore");
+                      }).catch((error) => {
+                          console.error("Error adding screenshot: ", error);
+                      });
+  
+                      // Clean up by removing the temporary container
+                      document.body.removeChild(tempContainer);
+                  });
+  
+                  // Clear the input field
+                  document.getElementById("name").value = "";
+              })
+              .catch((error) => {
+                  console.error("Error adding document: ", error);
+              });
+          }
+      })
+      .catch((error) => {
+          console.error("Error getting document: ", error);
+      });
+    }
+    else{
 
-                    // Use html2canvas to capture the temp container
-                    html2canvas(tempContainer).then(function(canvas) {
-                        // Convert the canvas to a data URL (base64 encoded image)
-                        const screenshotDataUrl = canvas.toDataURL();
-
-                        // Save the screenshot in Firestore along with the document
-                        db.collection("htmlFiles").doc(doc.id).update({
-                            screenshot: screenshotDataUrl
-                        }).then(() => {
-                            console.log("Screenshot added to Firestore");
-                        }).catch((error) => {
-                            console.error("Error adding screenshot: ", error);
-                        });
-
-                        // Clean up by removing the temporary container
-                        document.body.removeChild(tempContainer);
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error updating document: ", error);
-                });
-            });
-        } else {
-            // If document does not exist, create a new one
-            db.collection("htmlFiles").add({
-                //content: htmlContent,
-                //css: cssContent,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                project: projectName,
-                user: taong,
-                projectData: pD
-            })
-            .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
-
-                // Use html2canvas to capture the temp container
-                html2canvas(tempContainer).then(function(canvas) {
-                    // Convert the canvas to a data URL (base64 encoded image)
-                    const screenshotDataUrl = canvas.toDataURL();
-
-                    // Save the screenshot in Firebase Firestore along with the document
-                    db.collection("htmlFiles").doc(docRef.id).update({
-                        screenshot: screenshotDataUrl
-                    }).then(() => {
-                        console.log("Screenshot added to Firestore");
-                    }).catch((error) => {
-                        console.error("Error adding screenshot: ", error);
-                    });
-
-                    // Clean up by removing the temporary container
-                    document.body.removeChild(tempContainer);
-                });
-
-                // Clear the input field
-                document.getElementById("name").value = "";
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
-        }
-    })
-    .catch((error) => {
-        console.error("Error getting document: ", error);
-    });
+    }
+    // Find the document based on the project name
+    
 }
 
 const codeEditor = document.querySelector(".gjs-mdl-dialog");

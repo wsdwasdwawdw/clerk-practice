@@ -1,6 +1,4 @@
 
-const taong = localStorage.getItem("pangSave");
-console.log(taong);
 
 const firebaseConfig = {
   apiKey: "AIzaSyD6zhFT1FZyRnH8nybAT4ZPYBexHPqD5TM",
@@ -19,8 +17,25 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 const storage = firebase.storage();
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+      // User is signed in, access user email
+      console.log(user.email);  // Safely access user's email
+      localStorage.setItem("current", user.email);
+  } else {
+      // No user is signed in, handle accordingly
+      console.log("No user is signed in.");
+  }
+});
+
+const current = localStorage.getItem("current");
+console.log(current);
+
+
+
 const id = document.title;
 console.log(id);
+
 const editor = grapesjs.init({
   // Indicate where to init the editor. You can also pass an HTMLElement
   container: '#gjs',
@@ -555,11 +570,20 @@ editor.Commands.add('set-device-mobile', {
   
 // Function to save content to Firebase
 function saveToFirebase() {
-  
-  
+
+  const user = firebase.auth().currentUser;
+  const Name = document.getElementById("name").value;
+  const projectData = editor.getProjectData();
+
+  if (!Name) {
+    alert("Please enter a project name.");
+    return;
+  }
+
   // Get the HTML and CSS from the editor
   const htmlContent = editor.getHtml();
   const cssContent = editor.getCss();
+  
 
   // Create a temporary container to render the content
   const tempContainer = document.createElement('div');
@@ -578,100 +602,98 @@ function saveToFirebase() {
   document.body.appendChild(tempContainer);
 
   // Save the content to Firebase Firestore
-  const Name = document.getElementById("name").value;
-  const projectData = editor.getProjectData();
 
-  
-  db.collection("htmlFiles").add({
-      /* content: htmlContent,
-      css: cssContent,  */      // Save content
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      project: Name,
-      email: taong,
-      projectData: projectData,
-      isTrashed: false
-  })
-  .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
 
-      
 
-      
-      // Use html2canvas to capture the temp container
-      html2canvas(tempContainer).then(function(canvas) {
-          // Append the screenshot to the DOM
-          document.getElementById('screenshotResult').appendChild(canvas);
+  if (user) {
+    // Use the "Projects" subcollection under the current user's document
+    db.collection("users").doc(user.uid).collection("Projects").add({
+        // Save project content
+        createdAt: new Date(),
+        project: Name,
+        email: user.email,  // Store the current user's email
+        projectData: projectData,
+        isTrashed: false
+    })
+    .then((docRef) => {
+        console.log("Project document written with ID: ", docRef.id);
 
-          // Convert the canvas to a data URL (base64 encoded image)
-          const screenshotDataUrl = canvas.toDataURL();
+        // Use html2canvas to capture the temp container
+        html2canvas(tempContainer).then(function(canvas) {
+            // Convert the canvas to a data URL (base64 encoded image)
+            const screenshotDataUrl = canvas.toDataURL();
 
-          // Save the screenshot in Firebase Firestore along with the document
-          db.collection("htmlFiles").doc(docRef.id).update({
-              screenshot: screenshotDataUrl
-          }).then(() => {
-              console.log("Screenshot added to Firestore");
-              
-              const katawan = document.body;
+            // Save the screenshot in the same project document
+            db.collection("users").doc(user.uid).collection("Projects").doc(docRef.id).update({
+                screenshot: screenshotDataUrl
+            }).then(() => {
+                console.log("Screenshot added to project in Firestore");
+                
+                // Success alert logic here (optional UI feedback)
+                const katawan = document.body;
 
-              const alerta = document.createElement("div");
-              alerta.style.width = "500px";
-              alerta.style.height = "100px";
-              alerta.style.backgroundColor = "#9ECE89";
-              alerta.style.position = "absolute";
-              alerta.style.top = "50%";
-              alerta.style.left = "50%";
-              alerta.style.transform = "translate(-50%, -50%)";
-              alerta.style.zIndex = "2147483647";
-              alerta.style.opacity = "0";
-              alerta.style.transition = " opacity .5s ease";
-              alerta.style.textAlign = "center";
-              alerta.style.borderRadius = "10px";
-              katawan.appendChild(alerta);
-            
-              const check = document.createElement("img");
-              check.src = "IMG/alert check.png";
-              check.style.width = "15%";
-              check.style.position = "absolute";
-              check.style.left = "10px";
-              check.style.top = "10px";
-              check.style.zIndex = "2147483647";
-              alerta.appendChild(check)
-            
-              const message = document.createElement("p");
-              message.textContent = "Project Successfully Saved!";
-              message.style.color = "#2E6A17";
-              message.style.zIndex = "2147483647";
-              message.style.margin = "6.5% 0 0 10%";
-              message.style.fontSize = "28px";
-              alerta.appendChild(message);
-            
-              requestAnimationFrame(() => {
-                alerta.style.opacity = "1";
-              });
-            
-              setTimeout(() => {
-                alerta.style.opacity = "0"; 
+                const alerta = document.createElement("div");
+                alerta.style.width = "500px";
+                alerta.style.height = "100px";
+                alerta.style.backgroundColor = "#9ECE89";
+                alerta.style.position = "absolute";
+                alerta.style.top = "50%";
+                alerta.style.left = "50%";
+                alerta.style.transform = "translate(-50%, -50%)";
+                alerta.style.zIndex = "2147483647";
+                alerta.style.opacity = "0";
+                alerta.style.transition = "opacity .5s ease";
+                alerta.style.textAlign = "center";
+                alerta.style.borderRadius = "10px";
+                katawan.appendChild(alerta);
+
+                const check = document.createElement("img");
+                check.src = "IMG/alert check.png";
+                check.style.width = "15%";
+                check.style.position = "absolute";
+                check.style.left = "10px";
+                check.style.top = "10px";
+                check.style.zIndex = "2147483647";
+                alerta.appendChild(check);
+
+                const message = document.createElement("p");
+                message.textContent = "Project Successfully Saved!";
+                message.style.color = "#2E6A17";
+                message.style.zIndex = "2147483647";
+                message.style.margin = "6.5% 0 0 10%";
+                message.style.fontSize = "28px";
+                alerta.appendChild(message);
+
+                requestAnimationFrame(() => {
+                    alerta.style.opacity = "1";
+                });
+
                 setTimeout(() => {
-                    katawan.removeChild(alerta); 
-                }, 2000); 
-              }, 2000);
-              
-              
-          }).catch((error) => {
-              console.error("Error adding screenshot: ", error);
-          });
+                    alerta.style.opacity = "0";
+                    setTimeout(() => {
+                        katawan.removeChild(alerta);
+                    }, 2000);
+                }, 2000);
 
+            }).catch((error) => {
+                console.error("Error adding screenshot: ", error);
+            });
 
-          // Clean up by removing the temporary container
-          document.body.removeChild(tempContainer);
-      });
+            // Clean up by removing the temporary container
+            document.body.removeChild(tempContainer);
+        });
 
-      // Clear the input field
-      document.getElementById("name").value = "";
-  })
-  .catch((error) => {
-      console.error("Error adding document: ", error);
-  });
+        // Clear the input field
+        document.getElementById("name").value = "";
+
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+    });
+
+  } else {
+    console.error("No user is signed in. Cannot save the project.");
+  }
 
   
   

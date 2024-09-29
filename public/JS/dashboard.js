@@ -1,4 +1,4 @@
-
+/* 
 
 setTimeout(function() {
     var loadingScreen = document.getElementById('loading');
@@ -8,7 +8,7 @@ setTimeout(function() {
         loadingScreen.style.display = 'none';
     }, 2000);
 }, 2000);
-
+ */
 
 const firebaseConfig = {
     apiKey: "AIzaSyD6zhFT1FZyRnH8nybAT4ZPYBexHPqD5TM",
@@ -21,25 +21,69 @@ const firebaseConfig = {
     measurementId: "G-NN9YWS88J5"
 };
 
-let current;
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged((user) => {
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth(app);
+
+auth.onAuthStateChanged((user) => {
     if (user) {
         // User is signed in.
         console.log("User is signed in:", user);
         // You can use user.email, user.uid, etc. Example
-        current = user.email;
+        const current = user.email;
+        const uid = user.uid;
         photo = user.photoURL === null ? "./IMG/blank photo.png" : user.photoURL;
+        document.querySelector(".email").textContent = current;
         console.log(current);
         console.log(photo);
+        console.log(uid);
 
 
+        localStorage.setItem("current", uid);
+        
         const PP = document.querySelectorAll(".profile");
         PP.forEach(profile => {
             profile.src = photo;
         });
+
+
+        const ProjectsElement = document.querySelector(".projects");
+        const fileList = ProjectsElement.querySelector('#fileList');
+        const chosen = ProjectsElement.querySelector(".chosen");
+        const targetuser = uid;
+        let first = "createdAt", second = "asc";
+    
+        Sorting();
         
+        // Listen for the custom 'customChange' event
+        chosen.addEventListener("customChange", () => {
+            if (chosen.textContent === "A-Z") {
+                console.log("Alphabetical");
+                first = "project";
+                second = "asc";
+            } else if (chosen.textContent === "Z-A") {
+                console.log("Reverse Alphabetical");
+                first = "project";
+                second = "desc";
+            } else if (chosen.textContent === "Newest") {
+                console.log("Newest");
+                first = "createdAt";
+                second = "desc";
+            } else {
+                console.log("Oldest");
+                first = "createdAt";
+                second = "asc";
+            }
+            
+            // Call your function with the updated sort options
+            loadProjects(ProjectsElement, fileList, targetuser, first, second);
+        });
+    
+        // Optionally, dispatch the customChange event initially
+        chosen.dispatchEvent(new Event('customChange'));
+    
+        GridList();
     } else {
         // No user is signed in.
         console.log("No user signed in.");
@@ -47,18 +91,10 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 const firestore = firebase.firestore();
-const userNow = firebase.auth().currentUser;
-console.log(userNow);
 
-let contents;
 let tracker = "grid";
-
-const tao = sessionStorage.getItem("currentUser");
-let picture = sessionStorage.getItem("picture");
-document.querySelector(".email").textContent = tao;
-console.log(tao);
-localStorage.setItem("pangSave", tao);
-//console.log(sessionStorage.getItem("pangSave"))
+/* const finalCurrentUser = localStorage.getItem("current");
+console.log(finalCurrentUser);  */
 
 
 const shitsPa = document.querySelector(".shitsPa");
@@ -79,79 +115,41 @@ userSetting.addEventListener("click", ()=>{
     window.location.href = "../includes/usersetting.html";
 })
 
-document.addEventListener('DOMContentLoaded', function() {
-    const ProjectsElement = document.querySelector(".projects");
-    const fileList = ProjectsElement.querySelector('#fileList');
-    const chosen = ProjectsElement.querySelector(".chosen");
-    const targetuser = tao;
-    let first = "createdAt", second = "asc";
-
-    Sorting();
-    
-    // Listen for the custom 'customChange' event
-    chosen.addEventListener("customChange", () => {
-        if (chosen.textContent === "A-Z") {
-            console.log("Alphabetical");
-            first = "project";
-            second = "asc";
-        } else if (chosen.textContent === "Z-A") {
-            console.log("Reverse Alphabetical");
-            first = "project";
-            second = "desc";
-        } else if (chosen.textContent === "Newest") {
-            console.log("Newest");
-            first = "createdAt";
-            second = "desc";
-        } else {
-            console.log("Oldest");
-            first = "createdAt";
-            second = "asc";
-        }
-        
-        // Call your function with the updated sort options
-        loadProjects(ProjectsElement, fileList, targetuser, first, second);
-    });
-
-    // Optionally, dispatch the customChange event initially
-    chosen.dispatchEvent(new Event('customChange'));
-
-    GridList();
-});
 
 
 ViewMore();
 
 function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
-    // Firestore query with dynamic ordering
-    firestore.collection('htmlFiles').orderBy(first, second).get()
+    // Firestore query with dynamic ordering for the target user's Projects subcollection
+    firestore.collection('users').doc(targetuser).collection('Projects').orderBy(first, second).get()
         .then(querySnapshot => {
             fileList.innerHTML = ""; // Clear fileList before adding new items
             querySnapshot.forEach(doc => {
                 const fileData = doc.data();
 
-                // Check if the document's email matches the target user
-                if (fileData.email === targetuser && fileData.isTrashed === false) {
+                // Check if the project is not trashed
+                if (fileData.isTrashed === false) {
 
                     // Create new list item element
                     const listItem = document.createElement('div');
                     listItem.className = tracker === "grid" ? "listItem" : "listItem listItem-List";
 
                     const img = document.createElement('img');
-                    img.className = tracker === "grid" ? "img" : "img img-List"
+                    img.className = tracker === "grid" ? "img" : "img img-List";
                     img.src = fileData.screenshot;
                     listItem.appendChild(img);
 
                     const info = document.createElement("div");
-                    info.className = tracker === "grid" ? "info" : "info info-List"
+                    info.className = tracker === "grid" ? "info" : "info info-List";
                     listItem.appendChild(info);
 
                     const project = document.createElement("p");
-                    project.className = tracker === "grid" ? "project" : "project project-List"
+                    project.className = tracker === "grid" ? "project" : "project project-List";
                     project.textContent = fileData.project;
                     listItem.appendChild(project);
 
                     const icon = document.createElement("img");
-                    icon.className = tracker === "grid" ? "icon" : "icon icon-List"
+                    icon.className = tracker === "grid" ? "icon" : "icon icon-List";
                     icon.src = "./IMG/s.png";
                     listItem.appendChild(icon);
 
@@ -163,8 +161,6 @@ function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
 
                     // Attach list item-specific functionality
                     ListItem(listItem, fileData);
-
-                    
                 }
             });
         })
@@ -291,16 +287,16 @@ function GridList(){
     });
 }
 
-function RemoveButton(listItem, fileList, fileData, doc){
-     // Create a delete button
-     const removeButton = document.createElement('img');
-     removeButton.src = './IMG/trash.png';
-     removeButton.title = "Remove Project"
-     removeButton.style.position = "absolute";
-     removeButton.style.bottom = "15px";
-     removeButton.style.right = "30px";
-     removeButton.style.padding = "5px";
-     listItem.appendChild(removeButton);
+function RemoveButton(listItem, fileList, fileData, doc) {
+    // Create a delete button
+    const removeButton = document.createElement('img');
+    removeButton.src = './IMG/trash.png';
+    removeButton.title = "Remove Project";
+    removeButton.style.position = "absolute";
+    removeButton.style.bottom = "15px";
+    removeButton.style.right = "30px";
+    removeButton.style.padding = "5px";
+    listItem.appendChild(removeButton);
 
     // Hover effect to change background color to red
     removeButton.addEventListener('mouseover', function() {
@@ -310,6 +306,7 @@ function RemoveButton(listItem, fileList, fileData, doc){
     removeButton.addEventListener('mouseout', function() {
         removeButton.style.opacity = "1";
     });
+
     removeButton.addEventListener('click', function(event) {
         event.stopPropagation();
         const alert = document.querySelector(".delete");
@@ -325,41 +322,30 @@ function RemoveButton(listItem, fileList, fileData, doc){
 
         // Add event listener for confirm-delete
         newConfirmDeleteButton.addEventListener("click", () => {
-            // Delete the document from Firestore
-            /* firestore.collection('htmlFiles').doc(doc.id).delete()
-            .then(() => {
-                console.log("Document successfully deleted!");
-                // Remove the item from the UI
-                fileList.removeChild(listItem);
-                alert.classList.add("tago");
-            }).catch(error => {
-                console.error("Error removing document: ", error);
-            }); */
-
-            
-            // Update the document in Firestore with the new project name
-            firestore.collection('htmlFiles').doc(doc.id).update({
-                isTrashed: true, // Assuming 'project' is the field holding the project name
-                removedAt: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then(() => {
-                console.log("Document successfully moved to trash!");
-                fileList.removeChild(listItem);
-                alert.classList.add("tago");
-                /* project.textContent = newShit;
-                // Hide the alert dialog
-                alert.classList.add("tago");
-                document.querySelector(".newName").value = ""; */
-            })
-            .catch(error => {
-                console.error("Error renaming document: ", error);
-            });
-            
+            // Assuming `doc` is the project document, we update its `isTrashed` status.
+            const user = firebase.auth().currentUser; // Current user
+            if (user) {
+                // Corrected path to user's Projects subcollection
+                firestore.collection('users').doc(user.uid).collection('Projects').doc(doc.id).update({
+                    isTrashed: true, // Mark as trashed
+                    removedAt: firebase.firestore.FieldValue.serverTimestamp() // Record time of deletion
+                })
+                .then(() => {
+                    console.log("Document successfully moved to trash!");
+                    fileList.removeChild(listItem); // Remove the project from the UI
+                    alert.classList.add("tago"); // Hide the delete confirmation dialog
+                })
+                .catch(error => {
+                    console.error("Error moving document to trash: ", error);
+                });
+            } else {
+                console.error("No user signed in. Cannot delete project.");
+            }
         });
-        
+
         // Add event listener for cancel-delete
         document.querySelector(".cancel-delete").addEventListener("click", () => {
-            alert.classList.add("tago");
+            alert.classList.add("tago"); // Hide the delete confirmation dialog
         });
     });
 }
@@ -397,10 +383,11 @@ function RenameButton(listItem, project, fileList, fileData, doc){
         // Add event listener for confirm-rename
         newConfirmRenameButton.addEventListener("click", () => {
             const newShit = newNameInput.value;
+            const user = firebase.auth().currentUser; // Current user
 
             if (newShit) {
                 // Update the document in Firestore with the new project name
-                firestore.collection('htmlFiles').doc(doc.id).update({
+                firestore.collection('users').doc(user.uid).collection('Projects').doc(doc.id).update({
                     project: newShit // Assuming 'project' is the field holding the project name
                 })
                 .then(() => {
@@ -427,27 +414,14 @@ function RenameButton(listItem, project, fileList, fileData, doc){
 }
 
 function ListItem(listItem, fileData){
-    /* listItem.addEventListener("mouseover", ()=>{
-        listItem.style.border = "green solid 2px";
-    })
-    listItem.addEventListener("mouseout", ()=>{
-        listItem.style.border = "grey solid 2px";
-    }) */
     listItem.addEventListener('click', function() {
         // Log the content associated with the clicked name
-        console.log(fileData.name);
-        //console.log('Content:', fileData.content);
-        contents = fileData.content;
         const pD = fileData.projectData;
         console.log(pD);
+        
         sessionStorage.setItem("name", fileData.project);
-        //sessionStorage.setItem("laman", fileData.content);
-        //sessionStorage.setItem("css", fileData.css);
         sessionStorage.setItem("projectData", JSON.stringify(pD));
         console.log(sessionStorage.getItem("name"));
-        //console.log(sessionStorage.getItem("laman"));
-        //console.log(sessionStorage.getItem("css"));
-        //sessionStorage.setItem('content', fileData.content);
         window.open("../includes/savedEdits.html", "_blank");
     });
 }

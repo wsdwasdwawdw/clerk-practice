@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+/* import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
 import { getAuth , signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js"; */
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,47 +21,56 @@ const firebaseConfig = {
   measurementId: "G-NN9YWS88J5"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
-const storage = getStorage(app);
+// Initialize Firebase App
+const app = firebase.initializeApp(firebaseConfig);
+    
+
+// Initialize Firebase Authentication
+const auth = firebase.auth(app);
+const provider = new firebase.auth.GoogleAuthProvider();
+auth.languageCode = 'en';
+
+// Initialize Firestore
+const db = firebase.firestore(app);
+
+// Initialize Firebase Storage
+const storage = firebase.storage(app);
 
 auth.languageCode = 'en';
 
 const google = document.getElementById("google");
-google.addEventListener("click", ()=>{
-    signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-    const name = user.email;
-    const picture = user.photoURL;
-    
-    sessionStorage.setItem("currentUser", name)
-    sessionStorage.setItem("picture", picture)
-    console.log(sessionStorage.getItem("currentUser"));
-    console.log(sessionStorage.getItem("picture"));
+google.addEventListener("click", () => {
+  // Ensure you're using the initialized `auth` and `provider`
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = result.credential;
+      const token = credential.accessToken;
 
-    window.location.href = "./includes/dashboard.html";
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
+      // The signed-in user info.
+      const user = result.user;
+      const name = user.email;
+      const picture = user.photoURL;
+
+      // Store the user info in session storage
+      /* sessionStorage.setItem("currentUser", name);
+      sessionStorage.setItem("picture", picture); */
+
+      // Redirect to the dashboard
+      window.location.href = "./includes/dashboard.html";
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+
+      // Optional: Display error message to the user
+      console.error("Error during sign-in: ", errorCode, errorMessage, email);
+    });
 });
+
 
 const Guest = document.getElementById("guest");
 Guest.addEventListener("click", ()=>{
@@ -69,7 +78,7 @@ Guest.addEventListener("click", ()=>{
 });
 
 /* REGISTRATION SHITS */
-window.register = async function() {
+function register() {
 
   const email = document.getElementById('reg-email').value;
   const password = document.getElementById('reg-password').value;
@@ -79,30 +88,46 @@ window.register = async function() {
       alert("Passwords do not match!");
       return;
   }
-
   try {
     // Create user with email and password
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
 
     // Send email verification
-    await sendEmailVerification(user);
+    user.sendEmailVerification().then(() => {
+      console.log("Verification email sent!");
 
-    // Save additional user data in Firestore
-    await setDoc(doc(db, "users", user.uid), {
-        email: email,
-        createdAt: serverTimestamp(),
-        emailVerified: false  // Track if email is verified
-    });
+      // Save additional user data in Firestore
+      return firebase.firestore().collection("users").doc(user.uid).set({
+        emailVerified: user.emailVerified, // Track if the email is verified
+        email: user.email,
+        createdAt: new Date(),
+        // Add any other additional fields you want to store
+      });
+      }).then(() => {
+        console.log("User data saved in Firestore!");
+        
+      }).catch((error) => {
+        console.error("Error saving user data or sending verification email:", error);
+      });
+      // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
 
-    alert("Registration successful! Please check your email to verify your account.");
-    
-    // Clear input fields
-    document.getElementById('reg-email').value = "";
-    document.getElementById('reg-password').value = "";
-    document.getElementById('reg-confirmpassword').value = "";
-    document.querySelector(".lakas").textContent = "";
-    document.querySelector(".wehhhhh").textContent = "";
+  RegistrationAlert();
+  
+  // Clear input fields
+  document.getElementById('reg-email').value = "";
+  document.getElementById('reg-password').value = "";
+  document.getElementById('reg-confirmpassword').value = "";
+  document.querySelector(".lakas").textContent = "";
+  document.querySelector(".wehhhhh").textContent = "";
 
   } catch (error) {
       console.error("Error during registration:", error);
@@ -110,33 +135,32 @@ window.register = async function() {
   }
 }
 
-window.pasok = async function(){
+function pasok(){
     const email = document.getElementById('log-email').value;
     const password = document.getElementById('log-password').value;
 
-    try {
-        // Sign in the user with email and password
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+    // Sign in the user with email and password
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      // User signed in successfully
+      var user = userCredential.user;
 
-        const name = user.email;
-        const picture = user.photoURL;
-        
-        sessionStorage.setItem("currentUser", name)
-        sessionStorage.setItem("picture", picture)
-        console.log(sessionStorage.getItem("currentUser"));
-        console.log(sessionStorage.getItem("picture"));
-
-
-
+      // Ensure email is verified before redirecting to dashboard
+      if (user.emailVerified) {
         // Redirect or perform other actions upon successful login
         window.location.href = './includes/dashboard.html'; // Example of redirection
-
-    } catch (error) {
-        console.error("Error during login:", error);
-        alert("No account found!!");
-    }
+      } else {
+        alert("Please verify your email before logging in.");
+      }
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.error("Error during login:", errorMessage);
+      alert("No account found or login failed: " + errorMessage);
+    });
 }
+
 
 function RegistrationAlert(){
   const login_reg = document.querySelector(".login-reg");
@@ -146,6 +170,7 @@ function RegistrationAlert(){
   div.style.width = "500px";
   div.style.height = "100px";
   div.style.position = "absolute";
+  div.style.padding = "20px";
   div.style.top = "50%";
   div.style.left = "50%";
   div.style.transform = "translate(-50%, -50%)";
@@ -157,7 +182,7 @@ function RegistrationAlert(){
   div.style.justifyContent = "center";
   div.style.alignItems = "center";
   div.style.overflow = "hidden";
-  div.textContent = "User Registration Successful! Please Login.";
+  div.textContent = "User Registration Successful! Please check you email for the verification link.";
   login_reg.appendChild(div);
 
   const glow = document.createElement("img");

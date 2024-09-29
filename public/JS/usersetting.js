@@ -1,10 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { getFirestore, setDoc, getDocs, collection, query, where, orderBy, Timestamp, deleteDoc, doc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -19,13 +17,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth(app);
+const db = firebase.firestore(app);
+const storage = firebase.storage(app);
 auth.languageCode = 'en';
 
 let current;
+const shits = 1;
 // Initialize Firebase
 auth.onAuthStateChanged((user) => {
     if (user) {
@@ -38,15 +37,18 @@ auth.onAuthStateChanged((user) => {
         email.textContent = user.email;
         const source = user.photoURL === null ? "./IMG/blank photo.png" :user.photoURL;
 
+        console.log(source);
         img.src = source;
 
+        console.log(shits);
         const main = document.querySelector(".main");
         const content = main.querySelector(".content");
         const trashBin = content.querySelector("#trashbin");
         const fileList = trashBin.querySelector("#filelist");
-        const targetuser = user.email;
+        const targetuser = user.uid;
     
         loadProjects(trashBin, fileList, targetuser);
+        
         
     } else {
         // No user is signed in.
@@ -102,28 +104,33 @@ saveBtn.addEventListener("click", async () => {
 
         if (user) {
             // Create a storage reference
-            const storageRef = ref(storage, 'profilePictures/' + user.uid + '/' + selectedFile.name);
+            const storageRef = storage.ref('profilePictures/' + user.uid + '/' + selectedFile.name);
 
             try {
                 // Upload the selected image to Firebase Storage
-                await uploadBytes(storageRef, selectedFile);
+                await storageRef.put(selectedFile);
                 console.log('Image uploaded successfully');
 
                 // Get the image URL from Firebase Storage
-                const downloadURL = await getDownloadURL(storageRef);
+                const downloadURL = await storageRef.getDownloadURL();
 
                 // Update the user's profile with the new photo URL
-                await updateProfile(user, {
+
+                console.log(downloadURL);
+                await user.updateProfile({
                     photoURL: downloadURL
                 });
 
+                
                 console.log('User profile updated with new photo URL');
 
                 // Optionally, display the updated profile picture on the screen
-                document.querySelector('.profile').src = downloadURL;
+                document.querySelector('.profile').src = downloadURL + '?t=' + new Date().getTime();
 
+                // Hide the new profile display (if needed)
                 newProfileDisplay.classList.add("tago");
                 
+                // Reload the page to reflect changes
                 location.reload();
             } catch (error) {
                 console.error('Error updating profile picture:', error);
@@ -140,79 +147,72 @@ saveBtn.addEventListener("click", async () => {
 
 
 function loadProjects(ProjectsElement, fileList, targetuser) {
-    // Access the 'htmlFiles' collection and query for the documents
-    const htmlFilesRef = collection(db, 'htmlFiles');
-    const q = query(htmlFilesRef, where("isTrashed", "==", true), orderBy("removedAt", "asc"));
+    // Get the currently authenticated user
+    const user = firebase.auth().currentUser;
 
-    getDocs(q).then(querySnapshot => {
-        fileList.innerHTML = ""; // Clear fileList before adding new items
-        querySnapshot.forEach(doc => {
-            const fileData = doc.data();
-            const removedAt = fileData.removedAt;
-            console.log("Project exists");
-            const listItem = document.createElement('div');
-            const img = document.createElement('img');
-            const info = document.createElement("div");
-            const project = document.createElement("p");
+    if (user) {
+        db.collection('users').doc(targetuser).collection('Projects').orderBy("removedAt", 'asc').get()
+        .then(querySnapshot => {
+            fileList.innerHTML = ""; // Clear fileList before adding new items
+            querySnapshot.forEach(doc => {
+                const fileData = doc.data();
+                const removedAt = fileData.removedAt;   
 
-            if (fileData.email === targetuser  && fileData.isTrashed === true) {
-                // Create new list item element
-                
-                listItem.className = "listItem";
+                console.log("Trashed project exists");
 
-                
-                img.className = "img";
-                img.src = fileData.screenshot;
-                listItem.appendChild(img);
+                // Only display projects that are marked as trashed
+                if (fileData.isTrashed === true && removedAt) {
+                    // Create new list item element
+                    const listItem = document.createElement('div');
+                    listItem.className = "listItem";
 
-                
-                info.className = "info";
-                listItem.appendChild(info);
+                    // Project screenshot
+                    const img = document.createElement('img');
+                    img.className = "img";
+                    img.src = fileData.screenshot;
+                    listItem.appendChild(img);
 
-                
-                project.className = "project";
-                project.textContent = fileData.project;
-                info.appendChild(project);
+                    // Info container
+                    const info = document.createElement("div");
+                    info.className = "info";
+                    listItem.appendChild(info);
 
-                /* const date = document.createElement("p");
-                project.className = "date";
-                project.textContent = fileData.removedAt;
-                listItem.appendChild(date); */
-                console.log(fileData.createdAt);
+                    // Project name
+                    const project = document.createElement("p");
+                    project.className = "project";
+                    project.textContent = fileData.project;
+                    info.appendChild(project);
 
-                fileList.appendChild(listItem);
+                    const date = removedAt.toDate();
+                    // Format date to a readable string
+                    const formattedDate = date.toLocaleString();
+                    console.log("Removed At:", formattedDate);
 
-                // Add delete and rename functionality
-                
-                RestoreButton(listItem, project, fileList, fileData, doc, info);
-                DeleteButton(listItem, fileList, fileData, doc, info);
+                    // Display the formatted date in the UI
+                    const dateElement = document.createElement("p");
+                    dateElement.className = "date";
+                    dateElement.textContent = "Date removed: " + formattedDate;
+                    info.appendChild(dateElement);
+                    
 
-                // Attach list item-specific functionality
-                // ListItem(listItem, fileData); 
+                    // Add the list item to the file list
+                    fileList.appendChild(listItem);
 
-            }
-            if (removedAt instanceof Timestamp) {
-                // Convert Firestore Timestamp to JavaScript Date
-                const date = removedAt.toDate();
-                // Format date to a readable string using `toLocaleString()`
-                const formattedDate = date.toLocaleString();
-
-                console.log("Removed At:", formattedDate); // Log the formatted date
-
-                // Example: you can append the date to the DOM or display it in your UI
-                const dateElement = document.createElement("p");
-                dateElement.className = "date";
-                dateElement.textContent = "Date removed: " + formattedDate;
-                info.appendChild(dateElement);
-            }
+                    // Add restore and permanent delete functionality
+                    RestoreButton(listItem, project, fileList, fileData, doc, info);
+                    DeleteButton(listItem, fileList, fileData, doc, info);
+                }
+            });
+        }).catch(error => {
+            console.error('Error fetching project metadata:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error fetching file metadata:', error);
-    });
+    } else {
+        console.error("No user signed in.");
+    }
 }
 
-function RestoreButton(listItem, project, fileList, fileData, docs, info){
+
+function RestoreButton(listItem, project, fileList, fileData, doc, info){
     // Create a rename button
     const restoreButton = document.createElement('img');
     restoreButton.className = "icon"
@@ -224,14 +224,6 @@ function RestoreButton(listItem, project, fileList, fileData, docs, info){
     restoreButton.style.padding = "5px";
     info.appendChild(restoreButton);
  
-    // Hover effect to change background color to red
-    /* restoreButton.addEventListener('mouseover', function() {
-        restoreButton.style.cursor = "pointer";
-        restoreButton.style.opacity = ".5";
-    });
-    restoreButton.addEventListener('mouseout', function() {
-        restoreButton.style.opacity = "1";
-    }); */
     restoreButton.addEventListener('click', function(event) {
         event.stopPropagation();
         const restore = document.querySelector(".restore");
@@ -248,13 +240,9 @@ function RestoreButton(listItem, project, fileList, fileData, docs, info){
         // Add event listener for confirm-restore
         newConfirmRestoreButton.addEventListener("click", () => {
             
-
-            const docRef = doc(db, 'htmlFiles', docs.id);
-
-            // Update the document in Firestore using updateDoc
-            updateDoc(docRef, {
-                isTrashed: false,  // Assuming 'isTrashed' is the field for trashing
-                createdAt: serverTimestamp()  // Add the server timestamp for 'removedAt'
+            const user = firebase.auth().currentUser;
+            db.collection('users').doc(user.uid).collection('Projects').doc(doc.id).update({
+                isTrashed: false // Assuming 'project' is the field holding the project name
             })
             .then(() => {
                 console.log("Document successfully moved to trash!");
@@ -285,7 +273,7 @@ function RestoreButton(listItem, project, fileList, fileData, docs, info){
  
     });
  }
-function DeleteButton(listItem, fileList, fileData, docs, info){
+function DeleteButton(listItem, fileList, fileData, doc, info){
     // Create a delete button
     const deleteButton = document.createElement('img');
     deleteButton.classList = "icon";
@@ -296,15 +284,7 @@ function DeleteButton(listItem, fileList, fileData, docs, info){
     deleteButton.style.right = "30px";
     deleteButton.style.padding = "5px";
     info.appendChild(deleteButton);
-
-   // Hover effect to change background color to red
-   /* deleteButton.addEventListener('mouseover', function() {
-       deleteButton.style.cursor = "pointer";
-       deleteButton.style.opacity = ".5";
-   });
-   deleteButton.addEventListener('mouseout', function() {
-       deleteButton.style.opacity = "1";
-   }); */
+    
    deleteButton.addEventListener('click', function(event) {
        event.stopPropagation();
        const deleteShit = document.querySelector(".delete");
@@ -320,28 +300,23 @@ function DeleteButton(listItem, fileList, fileData, docs, info){
 
        // Add event listener for confirm-delete
         newConfirmDeleteButton.addEventListener("click", async () => {
-            try {
-                const docId = docs.id; // Ensure you have the doc reference correctly defined
-                console.log(docId);
-                // Delete the document from Firestore using the correct method for Firebase 9+
-                const docRef = doc(db, 'htmlFiles', docId);
-                await deleteDoc(docRef);
-        
-                console.log("Document successfully deleted!");
-        
-                // Remove the item from the UI
-                if (listItem) {
-                    fileList.removeChild(listItem);
-                }
-        
-                // Hide the alert after successful deletion
-                if (deleteShit) {
-                    deleteShit.classList.add("tago");
-                }
-        
-            } catch (error) {
-                console.error("Error removing document: ", error);
-            }
+
+            const user = firebase.auth().currentUser;
+
+            db.collection('users').doc(user.uid).collection('Projects').doc(doc.id)
+            .delete()
+            .then(() => {
+                
+    
+                console.log("Project successfully deleted!");
+                // Optionally, you can remove the project from the UI if necessary
+                fileList.removeChild(listItem);  // Example if you're removing the item from the list
+                deleteShit.classList.add("tago");
+
+            })
+            .catch((error) => {
+                console.error("Error deleting project: ", error);
+            });
         });
         
         // Event listener for cancel button
@@ -388,15 +363,35 @@ function lipatlipat(){
         })
     })
 }
+
 deleteAccount();
 function deleteAccount(){
     const deleteBtn = document.querySelector(".deleteBtn");
     const deleteAccountPopUp = document.querySelector(".deleteaccount-popup");
     const b1 = deleteAccountPopUp.querySelector(".b-1");
     const b2 = deleteAccountPopUp.querySelector(".b-2");
+    
 
     deleteBtn.addEventListener("click", ()=>{
-        deleteAccountPopUp.classList.remove("tago");
+        const user = auth.currentUser;
+        console.log(user);
+
+        // Re-authenticate the user using their email and password
+        var email = user.email;
+        var password = prompt("Please enter your password to confirm deletion:");
+
+        // Get the user's current credentials
+        var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+        
+        user.reauthenticateWithCredential(credential).then(function() {
+            console.log("User re-authenticated");
+            deleteAccountPopUp.classList.remove("tago");
+          }).catch(function(error) {
+            console.error("Error re-authenticating user:", error);
+            alert("Re-authentication failed. Please try again.");
+          });
+
+        
     });
 
     b1.addEventListener("click", ()=>{
@@ -410,11 +405,44 @@ function deleteAccount(){
 
         if(i.value === "DELETE" && c1.checked && c2.checked){
             b2.style.opacity = "1";
-            b2.style.pointerEvents = "";
+            b2.style.pointerEvents = "all";
+            b2.addEventListener("mouseenter",()=>{
+                b2.style.opacity = ".5";
+            });
+            b2.addEventListener("mouseout",()=>{
+                b2.style.opacity = "1";
+            });
         }
         else{
             b2.style.opacity = ".5";
             b2.style.pointerEvents = "none";
         }
+    });
+
+    b2.addEventListener("click",()=>{
+        const user = auth.currentUser;
+        if (user) {
+            var userId = user.uid;
+          
+            // First, delete the user's document from Firestore
+            var userDocRef = db.collection("users").doc(userId);
+            userDocRef.delete().then(function() {
+              console.log('User document deleted from Firestore');
+          
+              // Now delete the user from Authentication
+              user.delete().then(function() {
+                console.log('User deleted from Authentication');
+          
+              }).catch(function(error) {
+                console.error('Error deleting user:', error);
+              });
+          
+            }).catch(function(error) {
+              console.error('Error deleting user document:', error);
+            });
+          
+          } else {
+            console.log('No user is signed in.');
+          }
     });
 }
