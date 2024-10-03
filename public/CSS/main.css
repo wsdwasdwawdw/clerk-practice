@@ -151,7 +151,7 @@ header .burger{
     position: relative;
     margin: 80px 0 0 0;
     padding: 5% 0 0 0;
-    height: 80%;
+    height: 75%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -194,9 +194,16 @@ header .burger{
     opacity: 1;
     z-index: 0;
 }
+.home .codes{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: auto;
+    top: 0;
+}
 
 .home .code1{
-    height: 60%;
+    height: auto;
     left: 1000px;
     top: 250px;
     z-index: 1;
@@ -547,10 +554,14 @@ header .burger{
 }
 .about .moreAboutUs img{
     display: block;
+    position: relative;
+    z-index: 1;
     height: 50%;
     width: 50%;
 }
-
+.about .kame .line{
+    display: none;
+}
 /* FOOTER */
 footer{
     padding: 0 100px;
@@ -786,24 +797,34 @@ footer .blueLowest{
 
 .reg-form > div:nth-child(-n+3) input{
     padding: 15px;
-    width: auto;
+    width: 100%;
     border-radius: 10px;
 }
+.reg-form .notes{
+    font-size: .6em;
+}
+.reg-form .i-2, .reg-form .i-3{
+    position: relative;
+    text-align: center;
+}
+
 .login-reg .reg-form .reg-showhidepassword,.login-reg .reg-form .reg-showhideconfirmpassword{
     width: 30px;
     position: absolute;
-    top: 50%;
-    right: 10px;
+    right: 10;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+   /*  top: 50%;
+    right: 10px; */
     cursor: pointer;
     pointer-events: all;
-    transition: 1s;
 }
 .reg-form input{
     background-color: transparent;
     color: #ffffff;
     border: #EEB832 solid 1px;
 }
-
 .login-reg .login-form-hide{
     display: none;
 }

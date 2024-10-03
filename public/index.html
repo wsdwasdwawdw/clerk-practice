@@ -29,6 +29,7 @@
         <img src="./includes/IMG/burger.png" alt="" class="burger">
         
     </header>
+
     <div class="burgerMenu">
         <img src="includes/IMG/close.png" class="burgerClose">
         <ul>
@@ -40,13 +41,19 @@
     </div>
 
     <section class="home" id="home">
-        <img src="includes/IMG/CODE 1.png" class="code1">
+        <!-- <img src="includes/IMG/CODE 1.png" class="code1">
         <img src="includes/IMG/blue glow 2.png" class="code1Glow">
         <img src="includes/IMG/CODE 2.png" class="code2">
         <img src="includes/IMG/blue glow 1.png" class="code2Glow">
         <img src="includes/IMG/CODE 3.png" class="code3">
-        <img src="includes/IMG/blue glow 3.png" class="code3Glow">
-        <img src="includes/IMG/Line 1.png" class="line">
+        <img src="includes/IMG/blue glow 3.png" class="code3Glow"> -->
+        
+
+        <img src="includes/IMG/codes home.png" class="codes">
+        <img src="includes/IMG/Line 1.png" class="line"> 
+
+        
+        <!--  -->
 
         <h1>From Drag to Code</h1>
         <h2>Where developers find the perfect balance between visual design and code control. 
@@ -54,6 +61,7 @@
             empowering front-end developers to unleash their creativity while maintaining transparency.</h2>
         <h3>Join us in revolutionizing web design tools for a more efficient and collaborative development process.</h3>
         <button class="glow-on-hover" onclick="Register()">Click to Register</button>
+
     </section>
 
     <section class="service" id="service">
@@ -253,6 +261,7 @@
     <section class="about" id="about">
         <h1>About Us</h1>
         <div class="kame">
+            <!-- <img src="includes/IMG/line about.png" alt="" class="line"> -->
             <div class="yuna">
                 <img src="includes/IMG/yuna.png" alt="sya" title="Yuna">
             </div>
@@ -303,13 +312,6 @@
         <img src="includes/IMG/blue glow lowest.png" alt="" class="blueLowest">
     </footer>
 
-    
-
-
-
-
-
-
     <section class="login-reg hide">
         <div class="container">
             <img src="includes/IMG/line 3.png" class="likod">
@@ -351,13 +353,18 @@
                 </div>
                 <div class="password-box">
                     <label>Password: <i class="lakas"></i></label>
-                    <input type="password" id="reg-password" required>
-                    <img src="includes/IMG/hide.png" class="reg-showhidepassword">
+                    <div class="i-2">
+                        <input type="password" id="reg-password" title="Note: Password must container more than 8 characters, a captial letter, and a number. Include special characters for more secure account" required>
+                        <img src="includes/IMG/hide.png" class="reg-showhidepassword">
+                    </div>
                 </div>
                 <div class="password-box">
                     <label>Confirm Password: <i class="wehhhhh"></i></label>
-                    <input type="password" id="reg-confirmpassword" required>
-                    <img src="includes/IMG/hide.png" class="reg-showhideconfirmpassword">
+                    <div class="i-3">
+                        <input type="password" id="reg-confirmpassword" required>
+                        <img src="includes/IMG/hide.png" class="reg-showhideconfirmpassword">
+                    </div>
+                    
                 </div>
                 <div>
                     <button id="register" onclick="register()">Register</button>

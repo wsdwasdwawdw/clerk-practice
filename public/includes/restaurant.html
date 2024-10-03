@@ -45,165 +45,18 @@
       </div>
       <div class="editor-row">
         <div class="editor-canvas">
-          <div id="gjs">
-            <header>
-              <h1>Restaurant Name</h1>
-              <nav>
-                  <ul>
-                      <li><a href="#menu">Menu</a></li>
-                      <li><a href="#about">About Us</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                  </ul>
-              </nav>
-          </header>
-          <section id="hero">
-              <h2>Welcome to Restaurant Name</h2>
-              <p>Experience the best dining in town.</p>
-              <a href="#menu" class="cta-button">View Menu</a>
-          </section>
-          <section id="menu">
-              <h2>Our Menu</h2>
-              <div class="menu-item">
-                  <h3>Dish Name</h3>
-                  <p>Description of the dish.</p>
-                  <p>Price: $12.99</p>
-              </div>
-              <!-- Repeat for more menu items -->
-          </section>
-          <section id="about">
-              <h2>About Us</h2>
-              <p>Information about the restaurant.</p>
-          </section>
-          <section id="contact">
-              <h2>Contact Us</h2>
-              <form action="#">
-                  <label for="name">Name:</label>
-                  <input type="text" id="name" name="name" required>
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" name="email" required>
-                  <label for="message">Message:</label>
-                  <textarea id="message" name="message" required></textarea>
-                  <button type="submit">Send</button>
-              </form>
-          </section>
-          <footer>
-              <p>&copy; 2024 Restaurant Name. All rights reserved</p>
-          </footer> 
-          
-          <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #fff;
-                color: #333;
-            }
-
-            header {
-                background-color: #d9534f;
-                color: white;
-                padding: 20px;
-                text-align: center;
-            }
-
-            nav ul {
-                list-style: none;
-                padding: 0;
-            }
-
-            nav ul li {
-                display: inline;
-                margin: 0 15px;
-            }
-
-            nav ul li a {
-                color: white;
-                text-decoration: none;
-            }
-
-            #hero {
-                background-image: url('restaurant.jpg');
-                background-size: cover;
-                color: white;
-                padding: 100px 20px;
-                text-align: center;
-            }
-
-            .cta-button {
-                background-color: white;
-                color: #d9534f;
-                padding: 10px 20px;
-                text-decoration: none;
-                border-radius: 5px;
-                display: inline-block;
-                margin-top: 20px;
-            }
-
-            .cta-button:hover {
-                background-color: #c9302c;
-                color: white;
-            }
-
-            section {
-                padding: 40px 20px;
-                text-align: center;
-            }
-
-            #menu {
-                background-color: #f7f7f7;
-            }
-
-            .menu-item {
-                margin: 20px auto;
-                max-width: 600px;
-                text-align: left;
-            }
-
-            footer {
-                background-color: #d9534f;
-                color: white;
-                text-align: center;
-                padding: 20px;
-            }
-
-            form {
-                max-width: 600px;
-                margin: 0 auto;
-                text-align: left;
-            }
-
-            input, textarea {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-
-            button {
-                background-color: #d9534f;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            button:hover {
-                background-color: #c9302c;
-            }
-          </style>
-          </div>
+            <div id="gjs"></div>
         </div>
+
         <div class="panel__right">
-          <div class="layers-container"></div>
-          <div class="styles-container"></div>
-          <div class="traits-container"></div>
-          <div class="blocks-container"></div>
-          <div class="saveShit">
-          <input type="text" name="" id="name" placeholder="Name...">
-          <button id="save" onclick="saveToFirebase()">Save</button>
-        </div>
+            <div class="layers-container"></div>
+            <div class="styles-container"></div>
+            <div class="traits-container"></div>
+            <div class="blocks-container"></div>
+            <div class="saveShit">
+                <input type="text" name="" id="name" placeholder="Name...">
+                <button id="save" onclick="saveToFirebase()">Save</button>
+            </div>
         </div>
 
         

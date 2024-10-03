@@ -38,16 +38,38 @@
 </head>
 <body>
     <div class="main">
-      <div class="panel__top">
-        <div class="panel__basic-actions"></div>
-        <div class="panel__devices"></div>
-        <div class="panel__switcher"></div>
-      </div>
-      <div class="editor-row">
-        <div class="editor-canvas">
-          <div id="gjs">
-            <div class="header">
-              <h1>Monthly Newsletter</h1>
+        <div class="panel__top">
+            <div class="panel__basic-actions"></div>
+            <div class="panel__devices"></div>
+            <div class="panel__switcher"></div>
+        </div>
+        <div class="editor-row">
+            <div class="editor-canvas">
+                <div id="gjs">
+                    
+                </div>
+            </div>
+                <div class="panel__right">
+                <div class="layers-container"></div>
+                <div class="styles-container"></div>
+                <div class="traits-container"></div>
+                <div class="blocks-container"></div>
+
+                <div class="saveShit">
+                    <input type="text" name="" id="name" placeholder="Name...">
+                    <button id="save" onclick="saveToFirebase()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="screenshotResult"></div>
+    <script src="../JS/grapes.js"></script>
+    <script src="../JS/static.js"></script>
+    <div class="error">Please only open on desktop</div>
+
+    <div style="display: none;">
+        <div class="header">
+            <h1>Monthly Newsletter</h1>
             </div>
     
             <!-- Main Content Section -->
@@ -81,7 +103,7 @@
                 <p><a href="#">Unsubscribe</a> | <a href="#">Manage Preferences</a></p>
             </div>
             <style>
-              /* General Styles */
+            /* General Styles */
         body {
             font-family: Arial, sans-serif;
             color: #333;
@@ -154,23 +176,6 @@
             margin: 0 10px;
         }
             </style>
-          </div>
-        </div>
-        <div class="panel__right">
-          <div class="layers-container"></div>
-          <div class="styles-container"></div>
-          <div class="traits-container"></div>
-          <div class="blocks-container"></div>
-          <div class="saveShit">
-            <input type="text" name="" id="name" placeholder="Name...">
-            <button id="save" onclick="saveToFirebase()">Save</button>
-          </div>
-        </div>
-      </div>
     </div>
-    <div id="screenshotResult"></div>
-    <script src="../JS/grapes.js"></script>
-    <script src="../JS/static.js"></script>
-    <div class="error">Please only open on desktop</div>
 </body>
 </html>

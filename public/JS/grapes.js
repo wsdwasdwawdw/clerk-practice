@@ -25,16 +25,13 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
       // No user is signed in, handle accordingly
       console.log("No user is signed in.");
+      window.location.href = "../index.html";
   }
 });
 
 const current = localStorage.getItem("current");
 console.log(current);
 
-
-
-const id = document.title;
-console.log(id);
 
 const editor = grapesjs.init({
   // Indicate where to init the editor. You can also pass an HTMLElement
@@ -567,13 +564,5371 @@ editor.Commands.add('set-device-mobile', {
   run: editor => editor.setDevice('Mobile')
 });
 
-  
+
+const id = document.title;
+if(id === "Newsletter"){
+  const Newsletter = {
+  "assets": [],
+  "styles": [
+      {
+          "selectors": [],
+          "selectorsAdd": "body",
+          "style": {
+              "font-family": "Arial, sans-serif",
+              "color": "#333",
+              "margin": "0",
+              "padding": "0",
+              "background-color": "#f4f4f4"
+          }
+      },
+      {
+          "selectors": [
+              "container"
+          ],
+          "style": {
+              "max-width": "600px",
+              "margin": "20px auto",
+              "background-color": "#fff",
+              "padding": "20px",
+              "box-shadow": "0 0 10px rgba(0, 0, 0, 0.1)"
+          }
+      },
+      {
+          "selectors": [
+              "header"
+          ],
+          "style": {
+              "background-color": "#2E6A17",
+              "color": "white",
+              "padding": "20px",
+              "text-align": "center"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".header h1",
+          "style": {
+              "margin": "0",
+              "font-size": "28px"
+          }
+      },
+      {
+          "selectors": [
+              "main-content"
+          ],
+          "style": {
+              "padding": "20px"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".main-content h2",
+          "style": {
+              "color": "#2E6A17",
+              "font-size": "24px"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".main-content p",
+          "style": {
+              "line-height": "1.6",
+              "margin": "15px 0"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".main-content img",
+          "style": {
+              "max-width": "100%",
+              "height": "auto",
+              "margin-bottom": "20px",
+              "border-radius": "10px"
+          }
+      },
+      {
+          "selectors": [
+              "cta"
+          ],
+          "style": {
+              "background-color": "#9ECE89",
+              "color": "#2E6A17",
+              "padding": "15px",
+              "text-align": "center",
+              "margin": "20px 0",
+              "border-radius": "5px"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".cta a",
+          "style": {
+              "color": "#2E6A17",
+              "text-decoration": "none",
+              "font-weight": "bold",
+              "font-size": "18px"
+          }
+      },
+      {
+          "selectors": [
+              "footer"
+          ],
+          "style": {
+              "text-align": "center",
+              "color": "#777",
+              "font-size": "14px",
+              "padding": "20px 0",
+              "border-top": "1px solid #ddd",
+              "margin-top": "20px"
+          }
+      },
+      {
+          "selectors": [
+              "social-icons"
+          ],
+          "style": {
+              "margin": "20px 0",
+              "text-align": "center"
+          }
+      },
+      {
+          "selectors": [],
+          "selectorsAdd": ".social-icons img",
+          "style": {
+              "width": "40px",
+              "margin": "0 10px"
+          }
+      }
+  ],
+  "pages": [
+      {
+          "frames": [
+              {
+                  "component": {
+                      "type": "wrapper",
+                      "stylable": [
+                          "background",
+                          "background-color",
+                          "background-image",
+                          "background-repeat",
+                          "background-attachment",
+                          "background-position",
+                          "background-size"
+                      ],
+                      "components": [
+                          {
+                              "classes": [
+                                  "header"
+                              ],
+                              "components": [
+                                  {
+                                      "tagName": "h1",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "Monthly Newsletter"
+                                          }
+                                      ]
+                                  }
+                              ]
+                          },
+                          {
+                              "tagName": "NULL",
+                              "type": "comment",
+                              "content": " Main Content Section "
+                          },
+                          {
+                              "classes": [
+                                  "main-content"
+                              ],
+                              "components": [
+                                  {
+                                      "tagName": "h2",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "Welcome to Our Latest Update!"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "Hello Subscriber,"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "We are excited to bring you the latest news and updates. This month, we have some great content lined up just for you!"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "NULL",
+                                      "type": "comment",
+                                      "content": " Image "
+                                  },
+                                  {
+                                      "type": "image",
+                                      "resizable": {
+                                          "ratioDefault": 1
+                                      },
+                                      "attributes": {
+                                          "src": "https://via.placeholder.com/600x200",
+                                          "alt": "Newsletter Image"
+                                      }
+                                  },
+                                  {
+                                      "tagName": "NULL",
+                                      "type": "comment",
+                                      "content": " Section 1 "
+                                  },
+                                  {
+                                      "tagName": "h2",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "What's New This Month?"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "Check out the latest features we've added to our platform. We've been working hard to improve your experience, and we're thrilled to share our progress with you."
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "NULL",
+                                      "type": "comment",
+                                      "content": " Call to Action (CTA) "
+                                  },
+                                  {
+                                      "classes": [
+                                          "cta"
+                                      ],
+                                      "components": [
+                                          {
+                                              "tagName": "p",
+                                              "type": "text",
+                                              "components": [
+                                                  {
+                                                      "type": "textnode",
+                                                      "content": "Don't miss out on our exclusive offer! "
+                                                  },
+                                                  {
+                                                      "type": "link",
+                                                      "attributes": {
+                                                          "href": "#"
+                                                      },
+                                                      "components": [
+                                                          {
+                                                              "type": "textnode",
+                                                              "content": "Get 20% Off"
+                                                          }
+                                                      ]
+                                                  },
+                                                  {
+                                                      "type": "textnode",
+                                                      "content": " your next purchase!"
+                                                  }
+                                              ]
+                                          }
+                                      ]
+                                  }
+                              ]
+                          },
+                          {
+                              "tagName": "NULL",
+                              "type": "comment",
+                              "content": " Footer Section "
+                          },
+                          {
+                              "classes": [
+                                  "footer"
+                              ],
+                              "components": [
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "Thank you for being part of our community. Stay tuned for more updates!"
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "classes": [
+                                          "social-icons"
+                                      ],
+                                      "components": [
+                                          {
+                                              "type": "link",
+                                              "editable": false,
+                                              "attributes": {
+                                                  "href": "#"
+                                              },
+                                              "components": [
+                                                  {
+                                                      "type": "image",
+                                                      "resizable": {
+                                                          "ratioDefault": 1
+                                                      },
+                                                      "attributes": {
+                                                          "src": "https://via.placeholder.com/40",
+                                                          "alt": "Facebook"
+                                                      }
+                                                  }
+                                              ]
+                                          },
+                                          {
+                                              "type": "link",
+                                              "editable": false,
+                                              "attributes": {
+                                                  "href": "#"
+                                              },
+                                              "components": [
+                                                  {
+                                                      "type": "image",
+                                                      "resizable": {
+                                                          "ratioDefault": 1
+                                                      },
+                                                      "attributes": {
+                                                          "src": "https://via.placeholder.com/40",
+                                                          "alt": "Twitter"
+                                                      }
+                                                  }
+                                              ]
+                                          },
+                                          {
+                                              "type": "link",
+                                              "editable": false,
+                                              "attributes": {
+                                                  "href": "#"
+                                              },
+                                              "components": [
+                                                  {
+                                                      "type": "image",
+                                                      "resizable": {
+                                                          "ratioDefault": 1
+                                                      },
+                                                      "attributes": {
+                                                          "src": "https://via.placeholder.com/40",
+                                                          "alt": "Instagram"
+                                                      }
+                                                  }
+                                              ]
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "textnode",
+                                              "content": "© 2024 Your Company Name. All rights reserved."
+                                          }
+                                      ]
+                                  },
+                                  {
+                                      "tagName": "p",
+                                      "type": "text",
+                                      "components": [
+                                          {
+                                              "type": "link",
+                                              "attributes": {
+                                                  "href": "#"
+                                              },
+                                              "components": [
+                                                  {
+                                                      "type": "textnode",
+                                                      "content": "Unsubscribe"
+                                                  }
+                                              ]
+                                          },
+                                          {
+                                              "type": "textnode",
+                                              "content": " | "
+                                          },
+                                          {
+                                              "type": "link",
+                                              "attributes": {
+                                                  "href": "#"
+                                              },
+                                              "components": [
+                                                  {
+                                                      "type": "textnode",
+                                                      "content": "Manage Preferences"
+                                                  }
+                                              ]
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
+                  },
+                  "id": "I5I4qsiskhEwg7N3"
+              }
+          ],
+          "id": "ybn6NnG5DgW8PqG7"
+      }
+  ]
+  }
+  editor.loadProjectData(Newsletter);
+}
+else if(id === "Website"){
+  const Website = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [
+                "clearfix"
+            ],
+            "style": {
+                "clear": "both"
+            }
+        },
+        {
+            "selectors": [
+                "header-banner"
+            ],
+            "style": {
+                "padding-top": "35px",
+                "padding-bottom": "100px",
+                "color": "#ffffff",
+                "font-family": "Helvetica, serif",
+                "font-weight": "100",
+                "background-image": "url(\"https://grapesjs.com/img/bg-gr-v.png\"), url(\"https://grapesjs.com/img/work-desk.jpg\")",
+                "background-attachment": "scroll, scroll",
+                "background-position": "left top, center center",
+                "background-repeat": "repeat-y, no-repeat",
+                "background-size": "contain, cover"
+            }
+        },
+        {
+            "selectors": [
+                "container-width"
+            ],
+            "style": {
+                "width": "90%",
+                "max-width": "1150px",
+                "margin": "0 auto"
+            }
+        },
+        {
+            "selectors": [
+                "logo-container"
+            ],
+            "style": {
+                "float": "left",
+                "width": "50%"
+            }
+        },
+        {
+            "selectors": [
+                "logo"
+            ],
+            "style": {
+                "background-color": "#fff",
+                "border-radius": "5px",
+                "width": "130px",
+                "padding": "10px",
+                "min-height": "30px",
+                "text-align": "center",
+                "line-height": "30px",
+                "color": "#4d114f",
+                "font-size": "23px"
+            }
+        },
+        {
+            "selectors": [
+                "menu"
+            ],
+            "style": {
+                "float": "right",
+                "width": "50%"
+            }
+        },
+        {
+            "selectors": [
+                "menu-item"
+            ],
+            "style": {
+                "float": "right",
+                "font-size": "15px",
+                "color": "#eee",
+                "width": "130px",
+                "padding": "10px",
+                "min-height": "50px",
+                "text-align": "center",
+                "line-height": "30px",
+                "font-weight": "400"
+            }
+        },
+        {
+            "selectors": [
+                "lead-title"
+            ],
+            "style": {
+                "margin": "150px 0 30px 0",
+                "font-size": "40px"
+            }
+        },
+        {
+            "selectors": [
+                "sub-lead-title"
+            ],
+            "style": {
+                "max-width": "650px",
+                "line-height": "30px",
+                "margin-bottom": "30px",
+                "color": "#c6c6c6"
+            }
+        },
+        {
+            "selectors": [
+                "lead-btn"
+            ],
+            "style": {
+                "margin-top": "15px",
+                "padding": "10px",
+                "width": "190px",
+                "min-height": "30px",
+                "font-size": "20px",
+                "text-align": "center",
+                "letter-spacing": "3px",
+                "line-height": "30px",
+                "background-color": "#d983a6",
+                "border-radius": "5px",
+                "transition": "all 0.5s ease",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [
+                "lead-btn"
+            ],
+            "style": {
+                "background-color": "#ffffff",
+                "color": "#4c114e"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "lead-btn"
+            ],
+            "style": {
+                "background-color": "#4d114f",
+                "color": "#fff"
+            },
+            "state": "active"
+        },
+        {
+            "selectors": [
+                "flex-sect"
+            ],
+            "style": {
+                "background-color": "#fafafa",
+                "padding": "100px 0",
+                "font-family": "Helvetica, serif"
+            }
+        },
+        {
+            "selectors": [
+                "flex-title"
+            ],
+            "style": {
+                "margin-bottom": "15px",
+                "font-size": "2em",
+                "text-align": "center",
+                "font-weight": "700",
+                "color": "#555",
+                "padding": "5px"
+            }
+        },
+        {
+            "selectors": [
+                "flex-desc"
+            ],
+            "style": {
+                "margin-bottom": "55px",
+                "font-size": "1em",
+                "color": "rgba(0, 0, 0, 0.5)",
+                "text-align": "center",
+                "padding": "5px"
+            }
+        },
+        {
+            "selectors": [
+                "cards"
+            ],
+            "style": {
+                "padding": "20px 0",
+                "display": "flex",
+                "justify-content": "space-around",
+                "flex-flow": "wrap"
+            }
+        },
+        {
+            "selectors": [
+                "card"
+            ],
+            "style": {
+                "background-color": "white",
+                "height": "300px",
+                "width": "300px",
+                "margin-bottom": "30px",
+                "box-shadow": "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
+                "border-radius": "2px",
+                "transition": "all 0.5s ease",
+                "font-weight": "100",
+                "overflow": "hidden"
+            }
+        },
+        {
+            "selectors": [
+                "card"
+            ],
+            "style": {
+                "margin-top": "-5px",
+                "box-shadow": "0 20px 30px 0 rgba(0, 0, 0, 0.2)"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "card-header"
+            ],
+            "style": {
+                "height": "155px",
+                "background-image": "url(\"https://via.placeholder.com/350x250/78c5d6/fff\")",
+                "background-size": "cover",
+                "background-position": "center center"
+            }
+        },
+        {
+            "selectors": [
+                "card-header",
+                "ch2"
+            ],
+            "style": {
+                "background-image": "url(\"https://via.placeholder.com/350x250/459ba8/fff\")"
+            }
+        },
+        {
+            "selectors": [
+                "card-header",
+                "ch3"
+            ],
+            "style": {
+                "background-image": "url(\"https://via.placeholder.com/350x250/79c267/fff\")"
+            }
+        },
+        {
+            "selectors": [
+                "card-header",
+                "ch4"
+            ],
+            "style": {
+                "background-image": "url(\"https://via.placeholder.com/350x250/c5d647/fff\")"
+            }
+        },
+        {
+            "selectors": [
+                "card-header",
+                "ch5"
+            ],
+            "style": {
+                "background-image": "url(\"https://via.placeholder.com/350x250/f28c33/fff\")"
+            }
+        },
+        {
+            "selectors": [
+                "card-header",
+                "ch6"
+            ],
+            "style": {
+                "background-image": "url(\"https://via.placeholder.com/350x250/e868a2/fff\")"
+            }
+        },
+        {
+            "selectors": [
+                "card-body"
+            ],
+            "style": {
+                "padding": "15px 15px 5px 15px",
+                "color": "#555"
+            }
+        },
+        {
+            "selectors": [
+                "card-title"
+            ],
+            "style": {
+                "font-size": "1.4em",
+                "margin-bottom": "5px"
+            }
+        },
+        {
+            "selectors": [
+                "card-sub-title"
+            ],
+            "style": {
+                "color": "#b3b3b3",
+                "font-size": "1em",
+                "margin-bottom": "15px"
+            }
+        },
+        {
+            "selectors": [
+                "card-desc"
+            ],
+            "style": {
+                "font-size": "0.85rem",
+                "line-height": "17px"
+            }
+        },
+        {
+            "selectors": [
+                "am-sect"
+            ],
+            "style": {
+                "padding-top": "100px",
+                "padding-bottom": "100px",
+                "font-family": "Helvetica, serif"
+            }
+        },
+        {
+            "selectors": [
+                "img-phone"
+            ],
+            "style": {
+                "float": "left"
+            }
+        },
+        {
+            "selectors": [
+                "am-container"
+            ],
+            "style": {
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "align-items": "center",
+                "justify-content": "space-around"
+            }
+        },
+        {
+            "selectors": [
+                "am-content"
+            ],
+            "style": {
+                "float": "left",
+                "padding": "7px",
+                "width": "490px",
+                "color": "#444",
+                "font-weight": "100",
+                "margin-top": "50px"
+            }
+        },
+        {
+            "selectors": [
+                "am-pre"
+            ],
+            "style": {
+                "padding": "7px",
+                "color": "#b1b1b1",
+                "font-size": "15px"
+            }
+        },
+        {
+            "selectors": [
+                "am-title"
+            ],
+            "style": {
+                "padding": "7px",
+                "font-size": "25px",
+                "font-weight": "400"
+            }
+        },
+        {
+            "selectors": [
+                "am-desc"
+            ],
+            "style": {
+                "padding": "7px",
+                "font-size": "17px",
+                "line-height": "25px"
+            }
+        },
+        {
+            "selectors": [
+                "am-post"
+            ],
+            "style": {
+                "padding": "7px",
+                "line-height": "25px",
+                "font-size": "13px"
+            }
+        },
+        {
+            "selectors": [
+                "blk-sect"
+            ],
+            "style": {
+                "padding-top": "100px",
+                "padding-bottom": "100px",
+                "background-color": "#222222",
+                "font-family": "Helvetica, serif"
+            }
+        },
+        {
+            "selectors": [
+                "blk-title"
+            ],
+            "style": {
+                "color": "#fff",
+                "font-size": "25px",
+                "text-align": "center",
+                "margin-bottom": "15px"
+            }
+        },
+        {
+            "selectors": [
+                "blk-desc"
+            ],
+            "style": {
+                "color": "#b1b1b1",
+                "font-size": "15px",
+                "text-align": "center",
+                "max-width": "700px",
+                "margin": "0 auto",
+                "font-weight": "100"
+            }
+        },
+        {
+            "selectors": [
+                "price-cards"
+            ],
+            "style": {
+                "margin-top": "70px",
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "align-items": "center",
+                "justify-content": "space-around"
+            }
+        },
+        {
+            "selectors": [
+                "price-card-cont"
+            ],
+            "style": {
+                "width": "300px",
+                "padding": "7px",
+                "float": "left"
+            }
+        },
+        {
+            "selectors": [
+                "price-card"
+            ],
+            "style": {
+                "margin": "0 auto",
+                "min-height": "350px",
+                "background-color": "#d983a6",
+                "border-radius": "5px",
+                "font-weight": "100",
+                "color": "#fff",
+                "width": "90%"
+            }
+        },
+        {
+            "selectors": [
+                "pc-title"
+            ],
+            "style": {
+                "font-weight": "100",
+                "letter-spacing": "3px",
+                "text-align": "center",
+                "font-size": "25px",
+                "background-color": "rgba(0, 0, 0, 0.1)",
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "pc-desc"
+            ],
+            "style": {
+                "padding": "75px 0",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "pc-feature"
+            ],
+            "style": {
+                "color": "rgba(255,255,255,0.5)",
+                "background-color": "rgba(0, 0, 0, 0.1)",
+                "letter-spacing": "2px",
+                "font-size": "15px",
+                "padding": "10px 20px"
+            }
+        },
+        {
+            "selectors": [
+                "pc-feature"
+            ],
+            "style": {
+                "background-color": "transparent"
+            },
+            "state": "nth-of-type(2n)"
+        },
+        {
+            "selectors": [
+                "pc-amount"
+            ],
+            "style": {
+                "background-color": "rgba(0, 0, 0, 0.1)",
+                "font-size": "35px",
+                "text-align": "center",
+                "padding": "35px 0"
+            }
+        },
+        {
+            "selectors": [
+                "pc-regular"
+            ],
+            "style": {
+                "background-color": "#da78a0"
+            }
+        },
+        {
+            "selectors": [
+                "pc-enterprise"
+            ],
+            "style": {
+                "background-color": "#d66a96"
+            }
+        },
+        {
+            "selectors": [
+                "footer-under"
+            ],
+            "style": {
+                "background-color": "#312833",
+                "padding-bottom": "100px",
+                "padding-top": "100px",
+                "min-height": "500px",
+                "color": "#eee",
+                "position": "relative",
+                "font-weight": "100",
+                "font-family": "Helvetica,serif"
+            }
+        },
+        {
+            "selectors": [
+                "led"
+            ],
+            "style": {
+                "border-radius": "100%",
+                "width": "10px",
+                "height": "10px",
+                "background-color": "rgba(0, 0, 0, 0.15)",
+                "float": "left",
+                "margin": "2px",
+                "transition": "all 5s ease"
+            }
+        },
+        {
+            "selectors": [
+                "led"
+            ],
+            "style": {
+                "background-color": "#c29fca",
+                "undefined": "undefined",
+                "box-shadow": "0 0 5px #9d7aa5, 0 0 10px #e6c3ee",
+                "transition": "all 0s ease"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "copyright"
+            ],
+            "style": {
+                "background-color": "rgba(0, 0, 0, 0.15)",
+                "color": "rgba(238, 238, 238, 0.5)",
+                "bottom": "0",
+                "padding": "1em 0",
+                "position": "absolute",
+                "width": "100%",
+                "font-size": "0.75em"
+            }
+        },
+        {
+            "selectors": [
+                "made-with"
+            ],
+            "style": {
+                "float": "left",
+                "width": "50%",
+                "padding": "5px 0"
+            }
+        },
+        {
+            "selectors": [
+                "foot-social-btns"
+            ],
+            "style": {
+                "display": "none",
+                "float": "right",
+                "width": "50%",
+                "text-align": "right",
+                "padding": "5px 0"
+            }
+        },
+        {
+            "selectors": [
+                "footer-container"
+            ],
+            "style": {
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "align-items": "stretch",
+                "justify-content": "space-around"
+            }
+        },
+        {
+            "selectors": [
+                "foot-list"
+            ],
+            "style": {
+                "float": "left",
+                "width": "200px"
+            }
+        },
+        {
+            "selectors": [
+                "foot-list-title"
+            ],
+            "style": {
+                "font-weight": "400",
+                "margin-bottom": "10px",
+                "padding": "0.5em 0"
+            }
+        },
+        {
+            "selectors": [
+                "foot-list-item"
+            ],
+            "style": {
+                "color": "rgba(238, 238, 238, 0.8)",
+                "font-size": "0.8em",
+                "padding": "0.5em 0"
+            }
+        },
+        {
+            "selectors": [
+                "foot-list-item"
+            ],
+            "style": {
+                "color": "rgba(238, 238, 238, 1)"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "foot-form-cont"
+            ],
+            "style": {
+                "width": "300px",
+                "float": "right"
+            }
+        },
+        {
+            "selectors": [
+                "foot-form-title"
+            ],
+            "style": {
+                "color": "rgba(255,255,255,0.75)",
+                "font-weight": "400",
+                "margin-bottom": "10px",
+                "padding": "0.5em 0",
+                "text-align": "right",
+                "font-size": "2em"
+            }
+        },
+        {
+            "selectors": [
+                "foot-form-desc"
+            ],
+            "style": {
+                "font-size": "0.8em",
+                "color": "rgba(255,255,255,0.55)",
+                "line-height": "20px",
+                "text-align": "right",
+                "margin-bottom": "15px"
+            }
+        },
+        {
+            "selectors": [
+                "form"
+            ],
+            "style": {
+                "border-radius": "3px",
+                "padding": "10px 15px",
+                "background-color": "rgba(0,0,0,0.2)"
+            }
+        },
+        {
+            "selectors": [
+                "input"
+            ],
+            "style": {
+                "width": "100%",
+                "margin-bottom": "15px",
+                "padding": "7px 10px",
+                "border-radius": "2px",
+                "color": "#fff",
+                "background-color": "#554c57",
+                "border": "none"
+            }
+        },
+        {
+            "selectors": [
+                "textarea"
+            ],
+            "style": {
+                "width": "100%",
+                "margin-bottom": "15px",
+                "padding": "7px 10px",
+                "border-radius": "2px",
+                "color": "#fff",
+                "background-color": "#554c57",
+                "border": "none"
+            }
+        },
+        {
+            "selectors": [
+                "select"
+            ],
+            "style": {
+                "width": "100%",
+                "margin-bottom": "15px",
+                "padding": "7px 10px",
+                "border-radius": "2px",
+                "color": "#fff",
+                "background-color": "#554c57",
+                "border": "none",
+                "height": "30px"
+            }
+        },
+        {
+            "selectors": [
+                "sub-input"
+            ],
+            "style": {
+                "width": "100%",
+                "margin-bottom": "15px",
+                "padding": "7px 10px",
+                "border-radius": "2px",
+                "color": "#fff",
+                "background-color": "#554c57",
+                "border": "none"
+            }
+        },
+        {
+            "selectors": [
+                "label"
+            ],
+            "style": {
+                "width": "100%",
+                "display": "block"
+            }
+        },
+        {
+            "selectors": [
+                "button"
+            ],
+            "style": {
+                "width": "100%",
+                "margin": "15px 0",
+                "background-color": "#785580",
+                "border": "none",
+                "color": "#fff",
+                "border-radius": "2px",
+                "padding": "7px 10px",
+                "font-size": "1em",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [
+                "sub-btn"
+            ],
+            "style": {
+                "width": "100%",
+                "margin": "15px 0",
+                "background-color": "#785580",
+                "border": "none",
+                "color": "#fff",
+                "border-radius": "2px",
+                "padding": "7px 10px",
+                "font-size": "1em",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [
+                "sub-btn"
+            ],
+            "style": {
+                "background-color": "#91699a"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "sub-btn"
+            ],
+            "style": {
+                "background-color": "#573f5c"
+            },
+            "state": "active"
+        },
+        {
+            "selectors": [
+                "blk-row"
+            ],
+            "style": {
+                "content": "\"\"",
+                "clear": "both",
+                "display": "block"
+            },
+            "state": ":after"
+        },
+        {
+            "selectors": [
+                "blk-row"
+            ],
+            "style": {
+                "padding": "10px"
+            }
+        },
+        {
+            "selectors": [
+                "blk1"
+            ],
+            "style": {
+                "width": "100%",
+                "padding": "10px",
+                "min-height": "75px"
+            }
+        },
+        {
+            "selectors": [
+                "blk2"
+            ],
+            "style": {
+                "float": "left",
+                "width": "50%",
+                "padding": "10px",
+                "min-height": "75px"
+            }
+        },
+        {
+            "selectors": [
+                "blk3"
+            ],
+            "style": {
+                "float": "left",
+                "width": "33.3333%",
+                "padding": "10px",
+                "min-height": "75px"
+            }
+        },
+        {
+            "selectors": [
+                "blk37l"
+            ],
+            "style": {
+                "float": "left",
+                "width": "30%",
+                "padding": "10px",
+                "min-height": "75px"
+            }
+        },
+        {
+            "selectors": [
+                "blk37r"
+            ],
+            "style": {
+                "float": "left",
+                "width": "70%",
+                "padding": "10px",
+                "min-height": "75px"
+            }
+        },
+        {
+            "selectors": [
+                "heading"
+            ],
+            "style": {
+                "padding": "10px"
+            }
+        },
+        {
+            "selectors": [
+                "paragraph"
+            ],
+            "style": {
+                "padding": "10px"
+            }
+        },
+        {
+            "selectors": [
+                "bdg-sect"
+            ],
+            "style": {
+                "padding-top": "100px",
+                "padding-bottom": "100px",
+                "font-family": "Helvetica, serif",
+                "background-color": "#fafafa"
+            }
+        },
+        {
+            "selectors": [
+                "bdg-title"
+            ],
+            "style": {
+                "text-align": "center",
+                "font-size": "2em",
+                "margin-bottom": "55px",
+                "color": "#555555"
+            }
+        },
+        {
+            "selectors": [
+                "badges"
+            ],
+            "style": {
+                "padding": "20px",
+                "display": "flex",
+                "justify-content": "space-around",
+                "align-items": "flex-start",
+                "flex-wrap": "wrap"
+            }
+        },
+        {
+            "selectors": [
+                "badge"
+            ],
+            "style": {
+                "width": "290px",
+                "font-family": "Helvetica, serif",
+                "background-color": "white",
+                "margin-bottom": "30px",
+                "box-shadow": "0 2px 2px 0 rgba(0, 0, 0, 0.2)",
+                "border-radius": "3px",
+                "font-weight": "100",
+                "overflow": "hidden",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "badge-header"
+            ],
+            "style": {
+                "height": "115px",
+                "background-image": "url(\"https://grapesjs.com/img/bg-gr-v.png\"), url(\"https://grapesjs.com/img/work-desk.jpg\")",
+                "background-position": "left top, center center",
+                "background-attachment": "scroll, fixed",
+                "overflow": "hidden"
+            }
+        },
+        {
+            "selectors": [
+                "blurer"
+            ],
+            "style": {
+                "filter": "blur(5px)"
+            }
+        },
+        {
+            "selectors": [
+                "badge-name"
+            ],
+            "style": {
+                "font-size": "1.4em",
+                "margin-bottom": "5px"
+            }
+        },
+        {
+            "selectors": [
+                "badge-role"
+            ],
+            "style": {
+                "color": "#777",
+                "font-size": "1em",
+                "margin-bottom": "25px"
+            }
+        },
+        {
+            "selectors": [
+                "badge-desc"
+            ],
+            "style": {
+                "font-size": "0.85rem",
+                "line-height": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "badge-avatar"
+            ],
+            "style": {
+                "width": "100px",
+                "height": "100px",
+                "border-radius": "100%",
+                "border": "5px solid #fff",
+                "box-shadow": "0 1px 1px 0 rgba(0, 0, 0, 0.2)",
+                "margin-top": "-75px",
+                "position": "relative"
+            }
+        },
+        {
+            "selectors": [
+                "badge-body"
+            ],
+            "style": {
+                "margin": "35px 10px"
+            }
+        },
+        {
+            "selectors": [
+                "badge-foot"
+            ],
+            "style": {
+                "color": "#fff",
+                "background-color": "#a290a5",
+                "padding-top": "13px",
+                "padding-bottom": "13px",
+                "display": "flex",
+                "justify-content": "center"
+            }
+        },
+        {
+            "selectors": [
+                "badge-link"
+            ],
+            "style": {
+                "height": "35px",
+                "width": "35px",
+                "line-height": "35px",
+                "font-weight": "700",
+                "background-color": "#fff",
+                "color": "#a290a5",
+                "display": "block",
+                "border-radius": "100%",
+                "margin": "0 10px"
+            }
+        },
+        {
+            "selectors": [
+                "quote"
+            ],
+            "style": {
+                "color": "#777",
+                "font-weight": "300",
+                "padding": "10px",
+                "box-shadow": "-5px 0 0 0 #ccc",
+                "font-style": "italic",
+                "margin": "20px 30px"
+            }
+        },
+        {
+            "selectors": [
+                "foot-form-cont"
+            ],
+            "style": {
+                "width": "400px"
+            },
+            "mediaText": "(max-width: 768px)",
+            "atRuleType": "media"
+        },
+        {
+            "selectors": [
+                "foot-form-title"
+            ],
+            "style": {
+                "width": "autopx"
+            },
+            "mediaText": "(max-width: 768px)",
+            "atRuleType": "media"
+        },
+        {
+            "selectors": [
+                "foot-lists"
+            ],
+            "style": {
+                "display": "none"
+            },
+            "mediaText": "(max-width: 480px)",
+            "atRuleType": "media"
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "classes": [
+                                    "header-banner"
+                                ],
+                                "components": [
+                                    {
+                                        "classes": [
+                                            "container-width"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "logo-container"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "logo"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "GrapesJS"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "nav",
+                                                "classes": [
+                                                    "menu"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "menu-item"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "BUILDER"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "menu-item"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "TEMPLATE"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "menu-item"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "WEB"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "clearfix"
+                                                ]
+                                            },
+                                            {
+                                                "type": "text",
+                                                "classes": [
+                                                    "lead-title"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Build your templates without coding"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "text",
+                                                "classes": [
+                                                    "sub-lead-title"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "All text blocks could be edited easily with double clicking on it. You can create new text blocks with the command from the left panel"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "text",
+                                                "classes": [
+                                                    "lead-btn"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Hover me"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "classes": [
+                                    "flex-sect"
+                                ],
+                                "components": [
+                                    {
+                                        "classes": [
+                                            "container-width"
+                                        ],
+                                        "components": [
+                                            {
+                                                "type": "text",
+                                                "classes": [
+                                                    "flex-title"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Flex is the new black"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "text",
+                                                "classes": [
+                                                    "flex-desc"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "With flexbox system you're able to build complex layouts easily and with free responsivity"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "cards"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title one"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle one"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header",
+                                                                    "ch2"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title two"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle two"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header",
+                                                                    "ch3"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title three"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle three"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header",
+                                                                    "ch4"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title four"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle four"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header",
+                                                                    "ch5"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title five"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle five"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "card"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "classes": [
+                                                                    "card-header",
+                                                                    "ch6"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "classes": [
+                                                                    "card-body"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Title six"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-sub-title"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Subtitle six"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "text",
+                                                                        "classes": [
+                                                                            "card-desc"
+                                                                        ],
+                                                                        "components": [
+                                                                            {
+                                                                                "type": "textnode",
+                                                                                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "classes": [
+                                    "am-sect"
+                                ],
+                                "components": [
+                                    {
+                                        "classes": [
+                                            "container-width"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "am-container"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "classes": [
+                                                            "am-content"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "text",
+                                                                "classes": [
+                                                                    "am-pre"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "ASSET MANAGER"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "classes": [
+                                                                    "am-title"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Manage your images with Asset Manager"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "classes": [
+                                                                    "am-desc"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "You can create image blocks with the command from the left panel and edit them with double click"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "text",
+                                                                "classes": [
+                                                                    "am-post"
+                                                                ],
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Image uploading is not allowed in this demo"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "imm7FFGRaID2l7Aa"
+                }
+            ],
+            "id": "26aaQ3iI9NIljHOz"
+        }
+    ]
+  }
+  editor.loadProjectData(Website);
+}
+else if(id === "Blog"){
+  const Blog = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "*",
+            "style": {
+                "margin": "0",
+                "padding": "0",
+                "box-sizing": "border-box"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "Arial, sans-serif",
+                "line-height": "1.6",
+                "background-color": "#f4f4f4",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#333",
+                "color": "#fff",
+                "padding": "10px 0",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header h1",
+            "style": {
+                "margin-bottom": "10px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header nav ul",
+            "style": {
+                "list-style": "none"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header nav ul li",
+            "style": {
+                "display": "inline",
+                "margin-right": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header nav ul li a",
+            "style": {
+                "color": "#fff",
+                "text-decoration": "none"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "main",
+            "style": {
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "post"
+            ],
+            "style": {
+                "background": "#fff",
+                "padding": "15px",
+                "margin-bottom": "20px",
+                "border-radius": "5px",
+                "box-shadow": "0 0 10px rgba(0, 0, 0, 0.1)"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".post h2",
+            "style": {
+                "margin-bottom": "10px",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".post .date",
+            "style": {
+                "font-size": "0.9em",
+                "color": "#777"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button",
+            "style": {
+                "background-color": "#333",
+                "color": "#fff",
+                "padding": "10px 20px",
+                "border": "none",
+                "border-radius": "5px",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button:hover",
+            "style": {
+                "background-color": "#555"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#333",
+                "color": "#fff",
+                "text-align": "center",
+                "padding": "10px 0",
+                "position": "absolute",
+                "bottom": "0",
+                "width": "100%"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "My Blog"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Home"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "About"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "main",
+                                "components": [
+                                    {
+                                        "tagName": "article",
+                                        "classes": [
+                                            "post"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h2",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "First Blog Post"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "classes": [
+                                                    "date"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Published on: August 18, 2024"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "This is the content of the first blog post. It's simple and easy to understand."
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "button"
+                                                },
+                                                "text": "Like",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Like"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "article",
+                                        "classes": [
+                                            "post"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h2",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Second Blog Post"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "classes": [
+                                                    "date"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Published on: August 17, 2024"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "This is the content of the second blog post. Stay tuned for more updates!"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "button"
+                                                },
+                                                "text": "Like",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Like"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "© 2024 My Blog. All rights reserved."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "Hx9xJwZPIGQXAwTr"
+                }
+            ],
+            "id": "tbQlj33f9MjR1I0V"
+        }
+    ]
+  }
+  editor.loadProjectData(Blog);
+}
+else if(id === "Portfolio"){
+  const Portfolio = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "Arial, sans-serif",
+                "margin": "0",
+                "padding": "0",
+                "background-color": "#f4f4f4",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#007bff",
+                "color": "white",
+                "padding": "20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul",
+            "style": {
+                "list-style": "none",
+                "padding": "0"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li",
+            "style": {
+                "display": "inline",
+                "margin": "0 15px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a",
+            "style": {
+                "color": "white",
+                "text-decoration": "none"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "section",
+            "style": {
+                "padding": "40px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "#about"
+            ],
+            "style": {
+                "background-color": "#fff"
+            }
+        },
+        {
+            "selectors": [
+                "#projects"
+            ],
+            "style": {
+                "background-color": "#e9ecef"
+            }
+        },
+        {
+            "selectors": [
+                "#contact"
+            ],
+            "style": {
+                "background-color": "#fff"
+            }
+        },
+        {
+            "selectors": [
+                "project"
+            ],
+            "style": {
+                "margin": "20px auto",
+                "max-width": "600px",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#007bff",
+                "color": "white",
+                "text-align": "center",
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "form",
+            "style": {
+                "max-width": "600px",
+                "margin": "0 auto",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "input, textarea",
+            "style": {
+                "width": "100%",
+                "padding": "10px",
+                "margin-bottom": "10px",
+                "border": "1px solid #ccc",
+                "border-radius": "5px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button",
+            "style": {
+                "background-color": "#007bff",
+                "color": "white",
+                "border": "none",
+                "padding": "10px 20px",
+                "border-radius": "5px",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button:hover",
+            "style": {
+                "background-color": "#0056b3"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Your Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#about"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "About"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#projects"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Projects"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#contact"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "about"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "About Me"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Brief introduction and background."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "projects"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "My Projects"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "project"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h3",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Project Title"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Description of the project."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "NULL",
+                                        "type": "comment",
+                                        "content": " Repeat project divs as necessary "
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "contact"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Contact Me"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "form",
+                                        "attributes": {
+                                            "method": "get",
+                                            "action": "#"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "name"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Name:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "text",
+                                                    "id": "name",
+                                                    "name": "name",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "email"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Email:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "email",
+                                                    "id": "email",
+                                                    "name": "email",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "message"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Message:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "textarea",
+                                                "attributes": {
+                                                    "id": "message",
+                                                    "name": "message",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "submit"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Send"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "© 2024 Your Name. All rights reserved."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "oa4OHlMD1syl2tjt"
+                }
+            ],
+            "id": "twa1iyJjQe9xPuWC"
+        }
+    ]
+  }
+  editor.loadProjectData(Portfolio);
+}
+else if(id === "Business"){
+  const Business = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "Arial, sans-serif",
+                "margin": "0",
+                "padding": "0",
+                "background-color": "#f4f4f4",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#333",
+                "color": "white",
+                "padding": "20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul",
+            "style": {
+                "list-style": "none",
+                "padding": "0"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li",
+            "style": {
+                "display": "inline",
+                "margin": "0 15px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a",
+            "style": {
+                "color": "white",
+                "text-decoration": "none"
+            }
+        },
+        {
+            "selectors": [
+                "#hero"
+            ],
+            "style": {
+                "background-color": "#007bff",
+                "color": "white",
+                "padding": "60px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "white",
+                "color": "#007bff",
+                "padding": "10px 20px",
+                "text-decoration": "none",
+                "border-radius": "5px",
+                "display": "inline-block",
+                "margin-top": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "#0056b3",
+                "color": "white"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "section",
+            "style": {
+                "padding": "40px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "#services"
+            ],
+            "style": {
+                "background-color": "#e9ecef"
+            }
+        },
+        {
+            "selectors": [
+                "service"
+            ],
+            "style": {
+                "margin": "20px auto",
+                "max-width": "600px",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#333",
+                "color": "white",
+                "text-align": "center",
+                "padding": "20px"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Business Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#services"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Services"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#about"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "About Us"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#contact"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "hero"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Welcome to Our Business"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Your one-stop solution for [Service]."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "link",
+                                        "classes": [
+                                            "cta-button"
+                                        ],
+                                        "attributes": {
+                                            "href": "#services"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Learn More"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "services"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Our Services"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "service"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h3",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Service 1"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Description of service 1."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "service"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h3",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Service 2"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Description of service 2."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "about"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "About Us"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Information about the company."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "contact"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Contact Us"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "form",
+                                        "attributes": {
+                                            "method": "get",
+                                            "action": "#"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "name"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Name:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "text",
+                                                    "id": "name",
+                                                    "name": "name",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "email"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Email:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "email",
+                                                    "id": "email",
+                                                    "name": "email",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "message"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Message:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "textarea",
+                                                "attributes": {
+                                                    "id": "message",
+                                                    "name": "message",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "submit"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Send"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "© 2024 Business Name. All rights reserved."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "EBmTY3FwKEslO49y"
+                }
+            ],
+            "id": "GsQhgOrITHZcVTXF"
+        }
+    ]
+  }
+  editor.loadProjectData(Business);
+}
+else if(id === "E-Commerce"){
+  const Ecommerce = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "Arial, sans-serif",
+                "margin": "0",
+                "padding": "0",
+                "background-color": "#f4f4f4",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#333",
+                "color": "white",
+                "padding": "20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul",
+            "style": {
+                "list-style": "none",
+                "padding": "0"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li",
+            "style": {
+                "display": "inline",
+                "margin": "0 15px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a",
+            "style": {
+                "color": "white",
+                "text-decoration": "none"
+            }
+        },
+        {
+            "selectors": [
+                "#product"
+            ],
+            "style": {
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "justify-content": "center",
+                "align-items": "center",
+                "padding": "40px 20px",
+                "background-color": "white",
+                "margin": "20px",
+                "border-radius": "5px",
+                "box-shadow": "0 0 10px rgba(0, 0, 0, 0.1)"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".product-image img",
+            "style": {
+                "max-width": "100%",
+                "border-radius": "5px"
+            }
+        },
+        {
+            "selectors": [
+                "product-details"
+            ],
+            "style": {
+                "max-width": "600px",
+                "margin-left": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".product-details h2",
+            "style": {
+                "color": "#007bff"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button",
+            "style": {
+                "background-color": "#007bff",
+                "color": "white",
+                "border": "none",
+                "padding": "10px 20px",
+                "border-radius": "5px",
+                "cursor": "pointer",
+                "margin-top": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button:hover",
+            "style": {
+                "background-color": "#0056b3"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#333",
+                "color": "white",
+                "text-align": "center",
+                "padding": "20px"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Online Store"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#home"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Home"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#shop"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Shop"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#contact"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "product"
+                                },
+                                "components": [
+                                    {
+                                        "classes": [
+                                            "product-image"
+                                        ],
+                                        "components": [
+                                            {
+                                                "type": "image",
+                                                "resizable": {
+                                                    "ratioDefault": 1
+                                                },
+                                                "attributes": {
+                                                    "src": "product.jpg",
+                                                    "alt": "Product Image"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "product-details"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h2",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Product Name"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Price: $99.99"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Description of the product."
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "button"
+                                                },
+                                                "text": "Add to Cart",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Add to Cart"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "© 2024 Online Store. All rights reserved."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "fQDO9wy2Zv2LtKgz"
+                }
+            ],
+            "id": "KRQEMwjg2ZoQDsVq"
+        }
+    ]
+  }
+  editor.loadProjectData(Ecommerce);
+}
+else if(id === "Restaurant"){
+  const Restaurant = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "Arial, sans-serif",
+                "margin": "0",
+                "padding": "0",
+                "background-color": "#fff",
+                "color": "#333"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#d9534f",
+                "color": "white",
+                "padding": "20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul",
+            "style": {
+                "list-style": "none",
+                "padding": "0"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li",
+            "style": {
+                "display": "inline",
+                "margin": "0 15px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a",
+            "style": {
+                "color": "white",
+                "text-decoration": "none"
+            }
+        },
+        {
+            "selectors": [
+                "#hero"
+            ],
+            "style": {
+                "background-image": "url('restaurant.jpg')",
+                "background-size": "cover",
+                "color": "white",
+                "padding": "100px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "white",
+                "color": "#d9534f",
+                "padding": "10px 20px",
+                "text-decoration": "none",
+                "border-radius": "5px",
+                "display": "inline-block",
+                "margin-top": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "#c9302c",
+                "color": "white"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "section",
+            "style": {
+                "padding": "40px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "#menu"
+            ],
+            "style": {
+                "background-color": "#f7f7f7"
+            }
+        },
+        {
+            "selectors": [
+                "menu-item"
+            ],
+            "style": {
+                "margin": "20px auto",
+                "max-width": "600px",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#d9534f",
+                "color": "white",
+                "text-align": "center",
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "form",
+            "style": {
+                "max-width": "600px",
+                "margin": "0 auto",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "input, textarea",
+            "style": {
+                "width": "100%",
+                "padding": "10px",
+                "margin-bottom": "10px",
+                "border": "1px solid #ccc",
+                "border-radius": "5px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button",
+            "style": {
+                "background-color": "#d9534f",
+                "color": "white",
+                "border": "none",
+                "padding": "10px 20px",
+                "border-radius": "5px",
+                "cursor": "pointer"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button:hover",
+            "style": {
+                "background-color": "#c9302c"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Restaurant Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#menu"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Menu"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#about"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "About Us"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#contact"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "hero"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Welcome to Restaurant Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Experience the best dining in town."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "link",
+                                        "classes": [
+                                            "cta-button"
+                                        ],
+                                        "attributes": {
+                                            "href": "#menu"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "View Menu"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "menu"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Our Menu"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "menu-item"
+                                        ],
+                                        "components": [
+                                            {
+                                                "tagName": "h3",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Dish Name"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Description of the dish."
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Price: $12.99"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "NULL",
+                                        "type": "comment",
+                                        "content": " Repeat for more menu items "
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "about"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "About Us"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Information about the restaurant."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "contact"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Contact Us"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "form",
+                                        "attributes": {
+                                            "method": "get",
+                                            "action": "#"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "name"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Name:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "text",
+                                                    "id": "name",
+                                                    "name": "name",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "email"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Email:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "email",
+                                                    "id": "email",
+                                                    "name": "email",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "message"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Message:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "textarea",
+                                                "attributes": {
+                                                    "id": "message",
+                                                    "name": "message",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "submit"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Send"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "© 2024 Restaurant Name. All rights reserved"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "raNXYH1faQLbKOEv"
+                }
+            ],
+            "id": "MVHJvr20m1HnkV9A"
+        }
+    ]
+  }
+  editor.loadProjectData(Restaurant);
+}
+else if(id === "Agency"){
+  const Agency = {
+    "assets": [],
+    "styles": [
+        {
+            "selectors": [],
+            "selectorsAdd": "body",
+            "style": {
+                "font-family": "'Arial', sans-serif",
+                "margin": "0",
+                "padding": "0",
+                "color": "#333",
+                "background-color": "#f4f4f4"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "header",
+            "style": {
+                "background-color": "#222",
+                "color": "white",
+                "display": "flex",
+                "justify-content": "space-between",
+                "align-items": "center",
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [
+                "logo"
+            ],
+            "style": {
+                "font-size": "1.5em",
+                "font-weight": "bold"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul",
+            "style": {
+                "list-style": "none",
+                "display": "flex",
+                "margin": "0",
+                "padding": "0"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li",
+            "style": {
+                "margin": "0 15px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a",
+            "style": {
+                "color": "white",
+                "text-decoration": "none",
+                "transition": "color 0.3s ease"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "nav ul li a:hover",
+            "style": {
+                "color": "#f39c12"
+            }
+        },
+        {
+            "selectors": [
+                "hero"
+            ],
+            "style": {
+                "background-size": "cover",
+                "background-position": "center",
+                "color": "white",
+                "padding": "100px 20px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "#f39c12",
+                "color": "white",
+                "padding": "10px 20px",
+                "text-decoration": "none",
+                "border-radius": "5px",
+                "display": "inline-block",
+                "margin-top": "20px",
+                "transition": "background-color 0.3s ease"
+            }
+        },
+        {
+            "selectors": [
+                "cta-button"
+            ],
+            "style": {
+                "background-color": "#d35400"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [
+                "#services"
+            ],
+            "style": {
+                "padding": "60px 20px",
+                "background-color": "#fff",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "services-container"
+            ],
+            "style": {
+                "display": "flex",
+                "justify-content": "space-around",
+                "flex-wrap": "wrap"
+            }
+        },
+        {
+            "selectors": [
+                "service-item"
+            ],
+            "style": {
+                "max-width": "300px",
+                "padding": "20px",
+                "margin": "10px",
+                "background-color": "#f9f9f9",
+                "border-radius": "8px",
+                "transition": "transform 0.3s ease"
+            }
+        },
+        {
+            "selectors": [
+                "service-item"
+            ],
+            "style": {
+                "transform": "translateY(-10px)"
+            },
+            "state": "hover"
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".service-item .icon",
+            "style": {
+                "font-size": "2em",
+                "margin-bottom": "15px",
+                "color": "#f39c12"
+            }
+        },
+        {
+            "selectors": [
+                "#portfolio"
+            ],
+            "style": {
+                "padding": "60px 20px",
+                "background-color": "#f7f7f7",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "portfolio-gallery"
+            ],
+            "style": {
+                "display": "flex",
+                "justify-content": "space-around",
+                "flex-wrap": "wrap"
+            }
+        },
+        {
+            "selectors": [
+                "portfolio-item"
+            ],
+            "style": {
+                "position": "relative",
+                "width": "calc(33.333% - 20px)",
+                "margin": "10px",
+                "overflow": "hidden",
+                "border-radius": "8px",
+                "transition": "transform 0.3s ease"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".portfolio-item img",
+            "style": {
+                "width": "100%",
+                "height": "auto",
+                "display": "block",
+                "transition": "transform 0.3s ease"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".portfolio-item:hover img",
+            "style": {
+                "transform": "scale(1.1)"
+            }
+        },
+        {
+            "selectors": [
+                "overlay"
+            ],
+            "style": {
+                "position": "absolute",
+                "top": "0",
+                "left": "0",
+                "width": "100%",
+                "height": "100%",
+                "background": "rgba(0, 0, 0, 0.6)",
+                "color": "white",
+                "opacity": "0",
+                "transition": "opacity 0.3s ease",
+                "display": "flex",
+                "justify-content": "center",
+                "align-items": "center",
+                "text-align": "center",
+                "padding": "20px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".portfolio-item:hover .overlay",
+            "style": {
+                "opacity": "1"
+            }
+        },
+        {
+            "selectors": [
+                "#team"
+            ],
+            "style": {
+                "padding": "60px 20px",
+                "background-color": "#fff",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [
+                "team-container"
+            ],
+            "style": {
+                "display": "flex",
+                "justify-content": "space-around",
+                "flex-wrap": "wrap"
+            }
+        },
+        {
+            "selectors": [
+                "team-member"
+            ],
+            "style": {
+                "max-width": "250px",
+                "margin": "10px",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": ".team-member img",
+            "style": {
+                "border-radius": "50%",
+                "width": "100px",
+                "height": "100px",
+                "object-fit": "cover",
+                "margin-bottom": "10px"
+            }
+        },
+        {
+            "selectors": [
+                "#contact"
+            ],
+            "style": {
+                "padding": "60px 20px",
+                "background-color": "#f39c12",
+                "color": "white",
+                "text-align": "center"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "form",
+            "style": {
+                "max-width": "600px",
+                "margin": "20px auto",
+                "text-align": "left"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "input, textarea",
+            "style": {
+                "width": "100%",
+                "padding": "10px",
+                "margin-bottom": "10px",
+                "border": "none",
+                "border-radius": "5px"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button",
+            "style": {
+                "background-color": "white",
+                "color": "#f39c12",
+                "border": "none",
+                "padding": "10px 20px",
+                "border-radius": "5px",
+                "cursor": "pointer",
+                "transition": "background-color 0.3s ease"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "button:hover",
+            "style": {
+                "background-color": "#e67e22"
+            }
+        },
+        {
+            "selectors": [],
+            "selectorsAdd": "footer",
+            "style": {
+                "background-color": "#222"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "frames": [
+                {
+                    "component": {
+                        "type": "wrapper",
+                        "stylable": [
+                            "background",
+                            "background-color",
+                            "background-image",
+                            "background-repeat",
+                            "background-attachment",
+                            "background-position",
+                            "background-size"
+                        ],
+                        "components": [
+                            {
+                                "tagName": "header",
+                                "components": [
+                                    {
+                                        "type": "text",
+                                        "classes": [
+                                            "logo"
+                                        ],
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "AgencyName"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "nav",
+                                        "components": [
+                                            {
+                                                "tagName": "ul",
+                                                "components": [
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#home"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Home"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#services"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Services"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#portfolio"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Portfolio"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#team"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Team"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "li",
+                                                        "components": [
+                                                            {
+                                                                "type": "link",
+                                                                "attributes": {
+                                                                    "href": "#contact"
+                                                                },
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Contact"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "classes": [
+                                    "hero"
+                                ],
+                                "attributes": {
+                                    "id": "home"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h1",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "We Create Amazing Digital Experiences"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Your vision, our expertise. Let's bring your ideas to life."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "link",
+                                        "classes": [
+                                            "cta-button"
+                                        ],
+                                        "attributes": {
+                                            "href": "#services"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Discover More"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "services"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Our Services"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "services-container"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "service-item"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "tagName": "i",
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "icon"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "🎨"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Design"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Creating visually stunning and user-friendly designs."
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "service-item"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "tagName": "i",
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "icon"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "💻"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Development"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Building high-performance, scalable websites and apps."
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "service-item"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "tagName": "i",
+                                                        "type": "text",
+                                                        "classes": [
+                                                            "icon"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "📈"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Marketing"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Delivering data-driven strategies to grow your brand."
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "portfolio"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Our Work"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "portfolio-gallery"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "portfolio-item"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "image",
+                                                        "resizable": {
+                                                            "ratioDefault": 1
+                                                        },
+                                                        "attributes": {
+                                                            "src": "",
+                                                            "alt": "Project 1"
+                                                        }
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "overlay"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "tagName": "h3",
+                                                                "type": "text",
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Project Title"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "tagName": "p",
+                                                                "type": "text",
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Short description of the project."
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "portfolio-item"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "image",
+                                                        "resizable": {
+                                                            "ratioDefault": 1
+                                                        },
+                                                        "attributes": {
+                                                            "src": "",
+                                                            "alt": "Project 2"
+                                                        }
+                                                    },
+                                                    {
+                                                        "classes": [
+                                                            "overlay"
+                                                        ],
+                                                        "components": [
+                                                            {
+                                                                "tagName": "h3",
+                                                                "type": "text",
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Project Title"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "tagName": "p",
+                                                                "type": "text",
+                                                                "components": [
+                                                                    {
+                                                                        "type": "textnode",
+                                                                        "content": "Short description of the project."
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "NULL",
+                                                "type": "comment",
+                                                "content": " Add more portfolio items as needed "
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "team"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Meet the Team"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "classes": [
+                                            "team-container"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "team-member"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "image",
+                                                        "resizable": {
+                                                            "ratioDefault": 1
+                                                        },
+                                                        "attributes": {
+                                                            "src": "",
+                                                            "alt": "Team Member"
+                                                        }
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "John Doe"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "CEO & Founder"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "team-member"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "image",
+                                                        "resizable": {
+                                                            "ratioDefault": 1
+                                                        },
+                                                        "attributes": {
+                                                            "src": "",
+                                                            "alt": "Team Member"
+                                                        }
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Jane Smith"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Lead Designer"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "classes": [
+                                                    "team-member"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "image",
+                                                        "resizable": {
+                                                            "ratioDefault": 1
+                                                        },
+                                                        "attributes": {
+                                                            "src": "",
+                                                            "alt": "Team Member"
+                                                        }
+                                                    },
+                                                    {
+                                                        "tagName": "h3",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Mike Johnson"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "tagName": "p",
+                                                        "type": "text",
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Head of Development"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "NULL",
+                                                "type": "comment",
+                                                "content": " Add more team members as needed "
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "section",
+                                "attributes": {
+                                    "id": "contact"
+                                },
+                                "components": [
+                                    {
+                                        "tagName": "h2",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Contact Us"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "tagName": "p",
+                                        "type": "text",
+                                        "components": [
+                                            {
+                                                "type": "textnode",
+                                                "content": "Ready to work together? Get in touch with us!"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "form",
+                                        "attributes": {
+                                            "method": "get",
+                                            "action": "#"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "name"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Name:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "text",
+                                                    "id": "name",
+                                                    "name": "name",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "email"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Email:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "input",
+                                                "void": true,
+                                                "attributes": {
+                                                    "type": "email",
+                                                    "id": "email",
+                                                    "name": "email",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "label",
+                                                "attributes": {
+                                                    "for": "message"
+                                                },
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Message:"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "textarea",
+                                                "attributes": {
+                                                    "id": "message",
+                                                    "name": "message",
+                                                    "required": true
+                                                }
+                                            },
+                                            {
+                                                "type": "button",
+                                                "attributes": {
+                                                    "type": "submit"
+                                                },
+                                                "text": "Send Message",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "Send Message"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "footer",
+                                "components": [
+                                    {
+                                        "classes": [
+                                            "footer-content"
+                                        ],
+                                        "components": [
+                                            {
+                                                "classes": [
+                                                    "social-media"
+                                                ],
+                                                "components": [
+                                                    {
+                                                        "type": "link",
+                                                        "attributes": {
+                                                            "href": "#"
+                                                        },
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Facebook"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "link",
+                                                        "attributes": {
+                                                            "href": "#"
+                                                        },
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Twitter"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "link",
+                                                        "attributes": {
+                                                            "href": "#"
+                                                        },
+                                                        "components": [
+                                                            {
+                                                                "type": "textnode",
+                                                                "content": "Instagram"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "tagName": "p",
+                                                "type": "text",
+                                                "components": [
+                                                    {
+                                                        "type": "textnode",
+                                                        "content": "© 2024 Creative Agency. All rights reserved."
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "id": "d4yi7cQgNeGyFVFN"
+                }
+            ],
+            "id": "TPlc4A8M56OOdiIE"
+        }
+    ]
+  }
+  editor.loadProjectData(Agency);
+}
+
+
+const projectData = editor.getProjectData();
+console.log(projectData);
+
+
 // Function to save content to Firebase
 function saveToFirebase() {
 
   const user = firebase.auth().currentUser;
   const Name = document.getElementById("name").value;
-  const projectData = editor.getProjectData();
+  
 
   if (!Name) {
     alert("Please enter a project name.");
@@ -826,27 +6181,3 @@ copyCSS.addEventListener("click", () => {
     }
   }, 5000);
 });
-
-function hel(){
-  // Get current project data
-  const projectData = editor.getProjectData();
-  // ...
-  // Load project data
-  console.log(projectData);
-  localStorage.setItem("projectData",projectData);
-  const shet = localStorage.getItem('projectData');
-  /* localStorage.setItem("projectData", JSON.stringify(projectData));
-  const shet = JSON.parse(localStorage.getItem('projectData')); */
-  console.log(shet);
-  /* db.collection("htmlFiles").add({    // Save content
-    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    project: projectData
-})
-.then((docRef) => {
-    console.log(docRef.id);
-})
-.catch((error) => {
-    console.error("Error adding document: ", error);
-}); */
-}
-

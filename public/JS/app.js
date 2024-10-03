@@ -43,7 +43,7 @@ google.addEventListener("click", () => {
   // Ensure you're using the initialized `auth` and `provider`
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
+      
       const credential = result.credential;
       const token = credential.accessToken;
 
@@ -51,10 +51,6 @@ google.addEventListener("click", () => {
       const user = result.user;
       const name = user.email;
       const picture = user.photoURL;
-
-      // Store the user info in session storage
-      /* sessionStorage.setItem("currentUser", name);
-      sessionStorage.setItem("picture", picture); */
 
       // Redirect to the dashboard
       window.location.href = "./includes/dashboard.html";
@@ -89,6 +85,7 @@ function register() {
       return;
   }
   try {
+  
     // Create user with email and password
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -104,23 +101,28 @@ function register() {
         emailVerified: user.emailVerified, // Track if the email is verified
         email: user.email,
         createdAt: new Date(),
-        // Add any other additional fields you want to store
       });
       }).then(() => {
         console.log("User data saved in Firestore!");
+
+        const message = "User Registration Successful! Please check you email for the verification link.";
+        Alert(message);
         
       }).catch((error) => {
-        console.error("Error saving user data or sending verification email:", error);
+        console.error(error);
+        const message = "Error saving user data or sending verification email.";
+        Alert(message);
       });
-      // ...
   })
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    // ..
+    console.log(errorCode);
+    console.log(errorMessage);
+    const message = "Email address is badly formatted";
+    Alert(message);
   });
-
-  RegistrationAlert();
+  
   
   // Clear input fields
   document.getElementById('reg-email').value = "";
@@ -150,19 +152,24 @@ function pasok(){
         // Redirect or perform other actions upon successful login
         window.location.href = './includes/dashboard.html'; // Example of redirection
       } else {
-        alert("Please verify your email before logging in.");
+        const message = "Please verify your email before logging in.";
+        Alert(message);
       }
     })
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.error("Error during login:", errorMessage);
-      alert("No account found or login failed: " + errorMessage);
+      
+      const message = "No account found or login failed.";
+      Alert(message);
     });
+
+    
 }
 
 
-function RegistrationAlert(){
+function Alert(message){
   const login_reg = document.querySelector(".login-reg");
 
 
@@ -176,24 +183,39 @@ function RegistrationAlert(){
   div.style.transform = "translate(-50%, -50%)";
   div.style.backgroundColor = "#0D1117";
   div.style.border = "#F1E7CF solid 1px";
+  div.style.borderRadius = "15px";
   div.style.fontSize = "24px";
+  div.style.textAlign = "center";
   div.style.zIndex = "1";
   div.style.display = "flex";
   div.style.justifyContent = "center";
   div.style.alignItems = "center";
   div.style.overflow = "hidden";
-  div.textContent = "User Registration Successful! Please check you email for the verification link.";
+  div.style.opacity = "0";
+  div.style.transition = ".5s ease";
+  div.textContent = message;
   login_reg.appendChild(div);
 
   const glow = document.createElement("img");
   glow.style.position = "absolute";
   glow.style.top = "0";
+  glow.style.left = "0";
   glow.src = "./includes/IMG/yellow glow registrationAlert.png";
   div.appendChild(glow);
 
   setTimeout(() => {
-    if (login_reg.contains(div)) {
-      login_reg.removeChild(div);
-    }
-  }, 5000);
+    div.style.opacity = '1';
+  }, 0);
+  
+  // After 5 seconds, fade out the element
+  setTimeout(() => {
+    div.style.opacity = '0';
+    
+    // Once opacity is 0 (i.e., faded out), remove the element after transition
+    setTimeout(() => {
+      if (login_reg.contains(div)) {
+        login_reg.removeChild(div);
+      }
+    }, 1000);  // Wait for the fade-out transition (1 second)
+  }, 2000);
 }

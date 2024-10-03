@@ -67,6 +67,9 @@
     .home h3{
         font-size: 16px;
     }
+    .home .codes{
+        top: 30%;
+    }
 
     /* SERVICE */
     .service h1{
@@ -120,7 +123,7 @@
 }
 
 
-@media (max-width: 425px) {
+@media screen and (max-width: 425px) {
     
     header div{
         display: none;
@@ -147,6 +150,9 @@
     .home button{
         margin: 0 20px;
     }
+    .home .codes{
+        display: none;
+    }
 
     /* SERVICE */
     .service h1{
@@ -161,5 +167,53 @@
         margin: 10px 20px;
     }
 
-    
+    /* FAQS */
+    .FAQs .all .container .title h4{
+        font-size: .7em;
+    }
+    .FAQs .all .container .title img{
+        width: 10px;
+        height: 10px;
+    }
+
+
+    /* ABOUT US */
+    .about .kame{
+        background-image: url("../includes/IMG/line\ about.png");
+        background-position: center;
+        background-size: cover;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    .about .kame div{
+        
+        height: 150px;
+        width: 150px;
+        text-align: center;
+        align-content: center;
+    }
+    .about .moreAboutUs img{
+        display: none;
+    }
+
+    .about .moreAboutUs .texts{
+        width: 100%;
+        padding: 0 50px;
+    }
+
+    /* FOOTER */
+    footer .main{
+        margin: 10px 0;
+    }
+    footer .main p{
+        font-size: .2em;
+    }
+    footer .main h1{
+        font-size: .1em;
+    }
+    footer .main .inner{
+        display: none;
+    }
 }
