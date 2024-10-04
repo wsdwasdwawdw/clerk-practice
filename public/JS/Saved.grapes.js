@@ -498,6 +498,31 @@ editor.Panels.addPanel({
       attributes: {
         title: 'View JSON'
       }
+    },
+    {
+        id: 'preview',
+        className: 'btn-preview',
+        label: 'Preview',
+        context: 'preview',
+        command() {
+            togglePreviewMode();
+        },
+        attributes: {
+          title: "Preview",
+        },
+    },
+    {
+        id: 'clear',
+        className: 'btn-clear',
+        label: 'Clear',
+        context: 'clear',
+        command() {
+            const wrapper = editor.getWrapper();
+            wrapper.components().reset();
+        },
+        attributes: {
+          title: "Clear",
+        },
     }
   ],
 });

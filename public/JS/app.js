@@ -181,7 +181,7 @@ function Alert(message){
   div.style.top = "50%";
   div.style.left = "50%";
   div.style.transform = "translate(-50%, -50%)";
-  div.style.backgroundColor = "#0D1117";
+  div.style.backgroundColor = "#10151D";
   div.style.border = "#F1E7CF solid 1px";
   div.style.borderRadius = "15px";
   div.style.fontSize = "24px";
@@ -200,7 +200,7 @@ function Alert(message){
   glow.style.position = "absolute";
   glow.style.top = "0";
   glow.style.left = "0";
-  glow.src = "./includes/IMG/yellow glow registrationAlert.png";
+  glow.src = "./includes/IMG/alert glow.png";
   div.appendChild(glow);
 
   setTimeout(() => {
@@ -217,5 +217,5 @@ function Alert(message){
         login_reg.removeChild(div);
       }
     }, 1000);  // Wait for the fade-out transition (1 second)
-  }, 2000);
+  }, 3000);
 }

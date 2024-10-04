@@ -144,8 +144,9 @@ function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
                     listItem.appendChild(info);
 
                     const project = document.createElement("p");
+                    const name = fileData.project
                     project.className = tracker === "grid" ? "project" : "project project-List";
-                    project.textContent = fileData.project;
+                    project.textContent = name;
                     listItem.appendChild(project);
 
                     const icon = document.createElement("img");
@@ -157,7 +158,7 @@ function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
 
                     // Add delete and rename functionality
                     RemoveButton(listItem, fileList, fileData, doc);
-                    RenameButton(listItem, project, fileList, fileData, doc);
+                    RenameButton(listItem, project, name, fileData, doc);
 
                     // Attach list item-specific functionality
                     ListItem(listItem, fileData);
@@ -344,13 +345,13 @@ function RemoveButton(listItem, fileList, fileData, doc) {
         });
 
         // Add event listener for cancel-delete
-        document.querySelector(".cancel-delete").addEventListener("click", () => {
+        alert.querySelector(".close").addEventListener("click", () => {
             alert.classList.add("tago"); // Hide the delete confirmation dialog
         });
     });
 }
 
-function RenameButton(listItem, project, fileList, fileData, doc){
+function RenameButton(listItem, project, name, fileData, doc){
     // Create a rename button
     const renameButton = document.createElement('img');
     renameButton.src = './IMG/rename.png';
@@ -375,6 +376,8 @@ function RenameButton(listItem, project, fileList, fileData, doc){
         const alert = document.querySelector(".rename");
         alert.classList.remove("tago");
 
+        const p = alert.querySelector("span");
+        p.textContent = name;
         // Remove any previous event listener for confirm-rename
         const confirmRenameButton = document.querySelector(".confirm-rename");
         const newConfirmRenameButton = confirmRenameButton.cloneNode(true);
@@ -405,7 +408,7 @@ function RenameButton(listItem, project, fileList, fileData, doc){
             }
         });
 
-        document.querySelector(".cancel-rename").addEventListener("click", () => {
+        alert.querySelector(".close").addEventListener("click", () => {
             alert.classList.add("tago");
             document.querySelector(".newName").value = "";
         });

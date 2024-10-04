@@ -267,7 +267,7 @@ function RestoreButton(listItem, project, fileList, fileData, doc, info){
             });
         });
  
-        document.querySelector(".cancel-restore").addEventListener("click", () => {
+        restore.querySelector(".close").addEventListener("click", () => {
             restore.classList.add("tago");
         });
  
@@ -320,7 +320,7 @@ function DeleteButton(listItem, fileList, fileData, doc, info){
         });
         
         // Event listener for cancel button
-        document.querySelector(".cancel-delete").addEventListener("click", () => {
+        document.querySelector(".close").addEventListener("click", () => {
             if (deleteShit) {
                 deleteShit.classList.add("tago");
             }

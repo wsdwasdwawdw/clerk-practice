@@ -302,12 +302,96 @@ header .burger{
     top: 0;
     border-radius: 10px;
 }
-
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
+/* TEMPLATES */
+.templates {
+    margin: 20% 0 0 0;
+    user-select: none;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    z-index: 2;
+}
+
+.templates .carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between the two carousels */
+    overflow: hidden;
+}
+
+.templates .carousel {
+    display: flex;
+    gap: 20px;
+}
+
+.templates .first {
+    animation: scroll-right 40s linear infinite;
+}
+
+.templates .second {
+    animation: scroll-left 40s linear infinite;
+}
+
+/* Make both carousels have an endless flow by duplicating their content */
+.templates .first::after, .templates .second::after {
+    content: '';
+    display: block;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Adjust image styles */
+.templates .carousel img {
+    user-select: none;
+    pointer-events: all;
+    width: 30%;
+    height: auto;
+    margin-right: 10px;
+}
+/* Hover effect to pause the animation when hovering over an image */
+/* .templates .carousel img:hover {
+    animation-play-state: paused;
+} */
+
+/* Apply the pause to the entire carousel when hovering over any image */
+.templates .carousel:hover {
+    animation-play-state: paused;
+}
+
+/* Keyframe for scrolling the first div to the right */
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-220%);
+    }
+    100% {
+        transform: translateX(-37.6%);
+    }
+}
+
+/* Keyframe for scrolling the second div to the left */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(-37.6%);
+    }
+    100% {
+        transform: translateX(-220%);
+    }
+}
+
+/* Ensure the images are duplicated to create the infinite effect */
+.templates .carousel::after {
+    content: '';
+    display: block;
+    width: 100%;
+    flex-shrink: 0;
+}
+
 
 /* SERVICES */
 .service{

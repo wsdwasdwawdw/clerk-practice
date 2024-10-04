@@ -1,5 +1,4 @@
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyD6zhFT1FZyRnH8nybAT4ZPYBexHPqD5TM",
   authDomain: "capstone-8f915.firebaseapp.com",
@@ -41,7 +40,7 @@ const editor = grapesjs.init({
   fromElement: true,
   // Size of the editor
   height: '100%',
-  width: 'auto',
+  width: '100%',
   // Disable the storage manager for the moment
   storageManager: false,
   // Avoid any default panel
@@ -497,6 +496,31 @@ editor.Panels.addPanel({
       attributes: {
         title: "View JSON",
       },
+    },
+    {
+        id: 'preview',
+        className: 'btn-preview',
+        label: 'Preview',
+        context: 'preview',
+        command() {
+            togglePreviewMode();
+        },
+        attributes: {
+          title: "Preview",
+        },
+    },
+    {
+        id: 'clear',
+        className: 'btn-clear',
+        label: 'Clear',
+        context: 'clear',
+        command() {
+            const wrapper = editor.getWrapper();
+            wrapper.components().reset();
+        },
+        attributes: {
+          title: "Clear",
+        },
     }
   ],
 });
@@ -5990,7 +6014,7 @@ function saveToFirebase() {
                 const alerta = document.createElement("div");
                 alerta.style.width = "500px";
                 alerta.style.height = "100px";
-                alerta.style.backgroundColor = "#9ECE89";
+                alerta.style.backgroundColor = "#10151D";
                 alerta.style.position = "absolute";
                 alerta.style.top = "50%";
                 alerta.style.left = "50%";
@@ -6116,68 +6140,141 @@ function copyToClipboard(content) {
 
 // Event listener to copy formatted HTML content
 copyHTML.addEventListener("click", () => {
-  const htmlContent = editor.getHtml(); // Get HTML content from GrapesJS editor
-  const formattedHtml = formatHtml(htmlContent); // Format the HTML content
-  copyToClipboard(formattedHtml); // Copy to clipboard
+    const htmlContent = editor.getHtml(); // Get HTML content from GrapesJS editor
+    const formattedHtml = formatHtml(htmlContent); // Format the HTML content
+    copyToClipboard(formattedHtml); // Copy to clipboard
 
-  const htmlMirror = document.getElementById("gjs-cm-htmlmixed")
+    const htmlMirror = document.getElementById("gjs-cm-htmlmixed")
 
-  const alertHtmlCopy = document.createElement("div");
-  alertHtmlCopy.style.width = "46%";
-  alertHtmlCopy.style.height = "100px";
-  alertHtmlCopy.style.display = "flex";
-  alertHtmlCopy.style.justifyContent = "center";
-  alertHtmlCopy.style.alignItems = "center";
-  alertHtmlCopy.style.backgroundColor = "#9ECE89";
-  alertHtmlCopy.style.position = "absolute";
-  alertHtmlCopy.style.top = "45%";
-  alertHtmlCopy.style.left = "19px";
-  alertHtmlCopy.style.color = "#2E6A17";
-  alertHtmlCopy.style.fontSize = "24px";
-  alertHtmlCopy.style.fontWeight = "700";
-  alertHtmlCopy.textContent = "HTML Code copied to clipboard!";
-  htmlMirror.appendChild(alertHtmlCopy);
+    const alertHtmlCopy = document.createElement("div");
+    alertHtmlCopy.style.width = "46%";
+    alertHtmlCopy.style.height = "100px";
+    alertHtmlCopy.style.display = "flex";
+    alertHtmlCopy.style.justifyContent = "space-evenly";
+    alertHtmlCopy.style.alignItems = "center";
+    alertHtmlCopy.style.backgroundColor = "#10151D";
+    alertHtmlCopy.style.position = "absolute";
+    alertHtmlCopy.style.top = "45%";
+    alertHtmlCopy.style.left = "19px";
+    alertHtmlCopy.style.color = "#2E6A17";
+    alertHtmlCopy.style.fontSize = "1.5em";
+    alertHtmlCopy.style.fontWeight = "700";
+    alertHtmlCopy.textContent = "HTML Code copied to clipboard!";
+    htmlMirror.appendChild(alertHtmlCopy);
 
-  console.log("HTML copy");
+    const img = document.createElement("img");
+    img.src = "IMG/alert check.png";
+    img.style.width = "15%";
+    img.style.position = "relative";
+    img.style.zIndex = "2147483647";
+    alertHtmlCopy.prepend(img);
 
-  // Remove the alert after 2 seconds
-  setTimeout(() => {
-    if (htmlMirror.contains(alertHtmlCopy)) {
-      htmlMirror.removeChild(alertHtmlCopy);
-    }
-  }, 5000);
+    // Remove the alert after 2 seconds
+    setTimeout(() => {
+        if (htmlMirror.contains(alertHtmlCopy)) {
+        htmlMirror.removeChild(alertHtmlCopy);
+        }
+    }, 3000);
 });
 
 // Event listener to copy formatted CSS content
 copyCSS.addEventListener("click", () => {
-  const cssContent = editor.getCss(); // Get CSS content from GrapesJS editor
-  const formattedCss = formatCss(cssContent); // Format the CSS content
-  copyToClipboard(formattedCss); // Copy to clipboard
+    const cssContent = editor.getCss(); // Get CSS content from GrapesJS editor
+    const formattedCss = formatCss(cssContent); // Format the CSS content
+    copyToClipboard(formattedCss); // Copy to clipboard
 
-  const cssMirror = document.getElementById("gjs-cm-css")
+    const cssMirror = document.getElementById("gjs-cm-css")
 
-  const alertCssCopy = document.createElement("div");
-  alertCssCopy.style.width = "46%";
-  alertCssCopy.style.height = "100px";
-  alertCssCopy.style.display = "flex";
-  alertCssCopy.style.justifyContent = "center";
-  alertCssCopy.style.alignItems = "center";
-  alertCssCopy.style.backgroundColor = "#9ECE89";
-  alertCssCopy.style.position = "absolute";
-  alertCssCopy.style.top = "45%";
-  alertCssCopy.style.right = "19px";
-  alertCssCopy.style.color = "#2E6A17";
-  alertCssCopy.style.fontSize = "24px";
-  alertCssCopy.style.fontWeight = "700";
-  alertCssCopy.textContent = "CSS Code copied to clipboard!";
-  cssMirror.appendChild(alertCssCopy);
+    const alertCssCopy = document.createElement("div");
+    alertCssCopy.style.width = "46%";
+    alertCssCopy.style.height = "100px";
+    alertCssCopy.style.display = "flex";
+    alertCssCopy.style.justifyContent = "space-evenly";
+    alertCssCopy.style.alignItems = "center";
+    alertCssCopy.style.backgroundColor = "#10151D";
+    alertCssCopy.style.position = "absolute";
+    alertCssCopy.style.top = "45%";
+    alertCssCopy.style.right = "19px";
+    alertCssCopy.style.color = "#2E6A17";
+    alertCssCopy.style.fontSize = "1.5em";
+    alertCssCopy.style.fontWeight = "700";
+    alertCssCopy.textContent = "CSS Code copied to clipboard!";
+    cssMirror.appendChild(alertCssCopy);
 
-  console.log("CSS copy");
+    const img = document.createElement("img");
+    img.src = "IMG/alert check.png";
+    img.style.width = "15%";
+    img.style.position = "relative";
+    img.style.zIndex = "2147483647";
+    alertCssCopy.prepend(img);
+    console.log("CSS copy");
 
-  // Remove the alert after 2 seconds
-  setTimeout(() => {
-    if (cssMirror.contains(alertCssCopy)) {
-      cssMirror.removeChild(alertCssCopy);
-    }
-  }, 5000);
+    // Remove the alert after 2 seconds
+    setTimeout(() => {
+        if (cssMirror.contains(alertCssCopy)) {
+        cssMirror.removeChild(alertCssCopy);
+        }
+    }, 3000);
 });
+
+function getEditorContent() {
+    const html = editor.getHtml();
+    const css = editor.getCss();
+    return { html, css };
+}
+
+function enterPreviewMode() {
+    const { html, css } = getEditorContent();
+
+    const previewContainer = document.getElementById("preview-container");
+
+    // Clear the preview container
+    previewContainer.innerHTML = '';
+
+    // Create a style element for the CSS
+    const styleEl = document.createElement("style");
+    styleEl.innerHTML = css;
+
+    // Create a div or any container for the HTML content
+    const contentDiv = document.createElement("div");
+    contentDiv.innerHTML = html;
+
+    // Append the HTML and CSS to the preview container
+    previewContainer.appendChild(styleEl);
+    previewContainer.appendChild(contentDiv);
+    
+    // Optionally handle scripts inside the HTML, if needed
+    executePreviewScripts(contentDiv);
+}
+function executePreviewScripts(container) {
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(script => {
+        const newScript = document.createElement('script');
+        newScript.textContent = script.textContent;
+        document.body.appendChild(newScript);
+    });
+}
+
+let isPreviewMode = false;
+
+function togglePreviewMode() {
+    const editorContainer = document.querySelector(".main");
+    const previewContainer = document.getElementById("preview-container");
+    const editBtn = document.querySelector(".edit");
+
+    if (!isPreviewMode) {
+        // Switch to preview mode
+        enterPreviewMode();
+        editorContainer.style.display = "none";
+        previewContainer.style.display = "block";
+        editBtn.style.display = "block";
+    } else {
+        // Switch back to edit mode
+        editorContainer.style.display = "block";
+        previewContainer.style.display = "none";
+        editBtn.style.display = "none";
+    }
+
+    isPreviewMode = !isPreviewMode;
+}
+

@@ -474,6 +474,31 @@ editor.Panels.addPanel({
       attributes: {
         title: "View JSON",
       },
+    },
+    {
+        id: 'preview',
+        className: 'btn-preview',
+        label: 'Preview',
+        context: 'preview',
+        command() {
+            togglePreviewMode();
+        },
+        attributes: {
+          title: "Preview",
+        },
+    },
+    {
+        id: 'clear',
+        className: 'btn-clear',
+        label: 'Clear',
+        context: 'clear',
+        command() {
+            const wrapper = editor.getWrapper();
+            wrapper.components().reset();
+        },
+        attributes: {
+          title: "Clear",
+        },
     }
   ],
 });
@@ -540,122 +565,6 @@ editor.Commands.add('set-device-desktop', {
 editor.Commands.add('set-device-mobile', {
   run: editor => editor.setDevice('Mobile')
 });
-
-  
-// Function to save content to Firebase
-function saveToFirebase() {
-  
-  
-  // Get the HTML and CSS from the editor
-  const htmlContent = editor.getHtml();
-  const cssContent = editor.getCss();
-
-  // Create a temporary container to render the content
-  const tempContainer = document.createElement('div');
-  tempContainer.style.position = 'absolute';
-  tempContainer.style.top = '-10000px'; // Move it offscreen
-  tempContainer.style.height = "100%";
-  tempContainer.style.width = "100%";
-  tempContainer.innerHTML = htmlContent;
-
-  // Apply the extracted CSS
-  const styleElement = document.createElement('style');
-  styleElement.innerHTML = cssContent;
-  tempContainer.appendChild(styleElement);
-
-  // Append the temp container to the body
-  document.body.appendChild(tempContainer);
-
-  // Save the content to Firebase Firestore
-  const Name = document.getElementById("name").value;
-  const projectData = editor.getProjectData();
-
-  db.collection("htmlFiles").add({
-      content: htmlContent,
-      css: cssContent,       // Save content
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      project: Name,
-      email: taong,
-      projectData: projectData
-  })
-  .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
-
-      const katawan = document.body;
-
-      const alerta = document.createElement("div");
-      alerta.style.width = "500px";
-      alerta.style.height = "100px";
-      alerta.style.backgroundColor = "#9ECE89";
-      alerta.style.position = "absolute";
-      alerta.style.top = "50%";
-      alerta.style.left = "50%";
-      alerta.style.transform = "translate(-50%, -50%)";
-      alerta.style.zIndex = "2147483647";
-      alerta.style.opacity = "0";
-      alerta.style.transition = " opacity .5s ease";
-      alerta.style.textAlign = "center";
-      alerta.style.borderRadius = "10px";
-      katawan.appendChild(alerta);
-
-      const check = document.createElement("img");
-      check.src = "IMG/alert check.png";
-      check.style.width = "15%";
-      check.style.position = "absolute";
-      check.style.left = "10px";
-      check.style.top = "10px";
-      check.style.zIndex = "2147483647";
-      alerta.appendChild(check)
-
-      const message = document.createElement("p");
-      message.textContent = "Project Successfully Saved!";
-      message.style.color = "#2E6A17";
-      message.style.zIndex = "2147483647";
-      message.style.margin = "6.5% 0 0 10%";
-      message.style.fontSize = "28px";
-      alerta.appendChild(message);
-
-      requestAnimationFrame(() => {
-        alerta.style.opacity = "1";
-      });
-
-      setTimeout(() => {
-        alerta.style.opacity = "0"; 
-        setTimeout(() => {
-            katawan.removeChild(alerta); 
-        }, 2000); 
-      }, 2000);
-      
-      // Use html2canvas to capture the temp container
-      html2canvas(tempContainer).then(function(canvas) {
-          // Append the screenshot to the DOM
-          document.getElementById('screenshotResult').appendChild(canvas);
-
-          // Convert the canvas to a data URL (base64 encoded image)
-          const screenshotDataUrl = canvas.toDataURL();
-
-          // Save the screenshot in Firebase Firestore along with the document
-          db.collection("htmlFiles").doc(docRef.id).update({
-              screenshot: screenshotDataUrl
-          }).then(() => {
-              console.log("Screenshot added to Firestore");
-          }).catch((error) => {
-              console.error("Error adding screenshot: ", error);
-          });
-
-
-          // Clean up by removing the temporary container
-          document.body.removeChild(tempContainer);
-      });
-
-      // Clear the input field
-      document.getElementById("name").value = "";
-  })
-  .catch((error) => {
-      console.error("Error adding document: ", error);
-  });
-
-}
 
 const codeEditor = document.querySelector(".gjs-mdl-dialog");
 
@@ -785,25 +694,63 @@ copyCSS.addEventListener("click", () => {
   }, 5000);
 });
 
-function hel(){
-  // Get current project data
-  const projectData = editor.getProjectData();
-  // ...
-  // Load project data
-  console.log(projectData);
-  localStorage.setItem("projectData",projectData);
-  const shet = localStorage.getItem('projectData');
-  /* localStorage.setItem("projectData", JSON.stringify(projectData));
-  const shet = JSON.parse(localStorage.getItem('projectData')); */
-  console.log(shet);
-  /* db.collection("htmlFiles").add({    // Save content
-    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    project: projectData
-})
-.then((docRef) => {
-    console.log(docRef.id);
-})
-.catch((error) => {
-    console.error("Error adding document: ", error);
-}); */
+function getEditorContent() {
+  const html = editor.getHtml();
+  const css = editor.getCss();
+  return { html, css };
+}
+
+function enterPreviewMode() {
+  const { html, css } = getEditorContent();
+
+  const previewContainer = document.getElementById("preview-container");
+
+  // Clear the preview container
+  previewContainer.innerHTML = '';
+
+  // Create a style element for the CSS
+  const styleEl = document.createElement("style");
+  styleEl.innerHTML = css;
+
+  // Create a div or any container for the HTML content
+  const contentDiv = document.createElement("div");
+  contentDiv.innerHTML = html;
+
+  // Append the HTML and CSS to the preview container
+  previewContainer.appendChild(styleEl);
+  previewContainer.appendChild(contentDiv);
+  
+  // Optionally handle scripts inside the HTML, if needed
+  executePreviewScripts(contentDiv);
+}
+function executePreviewScripts(container) {
+  const scripts = container.querySelectorAll('script');
+  scripts.forEach(script => {
+      const newScript = document.createElement('script');
+      newScript.textContent = script.textContent;
+      document.body.appendChild(newScript);
+  });
+}
+
+let isPreviewMode = false;
+
+function togglePreviewMode() {
+  const editorContainer = document.querySelector(".main");
+  const previewContainer = document.getElementById("preview-container");
+  const editBtn = document.querySelector(".edit");
+
+  if (!isPreviewMode) {
+      // Switch to preview mode
+      enterPreviewMode();
+      editorContainer.style.display = "none";
+      previewContainer.style.display = "block";
+      editBtn.style.display = "block";
+  } else {
+      // Switch back to edit mode
+      editorContainer.style.display = "block";
+      previewContainer.style.display = "none";
+      editBtn.style.display = "none";
+  }
+
+  isPreviewMode = !isPreviewMode;
 }
