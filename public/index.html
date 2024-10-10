@@ -1,34 +1,34 @@
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="icon" href="includes/IMG/logooo-01.png">
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/media.css">
-    <!-- <link rel="stylesheet" href="/CSS/style.css"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    
-    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
-</head>
-<body>
-    <header>
-        <img src="includes/IMG/yung logo sa taas.png" alt="LOGO">
-        <div class="nav">
-            <ul>
-                <a href="#home">Homes</a>
-                <a href="#service">Service</a>
-                <a href="#about">About Us</a>
-                <button href="" class="login">Log In</button>
-            </ul>
-        </div>
-        <img src="./includes/IMG/burger.png" alt="" class="burger">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homepage</title>
+        <link rel="icon" href="includes/IMG/logooo-01.png">
+        <link rel="stylesheet" href="CSS/main.css">
+        <link rel="stylesheet" href="CSS/media.css">
+        <!-- <link rel="stylesheet" href="/CSS/style.css"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         
-    </header>
+        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="includes/IMG/yung logo sa taas.png" alt="LOGO">
+            <div class="nav">
+                <ul>
+                    <a href="#home">Home</a>
+                    <a href="#service">Service</a>
+                    <a href="#about">About Us</a>
+                    <button href="" class="login">Log In</button>
+                </ul>
+            </div>
+            <img src="./includes/IMG/burger.png" alt="" class="burger">
+            
+        </header>
 
         <div class="burgerMenu">
             <img src="includes/IMG/close.png" class="burgerClose">
@@ -79,6 +79,7 @@
             
             <h2>Choose from our collection of templates to speed up your process.</h2>
             <div class="carousel-wrapper">
+                <div class="s-1"></div>
                 <div class="carousel first">
                     <img src="includes/IMG/website.PNG" />
                     <img src="includes/IMG/blog.png" />
@@ -106,18 +107,53 @@
                     <img src="includes/IMG/newsletter.png" />
                     <img src="includes/IMG/website.PNG" />
                 </div>
+                <div class="s-2"></div>
             </div>
         </section>
         
         <section class="service" id="service">
-            <h1>Discover Our Features and Services</h1>
-            <img src="includes/IMG/line 2.png" class="line">
-            <img src="includes/IMG/yellow glow 1.png" class="yellow1">
-            <img src="includes/IMG/blue glow 1 (1).png" class="blue1">
-            <img src="includes/IMG/blue glow 2 (1).png" class="blue2">
-            <img src="includes/IMG/yellow glow 2.png" class="yellow2">
-            <img src="includes/IMG/Line 2 (1).png" class="line2">
 
+            <table>
+                <tbody>
+                    <tr class="r-1">
+                        <td class="c-1">
+                            <img src="includes/IMG/glow 2.png">
+                            <h1>All-in-One Tools for Every Designer</h1>
+                            <p>Check out the features that make designing and building effortless.</p>
+                        </td>
+                        <td class="c-2">
+                            <h2>Layer Manager</h2>
+                            <p>Organize and track design layers easily within the platform</p>
+                        </td>
+                        <td class="c-3">
+                            <h2>Template Selection</h2>
+                            <p>Choose from the pre-built templates to kickstart your design process.</p>
+                        </td>
+                    </tr>
+                    <tr class="r-2">
+                        <td class="c-1" rowspan="2">
+                            <h2>Drag-and-drop Design</h2>
+                            <p>Easily create designs by dragging and dropping elements onto the canvas.</p>
+                        </td>
+                        <td class="c-2" >
+                            <h2>View Code</h2>
+                            <p>Instantly view the HTML and CSS code for your designs, making it transparent and accessible.</p>
+                        </td>
+                        <td class="c-3" rowspan="2">
+                            <h2>Basic Blocks</h2>
+                            <p>Use pre-made blocks like images, videos, and sections for quick design building.</p>
+                        </td>
+                    </tr>
+                    <tr class="r-3">
+                        <td class="c-2">
+                            <h2>Style Manager</h2>
+                            <p>Customize the appearance of elements with options like background colors, font sizes, and more.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 
             <div class="container">
                 <div class="features">
                     <div class="content">
@@ -200,7 +236,8 @@
                     </div>
                     <img src="includes/IMG/features 3.png" class="pangatlo pic">
                 </div>
-            </div>
+            </div> -->
+
         </section>
 
         <section class="FAQs">
@@ -340,20 +377,11 @@
         </section>
 
         <footer>
-            <hr>
-            <div class="main">
-                <p>Copyright @2024 | SiteHustle | All Rights Reserved.</p>
 
-                <h1>SiteHustle</h1>
+            <p>© 2024 SiteHustle. All Rights Reserved</p>
 
-                <div class="inner">
-                    <a href="#home">Home</a>
-                    <a href="#service">Service</a>
-                    <a href="#about">About Us</a>
-                </div>
-            </div>
-            <img src="includes/IMG/yellow glow lowest.png" alt="" class="yellowLowest">
-            <img src="includes/IMG/blue glow lowest.png" alt="" class="blueLowest">
+            <P>support@sitehustledesign.com</P>
+
         </footer>
 
         <section class="login-reg hide">

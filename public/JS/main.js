@@ -255,7 +255,7 @@ var items = homeSection.querySelectorAll('h1');
 for (var i = 0, len = items.length; i < len; i++) {
 (function(){
     var e = this
-    , t = JSON.parse('["Create Seamlessly","Create Effortlessly","Build with SiteHustle"]')
+    , t = JSON.parse('["Create Seamlessly","Design Effortlessly","Build with SiteHustle"]')
     , r = function(e) {
     return parseInt(e, 10) || 0
     }

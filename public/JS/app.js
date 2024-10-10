@@ -38,6 +38,9 @@ const storage = firebase.storage(app);
 
 auth.languageCode = 'en';
 
+auth.onAuthStateChanged((user) =>{
+  console.log(user);
+});
 const google = document.getElementById("google");
 google.addEventListener("click", () => {
   // Ensure you're using the initialized `auth` and `provider`

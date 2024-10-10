@@ -330,6 +330,24 @@ header .burger{
     text-align: center;
     color: #ffffff;
 }
+.templates .carousel-wrapper .s-1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: -10px 0 100px 150px black;
+    z-index: 1;
+}
+.templates .carousel-wrapper .s-2{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: 10px 0 100px 150px black;
+    z-index: 1;
+}
 .templates .d-1{
     position: relative;
 }
@@ -340,7 +358,6 @@ header .burger{
 }
 .templates .d-1 img{
     position: absolute;
-    display: block;
     top: 0;
     left: 0;
     right: 300px;
@@ -353,10 +370,12 @@ header .burger{
     margin: 10px 0 100px 0;
 }
 .templates .carousel-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 20px; 
     overflow: hidden;
+
 }
 
 .templates .carousel {
@@ -430,91 +449,79 @@ header .burger{
 .service{
     height: auto;
     color: #ffffff;
-    text-align: center;
     gap: 50px;
     position: relative;
     padding: 0 10%;
+    margin: 200px 0 0 0;
 }
-
-.service img{
-    position: absolute;
-    z-index: 0;
-}
-.service .line{
-    position: absolute;
-    top: 50px;
-    left: 40%;
-    width: auto;
-}
-.service .yellow1{
-    left: 0;
-}
-.service .blue2{
-    left: 0;
-    bottom: -25%;
-}
-.service .yellow2{
+.service table{
+    color: #ffffff;
     right: 0;
-    bottom: -40%;
-}
-.service .blue1{
-    right: 0;
-    bottom: 0;
-}
-.service .line2{
     left: 0;
-    top: 20%;
-    width: 100%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 20px;
 }
-
-.service h1{
-    margin: 100px 0 0 0;
-    font-size: 64px;
+.service table h1{
+    font-size: 2em;
+    font-weight: 400;
+    position: relative;
+}
+.service table h2{
+    font-size: 1em;
+    margin: 0 0 10px 0;
+}
+.service table p{
+    font-size: 1em;
+    color: #ffffff;
+    opacity: .7;
     font-weight: 300;
 }
-
-.service .container {
-    margin: 8% 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-.service .container .features{
-    position: relative;
-    height: auto;
-    background-color: #0D1117;
-    border: #F1E7CF solid 1px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 5%;
-    z-index: 1;
-}
-.service .container .features .pic{
-    position: relative;
-    height: auto;
-    width: 60%;
-    box-sizing: border-box;
+.service table img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     margin: auto;
 }
-.service .container .features .content{
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    gap: 20px;
-}
-.service .container .features .content div{
-    display: flex;
-    gap: 10px;
-}
-.service .container .features .content div img{
+.service table tr td{
+    text-align: start;
+    width: 350px;
+    height: 350px;
+    border: transparent solid 1px;
+    border-radius: 20px;
+    padding: 20px;
     position: relative;
+    vertical-align: text-top;
 }
-
-
-
+.r-1 .c-1{
+    vertical-align: middle;
+}
+.r-1 .c-2{
+    border: rgb(238, 184, 50) solid 1px;
+    background: linear-gradient(20deg, #EEB832 0%, #000 64%);
+}
+.r-1 .c-3{
+    border: rgb(84, 50, 238) solid 1px;
+    background: linear-gradient(to top, #5432EE 0%, #362872 20%, #0D1117 70%);
+}
+.r-2 .c-1{
+    border: rgb(30, 21, 54) solid 1px;
+    background: linear-gradient(125deg, #000 20%,#21163d 60%, #2877b8 100%);
+}
+.r-2 .c-2{
+    border: #EE32AF solid 1px;
+    background: linear-gradient(160deg, #0D1117 25%, #286472 60%, #EE32AF 100%);
+}    
+.r-2 .c-3{
+    border: #0C3230 solid 1px;
+    background: linear-gradient(20deg, #7D6930 0%, #0C3230 36%, #000103 80%);
+}
+.r-3 .c-2{
+    border: #0C3230 solid 1px;
+    background: linear-gradient(150deg, #0D1117 30%, #287263 80%, #32EEC2 100%);
+}
 
 
 /* FAQS */
@@ -668,43 +675,12 @@ header .burger{
 }
 /* FOOTER */
 footer{
-    padding: 0 100px;
+    padding: 100px;
     position: relative;
-    border: transparent solid 1px;
-}
-footer hr{
-    box-sizing: border-box;
-}
-footer .main{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    color: #ffffff;
-}
-footer .main h1{
-    font-size: 24px;
-}
-footer .main .inner{
-    display: flex;
-    gap: 20px;
-}
-footer .main .inner a{
-    text-decoration: none;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-footer img{
-    position: absolute;
-}
-footer .yellowLowest{
-    left: 0;
-    bottom: 0;
-}
-footer .blueLowest{
-    left: 0;
-    bottom: 0;
+    color: #858585;
+    background-color: #0D1117;
 }
 
 /* LOGIN AND REGISTRATION FORM */
