@@ -39,29 +39,35 @@
 <body>
     <div class="main">
         <div class="panel__top">
-            <div class="panel__basic-actions"></div>
-            <div class="panel__devices"></div>
-            <div class="panel__switcher"></div>
+          <div class="panel__styles"></div>
+          <div class="panel__devices"></div>
+          <a href="./dashboard.html" class="logo"></a>
+          <div class="panel__basic-actions"></div>
+          <div class="panel__switcher"></div>
         </div>
+    
         <div class="editor-row">
-            <div class="editor-canvas">
-                <div id="gjs">
+          
+          <div class="panel">
+            <div class="styles-container">
             </div>
+            <div class="traits-container">
+              <div class="no-selection-message">No element selected. Please select an element to see its traits.</div>
             </div>
-            <div class="panel__right">
-                <div class="layers-container"></div>
-                <div class="styles-container"></div>
-                <div class="traits-container"></div>
-                <div class="blocks-container"></div>
-                
-                <div class="saveShit">
-                <input type="text" name="" id="name" placeholder="Name...">
-                <button id="save" onclick="saveToFirebase()">Save</button>
-                </div>
+          </div>
+    
+          <div class="editor-canvas">
+            <div id="gjs">  
             </div>
+          </div>
+          
+          <div class="panel">
+            <div class="layers-container"></div>
+            <div class="blocks-container"></div>
+          </div>
         </div>
-      <!-- <button id="save" class="save">Save</button> -->
     </div>
+
     <div id="screenshotResult"></div>
     
     

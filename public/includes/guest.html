@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guest</title>
 
     <link href="../CSS/grapick.min.css" rel="stylesheet">
     <link href="../CSS/grapes.min.css" rel="stylesheet" >
-
+    <link rel="icon" href="../includes/IMG/logo">
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
@@ -18,6 +18,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    
     
     <script src="../JS/basic-blocks.js"></script>   <!-- important -->
     <script src="../JS/forms.js"></script>          <!-- important -->
@@ -30,44 +32,58 @@
     <script src="../JS/Typed.js"></script>          <!-- important -->
     <script src="../JS/tooltip.js"></script>        <!-- important -->
     <script src="../JS/style-bg.js"></script>       <!-- important -->
-
+    <script src="../JS/export.js"></script>         <!-- important -->
+    <!-- <script src="../JS/import.js"></script> -->         <!-- important -->
+    
     
     <script src="../JS/grapes.min.js"></script>
     <link rel="stylesheet" href="../CSS/grapes.css">
-    
-    
-</head>
-<body>
+  </head>
+  <body>
     <div class="main">
       <div class="panel__top">
-        <div class="panel__basic-actions"></div>
+        <div class="panel__styles"></div>
         <div class="panel__devices"></div>
+        <a href="../index.html" class="logo"></a>
+        <div class="panel__basic-actions"></div>
         <div class="panel__switcher"></div>
       </div>
+
       <div class="editor-row">
+        
+        <div class="panel">
+          <div class="styles-container">
+          </div>
+          <div class="traits-container">
+            <div class="no-selection-message">No element selected. Please select an element to see its traits.</div>
+          </div>
+        </div>
+
         <div class="editor-canvas">
           <div id="gjs">
-            <h1>Hello World Component!</h1>  
+            <h1>Hello World</h1>       
           </div>
-          
         </div>
-        <div class="panel__right">
+        
+        <div class="panel">
           <div class="layers-container"></div>
-          <div class="styles-container"></div>
-          <div class="traits-container"></div>
           <div class="blocks-container"></div>
         </div>
       </div>
     </div>
+    
     <div id="screenshotResult"></div>
-    <script src="../JS/guest.js"></script>
-    <!-- <script src="../JS/save.js"></script> -->
-    <script src="../JS/static.js"></script>
+    
     
     <div class="error">Please only open on desktop</div>
 
-    <div id="preview-container"></div>
+    <div id="preview-container">
+      
+    </div>
     
-    <button class="edit" onclick="togglePreviewMode()">Edit</button>
-</body>
+    <span class="edit" onclick="togglePreviewMode()">Edit</span>
+
+    <script src="../JS/guest.js"></script>
+    <script src="../JS/static.js"></script>
+  </body>
 </html>

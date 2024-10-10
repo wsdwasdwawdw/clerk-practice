@@ -26,22 +26,19 @@ let logreg = true;
 login.forEach(login =>{
     login.addEventListener("click", ()=>{
         login_reg.classList.remove("hide");
-
     });
-})
+});
 
 
 function Register(){
     login_reg.classList.remove("hide");
     regform.classList.remove("reg-form-hide");
     logform.classList.add("login-form-hide");
-}
+};
 
 const burger = document.querySelector(".burger");
 const burgerMenu = document.querySelector(".burgerMenu");
 burger.addEventListener("click", ()=>{
-    
-    
     burgerMenu.style.right = "0";
 });
 const burgerClose = document.querySelector(".burgerClose");
@@ -140,25 +137,14 @@ divs.forEach((div, index) => {
             img.style.transform = "rotate(0deg)"
         });
 
-        if (p.style.display === 'block') {
-            p.style.display = "none";
-            div.title = "Click to Expand";
-            
-        } else {
-            p.style.display = "block";
-            div.title = "Click to Close"
-            
-        }
+        p.style.display = "block";
+        div.title = "Click to Close"
+
         rotation += 225;
 
         cross.style.transform = `rotate(${rotation}deg)`;
     });
 });
-const tutorial = faqs.querySelector(".Tutorial");
-tutorial.addEventListener("click", (event)=>{
-    event.stopPropagation();
-    window.open("https://drive.google.com/file/d/1zKl_7WFkXRUqz1VBAXKPMM67Ao6Qpg51/view");
-})
 
 
 
@@ -229,7 +215,7 @@ regconfirmpassword.addEventListener("input", ()=>{
 });
 
 const loginBtn = document.getElementById("login");
-logpassword.addEventListener("input",  ()=>{
+logform.addEventListener("input",  ()=>{
     if(logemail.value.trim() === "" || logpassword.value.trim() === ""){
         loginBtn.style.pointerEvents = "none";
         loginBtn.style.opacity = ".5";
@@ -250,4 +236,124 @@ sara.addEventListener("click", ()=>{
     wehhhhh.textContent = "";
 
     login_reg.classList.add("hide");
+});
+
+const templates = document.querySelector(".templates");
+const carousel = templates.querySelector(".carousel");
+const imgs = carousel.querySelectorAll("img");
+imgs.forEach(img =>{
+    img.title = "Want to use this template?";
+    
+    img.addEventListener("click", ()=>{
+        login_reg.classList.remove("hide");
+    });
+});
+
+
+const homeSection = document.getElementById("home");
+var items = homeSection.querySelectorAll('h1');
+for (var i = 0, len = items.length; i < len; i++) {
+(function(){
+    var e = this
+    , t = JSON.parse('["Create Seamlessly","Create Effortlessly","Build with SiteHustle"]')
+    , r = function(e) {
+    return parseInt(e, 10) || 0
+    }
+    , n = function(e) {
+    return !!e
+    }
+    , o = function() {
+    var o = e;
+    o.innerHTML = '<span></span>';
+    var c = parseInt('Infinity', 10)
+    , s = {
+        typeSpeed: r('60'),
+        startDelay: r(''),
+        backDelay: r('700'),
+        backSpeed: r('50'),
+        smartBackspace: n('true'),
+        fadeOut: n(''),
+        fadeOutClass: 'typed-fade-out',
+        fadeOutDelay: r('900'),
+        shuffle: n(''),
+        loop: n('true'),
+        loopCount: isNaN(c) ? 1 / 0 : c,
+        showCursor: n('true'),
+        cursorChar: '|',
+        autoInsertCss: n('true'),
+        bindInputFocusEvents: n(''),
+        attr: '',
+        contentType: 'html'
+    };
+    t && t.length && (s.strings = t),
+        new Typed(o.children[0],s)
+    };
+    if (window.Typed)
+    o();
+    else {
+    var c = document.createElement('script');
+    c.src = 'https://cdn.jsdelivr.net/npm/typed.js@2.0.11',
+        c.onload = o,
+        document.head.appendChild(c)
+    }
+}
+    .bind(items[i]))();
+}
+
+let lastScrollTop = 0; // Track the last scroll position
+const header = document.querySelector('header');
+const body = document.body; // Select the body element
+const scrollThreshold = 5; // Scroll threshold to avoid small movements
+
+// Listen for scroll event on the document body
+body.addEventListener('scroll', function() {
+    let scrollTop = body.scrollTop || document.documentElement.scrollTop; // Get current scroll position
+
+    // Check if the scroll movement is significant
+    if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down: hide the header
+        header.style.top = "-200px";
+    } else {
+        // Scrolling up: show the header
+        header.style.top = "30px";
+    }
+    }
+
+    lastScrollTop = scrollTop; // Update the last scroll position
+});
+
+const tutorialSection = document.querySelector(".tutorials");
+const steps = tutorialSection.querySelectorAll("span");
+const vid = tutorialSection.querySelector(".placement");
+steps.forEach(span =>{
+    
+    span.addEventListener("click", ()=>{
+
+        steps.forEach(span =>{
+            span.style.border = "transparent solid 1px";
+            span.style.backgroundColor = "transparent";
+        });
+
+        span.style.border = "#DB9D47 solid 1px";
+        span.style.backgroundColor = "#222222";
+        span.classList.add("selected");
+
+        
+        if(span.classList.contains("one")){
+            vid.textContent = "Choosing a Template";
+        }
+        else if(span.classList.contains("two")){
+            vid.textContent = "Add Blocks";
+
+        }
+        else if(span.classList.contains("three")){
+            vid.textContent = "Customize it";
+
+        }
+        else if(span.classList.contains("four")){
+            vid.textContent = "View and copy the Code";
+
+        }
+    });
 });

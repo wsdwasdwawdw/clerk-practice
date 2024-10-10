@@ -2,67 +2,46 @@
 const domc = editor.DomComponents;
 
 editor.BlockManager.add('cell',{
-    category: 'Customize blocks',
-    label: 'Column/s',
-    media: `
-    <svg width="50" height="50">
-      <rect width="50" height="20" y="0"style="fill:#444;stroke-width:1;stroke:white" />
-      <rect width="50" height="20" y="25"style="fill:#444;stroke-width:1;stroke:white" />
-    </svg>
-    `,
-    content: `
-      <table style="width: 100%; height: 100px; padding: 10px; "> 
-        <tr style="display: flex;">
-        </tr>
-      </table>
-    `,
-  }); 
-
-  editor.BlockManager.add('div',{
-    category: 'Basic',
-    media:"<svg viewBox=\"0 0 23 24\">\n        <path fill=\"currentColor\" d=\"M2 20h8V4H2v16Zm-1 0V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1ZM13 20h8V4h-8v16Zm-1 0V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1Z\"/>\n      </svg>",
-    label: 'div',
-    content: `
-      <div style="width: 100%; min-height: 100px; padding: 10px; display: flex;"> 
-        
-        <div style="min-height: 76px; flex-grow: 1; flex-basis: 100%; "><p>Insert text Here</p></div>
-        
-      </div>
-    `,
-    
-  }); 
-
-    editor.BlockManager.add('practice', {
-    // ...
-    
-    label: 'pratice',
-    category: 'Customize blocks',
+  label: 'Link Block',
+  category: "Basic",
+  media: `<svg viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z"></path>
+    </svg>`,
     content: {
-      tagName: 'div',
-      draggable: true,
-      attributes: { 'some-attribute': 'some-value' },
-      components: [
-        {
-          tagName: 'span',
-          content: '<b>Some static content</b>',
-        }, {
-          tagName: 'div',
-          // use `content` for static strings, `components` string will be parsed
-          // and transformed in Components
-          components: `
-          <span>HTML at some point</span>
-          `,
-        }, {
-          tagName: 'span',
-          // use `content` for static strings, `components` string will be parsed
-          // and transformed in Components
-          components: `
-            <table>
-                <td><span>Practice</span>
-          `,
-        }
-      ]
-    }
+      type: 'link',
+      editable: false,
+      droppable: true,
+      style: {
+        display: 'inline-block',
+        padding: '5px',
+        'min-height': '50px',
+        'min-width': '50px'
+      }
+    },
+  }); 
+
+  editor.BlockManager.add('Quote',{
+    label: 'Quote',
+    category: "Basic",
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z" />
+    </svg>`,
+    content: `<blockquote class="quote">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ipsum dolor sit
+      </blockquote>`
+    
+  }); 
+
+    editor.BlockManager.add('Section', {
+    label: 'Section',
+    category: 'Basic',
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z" />
+    </svg>`,
+    content: `<section class="bdg-sect">
+      <h1 class="heading">Insert title here</h1>
+      <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+      </section>`
   });
 
   editor.BlockManager.add('section',{

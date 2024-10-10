@@ -107,6 +107,13 @@ function register() {
 
         const message = "User Registration Successful! Please check you email for the verification link.";
         Alert(message);
+
+        // Clear input fields
+        document.getElementById('reg-email').value = "";
+        document.getElementById('reg-password').value = "";
+        document.getElementById('reg-confirmpassword').value = "";
+        document.querySelector(".lakas").textContent = "";
+        document.querySelector(".wehhhhh").textContent = "";
         
       }).catch((error) => {
         console.error(error);
@@ -124,12 +131,7 @@ function register() {
   });
   
   
-  // Clear input fields
-  document.getElementById('reg-email').value = "";
-  document.getElementById('reg-password').value = "";
-  document.getElementById('reg-confirmpassword').value = "";
-  document.querySelector(".lakas").textContent = "";
-  document.querySelector(".wehhhhh").textContent = "";
+  
 
   } catch (error) {
       console.error("Error during registration:", error);
@@ -205,7 +207,7 @@ function Alert(message){
 
   setTimeout(() => {
     div.style.opacity = '1';
-  }, 0);
+  }, 500);
   
   // After 5 seconds, fade out the element
   setTimeout(() => {

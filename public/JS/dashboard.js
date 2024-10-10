@@ -421,9 +421,12 @@ function ListItem(listItem, fileData){
         // Log the content associated with the clicked name
         const pD = fileData.projectData;
         console.log(pD);
-        
+        const pU = fileData.projectUid;
+        console.log(pU);
+
         sessionStorage.setItem("name", fileData.project);
         sessionStorage.setItem("projectData", JSON.stringify(pD));
+        sessionStorage.setItem("projectUid", JSON.stringify(pU));
         console.log(sessionStorage.getItem("name"));
         window.open("../includes/savedEdits.html", "_blank");
     });

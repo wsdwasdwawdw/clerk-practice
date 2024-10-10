@@ -168,6 +168,9 @@
               , i = e.Blocks;
             o && i.add(n, s({
                 label: 'Custom Code',
+                attributes: {
+                    title: "A block that lets you create an element using html and css coding"
+                },
                 media: "\n      <svg viewBox=\"0 0 24 24\">\n        <path d=\"M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z\"></path>\n      </svg>\n    ",
                 category: 'Extra',
                 activate: !0,

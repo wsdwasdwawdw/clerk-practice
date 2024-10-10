@@ -30,6 +30,8 @@ console.log(named);
 
 const pD = JSON.parse(sessionStorage.getItem("projectData"));
 
+const pU = sessionStorage.getItem("projectUid");
+console.log(pU);
 const editor = grapesjs.init({
   // Indicate where to init the editor. You can also pass an HTMLElement
   container: '#gjs',
@@ -47,7 +49,7 @@ const editor = grapesjs.init({
     stepsBeforeSave: 1, // Trigger save after each change
     options: {
       local: {
-        key: named, // Replace with your dynamic ID if needed
+        key: pU, // Replace with your dynamic ID if needed
       },
     }
   },
@@ -884,3 +886,64 @@ copyCSS.addEventListener("click", () => {
     }
   }, 5000);
 });
+
+function getEditorContent() {
+  const html = editor.getHtml();
+  const css = editor.getCss();
+  return { html, css };
+}
+
+function enterPreviewMode() {
+  const { html, css } = getEditorContent();
+
+  const previewContainer = document.getElementById("preview-container");
+
+  // Clear the preview container
+  previewContainer.innerHTML = '';
+
+  // Create a style element for the CSS
+  const styleEl = document.createElement("style");
+  styleEl.innerHTML = css;
+
+  // Create a div or any container for the HTML content
+  const contentDiv = document.createElement("div");
+  contentDiv.innerHTML = html;
+
+  // Append the HTML and CSS to the preview container
+  previewContainer.appendChild(styleEl);
+  previewContainer.appendChild(contentDiv);
+  
+  // Optionally handle scripts inside the HTML, if needed
+  executePreviewScripts(contentDiv);
+}
+function executePreviewScripts(container) {
+  const scripts = container.querySelectorAll('script');
+  scripts.forEach(script => {
+      const newScript = document.createElement('script');
+      newScript.textContent = script.textContent;
+      document.body.appendChild(newScript);
+  });
+}
+
+let isPreviewMode = false;
+
+function togglePreviewMode() {
+  const editorContainer = document.querySelector(".main");
+  const previewContainer = document.getElementById("preview-container");
+  const editBtn = document.querySelector(".edit");
+
+  if (!isPreviewMode) {
+      // Switch to preview mode
+      enterPreviewMode();
+      editorContainer.style.display = "none";
+      previewContainer.style.display = "block";
+      editBtn.style.display = "block";
+  } else {
+      // Switch back to edit mode
+      editorContainer.style.display = "block";
+      previewContainer.style.display = "none";
+      editBtn.style.display = "none";
+  }
+
+  isPreviewMode = !isPreviewMode;
+}

@@ -1,13 +1,15 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Inter', sans-serif;
 }
 body, html{
     scroll-behavior: smooth;
     background-color: #0D1117;
-    width: 100%;
     overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    position: relative;
 }
 
 header .nav button:hover, .burgerMenu ul button,.home button:hover{
@@ -19,23 +21,34 @@ img{
     pointer-events: none;
     user-select: none; 
 }
-
+.glow1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+}
 /* HEADER */
 header{
     position: fixed;
-    top: 0;
-    background-color: #222222;
+    top: 30px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #13171F;
+    border-radius: 20px;
     box-shadow: 0px 0px 5px 1px #EEB832;
-    width: 100%;
-    padding: 15px 0;
+    width: 60%;
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 2;
+    transition: .3s ease;
 }
 header img{
     height: 50px;
-    margin: 0 0 0 2%;
 }
 
 header div{
@@ -46,12 +59,12 @@ header .nav ul {
     align-items: center;
     gap: 40px;
 }
-header .nav button{
-    border: 2px solid #ECC053;
+header button{
+    border: none;
     padding: 10px 50px;
-    border-radius: 100px;
-    color: #ECC053;
-    background-color: transparent;
+    border-radius: 10px;
+    color: #F7F4F3;
+    background-color: #4F35C1;
     font-size: 20px;
     cursor: pointer;
 }
@@ -149,113 +162,63 @@ header .burger{
 /* HOME */
 .home {
     position: relative;
-    margin: 80px 0 0 0;
-    padding: 5% 0 0 0;
-    height: 75%;
+    margin: 200px 0 0 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 50px;
+    justify-content: center;
     color: white;
 }
-.home h1{
-    font-size: 96px;
-    background: linear-gradient(135deg, #CEC09D, #ffffff);
+
+.home .first{
+    height: 600px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.home .first h1{
+    font-size: 3.5em;
+    background: linear-gradient(to right, #D5A42C 0%, #FFFFFF 100%);
+    background-size: contain;
     background-clip: text;
     color: transparent;
-    margin: 0 5%;
+    opacity: .7;
     z-index: 1;
-    box-sizing: border-box;
 }
+.playfair-h1 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+    font-variation-settings:
+      "width" 100;
+}
+  
 .home h2{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 200;
-    width: 52%;
-    margin: 0 5%;
+    margin: 0 100px 0 0;
     z-index: 1;
     box-sizing: border-box;
 }
-.home h3{
-    font-size: 20px;
-    font-weight: 200;
-    margin: 0 5%;
-    z-index: 1;
-    box-sizing: border-box;
-}
-
-
-/* .home button:hover{
-    border: #ffffff solid 2px;
-    color: #ffffff;
-}
- */
-.home img{
-    position: absolute;
-    opacity: 1;
-    z-index: 0;
-}
-.home .codes{
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: auto;
-    top: 0;
-}
-
-.home .code1{
-    height: auto;
-    left: 1000px;
-    top: 250px;
-    z-index: 1;
-    transform: perspective(1000px) rotateY(-25deg) rotateX(1deg);
-}
-
-.home .code1Glow{
-    right: 0;
-    top: 0;
-    z-index: 0;
-}
-
-.home .code2{
-    height: 40%;
-    left: 500px;
-    top: 60%;
-    z-index: 1;
-    transform: perspective(1000px) rotateY(-25deg) rotateX(-15deg);
-}
-.home .code2Glow{
-    left: 10%;
-    top: 0;
-    z-index: 0;
-}
-.home .code3{
-    height: 30%;
-    left: 50px;
-    top: 80%;
-    z-index: 1;
-    transform: perspective(1000px) rotateY(10deg) rotateX(-20deg) rotate(-10deg);
-}
-.home .code3Glow{
-    left: 0;
-    top: 0;
-    z-index: 0;
-}
-.home .line{
-    top: 100%;
-    z-index: 0;
-    width: 100%;
+.home .placement{
+    width: 30%;
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
 .glow-on-hover {
     width: fit-content;
     height: fit-content;
     padding: 10px 20px;
     font-size: 20px;
-    margin: 0 0 0 5%;
     border: none;
     outline: none;
     color: #fff;
     background: #111;
-    border: white solid 2px;
+    border: transparent solid 2px;
     cursor: pointer;
     position: relative;
     z-index: 1;
@@ -297,7 +260,7 @@ header .burger{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: #4F35C1;
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -308,20 +271,91 @@ header .burger{
     100% { background-position: 0 0; }
 }
 
-/* TEMPLATES */
-.templates {
-    margin: 20% 0 0 0;
-    user-select: none;
+/* TUTORIALS */
+.tutorials{
     width: 100%;
-    overflow: hidden;
-    padding: 10px 0;
-    z-index: 2;
+    margin: 5% 0 0 0;
+    text-align: center;
+    color: #ffffff;
+
+}
+.tutorials h1{
+    font-size: 2em;
+    font-weight: 300;
+}
+.tutorials h2{
+    font-size: 1em;
+    font-weight: 200;
+    margin: 20px 0 60px 0;
+}
+.tutorials div{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 0 0 50px 0;
+}
+.tutorials div span{
+    cursor: pointer;
+    border: transparent solid 1px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.tutorials div span:hover{
+    border: #DB9D47 solid 1px;
+}
+.tutorials .placement{
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 70%;
+    height: 70%;
+    background-color: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
 
+
+
+
+/* TEMPLATES */
+.templates {
+    margin: 10% 0 0 0;
+    user-select: none;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+.templates .d-1{
+    position: relative;
+}
+.templates .d-1 h1{
+    font-size: 2em;
+    font-weight: 300;
+    position: relative;
+}
+.templates .d-1 img{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 300px;
+    bottom: 0;
+    margin: auto;
+}
+.templates h2{
+    font-size: 1em;
+    font-weight: 200;
+    margin: 10px 0 100px 0;
+}
 .templates .carousel-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Space between the two carousels */
+    gap: 20px; 
     overflow: hidden;
 }
 
@@ -331,13 +365,21 @@ header .burger{
 }
 
 .templates .first {
-    animation: scroll-right 40s linear infinite;
+    animation: scroll-right 30s linear infinite;
 }
 
 .templates .second {
-    animation: scroll-left 40s linear infinite;
+    animation: scroll-left 30s linear infinite;
 }
-
+.templates .carousel img{
+    border-radius: 10px;
+    position: relative;
+    pointer-events: all;
+    cursor: pointer;
+    width: 30%;
+    height: auto;
+    margin-right: 10px;
+}
 /* Make both carousels have an endless flow by duplicating their content */
 .templates .first::after, .templates .second::after {
     content: '';
@@ -345,24 +387,16 @@ header .burger{
     width: 100%;
     flex-shrink: 0;
 }
-
-/* Adjust image styles */
-.templates .carousel img {
-    user-select: none;
-    pointer-events: all;
-    width: 30%;
-    height: auto;
-    margin-right: 10px;
-}
 /* Hover effect to pause the animation when hovering over an image */
-/* .templates .carousel img:hover {
+.templates .carousel img:hover {
     animation-play-state: paused;
-} */
+    opacity: .7;
+} 
 
 /* Apply the pause to the entire carousel when hovering over any image */
 .templates .carousel:hover {
     animation-play-state: paused;
-}
+} 
 
 /* Keyframe for scrolling the first div to the right */
 @keyframes scroll-right {
@@ -370,14 +404,14 @@ header .burger{
         transform: translateX(-220%);
     }
     100% {
-        transform: translateX(-37.6%);
+        transform: translateX(-30.5%);
     }
 }
 
 /* Keyframe for scrolling the second div to the left */
 @keyframes scroll-left {
     0% {
-        transform: translateX(-37.6%);
+        transform: translateX(-30.5%);
     }
     100% {
         transform: translateX(-220%);
@@ -391,7 +425,6 @@ header .burger{
     width: 100%;
     flex-shrink: 0;
 }
-
 
 /* SERVICES */
 .service{
@@ -492,44 +525,31 @@ header .burger{
     margin: 5% 0 10% 0;
     position: relative;
 }
-.FAQs .img{
-    position: absolute;
-    z-index: 0;
-}
-.FAQs .yellow1{
-    left: 0;
-    bottom: -50%;
-}
-.FAQs .blue1{
-    left: 0;
-    bottom: -50%;
-}
-.FAQs .yellow2{
-    right: 0;
-    bottom: 0;
-}
-.FAQs .blue2{
-    right: 0;
-    bottom: 0;
-}
 
 .FAQs h1{
-    font-size: 70px;
+    text-align: center;
+    font-size: 3em;
     font-weight: 300;
-    margin: 0 0 2% 0;
+}
+.FAQs h2{
+    text-align: center;
+    font-weight: 200;
+    font-size: 1.1em;
+    margin: 10px 0 80px 0;
 }
 .FAQs .all{
-    border: solid #F1E7CF 1px;
-    border-radius: 10px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .FAQs .container{
     height: fit-content;
     cursor: pointer;
-    padding: 20px;
-    background-color: #0D1117;
-    transition: 1s ease;
-    position: relative;
+    padding: 40px;
+    background-color: #13171F;
+    border: rgba(237, 231, 216, .1) solid 1px;
+    border-radius: 20px;
 }
 .FAQs .container .Tutorial{
     color: rgb(129, 221, 221);

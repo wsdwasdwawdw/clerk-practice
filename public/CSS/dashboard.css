@@ -28,6 +28,7 @@ body, html{
 
 /* HEADER */
 header{
+    position: relative;
     background-color: #222222;
     height: 70px;
     box-shadow: 0px 0px 5px 1px #EEB832;
@@ -119,34 +120,8 @@ header .logoutIcon{
     height: 20px;
 }
 
-.bg{
-    pointer-events: none;
-    position: absolute;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-}
-.blue1{
-    left: 0;
-}
-.blu2{
-    right: 0;
-    border: pink solid 1px;
-}
-.blue3{
-    right: 0;
-}
-.blue4{
-    right: 0;
-    top: 100%;
-}
-.yellow2{
-    right: 0;
-    top: 120%;
-}
-.line1{
-    top: 100%;
-}
+
+
 
 /* TEMPLATES */
 .templates{
@@ -232,6 +207,36 @@ header .logoutIcon{
 
 .templates .container a:hover .curtain{
     opacity: 1;
+}
+.templates .bg{
+    pointer-events: none;
+    position: absolute;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+.templates  .blue1{
+    left: 0;
+}
+.templates .blu2{
+    right: 0;
+}
+.templates .blue3{
+    right: 0;
+}
+.templates .blue4{
+    right: 0;
+    top: 100%;
+}
+.templates .yellow1{
+    left: 0;
+}
+.templates .yellow2{
+    right: 0;
+    top: 120%;
+}
+.templates .line1{
+    top: 100%;
 }
 
 /* YOUR PROJECTS */

@@ -1,8 +1,25 @@
 
 @media (max-width: 1024px){
+    /* HEADER */
+    header .nav{
+        display: none;
+    }
+    header .burger{
+        display: block;
+        height: 40px;
+        z-index: 10;
+        pointer-events: all;
+    }
+    header .burger:hover{
+        opacity: .5;
+        cursor: pointer;
+    }
+    header button{
+        display: none;
+    }
     /* HOME */
     .home h1{
-        font-size: 50px;
+        font-size: 1em;
     }
     .home h2{
         font-size: 18px;
@@ -41,20 +58,7 @@
   
 @media (max-width: 768px) {
 
-    /* HEADER */
-    header .nav{
-        display: none;
-    }
-    header .burger{
-        display: block;
-        height: 40px;
-        z-index: 10;
-        pointer-events: all;
-    }
-    header .burger:hover{
-        opacity: .5;
-        cursor: pointer;
-    }
+    
 
     /* HOME */
     .home h1{

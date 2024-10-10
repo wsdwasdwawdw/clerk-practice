@@ -1,28 +1,29 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 body{
   background-color: #f0f0f0;
 }
 html,body{
   height: 100%;
-  padding: 0;
-  margin: 0;
   width: 100%;
 }
 .main{
   height: 100%;
-  padding: 0;
-  margin: 0;
-}
-/* Let's highlight canvas boundaries */
-#gjs {
-  border: 3px solid #444;
 }
 
-/* Reset some default styling */
-.gjs-cv-canvas {
-  top: 0;
-  width: 100%;
-  height: 100%;
+.main .logo{
+  width: 40px;
+  height: 40px;
+  background-image: url("../includes/IMG/logooo-01.png");
+  background-size: cover;
+  display: block;
+  position: absolute;
+  justify-self: center;
+  margin: auto;
 }
+
 
 /* remove css block to make default(grid) */
 /* .gjs-block {
@@ -37,11 +38,8 @@ html,body{
   display: flex;
   position: initial;
   justify-content: center;
-  justify-content: space-between;
 }
-.panel__basic-actions {
-  position: initial;
-}
+
 
 .editor-row {
   display: flex;
@@ -49,32 +47,131 @@ html,body{
   align-items: stretch;
   flex-wrap: nowrap;
   /* adjust to 920px para mag full screen */
-  height: 95.8%; 
+  height: 95%; 
 }
 
 .editor-canvas {
   flex-grow: 1;
 }
 
-.panel__right {
-  flex-basis: 230px;
+
+
+.panel{
+  flex-basis: 250px;
   position: relative;
   overflow-y: auto;
   height: 100%;
+  background-color: #454545;
+}
+
+.panel__styles{
+  position: initial;
+  width: 250px;
+}
+.panel__basic-actions {
+  position: initial;
 }
 
 .panel__switcher {
+  width: 250px;
   position: initial;
 }
 
 .panel__devices {
   position: initial;
+  margin: 0 auto 0 0;
+}
+
+
+/* CANVAS */
+
+/* Reset some default styling */
+.gjs-cv-canvas {
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #gjs {
   border: none;
 }
 
+#gjs-cm-htmlmixed{
+  position: relative;
+}
+#gjs-cm-htmlmixed .alertHtmlCopy{
+  height: fit-content;
+  background-color: #10151D;
+  position: absolute;
+  top: 45%;
+  left: 10px;
+  padding: 20px;
+  color: #2E6A17;
+  font-size: 22px;
+  font-weight: 700;
+}
+#gjs-cm-htmlmixed .copyHTML{
+  background-color: #777272;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+
+#gjs-cm-css{
+  position: relative;
+}
+#gjs-cm-css .alertCssCopy{
+  height: fit-content;
+  background-color: #10151D;
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  padding: 20px 30px;
+  color: #2E6A17;
+  font-size: 22px;
+  font-weight: 700;
+}
+#gjs-cm-css .copyCSS{
+  background-color: #777272;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+
+.gjs-mdl-content span:hover{
+  cursor: pointer;
+  opacity: .7;
+}
+
+.no-selection-message {
+  display: block;
+}
+
+.has-selection .no-selection-message {
+  display: none;
+}
+
+/* .gjs-one-bg {
+  background-color: #78366a;
+}
+
+.gjs-two-color {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gjs-three-bg {
+  background-color: #ec5896;
+  color: white;
+}
+
+.gjs-four-color,
+.gjs-four-color-h:hover {
+  color: #ec5896;
+} */
 
 
 .icons-flex {
@@ -126,41 +223,15 @@ html,body{
   background: rgba(51, 51, 51, 0.9);
 }
 
-
 #screenshotResult{
   position: absolute;
   top: 0;
   z-index: -1;
 }
 
-.saveShit{
-  width: auto;
-  position: sticky;
-  bottom: 0;
-  background-color: #444;
-  border: black solid 1px;
-  display: flex;
-  flex-direction: column  ;
-  justify-content: center;
-  align-items: center;
-  padding: 59.5px 30px;
-  gap: 20px;
-  z-index: 1000;
-}
-.saveShit button{
-  padding: 5px 10px;
-  background-color: rgb(119, 114, 114);
-  opacity: 1;
-  cursor: pointer;
-}
-.saveShit button:hover{
-  opacity: .8;
-}
-
 .error{
   display: none;
 }
-
 /* PREVIEW */
 #preview-container{
   display: none;
@@ -173,10 +244,17 @@ html,body{
 }
 .edit{
   display: none;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
+  padding: 10px;
+  background-color: blue;
+  color: #ffffff;
+  cursor: pointer;
   z-index: 4;
+}
+.edit:hover{
+  opacity: .7;
 }
 
 @media screen  and (max-width: 768px){
