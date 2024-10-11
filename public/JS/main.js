@@ -5,7 +5,7 @@ const regshowhide = document.querySelector(".reg-showhidepassword");
 const regpassword = document.getElementById("reg-password");
 const regshowhideconfirmpassword = document.querySelector(".reg-showhideconfirmpassword");
 const regconfirmpassword = document.getElementById("reg-confirmpassword");
-
+const loading = document.querySelector(".loading");
 
 const regform = document.querySelector(".reg-form");
 const logform = document.querySelector(".login-form");
@@ -50,12 +50,12 @@ logshowhide.addEventListener("click", ()=>{
 
     if(logtoggle){
         logpassword.type = "text";
-        logshowhide.src = " ./includes/IMG/show.png";
+        logshowhide.src = " ./includes/IMG/eye_open.svg";
         logtoggle = false;
     }
     else{
         logpassword.type = "password";
-        logshowhide.src = "./includes/IMG/hide.png";
+        logshowhide.src = "./includes/IMG/eye_closed.svg";
         logtoggle = true;
     }
 });
@@ -64,11 +64,11 @@ regshowhide.addEventListener("click", ()=>{
 
     if(regpassword.type === "password"){
         regpassword.type = "text";
-        regshowhide.src = "./includes/IMG/show.png";
+        regshowhide.src = "./includes/IMG/eye_open.svg";
     }
     else{
         regpassword.type = "password";
-        regshowhide.src = "./includes/IMG/hide.png";
+        regshowhide.src = "./includes/IMG/eye_closed.svg";
     }
 });
 
@@ -76,11 +76,11 @@ regshowhideconfirmpassword.addEventListener("click", ()=>{
 
     if(regconfirmpassword.type === "password"){
         regconfirmpassword.type = "text";
-        regshowhideconfirmpassword.src = "./includes/IMG/show.png";
+        regshowhideconfirmpassword.src = "./includes/IMG/eye_open.svg";
     }
     else{
         regconfirmpassword.type = "password";
-        regshowhideconfirmpassword.src = "./includes/IMG/hide.png";
+        regshowhideconfirmpassword.src = "./includes/IMG/eye_closed.svg";
     }
 });
 
@@ -241,6 +241,7 @@ regconfirmpassword.addEventListener("input", ()=>{
             loginBtn.style.opacity = ".5";
         }
         else{
+            loginBtn.style.cursor = "pointer";
             loginBtn.style.pointerEvents = "all";
             loginBtn.style.opacity = "1";
         }
@@ -340,7 +341,13 @@ body.addEventListener('scroll', function() {
         header.style.top = "30px";
     }
     }
-
+    //console.log(scrollTop);
+    if(scrollTop > 1200){
+        templates.style.opacity = "1";
+    }
+    else{
+        templates.style.opacity = "0";
+    }
     lastScrollTop = scrollTop; // Update the last scroll position
 });
 
@@ -349,37 +356,56 @@ const steps = tutorialSection.querySelectorAll("span");
 const vid = tutorialSection.querySelector(".placement");
 steps.forEach(span =>{
     
-    span.addEventListener("click", ()=>{
+    span.addEventListener("click", () => {
 
-        steps.forEach(span =>{
-            span.style.border = "transparent solid 1px";
-            span.style.backgroundColor = "transparent";
-            span.style.color = "#858585";
-            span.style.opacity = "1";
+        // Reset styles for all spans in the 'steps' collection
+        steps.forEach(s => {
+            s.style.border = "transparent solid 1px";
+            s.style.backgroundColor = "transparent";
+            s.style.color = "#858585";
+            s.style.opacity = "1";
+            s.classList.remove("selected"); // Remove selected class from all
         });
 
+        // Apply active styles to the clicked span
         span.style.border = "#DB9D47 solid 1px";
         span.style.backgroundColor = "#222222";
         span.style.color = "#ffffff";
         span.style.opacity = ".7";
         span.classList.add("selected");
 
-        
-        if(span.classList.contains("one")){
-            vid.textContent = "Choosing a Template";
-        }
-        else if(span.classList.contains("two")){
-            vid.textContent = "Add Blocks";
+        // Display a loading animation (or whatever l-ring is)
+        vid.innerHTML = `<l-ring
+                            size="40"
+                            stroke="5"
+                            bg-opacity="0"
+                            speed="2"
+                            color="white" 
+                            class="loading"
+                         ></l-ring>`;
+        steps.forEach(span=>{
+            span.style.pointerEvents = "none";
+        });
+        // Update vid content based on which span was clicked (using class checks)
+        currentTimeout = setTimeout(() => {
 
-        }
-        else if(span.classList.contains("three")){
-            vid.textContent = "Customize it";
+            steps.forEach(span=>{
+                span.style.pointerEvents = "all";
+            });
 
-        }
-        else if(span.classList.contains("four")){
-            vid.textContent = "View and copy the Code";
-
-        }
+            if (span.classList.contains("one")) {
+                vid.textContent = "Choosing a Template";
+            } 
+            else if (span.classList.contains("two")) {
+                vid.textContent = "Add Blocks";
+            } 
+            else if (span.classList.contains("three")) {
+                vid.textContent = "Customize it";
+            } 
+            else if (span.classList.contains("four")) {
+                vid.textContent = "View and copy the Code";
+            }
+        }, 1500);
     });
 });
 
@@ -399,8 +425,11 @@ ScrollReveal().reveal('.home .first', {
     easing: 'ease-in-out',
     delay: 200
   });
-
-
-
+  ScrollReveal().reveal('.tutorials h1', { 
+    origin: 'bottom', 
+    distance: '50px',
+    duration: 1000,
+    easing: 'ease-in-out',
+    delay: 200
+  });
   // You can add more reveal animations for other sections in the same way
-  

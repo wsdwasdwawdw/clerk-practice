@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 *{
     padding: 0;
     margin: 0;
@@ -335,6 +337,7 @@ header .burger{
     z-index: 2;
     text-align: center;
     color: #ffffff;
+    transition: .5s ease;
 }
 .templates .carousel-wrapper .s-1{
     position: absolute;
@@ -634,6 +637,7 @@ header .burger{
     position: relative;
 }
 .about .kame{
+    margin: 100px 0 0 0;
     padding: 100px 0;
     display: flex;
     flex-direction: column;
@@ -649,8 +653,9 @@ header .burger{
     border-radius: 50%;
 }
 .about .kame .container{
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 50%;
 }
 .about .kame .container div{
@@ -658,10 +663,6 @@ header .burger{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.about .kame .container{
-    padding: 2%;
-    border-radius: 100%;
 }
 .about .yuna{
     padding: 20px;
@@ -687,7 +688,7 @@ header .burger{
     margin: auto;
     width: 0px;
     height: 100%;
-    border: yellow solid 1px;
+    border: #EEB832 solid 1px;
     background-color: green;
 }
 .about .glow3{
@@ -697,6 +698,16 @@ header .burger{
     left: 150px;
     margin: auto;
     z-index: 2;
+}
+.about .circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #EEB832;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 .about .glow4{
     position: absolute;
@@ -760,8 +771,6 @@ footer{
     z-index: 1;
     pointer-events: none;
     opacity: .5;
-    cursor: pointer;
-    opacity: 1;
     transition: .5s ease;
 }
 .login-reg button:hover{
@@ -827,7 +836,9 @@ footer{
     cursor: pointer;
     color: #858585;
 }
-
+.login-reg .close:hover{
+    color: #ffffff;
+}
 
 .login-reg .container .likod{
     position: absolute;
@@ -873,6 +884,8 @@ footer{
 .login-reg input{
     background-color: #1A1F29;
     border-radius: 15px;
+    color: #ffffff;
+    border: rgba(237, 231, 216, .1) solid 1px;
 }
 
 /* LOGIN FORM */
@@ -884,8 +897,7 @@ footer{
 
 .login-form > div:nth-child(-n+2) input{
     padding: 15px;
-    width: auto;
-    background-color: #1A1F29;
+    width: 100%;
     box-sizing: border-box;
     position: relative;
 }
@@ -893,16 +905,17 @@ footer{
 .login-reg .login-form .log-showhide{
     width: 30px;
     position: absolute;
-    top: 50%;
     right: 10px;
     cursor: pointer;
     transition: 1s;
     pointer-events: all;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
 }
-
-.login-form div input{
-    background-color: transparent;
-    border: rgba(237, 231, 216, .1) solid 1px;  
+.login-reg .login-form .p-1{
+    position: relative;
 }
 
 
@@ -940,11 +953,6 @@ footer{
     cursor: pointer;
     pointer-events: all;
 }
-.reg-form input{
-    background-color: transparent;
-    color: #ffffff;
-    border: #EEB832 solid 1px;
-}
 .login-reg .login-form-hide{
     display: none;
 }
@@ -965,12 +973,7 @@ footer{
   
 
 
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar{
     display: none;
-} */
-
-.practice{
-    width: auto;
-    height: 100%;
-    border: pink solid 1px;
 }
+

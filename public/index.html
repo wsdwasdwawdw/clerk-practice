@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="CSS/main.css">
         <link rel="stylesheet" href="CSS/media.css">
         <!-- <link rel="stylesheet" href="/CSS/style.css"> -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         
         <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
@@ -16,6 +15,9 @@
         <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
         
         <script src="https://unpkg.com/scrollreveal"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
+
+
     </head>
     <body>
 
@@ -32,7 +34,6 @@
             <img src="./includes/IMG/burger.png" alt="" class="burger">
             
         </header>
-
         <div class="burgerMenu">
             <img src="includes/IMG/close.png" class="burgerClose">
             <ul>
@@ -42,7 +43,7 @@
                 <button href="" class="login">Log In</button>
             </ul>
         </div>
-
+        
         <section class="home" id="home">
             <div class="first">
                 <h1 class="playfair-h1"></h1>
@@ -53,10 +54,8 @@
             <div class="placement">
                 Video Turotial
             </div>
-            
-
         </section>
-
+        
         <section class="tutorials">
             <h1>So, How Does it Work?</h1>
             <h2>Master SiteHustle with our quick and simple tutorials.</h2>
@@ -255,10 +254,11 @@
             <h2>Get to know the developers who built SiteHustle</h2>
 
             <img src="includes/IMG/glow 2.png" class="glow3">
-            <div class="kame">
 
+            <div class="kame">
                 <div class="container">
                     <img src="includes/IMG/yuna.png" class="yuna">
+                    <div class="circle"></div>
                     <div>
                         <h1>Gianne Flores</h1>
                         <h2>Quality Assurance</h2>
@@ -270,11 +270,13 @@
                         <h1>Abby Teaño</h1>
                         <h2>Project Manager</h2>
                     </div>
+                    <div class="circle"></div>
                     <img src="includes/IMG/abby.png" class="abby">
                     
                 </div>
                 <div class="container">
                     <img src="includes/IMG/ako.png" class="ako">
+                    <div class="circle"></div>
                     <div>
                         <h1>Jason Karl Rosales</h1>
                         <h2>Lead Programmer</h2>
@@ -285,6 +287,7 @@
                         <h1>Joshua Pavia</h1>
                         <h2>System Analyst</h2>
                     </div>
+                    <div class="circle"></div>
                     <img src="includes/IMG/pavia.png" class="pavia">
                     
                 </div>
@@ -293,6 +296,8 @@
             
             <img src="includes/IMG/glow 1.png" class="glow4">
         </section>
+
+        
 
         <footer>    
 
@@ -318,9 +323,10 @@
                     </div>
                     <div class="password-box">
                         <label for="password">Password:</label>
-                        <input type="password" id="log-password" name="password" required>
-                        <img src="includes/IMG/eye_closed.svg" alt="" class="log-showhide">
-                        <img src="includes/IMG/show.png" alt="" class="hide">
+                        <div class="p-1">
+                            <input type="password" id="log-password" name="password" required>
+                            <img src="includes/IMG/eye_closed.svg" alt="" class="log-showhide">
+                        </div>
                     </div>
                     <div>
                         <button id="login" onclick="pasok()">Login</button>
@@ -340,14 +346,14 @@
                         <label>Password: <i class="lakas"></i></label>
                         <div class="i-2">
                             <input type="password" id="reg-password" title="Note: Password must container more than 8 characters, a captial letter, and a number. Include special characters for more secure account" required>
-                            <img src="includes/IMG/hide.png" class="reg-showhidepassword">
+                            <img src="includes/IMG/eye_closed.svg" class="reg-showhidepassword">
                         </div>
                     </div>
                     <div class="password-box">
                         <label>Confirm Password: <i class="wehhhhh"></i></label>
                         <div class="i-3">
                             <input type="password" id="reg-confirmpassword" required>
-                            <img src="includes/IMG/hide.png" class="reg-showhideconfirmpassword">
+                            <img src="includes/IMG/eye_closed.svg" class="reg-showhideconfirmpassword">
                         </div>
                         
                     </div>

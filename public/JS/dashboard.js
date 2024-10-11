@@ -115,7 +115,7 @@ userSetting.addEventListener("click", ()=>{
     window.location.href = "../includes/usersetting.html";
 })
 
-
+header();
 
 ViewMore();
 
@@ -469,5 +469,29 @@ function Sorting(){
             // Dispatch a custom 'customChange' event after changing the text
             chosen.dispatchEvent(new Event('customChange'));
         })
+    });
+}
+
+function header(){
+    let lastScrollTop = 0; // Track the last scroll position
+    const header = document.querySelector('header');
+    const body = document.body; // Select the body element
+    const scrollThreshold = 5; // Scroll threshold to avoid small movements
+
+    // Listen for scroll event on the document body
+    body.addEventListener('scroll', function() {
+        let scrollTop = body.scrollTop || document.documentElement.scrollTop; // Get current scroll position
+
+        // Check if the scroll movement is significant
+        if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down: hide the header
+                header.style.top = "-200px";
+            } else {
+                // Scrolling up: show the header
+                header.style.top = "30px";
+            }
+        }
+        lastScrollTop = scrollTop; // Update the last scroll position
     });
 }
