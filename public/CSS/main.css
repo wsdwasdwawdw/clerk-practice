@@ -29,6 +29,10 @@ img{
     margin: auto;
     width: 100%;
 }
+h2{
+    opacity: .7;
+    color: #ffffff;
+}
 /* HEADER */
 header{
     position: fixed;
@@ -44,7 +48,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 5;
     transition: .3s ease;
 }
 header img{
@@ -65,6 +69,7 @@ header button{
     border-radius: 10px;
     color: #F7F4F3;
     background-color: #4F35C1;
+    border: transparent solid 2px;
     font-size: 20px;
     cursor: pointer;
 }
@@ -295,6 +300,7 @@ header .burger{
     margin: 0 0 50px 0;
 }
 .tutorials div span{
+    color: #858585;
     cursor: pointer;
     border: transparent solid 1px;
     padding: 10px 20px;
@@ -477,6 +483,9 @@ header .burger{
     opacity: .7;
     font-weight: 300;
 }
+.service table h2{
+    opacity: 1;
+}
 .service table img{
     position: absolute;
     top: 0;
@@ -566,6 +575,7 @@ header .burger{
     display: none;
     width: auto;
     margin: 10px 0 0 0;
+    background-color: #13171F;
 }
 .FAQs .container .title {
 
@@ -579,11 +589,12 @@ header .burger{
 .FAQs .container .title img{
     width: 26px;
     height: 26px;
+    filter: sepia(10%) saturate(10%) hue-rotate(180deg) brightness(0.5);
 }
 .FAQs div div h4{
     font-size: 24px;
     font-weight: 500;
-    
+    color: #858585;
 }
 
 .FAQs div p{
@@ -606,75 +617,101 @@ header .burger{
 /* ABOUT US */
 
 .about{
+    position: relative;
     width: 100%;
     text-align: center;
-    margin: 0 0 100px 0;
 }
 .about h1{
-    font-size: 70px;
+    position: relative;
+    font-size: 2em;
     color: #ffffff;
     font-weight: 300;
+    z-index: 3;
+}
+.about h2{
+    font-size: 1em;
+    font-weight: 200;
+    position: relative;
 }
 .about .kame{
+    padding: 100px 0;
     display: flex;
-    justify-content: space-evenly;
-    margin: 5% 0 ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    position: relative;
 }
-.about .kame div img{
+.about .kame .container img{
     pointer-events: all;
-    width: 80%;
+    display: block;
+    width: 15%;
+    border-radius: 50%;
 }
-.about .kame div img{
-    pointer-events: all;
-    width: 80%;
+.about .kame .container{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
 }
-.about .kame div .yuna{
-    background-color: #5432EE;
+.about .kame .container div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.about .kame div{
+.about .kame .container{
     padding: 2%;
     border-radius: 100%;
 }
-.about .kame .yuna{
+.about .yuna{
+    padding: 20px;
     background-color: #5432EE;
 }
-.about .kame .abby{
+.about .abby{
+    padding: 20px;
     background-color: #4F9631;
 }
-.about .kame .jason{
+.about .ako{
+    padding: 20px;
     background-color: #FF4DBE;
 }
-.about .kame .joshua{
+.about .pavia{
+    padding: 20px;
     background-color: #EEB832;
 }
-.about .moreAboutUs{
-    display: flex;
-    text-align: left;
-    justify-content: space-evenly;
-    align-items: center;
-    color: #ffffff;
+.about .line{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 0px;
+    height: 100%;
+    border: yellow solid 1px;
+    background-color: green;
 }
-.about .moreAboutUs .texts{
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.about .glow3{
+    position: absolute;
+    top:-50px;
+    right: 0;
+    left: 150px;
+    margin: auto;
+    z-index: 2;
 }
-.about .moreAboutUs .texts h2{
-    font-size: 48px;
-}
-.about .moreAboutUs img{
+.about .glow4{
+    position: absolute;
     display: block;
-    position: relative;
-    z-index: 1;
-    height: 50%;
-    width: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    transform: rotate(180deg);
 }
-.about .kame .line{
-    display: none;
-}
+
 /* FOOTER */
 footer{
+    box-shadow: 0px 0px 60px 10px #0D1117;
     padding: 100px;
     position: relative;
     display: flex;
@@ -689,25 +726,40 @@ footer{
     width: 100%;
     position: fixed;
     top: 0;
-    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     z-index: 1000;
+    background-color: #0D1117;
+    background-image: url("../includes/IMG/Noise & Texture.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .login-reg .container{
     height: auto;
-    width: 300px;
+    width: 350px;
     position: relative;
-    background-color: #0D1117;
+    background-color: transparent;
     border-radius: 30px;
     padding: 70px 70px 50px 70px;
     gap: 10px;
-    border: #EEB832 solid 1px;
     overflow: hidden;
 }
 .login-reg button{
+    position: relative;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #4F35C1;
+    border-radius: 15px;
+    border: rgba(237, 231, 216, .1) solid 1px;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 1em;
+    z-index: 1;
+    pointer-events: none;
+    opacity: .5;
     cursor: pointer;
     opacity: 1;
     transition: .5s ease;
@@ -716,53 +768,49 @@ footer{
     opacity: .7;
 }
 .login-reg span{
-    text-decoration: underline;
+    color: #4F35C1;
     cursor: pointer;
-    transition: 1s;
+    transition: .5s;
 }
-
+.login-reg .container .or{
+    margin: 30px 0;
+}
 .login-reg .container #google{
-    background-color: #247CEF;
+    background-color: #3576C1;
     display: flex;
     position: relative;
-    padding: 0 0 0 10px;
+    padding: 12px 0;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
     width: 100%;
-    height: 60px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-sizing: border-box;
     margin: 5% 0 0 0;
 }
-.login-reg .container #google img{
-    display: block;
-    width: 15%;
+.login-reg .container .glowReverse{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .login-reg .container #guest{
-    background-color: #FFF3D6;
+    background-color: #13171F;
     display: flex;
     position: relative;
     align-items: center;
-    padding: 0 0 0 10px;
-    box-sizing: border-box;
-    gap: 30px;
+    justify-content: center;
+    color: #ffffff;
+    padding: 12px 0;
     width: 100%;
-    height: 60px;
-    border-radius: 10px;
-    color: #000000;
+    border: rgba(238, 184, 50, .2) solid 1px;
+    border-radius: 15px;
     margin: 5% 0 0 0;
 }
-.login-reg .container #guest img{
-    display: block;
-    width: 15%;
-}
-
 .login-reg .container #google:hover, #guest:hover{
     opacity: .5;
     cursor: pointer;
 }
 .login-reg span:hover{
-    color: aqua;
+    color: #ffffff;
 }
 .login-reg h3{
     font-size: 35px;
@@ -774,9 +822,10 @@ footer{
 
 .login-reg .close{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 80px;
+    left: 70px;
     cursor: pointer;
+    color: #858585;
 }
 
 
@@ -789,16 +838,24 @@ footer{
     z-index: 1;
 }
 .login-reg .container .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     color: #ECC053;
     z-index: 2;
+    margin: 0 0 50px 10px;
 }
-
+.login-reg .container label{
+    color: #ffffff;
+    opacity: .8;
+    font-weight: 200;
+    font-size: .8em;
+    margin: 0 0 0 10px;
+}
 .login-reg .container p{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    font-weight: 300;
+    opacity: .8;
+    font-size: .9em;
 }
 
 .login-reg .container hr{
@@ -813,24 +870,12 @@ footer{
 .login-reg .container .logo img{
     width: 70px;
 }
-.login-reg button{
-    position: relative;
-    width: 100%;
-    padding: 10px 0;
-    background-color: #EEB832;
-    font-size: 20px;
-    border-radius: 10px;
-    color: #ffffff;
-    font-weight: 550;
-    z-index: 1;
-    
-    pointer-events: none;
-    opacity: .5;
+.login-reg input{
+    background-color: #1A1F29;
+    border-radius: 15px;
 }
 
-
 /* LOGIN FORM */
-
 .login-form > div:nth-child(-n+2) {
     display: flex;
     flex-direction: column;
@@ -840,12 +885,10 @@ footer{
 .login-form > div:nth-child(-n+2) input{
     padding: 15px;
     width: auto;
-    border-radius: 10px;
-    color: #ffffff;
+    background-color: #1A1F29;
     box-sizing: border-box;
     position: relative;
 }
-
 
 .login-reg .login-form .log-showhide{
     width: 30px;
@@ -856,13 +899,10 @@ footer{
     transition: 1s;
     pointer-events: all;
 }
+
 .login-form div input{
     background-color: transparent;
-    border: #EEB832 solid 1px;
-}
-
-.login-reg .login-form .google{
-    background: url("../includes/IMG/Logo-google.png");
+    border: rgba(237, 231, 216, .1) solid 1px;  
 }
 
 
@@ -917,11 +957,17 @@ footer{
     display: none;
 }
 
+/* Ensure elements are not set to hidden by default */
+.tutorials, .templates, .service, .FAQs {
+    opacity: 1;
+    visibility: visible;
+  }
+  
 
 
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     display: none;
-}
+} */
 
 .practice{
     width: auto;

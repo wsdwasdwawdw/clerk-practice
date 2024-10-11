@@ -117,12 +117,14 @@ const faqs = document.querySelector('.FAQs');
 // Select all div elements that are direct children of the section
 const divs = faqs.querySelectorAll('.container');
 const allP = faqs.querySelectorAll("p");
+const allH4 = faqs.querySelectorAll("h4");
 const allImg = faqs.querySelectorAll("img");
 
 // Add an event listener to each div
 divs.forEach((div, index) => {
     div.title = "Click to Expand";
     const p = div.querySelector("p");
+    const h4 = div.querySelector("h4");
     const cross = div.querySelector("img");
     let rotation = 0;
 
@@ -132,12 +134,30 @@ divs.forEach((div, index) => {
             p.style.display = "none";
         });
 
+        allH4.forEach(h4 =>{
+            h4.style.color = "#858585";
+        });
+
         allImg.forEach(img =>{  
             rotation = 0;
             img.style.transform = "rotate(0deg)"
+            img.style.filter = "sepia(10%) saturate(10%) hue-rotate(180deg) brightness(0.5)";
         });
 
+        divs.forEach(div =>{
+            div.style.background = "#13171F";
+            div.title = "Click to Expand";
+        });
+
+        cross.style.filter = "sepia(10%) saturate(10%) hue-rotate(180deg) brightness(0.9)";
+        h4.style.color = "#ffffff";
+
+        div.style.backgroundColor = "#1A1F29";
+
+        p.style.color = "#ffffff";
         p.style.display = "block";
+        p.style.backgroundColor = "transparent";
+
         div.title = "Click to Close"
 
         rotation += 225;
@@ -214,18 +234,19 @@ regconfirmpassword.addEventListener("input", ()=>{
     }
 });
 
-const loginBtn = document.getElementById("login");
-logform.addEventListener("input",  ()=>{
-    if(logemail.value.trim() === "" || logpassword.value.trim() === ""){
-        loginBtn.style.pointerEvents = "none";
-        loginBtn.style.opacity = ".5";
-    }
-    else{
-        loginBtn.style.pointerEvents = "all";
-        loginBtn.style.opacity = "1";
-    }
-});
+    const loginBtn = document.getElementById("login");
+    logform.addEventListener("input",  ()=>{
+        if(logemail.value.trim() === "" || logpassword.value.trim() === ""){
+            loginBtn.style.pointerEvents = "none";
+            loginBtn.style.opacity = ".5";
+        }
+        else{
+            loginBtn.style.pointerEvents = "all";
+            loginBtn.style.opacity = "1";
+        }
+    });
 
+sara.textContent = "<-  Back to SiteHustle";
 sara.addEventListener("click", ()=>{
     const inputs = login_reg.querySelectorAll("input");
     inputs.forEach(input =>{
@@ -333,10 +354,14 @@ steps.forEach(span =>{
         steps.forEach(span =>{
             span.style.border = "transparent solid 1px";
             span.style.backgroundColor = "transparent";
+            span.style.color = "#858585";
+            span.style.opacity = "1";
         });
 
         span.style.border = "#DB9D47 solid 1px";
         span.style.backgroundColor = "#222222";
+        span.style.color = "#ffffff";
+        span.style.opacity = ".7";
         span.classList.add("selected");
 
         
@@ -357,3 +382,25 @@ steps.forEach(span =>{
         }
     });
 });
+
+// Initialize ScrollReveal
+ScrollReveal().reveal('.home .first', { 
+    origin: 'left', 
+    distance: '50px',
+    duration: 1000,
+    easing: 'ease-in-out',
+    delay: 200
+  });
+
+  ScrollReveal().reveal('.home .placement', { 
+    origin: 'right', 
+    distance: '50px',
+    duration: 1000,
+    easing: 'ease-in-out',
+    delay: 200
+  });
+
+
+
+  // You can add more reveal animations for other sections in the same way
+  
