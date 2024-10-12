@@ -27,7 +27,12 @@
   <script src="../JS/image-editor.js"></script> <!-- important -->
   <script src="../JS/Typed.js"></script> <!-- important -->
   <script src="../JS/tooltip.js"></script>
+
   <script src="../JS/style-bg.js"></script> <!-- important -->
+
+  <script src="../JS/export.js"></script>         <!-- important -->
+
+    <script src="../JS/import.js"></script>
 
   
   
@@ -39,28 +44,40 @@
 <body>
   
   <div id="main" class="main">
+
     <div class="panel__top">
-      <div class="panel__basic-actions"></div>
+      <div class="panel__styles"></div>
       <div class="panel__devices"></div>
+      <a href="./dashboard.html" class="logo"></a>
+      <div class="panel__basic-actions"></div>
       <div class="panel__switcher"></div>
     </div>
-    <div class="editor-row">
-      <div class="editor-canvas">
 
-        
-        <div id="gjs">
-          
+    <div class="editor-row">
+
+      <div class="panel">
+        <div class="styles-container"></div>
+        <div class="traits-container">
+          <div class="no-selection-message">
+            No element selected. Please select an element to see its traits.
+          </div>
         </div>
       </div>
-      <div class="panel__right">
+
+      <div class="editor-canvas">
+        <div id="gjs"></div>
+      </div>
+
+      <div class="panel">
+
         <div class="layers-container"></div>
-        <div class="styles-container"></div>
-        <div class="traits-container"></div>
         <div class="blocks-container"></div>
+
         <div class="saveShit">
           <p class="project"></p>
           <button id="save" onclick="saveToFirebase()">Save</button>
         </div>
+
       </div>
     </div>
   </div>

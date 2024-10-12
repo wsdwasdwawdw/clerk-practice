@@ -360,19 +360,15 @@ steps.forEach(span =>{
 
         // Reset styles for all spans in the 'steps' collection
         steps.forEach(s => {
-            s.style.border = "transparent solid 1px";
-            s.style.backgroundColor = "transparent";
-            s.style.color = "#858585";
-            s.style.opacity = "1";
-            s.classList.remove("selected"); // Remove selected class from all
+            s.classList.remove("active"); 
         });
 
+        span.classList.add("active");
         // Apply active styles to the clicked span
-        span.style.border = "#DB9D47 solid 1px";
+        /* span.style.border = "#DB9D47 solid 1px";
         span.style.backgroundColor = "#222222";
         span.style.color = "#ffffff";
-        span.style.opacity = ".7";
-        span.classList.add("selected");
+        span.style.opacity = ".7"; */
 
         // Display a loading animation (or whatever l-ring is)
         vid.innerHTML = `<l-ring
@@ -425,11 +421,55 @@ ScrollReveal().reveal('.home .first', {
     easing: 'ease-in-out',
     delay: 200
   });
-  ScrollReveal().reveal('.tutorials h1', { 
-    origin: 'bottom', 
-    distance: '50px',
-    duration: 1000,
-    easing: 'ease-in-out',
-    delay: 200
-  });
+
   // You can add more reveal animations for other sections in the same way
+  const spans = document.querySelectorAll('.spans span');
+const bar = document.createElement('div'); // Create the sliding bar element
+  
+// Style the sliding bar element
+bar.style.position = 'absolute';
+bar.style.height = '100%';
+bar.style.backgroundColor = 'transparent';
+bar.style.border = "rgba(219, 157, 71, .8) solid 1px";
+bar.style.borderRadius = "15px";
+bar.style.overflow = "hidden";
+bar.style.zIndex = "1";
+bar.style.transition = 'left 0.5s ease, width 0.5s ease';
+document.querySelector('.spans').appendChild(bar);
+
+// Initialize bar's size and position to the first span
+function updateBar(targetSpan) {
+    const spanRect = targetSpan.getBoundingClientRect();
+    const containerRect = document.querySelector('.spans').getBoundingClientRect();
+
+    // Calculate the left position relative to the container
+    const leftOffset = spanRect.left - containerRect.left;
+
+    // Set the bar's position and width
+    bar.style.left = `${leftOffset}px`;
+    bar.style.width = `${spanRect.width}px`;
+}
+
+// Event listener for each span
+spans.forEach((span) => {
+    span.addEventListener('click', (e) => {
+        // Remove active class from all spans
+        spans.forEach((s) => {
+            s.style.backgroundColor = "";
+            s.classList.remove('active');
+        });
+            
+
+        
+
+        // Add active class to the clicked span
+        e.target.style.backgroundColor = "#222222";
+        e.target.classList.add('active');
+        
+        // Update the bar position to the clicked span
+        updateBar(e.target);
+    });
+});
+
+// Initialize the bar to the first span on page load
+window.onload = () => updateBar(spans[0]);

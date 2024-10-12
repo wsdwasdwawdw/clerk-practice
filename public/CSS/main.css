@@ -46,7 +46,7 @@ header{
     border-radius: 20px;
     box-shadow: 0px 0px 5px 1px #EEB832;
     width: 60%;
-    padding: 15px 20px;
+    padding: 5px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,7 +54,7 @@ header{
     transition: .3s ease;
 }
 header img{
-    height: 50px;
+    height: 40px;
 }
 
 header div{
@@ -67,12 +67,12 @@ header .nav ul {
 }
 header button{
     border: none;
-    padding: 10px 50px;
+    padding: 5px 30px;
     border-radius: 10px;
     color: #F7F4F3;
     background-color: #4F35C1;
     border: transparent solid 2px;
-    font-size: 20px;
+    font-size: 1em;
     cursor: pointer;
 }
 
@@ -84,9 +84,9 @@ header button{
 header .nav ul a{
     text-decoration: none;
     color: #f1f1f1;
-    font-size: 20px;
+    font-size: 1em;
     position: relative;
-    font-weight: 500;
+    font-weight: 300;
     transition: .5s;
 }
 
@@ -169,7 +169,7 @@ header .burger{
 /* HOME */
 .home {
     position: relative;
-    margin: 200px 0 0 0;
+    margin: 150px 0 0 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -181,7 +181,7 @@ header .burger{
     width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .home .first h1{
     font-size: 3.5em;
@@ -191,20 +191,17 @@ header .burger{
     color: transparent;
     opacity: .7;
     z-index: 1;
-}
-.playfair-h1 {
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     font-weight: 1000;
     font-style: normal;
-    font-variation-settings:
-      "width" 100;
+    font-variation-settings: "width" 100;
 }
   
 .home h2{
+    margin: 50px 50px 0 0;
     font-size: 18px;
     font-weight: 200;
-    margin: 0 100px 0 0;
     z-index: 1;
     box-sizing: border-box;
 }
@@ -230,6 +227,7 @@ header .burger{
     position: relative;
     z-index: 1;
     border-radius: 10px;
+    margin: 30px 0 0 0;
 }
 
 .glow-on-hover:before {
@@ -280,6 +278,7 @@ header .burger{
 
 /* TUTORIALS */
 .tutorials{
+    position: relative;
     width: 100%;
     margin: 5% 0 0 0;
     text-align: center;
@@ -295,22 +294,37 @@ header .burger{
     font-weight: 200;
     margin: 20px 0 60px 0;
 }
-.tutorials div{
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin: 0 0 50px 0;
+.tutorials .spans{
+    position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: space-evenly;
+  margin: 0 0 50px 0;
 }
-.tutorials div span{
-    color: #858585;
-    cursor: pointer;
-    border: transparent solid 1px;
+.tutorials .spans span{
     padding: 10px 20px;
-    border-radius: 10px;
+    color: #858585;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  border-radius: 15px;
 }
-.tutorials div span:hover{
-    border: #DB9D47 solid 1px;
+.tutorials .spans span.active {
+    color: #ffffff;
+    opacity: .7;
 }
+
+.tutorials .spans::before {
+    content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 4px;
+  width: 0;
+  transition: left 0.5s ease, width 0.5s ease;
+  }
+
+
 .tutorials .placement{
     position: relative;
     right: 0;
@@ -903,14 +917,15 @@ footer{
 }
 
 .login-reg .login-form .log-showhide{
-    width: 30px;
+    text-align: center;
+    display: block;
+    width: 20px;
     position: absolute;
-    right: 10px;
     cursor: pointer;
     transition: 1s;
     pointer-events: all;
+    right: 20px;
     top: 0;
-    right: 10px;
     bottom: 0;
     margin: auto;
 }
@@ -942,9 +957,9 @@ footer{
 }
 
 .login-reg .reg-form .reg-showhidepassword,.login-reg .reg-form .reg-showhideconfirmpassword{
-    width: 30px;
+    width: 20px;
     position: absolute;
-    right: 10;
+    right: 10px;
     top: 0;
     bottom: 0;
     margin: auto;
