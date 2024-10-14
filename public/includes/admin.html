@@ -2,76 +2,13 @@
 <html>
 <head>
     <title>Firebase Users</title>
-    <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
 
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD6zhFT1FZyRnH8nybAT4ZPYBexHPqD5TM",
-            authDomain: "capstone-8f915.firebaseapp.com",
-            projectId: "capstone-8f915",
-            storageBucket: "capstone-8f915.appspot.com",
-            messagingSenderId: "193487820156",
-            appId: "1:193487820156:web:707358816c42fb25d4c0f9",
-            measurementId: "G-NN9YWS88J5"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-
-        // Save user information on login
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // User is signed in, save their information to Firestore
-                const userRef = doc(db, "users", user.uid);
-                await setDoc(userRef, {
-                    uid: user.uid,
-                    email: user.email,
-                    displayName: user.displayName
-                }, { merge: true });
-            }
-        });
-
-        // Function to get all users from Firestore
-        async function getAllUsers() {
-            const querySnapshot = await getDocs(collection(db, "users"));
-            const users = [];
-            querySnapshot.forEach((doc) => {
-                users.push(doc.data());
-            });
-            return users;
-        }
-
-        // Display users when the DOM is fully loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            const usersTableBody = document.getElementById("users-table-body");
-
-            getAllUsers().then(users => {
-                users.forEach(user => {
-                    const row = document.createElement("tr");
-
-                    const uidCell = document.createElement("td");
-                    uidCell.textContent = user.uid;
-                    row.appendChild(uidCell);
-
-                    const emailCell = document.createElement("td");
-                    emailCell.textContent = user.email;
-                    row.appendChild(emailCell);
-
-                    const displayNameCell = document.createElement("td");
-                    displayNameCell.textContent = user.displayName;
-                    row.appendChild(displayNameCell);
-
-                    usersTableBody.appendChild(row);
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="../CSS/admin.css">
 </head>
 <body>
     <h1>Firebase Users</h1>
@@ -80,12 +17,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebas
             <tr>
                 <th>UID</th>
                 <th>Email</th>
-                <th>Display Name</th>
+                <th>Created At</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody id="users-table-body">
-            <!-- Users will be populated here -->
+
         </tbody>
     </table>
+
+    <script src="../JS/admin.js"></script>
 </body>
 </html>

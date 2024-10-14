@@ -26,34 +26,50 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth(app);
 
+const userLoading = document.querySelector(".profile");
+
+// Show the loading spinner by default
+userLoading.innerHTML = `<l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>`;
+
 auth.onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in.
+        
+        userLoading.innerHTML = "";
+        // User is signed in
         console.log("User is signed in:", user);
-        // You can use user.email, user.uid, etc. Example
         const current = user.email;
         const uid = user.uid;
-        photo = user.photoURL === null ? "./IMG/blank photo.png" : user.photoURL;
-        document.querySelector(".email").textContent = current;
-        console.log(current);
-        console.log(photo);
-        console.log(uid);
-
-
-        localStorage.setItem("current", uid);
         
+        const photo = user.photoURL ? user.photoURL : "./IMG/blank_user.svg"; 
+
+        // Update email
+        document.querySelector(".email").textContent = current;
+
+        // Fetch and update user profile picture
         const PP = document.querySelectorAll(".profile");
+
         PP.forEach(profile => {
-            profile.src = photo;
+            profile.innerHTML = "";
+            profile.style.backgroundImage = `url(${photo})`;
+            profile.style.backgroundSize = "cover";
+            profile.style.backgroundPosition = "center";
+            profile.style.backgroundRepeat = "no-repeat";
+            profile.style.display = "block";
         });
 
+        // Remove the loading ring when credentials are fetched
+         // This removes the loading ring
 
+        // Optionally store user ID in localStorage
+        localStorage.setItem("current", uid);
+
+        // Example for handling project sorting logic...
         const ProjectsElement = document.querySelector(".projects");
         const fileList = ProjectsElement.querySelector('#fileList');
         const chosen = ProjectsElement.querySelector(".chosen");
         const targetuser = uid;
         let first = "createdAt", second = "asc";
-    
+
         Sorting();
         
         // Listen for the custom 'customChange' event
@@ -75,21 +91,20 @@ auth.onAuthStateChanged((user) => {
                 first = "createdAt";
                 second = "asc";
             }
-            
-            // Call your function with the updated sort options
             loadProjects(ProjectsElement, fileList, targetuser, first, second);
         });
-    
+
         // Optionally, dispatch the customChange event initially
         chosen.dispatchEvent(new Event('customChange'));
-    
+
         GridList();
     } else {
-        // No user is signed in.
+        // No user is signed in. Redirect to login page
         console.log("No user signed in.");
-        window.location.href = "../index.html"; // Redirect to login if not signed in
+        window.location.href = "../index.html";
     }
 });
+
 const firestore = firebase.firestore();
 
 let tracker = "grid";
@@ -121,6 +136,8 @@ ViewMore();
 
 function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
     // Firestore query with dynamic ordering for the target user's Projects subcollection
+    fileList.innerHTML = `<l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>`;
+
     firestore.collection('users').doc(targetuser).collection('Projects').orderBy(first, second).get()
         .then(querySnapshot => {
             fileList.innerHTML = ""; // Clear fileList before adding new items
@@ -486,7 +503,7 @@ function header(){
         if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
             if (scrollTop > lastScrollTop) {
                 // Scrolling down: hide the header
-                header.style.top = "-200px";
+                header.style.top = "-1000px";
             } else {
                 // Scrolling up: show the header
                 header.style.top = "30px";

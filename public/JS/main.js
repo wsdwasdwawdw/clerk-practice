@@ -1,3 +1,5 @@
+
+
 const logshowhide = document.querySelector(".log-showhide");
 const logemail = document.getElementById("log-email");
 const logpassword = document.getElementById("log-password");
@@ -12,8 +14,6 @@ const logform = document.querySelector(".login-form");
 
 const sara = document.querySelector(".close");
 const login_reg = document.querySelector(".login-reg");
-const login = document.querySelectorAll(".login");
-
 const span = document.querySelectorAll(".logreg");
 
 const input = login_reg.querySelectorAll("input");
@@ -22,12 +22,6 @@ let logtoggle = true;
 let regtoggle = true;
 let logreg = true;
 
-
-login.forEach(login =>{
-    login.addEventListener("click", ()=>{
-        login_reg.classList.remove("hide");
-    });
-});
 
 
 function Register(){
@@ -335,7 +329,7 @@ body.addEventListener('scroll', function() {
     if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
     if (scrollTop > lastScrollTop) {
         // Scrolling down: hide the header
-        header.style.top = "-200px";
+        header.style.top = "-1000px";
     } else {
         // Scrolling up: show the header
         header.style.top = "30px";
@@ -371,14 +365,7 @@ steps.forEach(span =>{
         span.style.opacity = ".7"; */
 
         // Display a loading animation (or whatever l-ring is)
-        vid.innerHTML = `<l-ring
-                            size="40"
-                            stroke="5"
-                            bg-opacity="0"
-                            speed="2"
-                            color="white" 
-                            class="loading"
-                         ></l-ring>`;
+        vid.innerHTML = `<l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>`;
         steps.forEach(span=>{
             span.style.pointerEvents = "none";
         });

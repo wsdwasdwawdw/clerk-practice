@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 *{
   padding: 0;
   margin: 0;
@@ -8,6 +10,8 @@ body{
 html,body{
   height: 100%;
   width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 1000;
 }
 .main{
   height: 100%;
@@ -38,6 +42,7 @@ html,body{
   display: flex;
   position: initial;
   justify-content: center;
+  font-weight: 300;
 }
 
 
@@ -63,9 +68,8 @@ html,body{
   height: 100%;
   background-color: #454545;
 }
-
 .panel__styles{
-  position: initial;
+  position: relative;
   width: 250px;
 }
 .panel__basic-actions {
@@ -73,14 +77,16 @@ html,body{
 }
 
 .panel__switcher {
+  position: relative;
   width: 250px;
-  position: initial;
+  
 }
 
 .panel__devices {
   position: initial;
   margin: 0 auto 0 0;
 }
+
 
 
 /* CANVAS */
@@ -133,6 +139,7 @@ html,body{
   font-size: 22px;
   font-weight: 700;
 }
+
 #gjs-cm-css .copyCSS{
   background-color: #777272;
   position: absolute;
@@ -154,25 +161,6 @@ html,body{
 .has-selection .no-selection-message {
   display: none;
 }
-
-/* .gjs-one-bg {
-  background-color: #78366a;
-}
-
-.gjs-two-color {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.gjs-three-bg {
-  background-color: #ec5896;
-  color: white;
-}
-
-.gjs-four-color,
-.gjs-four-color-h:hover {
-  color: #ec5896;
-} */
-
 
 .icons-flex {
   background-size: 70% 65% !important;
@@ -274,4 +262,77 @@ html,body{
 
 ::-webkit-scrollbar{
   display: none;
+}
+
+/* We can remove the border we've set at the beginning */
+#gjs {
+  border: none;
+}
+/* Theming */
+
+/* Primary color for the background */
+.gjs-one-bg {
+  background-color: #0D1117;
+}
+
+/* Secondary color for the text color */
+.gjs-two-color {
+  color: #858585;
+  background-color: #1A1F29;
+}
+
+/* Tertiary color for the background */
+.gjs-three-bg {
+  background-color: red;
+  color: white;
+}
+
+/* Quaternary color for the text color */
+.gjs-four-color,
+.gjs-four-color-h:hover {
+  color: #ffffff;
+}
+
+.panel__styles .gjs-pn-btn{
+  width: 100%;
+  height: 100%;   
+  display: inline;
+}
+.panel__styles .gjs-pn-btn::before{
+  content: " ";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: #858585 solid 1px;
+}
+.panel__styles .gjs-pn-btn.gjs-pn-active::before{
+  content: " ";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: #5432EE solid 1px;
+}
+
+.panel__switcher .gjs-pn-btn{
+  width: 100%;
+  height: 100%;   
+  display: inline;
+}
+.panel__switcher .gjs-pn-btn::before{
+  content: " ";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: #858585 solid 1px;
+}
+.panel__switcher .gjs-pn-btn.gjs-pn-active::before{
+  content: " ";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border: #5432EE solid 1px;
 }
