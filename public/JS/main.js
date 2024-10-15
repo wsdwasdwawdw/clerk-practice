@@ -254,14 +254,25 @@ sara.addEventListener("click", ()=>{
     login_reg.classList.add("hide");
 });
 
+
 const templates = document.querySelector(".templates");
-const carousel = templates.querySelector(".carousel");
+const carousel = templates.querySelector(".carousel-wrapper");
 const imgs = carousel.querySelectorAll("img");
 imgs.forEach(img =>{
+
+    
     img.title = "Want to use this template?";
     
     img.addEventListener("click", ()=>{
-        login_reg.classList.remove("hide");
+        const loggedIn = JSON.parse(localStorage.getItem("loggedIn"));
+        
+        if(loggedIn){
+            window.location.href = "./includes/dashboard.html";
+        }
+        else{
+            login_reg.classList.remove("hide");
+        }
+        
     });
 });
 
