@@ -35,7 +35,7 @@ auth.onAuthStateChanged((user) => {
         const img = Profile.querySelector(".profile");
         
         email.textContent = user.email;
-        const source = user.photoURL === null ? "./IMG/blank photo.png" :user.photoURL;
+        const source = user.photoURL === null ? "./IMG/blank_user.svg" :user.photoURL;
 
         console.log(source);
         img.src = source;

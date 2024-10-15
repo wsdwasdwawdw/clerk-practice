@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Dashboard</title>
-    <script src="../JS/signOut.js" type="module"></script>
+    
     <link rel="icon" href="IMG/logooo-01.png">
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <link rel="stylesheet" href="../CSS/media.css">
@@ -13,6 +13,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-storage-compat.js"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ring.js"></script>
     
     
 </head>
@@ -23,36 +25,33 @@
     <header>
         <a href="../index.html" class="logo"></a>
         <div class="user">
-            <img class="profile"/>
+            <div class="profile"></div> <!-- Profile area -->
         </div>
-        
+    
         <div class="shitsPa tago">
             <div class="picAndName">
-                <img class="profile"/>
-                <p class="email"></p>
+                <div class="profile"><l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring></div>
+                <p class="email"></p> <!-- Email area -->
             </div>
             <hr>
             <div class="settingAndLogout">
                 <div id="setting">
                     <span class="settingIcon"></span>
-                    <p>User Setings</p>
+                    <p>User Settings</p>
                 </div>
                 <div id="logOut">
                     <p>Log Out</p>
                     <span class="logoutIcon"></span>
                 </div>
             </div>
-            
         </div>
-            
     </header>
-    
     
     
     <section class="templates">
     
         <h1>Want to explore our templates?</h1>
-        <h2>Brows a wide selection of templates to inspire your next project.</h2>
+        <h2>Browse a wide selection of templates to inspire your next project.</h2>
 
         <div class="container">
             <a href="grapes.html" class="blank">
@@ -154,9 +153,10 @@
             </div>
             
         </div>  
-        <hr>        
-        <div id="fileList" class="grid">
+        <hr>    
             
+        <div id="fileList" class="grid">
+            <l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>
         </div>
     </section>
 
@@ -185,5 +185,6 @@
         </div>
     </div>
     <script src="../JS/dashboard.js" defer></script>
+    <script src="../JS/signOut.js" type="module"></script>
 </body>
 </html>

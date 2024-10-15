@@ -94,6 +94,10 @@ header .shitsPa{
 }
 header .shitsPa .picAndName{
     margin: 0 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 header .shitsPa .picAndName .profile{
     margin: 20px 0 10px 0;
@@ -674,3 +678,9 @@ header .logoutIcon{
     }
 }
 
+.loading{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    z-index: 50;
+}

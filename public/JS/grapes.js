@@ -61,7 +61,7 @@ const editor = grapesjs.init({
         el: '.panel__devices',
         buttons: [{
             id: 'device-desktop',
-            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #ffffff;transform: ;msFilter:;"><path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v2H8v2h8v-2h-3v-2h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"></path></svg>',
+            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentcolor;transform: ;msFilter:;"><path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v2H8v2h8v-2h-3v-2h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"></path></svg>',
             command: 'set-device-desktop',
             active: true,
             attributes: {
@@ -70,7 +70,7 @@ const editor = grapesjs.init({
             togglable: false,
           },{
             id: 'device-tablet',
-            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #ffffff;transform: rotate(270deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);"><path d="M6 2c-1.103 0-2 .897-2 2v16c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2H6zm0 15V5h12l.002 12H6z"></path></svg>',
+            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentcolor;transform: rotate(270deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);"><path d="M6 2c-1.103 0-2 .897-2 2v16c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2H6zm0 15V5h12l.002 12H6z"></path></svg>',
             command: 'set-device-tablet',
             attributes: {
               title: "Tablet View",
@@ -92,13 +92,23 @@ const editor = grapesjs.init({
         buttons: [{
           id: 'show-style',
           active: true,
-          label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor; display: block;transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);"><path d="m21.207 11.278-2.035-2.035-1.415-1.415-5.035-5.035a.999.999 0 0 0-1.414 0L6.151 7.949 4.736 9.363a2.985 2.985 0 0 0-.878 2.122c0 .802.313 1.556.879 2.121l.707.707-2.122 2.122a2.925 2.925 0 0 0-.873 2.108 2.968 2.968 0 0 0 1.063 2.308 2.92 2.92 0 0 0 1.886.681c.834 0 1.654-.341 2.25-.937l2.039-2.039.707.706c1.133 1.133 3.107 1.134 4.242.001l.708-.707.569-.569.138-.138 5.156-5.157a.999.999 0 0 0 0-1.414zm-7.277 5.865-.708.706a1.021 1.021 0 0 1-1.414 0l-1.414-1.413a.999.999 0 0 0-1.414 0l-2.746 2.745a1.192 1.192 0 0 1-.836.352.914.914 0 0 1-.595-.208.981.981 0 0 1-.354-.782.955.955 0 0 1 .287-.692l2.829-2.829a.999.999 0 0 0 0-1.414l-1.414-1.415c-.189-.188-.293-.438-.293-.706s.104-.519.293-.708l.707-.707 3.536 3.536 3.536 3.535z"></path></svg>',
+          label: `<div style="width: auto; height: 20px; display: flex; gap: 10px; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+          <path d="m14.013,13.649c.158,1.78-1.24,3.274-2.988,3.274h-4c-.681,0-1.163-.656-.961-1.307.499-1.608,1.936-4.181,4.249-4.626,1.755-.338,3.542.879,3.7,2.659ZM23.295.707c-.941-.942-2.467-.943-3.409-.002-.025.025-5.276,5.814-7.692,8.479.653.171,1.276.464,1.826.879.692.522,1.205,1.215,1.544,1.982l7.728-7.924c.943-.942.945-2.47.003-3.413Zm-7.305,13.764c-.117,1.047-.557,2.042-1.276,2.827-.945,1.033-2.29,1.625-3.688,1.625h-4c-.953,0-1.858-.457-2.422-1.223-.564-.767-.732-1.768-.449-2.678.708-2.283,2.536-5.101,5.371-5.874l2.866-3.16c1.091-1.202,1.978-2.181,2.711-2.988H5C2.243,3,0,5.243,0,8v11c0,2.757,2.243,5,5,5h11c2.757,0,5-2.243,5-5v-9.666l-5.01,5.137Z"/>
+        </svg>
+        <p>Styles</p>
+        </div>`,
           command: 'show-styles',
           togglable: false,
         },{
           id: 'show-traits',
           active: true,
-          label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentcolor; display: block;transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);"><path d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"></path></svg>',
+          label: `<div style="width: auto; height: 20px; display: flex; gap: 10px; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+          <path d="m23.265,19.379l-.983-.566c.129-.418.218-.853.218-1.313s-.09-.895-.218-1.313l.983-.566c.479-.275.644-.887.367-1.366-.274-.477-.887-.644-1.365-.367l-.977.563c-.605-.652-1.393-1.126-2.289-1.33v-1.121c0-.552-.447-1-1-1s-1,.448-1,1v1.121c-.896.205-1.685.678-2.289,1.33l-.977-.563c-.479-.277-1.089-.11-1.365.367-.276.479-.112,1.09.367,1.366l.983.566c-.129.418-.218.853-.218,1.313s.09.895.218,1.313l-.983.566c-.479.275-.643.887-.367,1.366.185.321.521.5.867.5.169,0,.341-.043.498-.134l.977-.563c.605.652,1.393,1.126,2.289,1.33v1.121c0,.552.447,1,1,1s1-.448,1-1v-1.121c.896-.205,1.685-.678,2.289-1.33l.977.563c.157.091.329.134.498.134.346,0,.683-.18.867-.5.276-.479.111-1.09-.367-1.366Zm-5.265-.379c-.827,0-1.5-.673-1.5-1.5s.673-1.5,1.5-1.5,1.5.673,1.5,1.5-.673,1.5-1.5,1.5Zm-2.413-14.371l-7.616,4.374s-.008-.002-.012-.002c-.016,0-.029.008-.044.009L.369,4.716c.376-.869,1.023-1.613,1.87-2.097L5.795.587c1.36-.778,3.05-.778,4.411,0l3.555,2.032c.818.468,1.445,1.18,1.827,2.01ZM0,6.807l6.96,3.96v7.77c-.429-.103-.843-.263-1.225-.49l-3.556-2.106c-1.344-.796-2.179-2.261-2.179-3.824v-5.31Zm10,10.693c0,.222.016.441.033.658-.342.174-.7.312-1.073.394v-7.811l7.04-4.043v3.064c-3.449.889-6,4.011-6,7.738Z"/>
+        </svg>
+        <p>Traits</p>
+        </div>`,
           command: 'show-traits',
           togglable: false,
         }]
@@ -109,14 +119,22 @@ const editor = grapesjs.init({
         buttons: [{
             id: 'show-layers',
             active: true,
-            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentcolor; display: block;transform: ;msFilter:;"><path d="m21.484 7.125-9.022-5a1.003 1.003 0 0 0-.968 0l-8.978 4.96a1 1 0 0 0-.003 1.748l9.022 5.04a.995.995 0 0 0 .973.001l8.978-5a1 1 0 0 0-.002-1.749z"></path><path d="m12 15.856-8.515-4.73-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 15.856z"></path><path d="m12 19.856-8.515-4.73-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 19.856z"></path></svg>',
+            label: `
+          <div style="width: auto; height: 20px; display: flex; gap: 10px; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: currentcolor; display: block;transform: ;msFilter:;"><path d="m21.484 7.125-9.022-5a1.003 1.003 0 0 0-.968 0l-8.978 4.96a1 1 0 0 0-.003 1.748l9.022 5.04a.995.995 0 0 0 .973.001l8.978-5a1 1 0 0 0-.002-1.749z"></path><path d="m12 15.856-8.515-4.73-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 15.856z"></path><path d="m12 19.856-8.515-4.73-.971 1.748 9 5a1 1 0 0 0 .971 0l9-5-.971-1.748L12 19.856z"></path></svg>
+          <p>Layers</p>
+          </div>`,
             command: 'show-layers',
             // Once activated disable the possibility to turn it off
             togglable: false,
           },{
             id: 'show-blocks',
             active: true,
-            label: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor; display:block; transform: ;msFilter:;"><path d="m21.406 6.086-9-4a1.001 1.001 0 0 0-.813 0l-9 4c-.02.009-.034.024-.054.035-.028.014-.058.023-.084.04-.022.015-.039.034-.06.05a.87.87 0 0 0-.19.194c-.02.028-.041.053-.059.081a1.119 1.119 0 0 0-.076.165c-.009.027-.023.052-.031.079A1.013 1.013 0 0 0 2 7v10c0 .396.232.753.594.914l9 4c.13.058.268.086.406.086a.997.997 0 0 0 .402-.096l.004.01 9-4A.999.999 0 0 0 22 17V7a.999.999 0 0 0-.594-.914zM12 4.095 18.538 7 12 9.905l-1.308-.581L5.463 7 12 4.095zm1 15.366V11.65l7-3.111v7.812l-7 3.11z"></path></svg>',
+            label: `
+          <div style="width: auto; height: 20px; display: flex; gap: 10px; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="M14.762,11.587A5.5,5.5,0,0,1,13,12.223V23.874a4.922,4.922,0,0,0,1.5-.557l6.027-3.479a5.016,5.016,0,0,0,2.5-4.331V8.547a4.959,4.959,0,0,0-.265-1.57Z"/><path d="M10.242,9.857a3.531,3.531,0,0,0,3.521,0l8-4.61a4.983,4.983,0,0,0-1.238-1.027L14.5.737a5.015,5.015,0,0,0-5,0L3.473,4.217a4.974,4.974,0,0,0-1.2.983Z"/><path d="M11,12.223a5.493,5.493,0,0,1-1.763-.636L1.257,6.923A4.956,4.956,0,0,0,.973,8.547v6.96a5.016,5.016,0,0,0,2.5,4.331L9.5,23.317a4.922,4.922,0,0,0,1.5.557Z"/></svg>
+          <p>Blocks</p>
+          </div>`,
             command: 'show-blocks',
             togglable: false,
           }],
@@ -471,7 +489,9 @@ const editor = grapesjs.init({
         id: 'visibility',
         active: true, // active by default
         className: 'btn-toggle-borders',
-        label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="fill: currentcolor; display: block;"><path d="M9 21h12V3H3v18h6zm10-4v2h-6v-6h6v4zM15 5h4v6h-6V5h2zM5 7V5h6v6H5V7zm0 12v-6h6v6H5z"></path></svg>',
+        label: `<svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 24 24" display="block">
+      <path d="m7,1c0,.553-.448,1-1,1h-1c-1.654,0-3,1.346-3,3v1c0,.553-.448,1-1,1s-1-.447-1-1v-1C0,2.243,2.243,0,5,0h1c.552,0,1,.447,1,1ZM1,15c.552,0,1-.447,1-1v-4c0-.553-.448-1-1-1s-1,.447-1,1v4c0,.553.448,1,1,1Zm5,7h-1c-1.654,0-3-1.346-3-3v-1c0-.553-.448-1-1-1s-1,.447-1,1v1c0,2.757,2.243,5,5,5h1c.552,0,1-.447,1-1s-.448-1-1-1Zm17-5c-.552,0-1,.447-1,1v1c0,1.654-1.346,3-3,3h-1c-.552,0-1,.447-1,1s.448,1,1,1h1c2.757,0,5-2.243,5-5v-1c0-.553-.448-1-1-1Zm0-8c-.552,0-1,.447-1,1v4c0,.553.448,1,1,1s1-.447,1-1v-4c0-.553-.448-1-1-1ZM19,0h-1c-.552,0-1,.447-1,1s.448,1,1,1h1c1.654,0,3,1.346,3,3v1c0,.553.448,1,1,1s1-.447,1-1v-1c0-2.757-2.243-5-5-5Zm-5,0h-4c-.552,0-1,.447-1,1s.448,1,1,1h4c.552,0,1-.447,1-1s-.448-1-1-1Zm0,22h-4c-.552,0-1,.447-1,1s.448,1,1,1h4c.552,0,1-.447,1-1s-.448-1-1-1Z"/>
+      </svg>`,
         command: 'sw-visibility', // Built-in command
         attributes: {
           title: "Toggle Borders",
@@ -480,7 +500,7 @@ const editor = grapesjs.init({
       {
         id: 'export',
         className: 'btn-open-export',
-        label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="fill: #ffffff;display: block;"><path d="m7.375 16.781 1.25-1.562L4.601 12l4.024-3.219-1.25-1.562-5 4a1 1 0 0 0 0 1.562l5 4zm9.25-9.562-1.25 1.562L19.399 12l-4.024 3.219 1.25 1.562 5-4a1 1 0 0 0 0-1.562l-5-4zm-1.649-4.003-4 18-1.953-.434 4-18z"></path></svg>',
+        label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M19,0H5C2.243,0,0,2.243,0,5v14c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V5c0-2.757-2.243-5-5-5ZM10.121,14.121l-4.041,4.041c-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293c-.391-.391-.391-1.023,0-1.414l4.041-4.041c.39-.39,.39-1.024,0-1.414L4.667,7.252c-.391-.391-.391-1.023,0-1.414s1.023-.391,1.414,0l4.041,4.041c1.17,1.17,1.17,3.072,0,4.242Zm8.879,3.879h-7c-.552,0-1-.447-1-1s.448-1,1-1h7c.553,0,1,.447,1,1s-.447,1-1,1Z"/></svg>`,
         command(editor) {
           // Execute the original command
           editor.runCommand('export-template');
@@ -494,7 +514,7 @@ const editor = grapesjs.init({
       {
         id: 'show-json',
         className: 'btn-show-json',
-        label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="fill: #ffffff; display: block;"><path d="M12.823 15.122c-.517 0-.816.491-.816 1.146 0 .661.311 1.126.82 1.126.517 0 .812-.49.812-1.146 0-.604-.291-1.126-.816-1.126z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM8.022 16.704c0 .961-.461 1.296-1.2 1.296-.176 0-.406-.029-.557-.08l.086-.615c.104.035.239.06.391.06.319 0 .52-.145.52-.67v-2.122h.761v2.131zm1.459 1.291c-.385 0-.766-.1-.955-.205l.155-.631c.204.105.521.211.846.211.35 0 .534-.146.534-.365 0-.211-.159-.331-.564-.476-.562-.195-.927-.506-.927-.996 0-.576.481-1.017 1.277-1.017.38 0 .659.08.861.171l-.172.615c-.135-.065-.375-.16-.705-.16s-.491.15-.491.325c0 .215.19.311.627.476.596.22.876.53.876 1.006.001.566-.436 1.046-1.362 1.046zm3.306.005c-1.001 0-1.586-.755-1.586-1.716 0-1.012.646-1.768 1.642-1.768 1.035 0 1.601.776 1.601 1.707C14.443 17.33 13.773 18 12.787 18zm4.947-.055h-.802l-.721-1.302a12.64 12.64 0 0 1-.585-1.19l-.016.005c.021.445.031.921.031 1.472v1.016h-.701v-3.373h.891l.701 1.236c.2.354.4.775.552 1.155h.014c-.05-.445-.065-.9-.065-1.406v-.985h.702v3.372zM14 9h-1V4l5 5h-4z"></path></svg>',
+        label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 24 24" style="fill: currentColor;" display="block"><path d="M12.823 15.122c-.517 0-.816.491-.816 1.146 0 .661.311 1.126.82 1.126.517 0 .812-.49.812-1.146 0-.604-.291-1.126-.816-1.126z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM8.022 16.704c0 .961-.461 1.296-1.2 1.296-.176 0-.406-.029-.557-.08l.086-.615c.104.035.239.06.391.06.319 0 .52-.145.52-.67v-2.122h.761v2.131zm1.459 1.291c-.385 0-.766-.1-.955-.205l.155-.631c.204.105.521.211.846.211.35 0 .534-.146.534-.365 0-.211-.159-.331-.564-.476-.562-.195-.927-.506-.927-.996 0-.576.481-1.017 1.277-1.017.38 0 .659.08.861.171l-.172.615c-.135-.065-.375-.16-.705-.16s-.491.15-.491.325c0 .215.19.311.627.476.596.22.876.53.876 1.006.001.566-.436 1.046-1.362 1.046zm3.306.005c-1.001 0-1.586-.755-1.586-1.716 0-1.012.646-1.768 1.642-1.768 1.035 0 1.601.776 1.601 1.707C14.443 17.33 13.773 18 12.787 18zm4.947-.055h-.802l-.721-1.302a12.64 12.64 0 0 1-.585-1.19l-.016.005c.021.445.031.921.031 1.472v1.016h-.701v-3.373h.891l.701 1.236c.2.354.4.775.552 1.155h.014c-.05-.445-.065-.9-.065-1.406v-.985h.702v3.372zM14 9h-1V4l5 5h-4z"></path></svg>',
         context: 'show-json',
         command(editor) {
           editor.Modal.setTitle('Components JSON')
@@ -510,7 +530,7 @@ const editor = grapesjs.init({
       {
           id: 'preview',
           className: 'btn-preview',
-          label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="fill: #ffffff; display: block;"><path d="M7 6v12l10-6z"></path></svg>',
+          label: `<svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="22" display="block"><path d="M20.492,7.969,10.954.975A5,5,0,0,0,3,5.005V19a4.994,4.994,0,0,0,7.954,4.03l9.538-6.994a5,5,0,0,0,0-8.062Z"/></svg>`,
           context: 'preview',
           command: ()=> editor.runCommand("preview"),
           attributes: {
@@ -520,7 +540,7 @@ const editor = grapesjs.init({
       {
           id: 'clear',
           className: 'btn-clear',
-          label: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" style="fill: #ffffff; display: block;"><path d="M12.48 3 7.73 7.75 3 12.59a2 2 0 0 0 0 2.82l4.3 4.3A1 1 0 0 0 8 20h12v-2h-7l7.22-7.22a2 2 0 0 0 0-2.83L15.31 3a2 2 0 0 0-2.83 0zM8.41 18l-4-4 4.75-4.84.74-.75 4.95 4.95-4.56 4.56-.07.08z"></path></svg>',
+          label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="m7.242,7.438L12.751,1.911c1.17-1.175,3.213-1.175,4.383,0l5.935,5.955c1.206,1.21,1.206,3.179,0,4.389l-5.506,5.525L7.242,7.438Zm7.111,13.562l1.798-1.804L5.83,8.855.882,13.82c-1.206,1.21-1.206,3.179,0,4.389l4.774,4.791h18.344v-2h-9.647Z"/></svg>`,
           context: 'clear',
           command: () => editor.runCommand("core:canvas-clear"),
           attributes: {
@@ -532,9 +552,7 @@ const editor = grapesjs.init({
         className: "btn-undo",
         context: "undo",
         command: () => editor.runCommand('core:undo'),
-        label: `<svg viewBox="0 0 24 24" style="display: block; width: 22;">
-            <path fill=" #ffffff" d="M20 13.5C20 17.09 17.09 20 13.5 20H6V18H13.5C16 18 18 16 18 13.5S16 9 13.5 9H7.83L10.91 12.09L9.5 13.5L4 8L9.5 2.5L10.92 3.91L7.83 7H13.5C17.09 7 20 9.91 20 13.5Z" />
-        </svg>`,
+        label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M7.7,15.007a1.5,1.5,0,0,1-2.121,0L.858,10.282a2.932,2.932,0,0,1,0-4.145L5.583,1.412A1.5,1.5,0,0,1,7.7,3.533L4.467,6.7l14.213,0A5.325,5.325,0,0,1,24,12.019V18.7a5.323,5.323,0,0,1-5.318,5.318H5.318a1.5,1.5,0,1,1,0-3H18.681A2.321,2.321,0,0,0,21,18.7V12.019A2.321,2.321,0,0,0,18.68,9.7L4.522,9.7,7.7,12.886A1.5,1.5,0,0,1,7.7,15.007Z"/></svg>`,
         attributes: {
           title: "Undo",
         },
@@ -544,9 +562,7 @@ const editor = grapesjs.init({
         className: "btn-redo",
         context: "redo",
         command: () => editor.runCommand('core:redo'),
-        label: `<svg viewBox="0 0 24 24" style="display: block; width: 22;">
-            <path fill=" #ffffff" d="M10.5 18H18V20H10.5C6.91 20 4 17.09 4 13.5S6.91 7 10.5 7H16.17L13.08 3.91L14.5 2.5L20 8L14.5 13.5L13.09 12.09L16.17 9H10.5C8 9 6 11 6 13.5S8 18 10.5 18Z" />
-        </svg>`,
+        label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M16.3,15.007a1.5,1.5,0,0,0,2.121,0l4.726-4.725a2.934,2.934,0,0,0,0-4.145L18.416,1.412A1.5,1.5,0,1,0,16.3,3.533L19.532,6.7,5.319,6.7A5.326,5.326,0,0,0,0,12.019V18.7a5.324,5.324,0,0,0,5.318,5.318H18.682a1.5,1.5,0,0,0,0-3H5.318A2.321,2.321,0,0,1,3,18.7V12.019A2.321,2.321,0,0,1,5.319,9.7l14.159,0L16.3,12.886A1.5,1.5,0,0,0,16.3,15.007Z"/></svg>`,
         attributes: {
           title: "Redo",
         },
@@ -558,9 +574,7 @@ const editor = grapesjs.init({
         command() {
           fullscreen();
         },
-        label: `<svg viewBox="0 0 24 24" style="display: block; width: 22; height: 22;">
-            <path fill=" currentcolor" d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z" />
-        </svg>`,
+        label: `<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="22" display="block"><path d="M19,24H17a1,1,0,0,1,0-2h2a3,3,0,0,0,3-3V17a1,1,0,0,1,2,0v2A5.006,5.006,0,0,1,19,24Z"/><path d="M1,8A1,1,0,0,1,0,7V5A5.006,5.006,0,0,1,5,0H7A1,1,0,0,1,7,2H5A3,3,0,0,0,2,5V7A1,1,0,0,1,1,8Z"/><path d="M7,24H5a5.006,5.006,0,0,1-5-5V17a1,1,0,0,1,2,0v2a3,3,0,0,0,3,3H7a1,1,0,0,1,0,2Z"/><path d="M23,8a1,1,0,0,1-1-1V5a3,3,0,0,0-3-3H17a1,1,0,0,1,0-2h2a5.006,5.006,0,0,1,5,5V7A1,1,0,0,1,23,8Z"/></svg>`,
         togglable: false
       },
       {
@@ -568,7 +582,7 @@ const editor = grapesjs.init({
         context: "import",
         className: "fullscreen",
         command: () => editor.runCommand('gjs-open-import-webpage'),
-        label: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentcolor; display: block; transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);"><path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path><path d="M9.293 9.293 5.586 13l3.707 3.707 1.414-1.414L8.414 13l2.293-2.293zm5.414 0-1.414 1.414L15.586 13l-2.293 2.293 1.414 1.414L18.414 13z"></path></svg>`,
+        label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M19,0H5C2.243,0,0,2.243,0,5v14c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V5c0-2.757-2.243-5-5-5ZM7.293,12.705l2.583,2.583c.391,.391,.391,1.023,0,1.414-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293l-2.583-2.583c-.567-.566-.879-1.32-.879-2.122s.312-1.555,.879-2.122l2.583-2.583c.391-.391,1.023-.391,1.414,0s.391,1.023,0,1.414l-2.583,2.583c-.189,.189-.293,.44-.293,.707s.104,.519,.293,.708Zm10.828,1.419l-2.583,2.583c-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293c-.391-.391-.391-1.023,0-1.414l2.583-2.583c.188-.189,.293-.44,.293-.708s-.104-.518-.293-.707l-2.583-2.584c-.391-.391-.391-1.024,0-1.414,.391-.391,1.023-.391,1.414,0l2.583,2.583c.566,.566,.879,1.32,.879,2.121s-.312,1.555-.879,2.122Z"/></svg>`,
         attributes: {
           title: "Import Code",
         }

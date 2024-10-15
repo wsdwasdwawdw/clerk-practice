@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 /* import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
 import { getAuth , signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
@@ -39,24 +38,60 @@ const storage = firebase.storage(app);
 auth.languageCode = 'en';
 
 auth.onAuthStateChanged((user) =>{
-  console.log(user);
+  if(user){
+    localStorage.setItem("loggedIn", true);
+    console.log("true");
+  }
+  else{
+    localStorage.setItem("loggedIn", false);
+    console.log("false");
+  }
+  
+  console.log(localStorage.getItem("loggedIn"));
 });
+
 const google = document.getElementById("google");
 google.addEventListener("click", () => {
   // Ensure you're using the initialized `auth` and `provider`
   firebase.auth().signInWithPopup(provider)
     .then((result) => {
-      
       const credential = result.credential;
       const token = credential.accessToken;
 
       // The signed-in user info.
       const user = result.user;
-      const name = user.email;
+      const uid = user.uid;
+      const email = user.email;
       const picture = user.photoURL;
+      const createdAt = new Date();
+      
+      // Reference to the Firestore users collection
+      const userRef = firebase.firestore().collection("users").doc(uid);
 
-      // Redirect to the dashboard
-      window.location.href = "./includes/dashboard.html";
+      // Check if the user exists in Firestore and if not, add their details
+      userRef.get()
+        .then((docSnapshot) => {
+          if (!docSnapshot.exists) {
+            // User is new, save their data to Firestore
+            return userRef.set({
+              email: email,
+              uid: uid,
+              createdAt: createdAt,
+              type: "Google",  // Sign-in type is "google"
+              photoURL: picture
+            }).then(() => {
+              console.log("User data saved to Firestore");
+              // Redirect to the dashboard after saving data
+              window.location.href = "./includes/dashboard.html";
+            });
+          } else {
+            // User already exists, just redirect to the dashboard
+            window.location.href = "./includes/dashboard.html";
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking user existence or saving data: ", error);
+        });
     })
     .catch((error) => {
       // Handle Errors here.
@@ -69,6 +104,8 @@ google.addEventListener("click", () => {
       console.error("Error during sign-in: ", errorCode, errorMessage, email);
     });
 });
+
+
 
 
 const Guest = document.getElementById("guest");
@@ -92,46 +129,52 @@ function register() {
     // Create user with email and password
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
-    // Signed in 
-    var user = userCredential.user;
-
-    // Send email verification
-    user.sendEmailVerification().then(() => {
-      console.log("Verification email sent!");
-
-      // Save additional user data in Firestore
-      return firebase.firestore().collection("users").doc(user.uid).set({
-        emailVerified: user.emailVerified, // Track if the email is verified
-        email: user.email,
-        createdAt: new Date(),
-      });
+      // Signed in 
+      var user = userCredential.user;
+  
+      // Send email verification
+      user.sendEmailVerification().then(() => {
+        console.log("Verification email sent!");
+  
+        // Save additional user data in Firestore including the UID
+        return firebase.firestore().collection("users").doc(user.uid).set({
+          uid: user.uid,
+          emailVerified: user.emailVerified, 
+          email: user.email,
+          createdAt: new Date(),
+          type: "Registered",
+        });
       }).then(() => {
         console.log("User data saved in Firestore!");
-
-        const message = "User Registration Successful! Please check you email for the verification link.";
+  
+        const message = "User Registration Successful! Please check your email for the verification link.";
         Alert(message);
-
+  
         // Clear input fields
         document.getElementById('reg-email').value = "";
         document.getElementById('reg-password').value = "";
         document.getElementById('reg-confirmpassword').value = "";
         document.querySelector(".lakas").textContent = "";
         document.querySelector(".wehhhhh").textContent = "";
-        
+  
       }).catch((error) => {
         console.error(error);
         const message = "Error saving user data or sending verification email.";
         Alert(message);
       });
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-    const message = "Email address is badly formatted";
-    Alert(message);
-  });
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      
+      // Custom message for badly formatted email or other errors
+      const message = errorCode === 'auth/invalid-email' ? 
+          "Email address is badly formatted" : errorMessage;
+      Alert(message);
+    });
+  
   
   
   
@@ -142,10 +185,44 @@ function register() {
   }
 }
 
+const login = document.querySelector(".login");
+login.addEventListener("click", ()=>{
+
+    const hasUser = JSON.parse(localStorage.getItem("loggedIn"));  
+  
+    if(hasUser){
+      console.log(hasUser)
+      window.location.href = "./includes/dashboard.html";
+    }
+    else{
+      login_reg.classList.remove("hide");
+    }
+});
+
+document.addEventListener('keydown', function(event) {
+
+  const email = document.getElementById('log-email').value;
+  const password = document.getElementById('log-password').value;
+
+  if (event.key === 'Enter') {
+
+    if(email.trim() != "" && password.trim() != ""){
+      pasok();
+    }
+    else{
+      console.log("walang laman");
+    }
+
+  }
+});
+
 function pasok(){
+    
     const email = document.getElementById('log-email').value;
     const password = document.getElementById('log-password').value;
-
+    
+    if(email === "admin" && password === "admin")
+      window.location.href = "./includes/admin.html";
     // Sign in the user with email and password
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
