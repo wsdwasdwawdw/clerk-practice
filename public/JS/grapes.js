@@ -52,8 +52,6 @@ const editor = grapesjs.init({
       id: 'layers',
       el: '.panel',
         resizable: {
-          // Being a flex child we need to change `flex-basis` property
-          // instead of the `width` (default)
           keyWidth: 'flex-basis',
         },
       
