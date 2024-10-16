@@ -29,7 +29,7 @@ const auth = firebase.auth(app);
 const userLoading = document.querySelector(".profile");
 
 // Show the loading spinner by default
-userLoading.innerHTML = `<l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>`;
+userLoading.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="#ffffff" ></l-dot-pulse>`;
 
 auth.onAuthStateChanged((user) => {
     if (user) {
@@ -136,7 +136,7 @@ ViewMore();
 
 function loadProjects(ProjectsElement, fileList, targetuser, first, second) {
     // Firestore query with dynamic ordering for the target user's Projects subcollection
-    fileList.innerHTML = `<l-ring size="40" stroke="5" bg-opacity="0" speed="2" color="white" class="loading"></l-ring>`;
+    fileList.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="#ffffff" ></l-dot-pulse>`;
 
     firestore.collection('users').doc(targetuser).collection('Projects').orderBy(first, second).get()
         .then(querySnapshot => {

@@ -542,7 +542,12 @@ const editor = grapesjs.init({
           className: 'btn-clear',
           label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="m7.242,7.438L12.751,1.911c1.17-1.175,3.213-1.175,4.383,0l5.935,5.955c1.206,1.21,1.206,3.179,0,4.389l-5.506,5.525L7.242,7.438Zm7.111,13.562l1.798-1.804L5.83,8.855.882,13.82c-1.206,1.21-1.206,3.179,0,4.389l4.774,4.791h18.344v-2h-9.647Z"/></svg>`,
           context: 'clear',
-          command: () => editor.runCommand("core:canvas-clear"),
+          command(){ 
+
+            let confirm = confirm("")
+            console.log("Clear");
+            //editor.runCommand("core:canvas-clear");
+          },
           attributes: {
             title: "Clear",
           },
@@ -561,7 +566,9 @@ const editor = grapesjs.init({
         id: 'redo',
         className: "btn-redo",
         context: "redo",
-        command: () => editor.runCommand('core:redo'),
+        command(){ 
+            editor.runCommand('core:redo');
+        },
         label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M16.3,15.007a1.5,1.5,0,0,0,2.121,0l4.726-4.725a2.934,2.934,0,0,0,0-4.145L18.416,1.412A1.5,1.5,0,1,0,16.3,3.533L19.532,6.7,5.319,6.7A5.326,5.326,0,0,0,0,12.019V18.7a5.324,5.324,0,0,0,5.318,5.318H18.682a1.5,1.5,0,0,0,0-3H5.318A2.321,2.321,0,0,1,3,18.7V12.019A2.321,2.321,0,0,1,5.319,9.7l14.159,0L16.3,12.886A1.5,1.5,0,0,0,16.3,15.007Z"/></svg>`,
         attributes: {
           title: "Redo",
@@ -580,11 +587,23 @@ const editor = grapesjs.init({
       {
         id: "import",
         context: "import",
-        className: "fullscreen",
+        className: "import",
         command: () => editor.runCommand('gjs-open-import-webpage'),
         label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="M19,0H5C2.243,0,0,2.243,0,5v14c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V5c0-2.757-2.243-5-5-5ZM7.293,12.705l2.583,2.583c.391,.391,.391,1.023,0,1.414-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293l-2.583-2.583c-.567-.566-.879-1.32-.879-2.122s.312-1.555,.879-2.122l2.583-2.583c.391-.391,1.023-.391,1.414,0s.391,1.023,0,1.414l-2.583,2.583c-.189,.189-.293,.44-.293,.707s.104,.519,.293,.708Zm10.828,1.419l-2.583,2.583c-.195,.195-.451,.293-.707,.293s-.512-.098-.707-.293c-.391-.391-.391-1.023,0-1.414l2.583-2.583c.188-.189,.293-.44,.293-.708s-.104-.518-.293-.707l-2.583-2.584c-.391-.391-.391-1.024,0-1.414,.391-.391,1.023-.391,1.414,0l2.583,2.583c.566,.566,.879,1.32,.879,2.121s-.312,1.555-.879,2.122Z"/></svg>`,
         attributes: {
           title: "Import Code",
+        }
+      },
+      {
+        id: "save",
+        context: "save",
+        className: "save",
+        command(){
+            savePopup();
+        },
+        label: `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" style="fill: currentColor; display: block;"><path d="M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z"></path></svg>`,
+        attributes: {
+          title: "Save Project",
         }
       }
     ],
@@ -6107,23 +6126,25 @@ else if(id === "Agency"){
 }
 
 
-
-
-
 // Function to save content to Firebase
 function saveToFirebase() {
     const projectData = editor.getProjectData();
     console.log(projectData);
 
+    const savePopup = document.querySelector(".savePopup");
+    const  container = savePopup.querySelector(".container");
     const user = firebase.auth().currentUser;
     const Name = document.getElementById("name").value;
     
 
+    
     if (!Name) {
         alert("Please enter a project name.");
         return;
     }
 
+    container.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="black" ></l-dot-pulse>`;
+    
     // Get the HTML and CSS from the editor
     const htmlContent = editor.getHtml();
     const cssContent = editor.getCss();
@@ -6232,6 +6253,7 @@ function saveToFirebase() {
             // Clear the input field
             document.getElementById("name").value = "";
 
+            savePopup.style.visibility = "collapse";
         })
         .catch((error) => {
             console.error("Error adding document: ", error);
@@ -6460,3 +6482,22 @@ editor.on('component:deselected', () => {
   // Show the default message again when no component is selected
   traitsContainer.classList.remove('has-selection');
 });
+
+
+function savePopup(){
+    const savePopup = document.querySelector(".savePopup");
+    const  container = savePopup.querySelector(".container");
+
+    savePopup.style.visibility = "visible";
+    console.log("kita na");
+
+    savePopup.addEventListener("click", ()=>{
+
+        savePopup.style.visibility = "collapse";
+    });
+
+    container.addEventListener("click", (e)=>{
+        e.stopPropagation();
+    })
+}
+
