@@ -544,9 +544,30 @@ const editor = grapesjs.init({
           context: 'clear',
           command(){ 
 
-            let confirm = confirm("")
-            console.log("Clear");
-            //editor.runCommand("core:canvas-clear");
+            const clear = document.querySelector(".clearPopup");
+            const container = clear.querySelector(".container");
+            const cancel = container.querySelector(".b-1");
+            const confirm = container.querySelector(".b-2");
+
+            clear.style.visibility = "visible";
+
+            clear.addEventListener("click", ()=>{
+                clear.style.visibility = "collapse";
+            });
+
+            container.addEventListener("click", (e)=>{
+                e.stopPropagation();
+            });
+
+            cancel.addEventListener("click", ()=>{
+                clear.style.visibility = "collapse";
+            });
+
+            confirm.addEventListener("click", ()=>{
+                editor.runCommand("core:canvas-clear");
+                clear.style.visibility = "collapse";
+            });
+
           },
           attributes: {
             title: "Clear",
@@ -6144,7 +6165,7 @@ function saveToFirebase() {
     }
 
     container.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="black" ></l-dot-pulse>`;
-    
+
     // Get the HTML and CSS from the editor
     const htmlContent = editor.getHtml();
     const cssContent = editor.getCss();

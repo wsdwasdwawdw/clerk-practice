@@ -4,9 +4,6 @@
   padding: 0;
   margin: 0;
 }
-body{
-  background-color: #f0f0f0;
-}
 html,body{
   height: 100%;
   width: 100%;
@@ -398,6 +395,71 @@ html,body{
   opacity: .8;
   cursor: pointer;
 }
+
+
+.clearPopup{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  display: flex;
+  visibility: collapse;
+}
+
+.clearPopup .container{
+  width: 35%;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: black solid 1px;
+  border-radius: 10px;
+  background-color: #13171F;
+  color: rgba(255,255,255, .8);
+}
+.clearPopup .container h1{
+  font-size: 1.5em;
+  margin: 20px 0 0 20px;
+  font-weight: 300;
+}
+.clearPopup .container p{
+  font-size: 1em;
+  font-weight: 300;
+  margin: 20px 20px 0 20px;
+}
+.clearPopup .container hr{
+  margin: 20px 0 10px 0;
+}
+.clearPopup .container .buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.clearPopup .container .buttons button{
+  font-size: 1em;
+  color: rgba(255,255,255, .9);
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 20px 10px 0;
+  cursor: pointer;
+}
+.clearPopup .container .buttons .b-1{
+  background-color: transparent;
+}
+.clearPopup .container .buttons .b-1:hover{
+  background-color: gray;
+}
+.clearPopup .container .buttons .b-2{
+  background: linear-gradient(to bottom, #5432EE 0%, #301C88 100%);
+}
+.clearPopup .container .buttons .b-2:hover{
+  opacity: .8;
+}
+
 
 ::-webkit-scrollbar{
   display: none;
