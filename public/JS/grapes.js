@@ -6164,7 +6164,15 @@ function saveToFirebase() {
         return;
     }
 
-    container.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="black" ></l-dot-pulse>`;
+    const loading = document.createElement("div");
+    loading.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="#ffffff" ></l-dot-pulse>`;
+    loading.style.width = "100%";
+    loading.style.height = "100%";
+    loading.style.display = "flex";
+    loading.style.justifyContent = "center";
+    loading.style.alignItems = "center";
+    loading.style.zIndex = "200";
+    container.appendChild(loading);
 
     // Get the HTML and CSS from the editor
     const htmlContent = editor.getHtml();
@@ -6272,9 +6280,9 @@ function saveToFirebase() {
             });
 
             // Clear the input field
-            document.getElementById("name").value = "";
-
             savePopup.style.visibility = "collapse";
+            container.removeChild(loading);
+
         })
         .catch((error) => {
             console.error("Error adding document: ", error);

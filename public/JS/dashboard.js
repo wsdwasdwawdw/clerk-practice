@@ -25,10 +25,13 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth(app);
 
-const userLoading = document.querySelector(".profile");
+const userLoading = document.querySelectorAll(".profile");
 
 // Show the loading spinner by default
-userLoading.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="#ffffff" ></l-dot-pulse>`;
+userLoading.forEach(userloading =>{
+    userloading.innerHTML = `<l-dot-pulse size="43" speed="1.3" color="#ffffff" ></l-dot-pulse>`;
+})
+
 
 auth.onAuthStateChanged((user) => {
     if (user) {
@@ -224,8 +227,8 @@ function GridList(){
         if (main.classList.contains("grids")) {
             bg.style.left = "50px"; // Move to the right
             bg.style.borderRadius = "0 5px 5px 0";
-            grid.style.fill = "black";  // Change grid icon fill to black
-            list.style.fill = "white"; // Change list icon fill to yellow
+            grid.style.fill = "white";  // Change grid icon fill to black
+            list.style.fill = "yellow"; // Change list icon fill to yellow
             main.classList.remove("grids");
 
             fileList.classList.add("list");
@@ -262,10 +265,10 @@ function GridList(){
             console.log(tracker = "list");
         } 
         else {
-            bg.style.left = "1px";     // Move to the left
+            bg.style.left = "1px";     
             bg.style.borderRadius = "5px 0 0 5px";
-            grid.style.fill = "white"; // Change grid icon fill to yellow
-            list.style.fill = "black";  // Change list icon fill to black
+            grid.style.fill = "yellow"; 
+            list.style.fill = "white";  
             main.classList.add("grids");
 
             fileList.classList.add("grid");
@@ -307,12 +310,10 @@ function GridList(){
 function RemoveButton(listItem, fileList, fileData, doc) {
     // Create a delete button
     const removeButton = document.createElement('img');
-    removeButton.src = './IMG/trash.png';
+    removeButton.src = './IMG/remove.svg';
     removeButton.title = "Remove Project";
     removeButton.style.position = "absolute";
-    removeButton.style.bottom = "15px";
     removeButton.style.right = "30px";
-    removeButton.style.padding = "5px";
     listItem.appendChild(removeButton);
 
     // Hover effect to change background color to red
@@ -370,12 +371,10 @@ function RemoveButton(listItem, fileList, fileData, doc) {
 function RenameButton(listItem, project, name, fileData, doc){
     // Create a rename button
     const renameButton = document.createElement('img');
-    renameButton.src = './IMG/rename.png';
+    renameButton.src = './IMG/rename.svg';
     renameButton.title = "Rename Project";
     renameButton.style.position = "absolute";
-    renameButton.style.bottom = "15px";
     renameButton.style.right = "90px";
-    renameButton.style.padding = "5px";
     listItem.appendChild(renameButton);
 
     // Hover effect to change background color to red

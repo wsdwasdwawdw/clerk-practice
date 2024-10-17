@@ -185,9 +185,9 @@ function register() {
   }
 }
 
-const login = document.querySelector(".login");
-login.addEventListener("click", ()=>{
-
+const login = document.querySelectorAll(".login");
+login.forEach(login =>{
+  login.addEventListener("click", ()=>{
     const hasUser = JSON.parse(localStorage.getItem("loggedIn"));  
   
     if(hasUser){
@@ -197,7 +197,9 @@ login.addEventListener("click", ()=>{
     else{
       login_reg.classList.remove("hide");
     }
+  });
 });
+
 
 document.addEventListener('keydown', function(event) {
 
