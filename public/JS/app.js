@@ -78,6 +78,7 @@ google.addEventListener("click", () => {
               uid: uid,
               createdAt: createdAt,
               type: "Google",  // Sign-in type is "google"
+              status: "Approved",
               photoURL: picture
             }).then(() => {
               console.log("User data saved to Firestore");
@@ -143,6 +144,7 @@ function register() {
           email: user.email,
           createdAt: new Date(),
           type: "Registered",
+          status: "Approved",
         });
       }).then(() => {
         console.log("User data saved in Firestore!");

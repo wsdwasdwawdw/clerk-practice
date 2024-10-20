@@ -6,7 +6,6 @@
     <title>User Setting</title>
     <link rel="stylesheet" href="../CSS/usersetting.css">
     <link rel="icon" href="IMG/logooo-01.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.10.0/firebase-auth-compat.js"></script>
@@ -15,56 +14,68 @@
 
 </head>
 <body>
-
+    <img src="../includes/IMG/glow 1.png" class="glow1">
+    
     <header>
-        <h1 class="logo">SiteHustle</h1>
+        <p class="logo"><- Back to Dashboard</p>
+        <img src="" class="profile">
     </header>
 
     
 
     <div class="main">
         <div class="side">
-            <button class="profile selected">Profile</button>
-            <button class="trashbin ">Trash Bin</button>
-            <button class="deleteaccount ">Delete Account</button>
+            <h2>Settings</h2>
+            <button class="profile selected"><img src="../includes/IMG/profile_usersetting.svg">Profile</button>
+            <button class="trashbin "><img src="../includes/IMG/trash_usersetting.svg">Trash Bin</button>
+            <button class="deleteaccount "><img src="../includes/IMG/cross_usersetting.svg">Delete Account</button>
+            <h3 id="logOut">Logout <img src="IMG/logout_usersetting.svg"></h3>
         </div>
         <div class="content">
             
             <section id="profile" class="">
                 <h2>Account Settings</h2>
                 <h4>View and change your account password and profile</h4>
-                <hr>
 
                 
-                <h3>Account Info</h3>
-                <p class="displayUser">Signed in as <span class="email"></span></p>
-                
+                <div class="actions">
+                    <div class="editProfilePicture">
+                        <img src="" alt="" class="profile"/>
+                        <input type="file" id="newProfile" />    
 
-                <div class="editProfilePicture">
-                    <img src="" alt="" class="profile"/>
-                    <input type="file" id="newProfile" />    
-                    <label for="newProfile" class="newProfile">Change Photo</label>
+                        <div class="b-1">
+                            <label for="newProfile" class="newProfile">Upload new photo</label>
+                            <p>At least 800x800 px is recommended. JPG or PNG is allowed</p>
+                        </div>
+                        
+                    </div>
+
+                    <h3>Account Info</h3>
+                    <p class="displayUser">Signed in as <span class="email"></span></p>
                 </div>
-            
-                
             </section>
 
             <section id="trashbin" class="">
                 <h2>Trash Bin</h2>
-                <h4>View and manage your recently deleted projects, with the option to restore or permanently remove them</h4>
-                <hr>
+                <h4>View and manage your recently deleted projects, with the option to restore or permanently remove them.</h4>
 
-                <div id="filelist">
+
+                <div id="filelist" class="actions">
 
                 </div>
             </section>
 
             <section id="deleteaccount" class="">
                 <h2>Delete Account</h2>
-                <h4>Permanently delete your account and all associated data from SiteHustle</h4>
-                <hr>
+                <h4>Permanently delete your account and all associated data from SiteHustle.</h4>
 
-                <button class="deleteBtn">Delete Account</button>
+
+                <div class="actions">
+                    <h2>Account Deletion</h2>
+                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="deleteBtn">Delete Account</button>
+                </div>
+                
             </section>
             
         </div>
@@ -138,5 +149,6 @@
     
 
     <script src="../JS/usersetting.js" defer></script>
+    <script src="../JS/signOut.js" type="module"></script>
 </body>
 </html>

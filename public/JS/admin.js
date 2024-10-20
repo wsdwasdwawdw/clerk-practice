@@ -48,6 +48,7 @@ function loadContent(){
         const dateFinal = dateFormat.toLocaleString();
 
         const type = fileData.type;
+        const status = fileData.status;
         // Create a new user item (similar to how you do it for projects)
         const listItem = document.createElement('tr');
         listItem.className = `listItem${tracker}`;  // Add a class for styling
@@ -64,8 +65,6 @@ function loadContent(){
         emailElement.textContent = fileData.email;  // Display email
         listItem.appendChild(emailElement);
 
-        
-
         const createdAt = document.createElement('td');
         createdAt.className = `createdAt${tracker}`;
         createdAt.textContent = dateFinal;  // Display UID
@@ -75,6 +74,11 @@ function loadContent(){
         typeElement.className = `type${tracker}`;
         typeElement.textContent = type;  // Display UID
         listItem.appendChild(typeElement);
+
+        const statusElement = document.createElement('td');
+        statusElement.className = `status${tracker}`;
+        statusElement.textContent = status;  // Display UID
+        listItem.appendChild(statusElement);
 
         const deleteBtn = document.createElement("td");
         deleteBtn.classList.add(`delete${tracker}`, "deleteBtn");
@@ -88,13 +92,8 @@ function loadContent(){
 
         tracker++;
 
-
-        deleteBtn.addEventListener("click", ()=>{
-          console.log(emailElement.textContent);
-        });
-
+        deleteAccount(deleteBtn, emailElement, uidElement);
         
-
      });
   })
   .catch(error =>{
@@ -102,28 +101,34 @@ function loadContent(){
   });
 }
 
-/* document.addEventListener("DOMContentLoaded", () => {
-  const usersTableBody = document.getElementById("users-table-body");
+function deleteAccount(deleteBtn, emailElement, uidElement){
+  const user = emailElement.textContent;
 
-  getAllUsers().then(users => {
-      users.forEach(user => {
-          const row = document.createElement("tr");
-
-          const uidCell = document.createElement("td");
-          uidCell.textContent = user.uid;
-          row.appendChild(uidCell);
-
-          const emailCell = document.createElement("td");
-          emailCell.textContent = user.email;
-          row.appendChild(emailCell);
-
-          const createdAtCell = document.createElement("td");
-          createdAtCell.textContent = user.createdAt;
-          row.appendChild(createdAtCell);
-
-          const deleteBtn = document.createElement("td");
-          deleteBtn.textContent = "Delete";
-          row.appendChild(deleteBtn);
+  if (user) {
+      deleteBtn.addEventListener("click", ()=>{
+          var userId = uidElement.textContent;
+        
+          //console.log(user);
+          //console.log(userId);
+          // First, delete the user's document from Firestore
+          var userDocRef = db.collection("users").doc(userId);
+          userDocRef.delete().then(function() {
+            console.log('User document deleted from Firestore');
+            location.reload();
+            
+            // Now delete the user from Authentication
+            user.delete().then(function() {
+              console.log('User deleted from Authentication');
+              
+            }).catch(function(error) {
+              console.error('Error deleting user:', error);
+            });
+        
+          }).catch(function(error) {
+            console.error('Error deleting user document:', error);
+          });
       });
-  });
-}); */
+    } else {
+      console.log('No user is signed in.');
+    }
+}

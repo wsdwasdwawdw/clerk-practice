@@ -223,6 +223,7 @@ header .logoutIcon{
     background-color: #fff;
     padding: 5px;
     border-radius: 50px;
+    transform: rotate(-45deg);
 }
 
 .templates .container a:hover .curtain{
@@ -269,26 +270,34 @@ header .logoutIcon{
     flex-wrap: nowrap;
     padding: 0 5%;
     position: relative;
-
+    background-image: url("../includes/IMG/Noise & Texture.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.projects .glow2{
-    width: 500px;
-    height: 200px;
+.projects .titles{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0;
+}
+.projects .titles .glow2{
+    width: 400px;
+    height: 150px;
     position: absolute;
     right: 0;
-    top: 10%;
-    left: 150px;
+    top: 0;
+    left: 0;
     margin: auto;
 }
-.projects h1{
+.projects .titles h1{
     font-size: 3em;
     align-self: center;
     color: #fff;
     font-weight: 300;
-    margin: 10% 0 0 0;
     position: relative;
 }
-.projects h2{
+.projects .titles h2{
     align-self: center;
     margin: auto;
     color: rgba(255, 255, 255, .7);
@@ -435,7 +444,6 @@ header .logoutIcon{
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 50px;
     box-sizing: border-box;
 }
@@ -449,7 +457,7 @@ header .logoutIcon{
 
 .projects .listItem{
     position: relative;
-    height: 300px;
+    height: auto;
     width: 510px;
     border-Radius: 10px;
     overflow: hidden;

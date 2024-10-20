@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 *{
     padding: 0;
     margin: 0;
@@ -9,88 +10,166 @@ body, html{
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    background-color: #222222;
     overflow-x: hidden;
+    background-color: #0D1117;
+    background-image: url("../includes/IMG/Noise & Texture.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.glow1{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
+    user-select: none;
+}
 /* HEADER */
 header{
-    background-color: #222222;
-    height: 70px;
+    position: fixed;
+    top: 30px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #13171F;
+    border-radius: 20px;
     box-shadow: 0px 0px 5px 1px #EEB832;
-    align-content: center;
-    text-align: center;
-    color: #F1E7CF;
-    font-weight: 500;
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    transition: .3s ease;
 }
-
-header .logo{
-    font-size: 40px;
+header p{
+    color: #858585;
     cursor: pointer;
 }
 
 /* MAIN */
 .main{
+    position: relative;
     display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    padding: 20px;
 }
 
 /* SIDE */
 .main .side{
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 220px 20px;
+    gap: 20px;
+    padding: 120px 0 0 30px;
+    height: 400px;
+    width: 250px;
+    background-color: #13171F;
+    border: rgba(237, 231, 216, .1) solid 1px;
+    border-radius: 25px;
+}
+.main .side h2{
+    font-size: 1.4em;
+    font-weight: 250;
+    color: #F7F4F3;
+    opacity: .7;
+    
 }
 .main .side button{
     text-align: left;
-    padding: 5px 20px;
     font-size: 20px;
+    font-weight: 300;
     background-color: transparent;
     border: transparent solid 1px;
-    color: #ffffff;
+    color: rgba(133, 133, 133, .9);
     border-radius: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
-.main .side button:hover{
+.main .side button::before{
+    content: "";
+    height: 100%;
+    border: transparent solid 1px;
+}
+.main .side button:hover::before{
     border: #DB9D47 solid 1px;
 }
-.main .side .selected{
+.main .side button:focus::before{
     border: #DB9D47 solid 1px;
 }
-
+.main .side button:focus{
+    color: rgba(255, 255, 255, .9);
+}
+.main .side h3{
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    color: #858585;
+    opacity: .9;
+    font-weight: 300;
+    cursor: pointer;
+}
 
 /* CONTENT */
 .main .content{
     position: relative;
-    width: 100%;
-}
-.main .content h4{
-    color: #ffffff;
-    margin: 0 0 0 0;
-    font-weight: 300;
+    width: 60%;
+    display: flex;
+    gap: 30px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .main .content h2{
     color: #ffffff;
-    font-size: 64px;
+    font-size: 3em;
     font-weight: 300;
-    margin: 100px 0 10px 0;
+    margin: 0 0 10px 0;
+}
+.main .content h4{
+    color: #858585;
+    opacity: .7;
+    margin: 0 0 20px 0;
+    font-weight: 300;
+    width: 40%;
 }
 .main .content h3{
-    font-size: 36px;
+    font-size: 3em;
     margin: 0 0 20px 0;
-    font-weight: 400;
+    font-weight: 300;
     color: #ffffff;
 }
 .main .content hr{
     margin: 50px 0 50px 0;
     width: auto;
     opacity: .3;
-    background-color: pink;
 }
 .main .content section{
+    display: flex;
+    flex-direction: column;
     padding: 0 50px;
     box-sizing: border-box;
 }
+.main .content section .actions{
+    border: rgba(237, 231, 216, .1) solid 1px;
+    border-radius: 25px;
+    background-color: #13171F;
+    padding: 20px;
+    height: fit-content;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+
+
 
 /* PROFILE SECTION*/
 .main .content #profile{
@@ -111,13 +190,9 @@ header .logo{
 
 /* EDIT PROFILE PICTURE */
 .editProfilePicture{
-    position: absolute;
-    top: 300px;
-    right: 50px;
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px;
     gap: 20px;
     z-index: 0;
@@ -129,17 +204,23 @@ header .logo{
     width: 200px;
 }
 .editProfilePicture .newProfile{
-    padding: 5px 20px;
-    color: #EEB832;
-    border: solid #EEB832 1px;
-    border-radius: 20px;
+    padding: 10px 75px;
+    color: rgba(229, 225, 235, .9);
+    background-color: rgba(64, 46, 153, .75);
+    border: transparent solid 1px;
+    border-radius: 15px;
     cursor: pointer;
 }
 .editProfilePicture .newProfile:hover{
     border: #ffffff solid 1px;
     color: #ffffff;
 }
-
+.editProfilePicture .b-1 p{
+    margin: 20px 0 0 0;
+    color: rgba(255, 255, 255, .7);
+    width: 290px;
+    font-size: .9em;
+}
 
 .newProfileDisplay{
     position: fixed;
@@ -192,12 +273,22 @@ header .logo{
     color: #ffffff;
 }
 
+
 /* TRASH BIN */
 .main .content #trashbin{
     height: 100%;
     width: 100%;
     visibility: hidden;
     position: absolute;
+}
+.main .content #trashbin #filelist{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
 }
 .main .content #trashbin #filelist .date{
     font-size: 26px;
@@ -208,10 +299,9 @@ header .logo{
 }
 .main .content #trashbin #filelist .listItem{
     position: relative;
-    height: 300px;
-    width: 550px;
+    height: 250px;
+    width: 410px;
     border-Radius: 10px;
-    margin: 0 0 20px 0;
     overflow: hidden;
     z-Index: 0;
     cursor: pointer;
@@ -231,16 +321,18 @@ header .logo{
     position: absolute;
     width: 100%;
     height: 70px;
-    display: flex;  
-    align-items: center;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    padding: 0 0 0 5px;
     bottom: 0;
     background-color: #000000;
 
 }
 
 .main .content #trashbin #filelist .listItem .project{
-    position: absolute;
-    font-size: 32px;
+    
+    font-size: 1.5em;
     color: #ffffff;
     top: 0;
     left: 10px;
@@ -248,8 +340,8 @@ header .logo{
     opacity: 1;
 }
 .main .content #trashbin #filelist .listItem .date{
-    position: absolute;
-    font-size: 16px;
+    
+    font-size: 1em;
     color: #ffffff;
     bottom: 0;
     left: 10px;
@@ -263,6 +355,7 @@ header .logo{
 .main .content #trashbin #filelist .listItem .icon:hover{
     opacity: .5;
 }
+
 
 /* DELETE */
 .delete{
@@ -411,18 +504,31 @@ header .logo{
     visibility: hidden;
     position: absolute;
 }
-.main .content #deleteaccount button{
+.main .content #deleteaccount .actions{
+    padding: 100px 50px 0 50px;
+}
+.main .content #deleteaccount .actions h2{
+    color: #ffffff;
+    opacity: .9;
+}
+.main .content #deleteaccount .actions p{
+    color: #ffffff;
+    opacity: .8;
+}
+.main .content #deleteaccount .actions button{
+    margin: 20px 0 0 0;
     background-color: #B1061D;
-    padding: 10px 20px;
+    padding: 10px 50px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     color: #ffffff;
     cursor: pointer;
 }
 .main .content #deleteaccount button:hover{
     opacity: .5;
 }
+
 .deleteaccount-popup{
     position: absolute;
     top: 0;
@@ -513,7 +619,9 @@ header .logo{
 #newProfile{
     display: none;
 }
-
+::-webkit-scrollbar{
+    display: none;
+}
 @media screen and (max-width: 768px){
 
     .main{

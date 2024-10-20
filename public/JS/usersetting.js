@@ -145,7 +145,7 @@ saveBtn.addEventListener("click", async () => {
 });
 
 
-
+/* TRASHBIN */
 function loadProjects(ProjectsElement, fileList, targetuser) {
     // Get the currently authenticated user
     const user = firebase.auth().currentUser;
@@ -210,8 +210,6 @@ function loadProjects(ProjectsElement, fileList, targetuser) {
         console.error("No user signed in.");
     }
 }
-
-
 function RestoreButton(listItem, project, fileList, fileData, doc, info){
     // Create a rename button
     const restoreButton = document.createElement('img');
@@ -220,7 +218,7 @@ function RestoreButton(listItem, project, fileList, fileData, doc, info){
     restoreButton.title = "Restore Project";
     restoreButton.style.position = "absolute";
     restoreButton.style.bottom = "15px";
-    restoreButton.style.right = "90px";
+    restoreButton.style.right = "60px";
     restoreButton.style.padding = "5px";
     info.appendChild(restoreButton);
  
@@ -281,7 +279,7 @@ function DeleteButton(listItem, fileList, fileData, doc, info){
     deleteButton.title = "Delete Project";
     deleteButton.style.position = "absolute";
     deleteButton.style.bottom = "15px";
-    deleteButton.style.right = "30px";
+    deleteButton.style.right = "15px";
     deleteButton.style.padding = "5px";
     info.appendChild(deleteButton);
     
@@ -349,14 +347,12 @@ function lipatlipat(){
             }); 
 
             sections.forEach(section =>{
-                section.style.height = "0";
                 section.style.visibility = "hidden";
             });
 
             button.classList.add("selected");
 
             const sectionToDisplay = content.querySelector(`#${button.classList[0]}`);
-            sectionToDisplay.style.height = "100%";
             sectionToDisplay.style.visibility = "visible";
 
             //renderInfo();

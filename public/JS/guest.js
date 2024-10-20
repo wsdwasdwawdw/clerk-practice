@@ -524,7 +524,7 @@ editor.Panels.addPanel({
         className: 'btn-clear',
         label: `<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="22" display="block"><path d="m7.242,7.438L12.751,1.911c1.17-1.175,3.213-1.175,4.383,0l5.935,5.955c1.206,1.21,1.206,3.179,0,4.389l-5.506,5.525L7.242,7.438Zm7.111,13.562l1.798-1.804L5.83,8.855.882,13.82c-1.206,1.21-1.206,3.179,0,4.389l4.774,4.791h18.344v-2h-9.647Z"/></svg>`,
         context: 'clear',
-        command: () => editor.runCommand("core:canvas-clear"),
+        command: () => clear(),
         attributes: {
           title: "Clear",
         },
@@ -952,3 +952,29 @@ editor.on('component:deselected', () => {
   // Show the default message again when no component is selected
   traitsContainer.classList.remove('has-selection');
 });
+
+function clear(){
+    const clear = document.querySelector(".clearPopup");
+    const container = clear.querySelector(".container");
+    const cancel = container.querySelector(".b-1");
+    const confirm = container.querySelector(".b-2");
+
+    clear.style.visibility = "visible";
+
+    clear.addEventListener("click", ()=>{
+        clear.style.visibility = "collapse";
+    });
+
+    container.addEventListener("click", (e)=>{
+        e.stopPropagation();
+    });
+
+    cancel.addEventListener("click", ()=>{
+        clear.style.visibility = "collapse";
+    });
+
+    confirm.addEventListener("click", ()=>{
+        editor.runCommand("core:canvas-clear");
+        clear.style.visibility = "collapse";
+    });
+}

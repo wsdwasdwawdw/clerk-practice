@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 body, html{
     scroll-behavior: smooth;
@@ -10,27 +11,53 @@ body, html{
     height: 100%;
     font-family: 'Inter', sans-serif;
     position: relative;
+    background-color: #0D1117;
+    background-image: url("../includes/IMG/Noise & Texture.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main{
+    height: 100%;
+    padding: 100px;
+}
+main h1{
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #ffffff;
+    opacity: .8;
+}
+main .content{
+    margin: 50px 0 0 0;
+    height: 90%;
+    background-color: #13171F;
+    border: rgba(237, 231, 216, .1) solid 1px;
+    border-radius: 25px;
+    padding: 20px 100px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 table{
     position: relative;
-    right: 0;
-    left: 0;
-    margin: auto;
-}
-table tr td{
-    padding: 5px;
+    width: 100%;
     color: #ffffff;
+    border-collapse: collapse;
+}
+table thead{
+    text-align: left;
+}
+table tr td, th{
+    padding: 15px;
+    font-weight: 300;
 }
 
 table tbody tr:nth-child(even){
-    background-color: green;
+    background-color: #13171F;
 }
 table tbody tr:nth-child(odd){
-    background-color: red;
+    background-color: #1A1F29;
 }
 
 table tbody .deleteBtn{
-    background-color: aqua;
-    color: black;
 }

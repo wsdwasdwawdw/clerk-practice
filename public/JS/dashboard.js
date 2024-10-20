@@ -314,6 +314,7 @@ function RemoveButton(listItem, fileList, fileData, doc) {
     removeButton.title = "Remove Project";
     removeButton.style.position = "absolute";
     removeButton.style.right = "30px";
+    removeButton.style.bottom = "20px";
     listItem.appendChild(removeButton);
 
     // Hover effect to change background color to red
@@ -375,6 +376,7 @@ function RenameButton(listItem, project, name, fileData, doc){
     renameButton.title = "Rename Project";
     renameButton.style.position = "absolute";
     renameButton.style.right = "90px";
+    renameButton.style.bottom = "20px";
     listItem.appendChild(renameButton);
 
     // Hover effect to change background color to red
