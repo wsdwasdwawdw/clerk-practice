@@ -80,10 +80,16 @@ function loadContent(){
         statusElement.textContent = status;  // Display UID
         listItem.appendChild(statusElement);
 
-        const deleteBtn = document.createElement("td");
-        deleteBtn.classList.add(`delete${tracker}`, "deleteBtn");
-        deleteBtn.textContent = "Delete";
-        listItem.appendChild(deleteBtn);
+        const actionBtn = document.createElement("td");
+        if(status === "Approved"){
+          actionBtn.classList.add(`action${tracker}`, "actionBtn");
+          actionBtn.textContent = "Delete";
+        }
+        else{
+          actionBtn.classList.add(`action${tracker}`, "actionBtn");
+          actionBtn.textContent = "Approve";
+        }
+        listItem.appendChild(actionBtn);
 
         
         // Append the list item to the user list container
@@ -92,7 +98,8 @@ function loadContent(){
 
         tracker++;
 
-        deleteAccount(deleteBtn, emailElement, uidElement);
+        deleteAccount(actionBtn, emailElement, uidElement);
+        approveAccount(actionBtn, emailElement, uidElement);
         
      });
   })
@@ -101,11 +108,11 @@ function loadContent(){
   });
 }
 
-function deleteAccount(deleteBtn, emailElement, uidElement){
+function deleteAccount(actionBtn, emailElement, uidElement){
   const user = emailElement.textContent;
 
-  if (user) {
-      deleteBtn.addEventListener("click", ()=>{
+  if (actionBtn.textContent === "Delete") {
+      actionBtn.addEventListener("click", ()=>{
           var userId = uidElement.textContent;
         
           //console.log(user);
@@ -115,15 +122,6 @@ function deleteAccount(deleteBtn, emailElement, uidElement){
           userDocRef.delete().then(function() {
             console.log('User document deleted from Firestore');
             location.reload();
-            
-            // Now delete the user from Authentication
-            user.delete().then(function() {
-              console.log('User deleted from Authentication');
-              
-            }).catch(function(error) {
-              console.error('Error deleting user:', error);
-            });
-        
           }).catch(function(error) {
             console.error('Error deleting user document:', error);
           });
@@ -131,4 +129,28 @@ function deleteAccount(deleteBtn, emailElement, uidElement){
     } else {
       console.log('No user is signed in.');
     }
+}
+
+function approveAccount(actionBtn, emailElement, uidElement){
+  actionBtn.addEventListener('click', function() {
+    // Check if the action button text is "Approve"
+    if (actionBtn.textContent === "Approve") {
+      const uid = uidElement.textContent;  // Get the UID of the user
+      
+      // Update the status field in Firestore
+      db.collection("users").doc(uid).update({
+        status: "Approved",
+      })
+      .then(() => {
+        console.log("Account approved successfully!");
+
+        // Optionally, update the button text and style after approving
+        //actionBtn.textContent = "Delete";
+        location.reload();
+      })
+      .catch(error => {
+        console.error("Error updating account status:", error);
+      });
+    }
+  });
 }

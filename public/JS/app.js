@@ -144,7 +144,7 @@ function register() {
           email: user.email,
           createdAt: new Date(),
           type: "Registered",
-          status: "Approved",
+          status: "Pending",
         });
       }).then(() => {
         console.log("User data saved in Firestore!");
@@ -191,12 +191,44 @@ const login = document.querySelectorAll(".login");
 login.forEach(login =>{
   login.addEventListener("click", ()=>{
     const hasUser = JSON.parse(localStorage.getItem("loggedIn"));  
-  
-    if(hasUser){
-      console.log(hasUser)
-      window.location.href = "./includes/dashboard.html";
-    }
-    else{
+
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+      // The user is logged in. Now fetch custom fields from Firestore
+      const userId = user.uid;
+
+      // Fetch user data from Firestore
+      db.collection("users").doc(userId).get()
+        .then(doc => {
+          if (doc.exists) {
+            const userData = doc.data();
+
+            // Now you have access to custom fields like status and type
+            const status = userData.status;
+            const type = userData.type;
+
+            console.log("User data:", userData);
+
+            // Do something with the status and type, e.g., redirect
+            if (status === "Approved") {
+              // Redirect to dashboard if approved
+              setTimeout(() => {
+                window.location.href = './includes/dashboard.html';
+              }, 3000);
+            } else {
+              login_reg.classList.remove("hide");
+              console.log("User is not approved yet.");
+            }
+          } else {
+            console.error("No such document!");
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching user document:", error);
+        });
+    } else {
+      // If no user is logged in, show login/register modal
       login_reg.classList.remove("hide");
     }
   });
@@ -222,36 +254,63 @@ document.addEventListener('keydown', function(event) {
 
 function pasok(){
     
-    const email = document.getElementById('log-email').value;
-    const password = document.getElementById('log-password').value;
-    
-    if(email === "admin" && password === "admin")
-      window.location.href = "./includes/admin.html";
+  const email = document.getElementById('log-email').value;
+  const password = document.getElementById('log-password').value;
+
+  if(email === "admin" && password === "admin") {
+    window.location.href = "./includes/admin.html";
+  } else {
     // Sign in the user with email and password
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // User signed in successfully
-      var user = userCredential.user;
+      .then((userCredential) => {
+        // User signed in successfully
+        var user = userCredential.user;
 
-      // Ensure email is verified before redirecting to dashboard
-      if (user.emailVerified) {
-        // Redirect or perform other actions upon successful login
-        window.location.href = './includes/dashboard.html'; // Example of redirection
-      } else {
-        const message = "Please verify your email before logging in.";
-        Alert(message);
-      }
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.error("Error during login:", errorMessage);
-      
-      const message = "No account found or login failed.";
-      Alert(message);
-    });
+        // Ensure the user is signed in and email is verified
+        if (user && user.emailVerified) {
+          // Fetch the custom user info from Firestore using the UID
+          const uid = user.uid;
+          db.collection("users").doc(uid).get()
+            .then((doc) => {
+              if (doc.exists) {
+                const userData = doc.data();
 
-    
+                // Now check if the user is approved
+                if (userData.status === "Approved") {
+                  // Delay redirection by 5 seconds (or less than 10 seconds as you prefer)
+                  console.log("User is approved. Redirecting to dashboard in 5 seconds...");
+                  setTimeout(() => {
+                    window.location.href = './includes/dashboard.html';
+                  }, 3000);  // 5000 milliseconds = 5 seconds
+                } else {
+                  const message = "Admin is yet to approve your account.";
+                  Alert(message);  // Replace with your custom alert function
+                }
+              } else {
+                const message = "User document not found in Firestore.";
+                Alert(message);  // Replace with your custom alert function
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching user data from Firestore:", error);
+              const message = "Error fetching user data.";
+              Alert(message);  // Replace with your custom alert function
+            });
+        } else {
+          const message = "Email not verified. Please verify your email first.";
+          Alert(message);  // Replace with your custom alert function
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.error("Error during login:", errorMessage);
+
+        const message = "No account found or login failed.";
+        Alert(message);  // Replace with your custom alert function
+      });
+  }
+
 }
 
 
