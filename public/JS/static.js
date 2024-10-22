@@ -4,7 +4,7 @@ const domc = editor.DomComponents;
 editor.BlockManager.add('cell',{
   label: 'Link Block',
   category: "Basic",
-  media: `<svg viewBox="0 0 24 24">
+  media: `<svg viewBox="-18 0 60 25">
       <path fill="currentColor" d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z"></path>
     </svg>`,
     content: {
@@ -23,7 +23,7 @@ editor.BlockManager.add('cell',{
   editor.BlockManager.add('Quote',{
     label: 'Quote',
     category: "Basic",
-    media: `<svg viewBox="0 0 24 24">
+    media: `<svg viewBox="-18 0 60 25">
         <path fill="currentColor" d="M14,17H17L19,13V7H13V13H16M6,17H9L11,13V7H5V13H8L6,17Z" />
     </svg>`,
     content: `<blockquote class="quote">
@@ -35,7 +35,7 @@ editor.BlockManager.add('cell',{
     editor.BlockManager.add('Section', {
     label: 'Section',
     category: 'Basic',
-    media: `<svg viewBox="0 0 24 24">
+    media: `<svg viewBox="-18 0 60 25">
         <path fill="currentColor" d="M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z" />
     </svg>`,
     content: `<section class="bdg-sect">

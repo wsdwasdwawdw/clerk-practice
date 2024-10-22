@@ -17,6 +17,15 @@ body, html{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.back{
+    position: absolute;
+    margin: 20px 0 0 40px;
+    color: #858585;
+    cursor: pointer;
+}
+.back:hover{
+    color: #ffffff;
+}
 main{
     height: 100%;
     padding: 100px;
@@ -33,7 +42,7 @@ main .content{
     background-color: #13171F;
     border: rgba(237, 231, 216, .1) solid 1px;
     border-radius: 25px;
-    padding: 20px 100px;
+    padding: 20px 0;
     overflow-y: scroll;
     scrollbar-width: none;
 }
@@ -41,7 +50,7 @@ main .content{
 table{
     position: relative;
     width: 100%;
-    color: #ffffff;
+    color: #858585;
     border-collapse: collapse;
 }
 table thead{
@@ -50,14 +59,20 @@ table thead{
 table tr td, th{
     padding: 15px;
     font-weight: 300;
+    font-size: .9em;
 }
-
-table tbody tr:nth-child(even){
-    background-color: #13171F;
+table tbody tr{
+    border-top: rgba(237, 231, 216, .3) solid 1px;
+    border-bottom: rgba(237, 231, 216, .3) solid 1px;
 }
-table tbody tr:nth-child(odd){
+table tbody tr:hover{
+    padding: 25px 0;
     background-color: #1A1F29;
+    color: #ffffff;
 }
-
-table tbody .deleteBtn{
+table tbody .actionBtn{
+    cursor: pointer;
+}
+table tbody .actionBtn:hover{
+    color: red;
 }

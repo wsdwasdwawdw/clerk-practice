@@ -356,6 +356,7 @@ html,body{
   text-align: center;
 }
 .savePopup .container{
+  position: relative;
   width: 250px;
   display: flex;
   flex-direction: column;

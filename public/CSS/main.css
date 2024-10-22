@@ -579,7 +579,7 @@ header .burger{
 .FAQs .container{
     height: fit-content;
     cursor: pointer;
-    padding: 40px;
+    padding: 20px;
     background-color: #13171F;
     border: rgba(237, 231, 216, .1) solid 1px;
     border-radius: 20px;
